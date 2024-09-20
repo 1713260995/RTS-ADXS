@@ -1,10 +1,11 @@
-﻿namespace ADXS_Server
+﻿namespace ADXS.Server
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Launcher.Init();
+            Console.ReadKey();
         }
     }
 }

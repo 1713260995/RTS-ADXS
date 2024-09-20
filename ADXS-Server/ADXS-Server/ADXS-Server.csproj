@@ -3,9 +3,18 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>ADXS_Server</RootNamespace>
+    <RootNamespace>ADXS.Server</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameNetLib\GameNetLib\GameNetLib\GameNetLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entity\" />
+    <Folder Include="Module\" />
+  </ItemGroup>
 
 </Project>
