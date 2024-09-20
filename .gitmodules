@@ -1,3 +1,6 @@
 [submodule "ADXS-Client/Assets/GameClientLib"]
 	path = ADXS-Client/Assets/GameClientLib
 	url = https://github.com/1713260995/GameClientLib.git
+[submodule "ADXS-Server/GameNetLib"]
+	path = ADXS-Server/GameNetLib
+	url = https://github.com/1713260995/GameNetLib.git
