@@ -1,0 +1,80 @@
+# 忽略 Visual Studio 文件
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# 忽略构建结果
+bin/
+obj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]og/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]ppPackages/
+
+# 忽略 NuGet 包
+*.nupkg
+*.snupkg
+*.nuget/
+# NuGet packages folder
+packages/
+# 如果你在项目中使用了锁定的NuGet文件
+project.lock.json
+project.fragment.lock.json
+# .NET Core NuGet 部署文件
+project.nuget.cache
+*.nuspec
+.nuget/
+
+# 忽略 Rider（JetBrains IDE）的相关文件
+.idea/
+*.sln.iml
+
+# 忽略 mono 自动生成的文件
+mono_crash.*
+
+# 忽略发布文件
+publish/
+out/
+
+# 忽略用户特定的文件
+*.rsuser
+*.userprefs
+*.localhistory/
+*.localpath
+*.sln.ide
+.idea/
+
+# 忽略 Resharper 文件
+_ReSharper*/
+*.DotSettings.user
+
+# 忽略本地数据库
+*.mdf
+*.ldf
+
+# 忽略应用程序日志文件
+*.log
+
+# 忽略应用程序缓存文件
+*.cache
+*.temp
+
+# 忽略系统特定的文件
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# 忽略其他操作系统文件
+*.DS_Store
+*.directory
+
+# 忽略测试结果
+TestResults/
