@@ -12,9 +12,4 @@
     <ProjectReference Include="..\GameNetLib\GameNetLib\GameNetLib\GameNetLib.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Entity\" />
-    <Folder Include="Module\" />
-  </ItemGroup>
-
 </Project>
