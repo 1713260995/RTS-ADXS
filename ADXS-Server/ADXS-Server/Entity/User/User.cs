@@ -11,6 +11,7 @@ namespace ADXS.Server.Entity.User
         public int id { get; set; }
         public string account { get; set; }
         public string pwd { get; set; }
-        public string createDate;
+        public string ip { get; set; }
+        public DateTime createTiem { get; set; }
     }
 }
