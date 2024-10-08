@@ -1,4 +1,5 @@
-﻿using Assets.GameClientLib.Network.Message;
+﻿using Assets.GameClientLib.Scripts.Event;
+using Assets.GameClientLib.Scripts.Event.NetWork;
 using Assets.Scripts.NetWork;
 using Assets.Scripts.Scene;
 using Newtonsoft.Json;
@@ -8,14 +9,14 @@ using UnityEngine;
 namespace Assets.Scripts.Modules.User
 {
 
-    public class UserLogin : IAnalyzeMessage
+    public class UserLogin : IEventHandler<TcpEventArgs>
     {
 
         private Action<User> loginCallback { get; set; }
 
         public UserLogin()
         {
-            TcpManager.Instance.AddEvent(MessageType.Login, this);
+            TcpManager.Instance.Subscribe(MessageType.Login, this);
         }
 
         public void Send(string _account, string _pwd, Action<User> callback)
@@ -29,12 +30,11 @@ namespace Assets.Scripts.Modules.User
             loginCallback = callback;
         }
 
-        public void AnalyzeMessage(byte[] body)
+        public void EventHandler(TcpEventArgs args)
         {
-            User user = TcpManager.Instance.DeserializeModel<User>(body);
+            User user = TcpManager.Instance.DeserializeModel<User>(args.body);
             UserManager.Instance.user = user;
             loginCallback?.Invoke(user);
-
             PlayerPrefs.SetString(StartupSceneCtrl.userKey, JsonConvert.SerializeObject(user));
         }
     }

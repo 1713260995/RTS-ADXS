@@ -1,6 +1,8 @@
 ﻿using Assets.GameClientLib.Network.Message;
+using Assets.GameClientLib.Scripts.Event;
+using Assets.GameClientLib.Scripts.Event.NetWork;
+using Assets.GameClientLib.Scripts.Network;
 using Assets.GameClientLib.Utils.Singleton;
-using GameNetLib.NetWork;
 using UnityEngine;
 
 namespace Assets.Scripts.NetWork
@@ -9,12 +11,14 @@ namespace Assets.Scripts.NetWork
     {
         private TcpClient tcpClient;
         private IMessageHandler messageHandler;
+        private EventSystem<TcpEventArgs> eventSystem;
+
 
         public void Init()
         {
             tcpClient = new TcpClient();
             messageHandler = new MessageHandler();
-            tcpClient.Init(messageHandler);
+            tcpClient.Init(messageHandler, eventSystem);
             tcpClient.Start();
         }
 
@@ -28,31 +32,14 @@ namespace Assets.Scripts.NetWork
             return messageHandler.SerializeMessage((ushort)messageType, model);
         }
 
-        /// <summary>
-        /// 添加事件处理服务器发送的消息
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="messageType"></param>
-        /// <param name="analyzeEvent"></param>
-        /// <param name="isOnlyEvent"></param>
-        public void AddEvent<T>(MessageType messageType, T analyzeEvent, bool isOnlyEvent = true) where T : IAnalyzeMessage
+        public void Subscribe(MessageType messageType, IEventHandler<TcpEventArgs> handler)
         {
-            if (isOnlyEvent && ContainEvent<T>(messageType))
-            {
-                Debug.LogError($"{messageType},{nameof(analyzeEvent)}事件无法被重复添加");
-                return;
-            }
-            messageHandler.AddAnalyzeEvent((ushort)messageType, analyzeEvent);
+            eventSystem.Subscribe((int)messageType, handler);
         }
 
-        public bool ContainEvent<T>(MessageType messageType) where T : IAnalyzeMessage
+        public void Unsubscribe(MessageType messageType, IEventHandler<TcpEventArgs> handler)
         {
-            return messageHandler.ContainAnalyzeEvent<T>((ushort)messageType);
-        }
-
-        public void RemoveEvent(MessageType messageType, IAnalyzeMessage action)
-        {
-            messageHandler.RemoveAnalyzeEvent((ushort)messageType, action);
+            eventSystem.Unsubscribe((int)messageType, handler);
         }
 
         public void Send<T>(MessageType messageType, T model)

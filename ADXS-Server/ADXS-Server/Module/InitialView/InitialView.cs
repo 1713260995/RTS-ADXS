@@ -1,6 +1,7 @@
 ﻿using ADXS.Server.Entity.User;
 using ADXS.Server.NetWork;
 using GameNetLib.Database;
+using GameNetLib.Event;
 using GameNetLib.Event.NetWork;
 using GameNetLib.NetWork.Message;
 using GameNetLib.Utils.Unique;
@@ -26,27 +27,17 @@ namespace ADXS.Server.Module.InitialView
             login = new Login(this);
         }
 
-        private struct Login : ITcpEventHandler
+        private struct Login : IEventHandler<TcpEventArgs>
         {
             private InitialView view;
             public Login(InitialView view)
             {
                 this.view = view;
-                TcpManager.Instance.AddEvent(MessageType.Login, this);
+                TcpManager.Instance.Subscribe(MessageType.Login, this);
             }
 
-            public void AnalyzeMessage(string clientIp, byte[] body)
+            public void EventHandler(TcpEventArgs model)
             {
-                User user = TcpManager.Instance.DeserializeModel<User>(body);
-                user.createTiem = DateTime.Now;
-                user.id = UniqueData.GenerateUniqueInt();
-                view.user = user;
-                TcpManager.Instance.Send(clientIp, MessageType.Login, user);
-            }
-
-            public void EventHandler(GameNetLib.Event.EventArgs args)
-            {
-                TcpEventArgs model = (TcpEventArgs)args;
                 User user = TcpManager.Instance.DeserializeModel<User>(model.body);
                 user.createTiem = DateTime.Now;
                 user.id = UniqueData.GenerateUniqueInt();

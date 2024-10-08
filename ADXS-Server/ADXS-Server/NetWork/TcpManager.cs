@@ -3,6 +3,7 @@ using GameNetLib.Event.NetWork;
 using GameNetLib.NetWork.Message;
 using GameNetLib.NetWork.Tcp;
 using GameNetLib.Utils.Singleton;
+using System;
 
 namespace ADXS.Server.NetWork
 {
@@ -10,13 +11,13 @@ namespace ADXS.Server.NetWork
     {
         private TcpServer tcpServer;
         private INetworkMsgHandler messageHandler;
-        private IEventSystem eventSystem;
+        private EventSystem<TcpEventArgs> eventSystem;
 
         public void Init()
         {
             tcpServer = new TcpServer();
-            messageHandler = new NetworkMsgHandler();
-            eventSystem = new TcpEventSystem();
+            messageHandler = new NetworkMsgHandlerByJson();
+            eventSystem = new EventSystem<TcpEventArgs>();
             tcpServer.Init(messageHandler, eventSystem);
         }
 
@@ -27,15 +28,15 @@ namespace ADXS.Server.NetWork
 
         public byte[] SerializeMessage<T>(MessageType messageType, T model)
         {
-            return messageHandler.SerializeMessage<T>((ushort)messageType, model);
+            return messageHandler.SerializeMessage((ushort)messageType, model);
         }
 
-        public void AddEvent(MessageType messageType, IEventHandler handler)
+        public void Subscribe(MessageType messageType, IEventHandler<TcpEventArgs> handler)
         {
             eventSystem.Subscribe((int)messageType, handler);
         }
 
-        public void RemoveEvent(MessageType messageType, IEventHandler handler)
+        public void Unsubscribe(MessageType messageType, IEventHandler<TcpEventArgs> handler)
         {
             eventSystem.Unsubscribe((int)messageType, handler);
         }
