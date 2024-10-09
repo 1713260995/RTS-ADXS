@@ -23,32 +23,15 @@ namespace Assets.Scripts.Scene
 
         public void QuickLogin()
         {
+            PlayerPrefs.DeleteAll();
             var json = PlayerPrefs.GetString(userKey);
-            User user = JsonConvert.DeserializeObject<User>(json);
-            user = new User
-            {
-                account = "123",
-                pwd = "345",
-            };
-            if (user == null)
-            {
-                GameScene.LoadAsync(SceneName.Lobby, ToLobby);
-            }
-            else
-            {
-                UserManager.Instance.Login(user.account, user.pwd, (user) =>
-                {
-                    GameScene.LoadAsync(SceneName.Lobby, ToLobby);
-                });
-            }
+            User user = JsonConvert.DeserializeObject<User>(json) ?? new();
+            user.account = "sadfsd";
+            user.pwd = "123456";
+            UserManager.Instance.Login(user);
         }
 
 
-        public async UniTask ToLobby(AsyncOperation a)
-        {
-            await UniTask.Delay(3000);
-            a.allowSceneActivation = true;
-        }
 
         #region Initialize
 
@@ -72,7 +55,6 @@ namespace Assets.Scripts.Scene
 
             JsonConvert.DefaultSettings = new Func<JsonSerializerSettings>(() =>
             {
-                setting.NullValueHandling = NullValueHandling.Ignore;  //空值处理
                 return setting;
             });
         }

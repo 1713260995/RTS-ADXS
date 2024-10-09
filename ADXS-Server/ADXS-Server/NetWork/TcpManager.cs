@@ -1,4 +1,6 @@
-﻿using GameNetLib.Event;
+﻿using ADXS.Server.Module.InitialView;
+using GameNetLib.Config;
+using GameNetLib.Event;
 using GameNetLib.Event.NetWork;
 using GameNetLib.NetWork.Message;
 using GameNetLib.NetWork.Tcp;
@@ -16,10 +18,18 @@ namespace ADXS.Server.NetWork
         public void Init()
         {
             tcpServer = new TcpServer();
-            messageHandler = new NetworkMsgHandlerByJson();
+            messageHandler = new NetworkMsgHandler();
             eventSystem = new EventSystem<TcpEventArgs>();
-            tcpServer.Init(messageHandler, eventSystem);
+            tcpServer.Init(messageHandler, eventSystem, GlobalConfig.Instance.netConfig);
+            AddListen();
         }
+
+        public void AddListen()
+        {
+            Subscribe(MessageType.Login, new Login());
+        }
+
+
 
         public T DeserializeModel<T>(byte[] body)
         {
@@ -50,8 +60,6 @@ namespace ADXS.Server.NetWork
         {
             tcpServer.SendAll((ushort)messageType, model);
         }
-
-
 
     }
 }

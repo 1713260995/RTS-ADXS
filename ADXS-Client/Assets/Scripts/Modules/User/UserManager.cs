@@ -6,17 +6,17 @@ namespace Assets.Scripts.Modules.User
     public class UserManager : Singleton<UserManager>
     {
         public User user = null;
-        private UserLogin logon = null;
+        private Login logon = null;
 
 
         public UserManager()
         {
-            logon = new UserLogin();
+            logon = new Login();
         }
 
-        public void Login(string id, string pwd, Action<User> callback = null)
+        public void Login(User user)
         {
-            logon.Send(id, pwd, callback);
+            logon.Send(user);
         }
 
         public void Register()
