@@ -3,15 +3,20 @@ using Assets.GameClientLib.Scripts.Config;
 using Assets.GameClientLib.Scripts.Config.SO;
 using Assets.GameClientLib.Scripts.Utils.Singleton;
 using Assets.Scripts.NetWork;
-using Assets.Scripts.Scene;
 using System;
 using Cysharp.Threading.Tasks;
+using Assets.GameClientLib.Utils.Json;
+using Newtonsoft.Json;
+using UnityEngine;
 
 namespace Assets.GameClientLib.Scripts.Game
 {
     public class GameManager : SingletonMono<GameManager>
     {
-        public Action onInitCompleted { get; set; }
+        private event Action OnInitCompleted = null;
+
+        [SerializeField]
+        private InitConfigSO initSO;
 
         protected override void Awake()
         {
@@ -35,12 +40,30 @@ namespace Assets.GameClientLib.Scripts.Game
         /// <returns></returns>
         public async UniTask Init()
         {
-            InitConfigSO initSO = StartupSceneCtrl.initSO;
+            GlobalJsonSetting();
             ExceptionSystem.OnEnable();
             ResourceSystem.Init(initSO.assetLoadMode);
             await GlobalConfig.Instance.Init(initSO);
             TcpManager.Instance.Init();
-            onInitCompleted?.Invoke();
+            OnInitCompleted?.Invoke();
+        }
+
+        public void AddInitCompletedEvent(Action action)
+        {
+            OnInitCompleted += action;
+        }
+
+        private void GlobalJsonSetting()
+        {
+            JsonSerializerSettings setting = new JsonSerializerSettings()
+            {
+                ContractResolver = new PrivateSetterContractResolver(),//允许序列化 private set 属性
+            };
+
+            JsonConvert.DefaultSettings = new Func<JsonSerializerSettings>(() =>
+            {
+                return setting;
+            });
         }
         #endregion
     }

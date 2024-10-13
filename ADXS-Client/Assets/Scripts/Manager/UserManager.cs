@@ -1,7 +1,8 @@
 ﻿using Assets.GameClientLib.Utils.Singleton;
+using Assets.Scripts.Modules.User;
 using System;
 
-namespace Assets.Scripts.Modules.User
+namespace Assets.Scripts.Manager
 {
     public class UserManager : Singleton<UserManager>
     {

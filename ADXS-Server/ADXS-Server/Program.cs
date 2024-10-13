@@ -1,10 +1,7 @@
-﻿using ADXS.Server.Module.InitialView;
-using ADXS.Server.NetWork;
+﻿using ADXS.Server.NetWork;
 using GameNetLib.Config;
 using GameNetLib.Core;
-using GameNetLib.Event.NetWork;
 using GameNetLib.Utils.Logging;
-using Newtonsoft.Json;
 
 namespace ADXS.Server
 {
@@ -22,6 +19,7 @@ namespace ADXS.Server
         {
             ServerInitializer.Init(EnvironmentMode.release);
             TcpManager.Instance.Init();
+            UdpManager.Instance.Init();
             Test();
         }
 

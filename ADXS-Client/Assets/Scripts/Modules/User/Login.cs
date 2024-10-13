@@ -1,6 +1,8 @@
 ﻿using Assets.GameClientLib.Scripts.Event;
 using Assets.GameClientLib.Scripts.Network.Message;
+using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Game;
+using Assets.Scripts.Manager;
 using Assets.Scripts.NetWork;
 using Assets.Scripts.Scene;
 using Cysharp.Threading.Tasks;
@@ -11,7 +13,7 @@ using UnityEngine;
 namespace Assets.Scripts.Modules.User
 {
 
-    public class Login : IEventHandler<TcpEventArgs>
+    public class Login : IEventHandler<MessageArgs>
     {
 
         public Login()
@@ -24,9 +26,9 @@ namespace Assets.Scripts.Modules.User
             TcpManager.Instance.Send(MessageType.Login, user);
         }
 
-        public void EventHandler(TcpEventArgs args)
+        public void EventHandler(MessageArgs args)
         {
-            User user = TcpManager.Instance.DeserializeModel<User>(args.body);
+            User user = args.GetBody<User>();
             if (user == null)
             {
                 Debug.Log("登录失败");
@@ -37,8 +39,8 @@ namespace Assets.Scripts.Modules.User
                 Debug.Log("登录成功,用户信息：" + json);
                 UserManager.Instance.user = user;
                 PlayerPrefs.SetString(StartupSceneCtrl.userKey, JsonConvert.SerializeObject(user));
+                GameSceneManager.Instance.LoadAsync(SceneName.Lobby, ToLobby);
             }
-            GameScene.LoadAsync(SceneName.Lobby, ToLobby);
         }
 
 

@@ -1,28 +1,26 @@
-﻿using ADXS.Server.Module.InitialView;
-using GameNetLib.Common.Event;
+﻿using GameNetLib.Common.Event;
 using GameNetLib.Config;
 using GameNetLib.NetWork.Base;
 using GameNetLib.NetWork.Message;
-using GameNetLib.NetWork.Tcp;
+using GameNetLib.NetWork.Udp;
 
 namespace ADXS.Server.NetWork
 {
-    public class TcpManager : NetWorkManager<TcpManager, MessageType>
+    public class UdpManager : NetWorkManager<UdpManager, MessageType>
     {
         public override void Init()
         {
             eventSystem = new EventSystem<MessageArgs>();
-            messageHandler = new MessageSerializeByJson();
             netConfig = GlobalConfig.Instance.netConfig;
-            server = new TcpServer(netConfig, messageHandler, eventSystem);
+            messageHandler = new MessageSerializeByJson();
+            server = new UdpServer(netConfig, messageHandler, eventSystem);
             server.Start();
             InitListenEvent();
         }
 
         protected override void InitListenEvent()
         {
-            Subscribe(MessageType.Login, new Login());
-        }
 
+        }
     }
 }

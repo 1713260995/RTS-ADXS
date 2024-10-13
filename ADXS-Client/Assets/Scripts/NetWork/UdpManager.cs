@@ -3,20 +3,18 @@ using Assets.GameClientLib.Scripts.Event;
 using Assets.GameClientLib.Scripts.Network.Base;
 using Assets.GameClientLib.Scripts.Network.Message;
 using Assets.GameClientLib.Scripts.Network.Udp;
-using Assets.GameClientLib.Utils.Singleton;
 using GameNetLib.NetWork;
-using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.NetWork
 {
-    public class TcpManager : NetWorkManager<TcpManager, MessageType>
+    public class UdpManager : NetWorkManager<UdpManager, MessageType>
     {
         public override void Init()
         {
             eventSystem = new EventSystem<MessageArgs>();
             messageHandler = new MessageSerializeByJson();
             netConfig = GlobalConfig.Instance.netConfig;
-            server = new TcpServer(netConfig, messageHandler, eventSystem);
+            server = new UdpServer(netConfig, messageHandler, eventSystem);
             server.Start();
             InitListenEvent();
         }
