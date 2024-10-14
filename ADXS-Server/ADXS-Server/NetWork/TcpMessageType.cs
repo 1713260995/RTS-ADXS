@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ADXS.Server.NetWork
 {
-    public enum MessageType
+    public enum TcpMessageType
     {
-        None = 0,
-        Login
+        Unknown = 0,
+        Login,
     }
 }

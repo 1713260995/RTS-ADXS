@@ -6,18 +6,18 @@ namespace Assets.Scripts.Manager
 {
     public class UserManager : Singleton<UserManager>
     {
-        public User user = null;
-        private Login logon = null;
+        public User user { get; set; }
+        private Login login = null;
 
 
         public UserManager()
         {
-            logon = new Login();
+            login = new Login();
         }
 
         public void Login(User user)
         {
-            logon.Send(user);
+            login.Send(user);
         }
 
         public void Register()

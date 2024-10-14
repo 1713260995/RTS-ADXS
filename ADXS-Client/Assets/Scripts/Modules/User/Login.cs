@@ -1,5 +1,6 @@
 ﻿using Assets.GameClientLib.Scripts.Event;
 using Assets.GameClientLib.Scripts.Network.Message;
+using Assets.GameClientLib.Scripts.Network.Tcp;
 using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Game;
 using Assets.Scripts.Manager;
@@ -13,20 +14,20 @@ using UnityEngine;
 namespace Assets.Scripts.Modules.User
 {
 
-    public class Login : IEventHandler<MessageArgs>
+    public class Login : IEventHandler<TcpMessageArgs>
     {
 
         public Login()
         {
-            TcpManager.Instance.Subscribe(MessageType.Login, this);
+            TcpManager.Instance.Subscribe(TcpMessageType.Login, this);
         }
 
         public void Send(User user)
         {
-            TcpManager.Instance.Send(MessageType.Login, user);
+            TcpManager.Instance.Send(TcpMessageType.Login, user);
         }
 
-        public void EventHandler(MessageArgs args)
+        public void EventHandler(TcpMessageArgs args)
         {
             User user = args.GetBody<User>();
             if (user == null)

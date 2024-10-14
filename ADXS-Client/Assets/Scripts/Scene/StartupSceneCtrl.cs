@@ -19,8 +19,8 @@ namespace Assets.Scripts.Scene
         private void Awake()
         {
             GameManager manager = Instantiate(gameManagerPrefab);
-            //manager.AddInitCompletedEvent(QuickBattle);
-            manager.AddInitCompletedEvent(QuickLogin);
+            manager.AddInitCompletedEvent(QuickBattle);
+            //manager.AddInitCompletedEvent(QuickLogin);
         }
 
         private void QuickBattle()

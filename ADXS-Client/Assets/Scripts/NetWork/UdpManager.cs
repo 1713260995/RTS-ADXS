@@ -7,21 +7,21 @@ using GameNetLib.NetWork;
 
 namespace Assets.Scripts.NetWork
 {
-    public class UdpManager : NetWorkManager<UdpManager, MessageType>
+    public class UdpManager : NetworkManager<UdpManager, UdpMessageArgs, UdpMessageType>
     {
+        private UdpServer udpServer;
+        public int localPort => udpServer.port;
+
         public override void Init()
         {
-            eventSystem = new EventSystem<MessageArgs>();
-            messageHandler = new MessageSerializeByJson();
+            eventSystem = new EventSystem<UdpMessageArgs>();
+            messageHandler = new MessageSerializeByJson<UdpMessageArgs>();
             netConfig = GlobalConfig.Instance.netConfig;
-            server = new UdpServer(netConfig, messageHandler, eventSystem);
+            udpServer = new UdpServer(netConfig, messageHandler, eventSystem);
+            server = udpServer;
             server.Start();
             InitListenEvent();
         }
 
-        protected override void InitListenEvent()
-        {
-
-        }
     }
 }

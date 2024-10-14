@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.NetWork
+namespace ADXS.Server.NetWork
 {
-    public enum MessageType
+    public enum UdpMessageType
     {
-        None = 0,
-        Login
+        Unknown = 0,
+        Connect,
     }
 }

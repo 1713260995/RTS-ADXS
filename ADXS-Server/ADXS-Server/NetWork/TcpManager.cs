@@ -1,4 +1,4 @@
-﻿using ADXS.Server.Module.InitialView;
+﻿using ADXS.Server.Module;
 using GameNetLib.Common.Event;
 using GameNetLib.Config;
 using GameNetLib.NetWork.Base;
@@ -7,12 +7,12 @@ using GameNetLib.NetWork.Tcp;
 
 namespace ADXS.Server.NetWork
 {
-    public class TcpManager : NetWorkManager<TcpManager, MessageType>
+    public class TcpManager : NetWorkManager<TcpManager, TcpMessageArgs, TcpMessageType>
     {
         public override void Init()
         {
-            eventSystem = new EventSystem<MessageArgs>();
-            messageHandler = new MessageSerializeByJson();
+            eventSystem = new EventSystem<TcpMessageArgs>();
+            messageHandler = new MessageSerializeByJson<TcpMessageArgs>();
             netConfig = GlobalConfig.Instance.netConfig;
             server = new TcpServer(netConfig, messageHandler, eventSystem);
             server.Start();
@@ -21,8 +21,11 @@ namespace ADXS.Server.NetWork
 
         protected override void InitListenEvent()
         {
-            Subscribe(MessageType.Login, new Login());
+            Subscribe(TcpMessageType.Login, new Login());
+
         }
+
+
 
     }
 }

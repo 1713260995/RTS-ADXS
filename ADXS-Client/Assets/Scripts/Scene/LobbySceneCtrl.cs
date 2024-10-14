@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameLobbySceneCtrl : MonoBehaviour
+public class LobbySceneCtrl : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
