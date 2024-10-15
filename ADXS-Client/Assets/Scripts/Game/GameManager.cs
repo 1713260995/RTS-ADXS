@@ -27,9 +27,11 @@ namespace Assets.GameClientLib.Scripts.Game
         public void OnDestroy()
         {
             ResourceSystem.Destroy();
-            ExceptionSystem.OnDisable();
-            TcpManager.Instance.Destory();
-            UdpManager.Instance.Destory();
+            if (initSO.networkConnectMode != NetworkConnectMode.SinglePlayer)
+            {
+                TcpManager.Instance.Destory();
+                UdpManager.Instance.Destory();
+            }
         }
 
         #region Init
@@ -42,11 +44,13 @@ namespace Assets.GameClientLib.Scripts.Game
         public async UniTask Init()
         {
             GlobalJsonSetting();
-            ExceptionSystem.OnEnable();
             ResourceSystem.Init(initSO.assetLoadMode);
             await GlobalConfig.Instance.Init(initSO);
-            TcpManager.Instance.Init();
-            UdpManager.Instance.Init();
+            if (initSO.networkConnectMode != NetworkConnectMode.SinglePlayer)
+            {
+                TcpManager.Instance.Init();
+                UdpManager.Instance.Init();
+            }
             OnInitCompleted?.Invoke();
         }
 
