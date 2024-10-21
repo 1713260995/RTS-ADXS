@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ashen_vines_diffuse
+  m_Shader: {fileID: 4800000, guid: ff9e21ddd7d40f24e893cf62a94c21c0, type: 3}
+  m_ShaderKeywords: _AO_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpsMap:
+        m_Texture: {fileID: 2800000, guid: 956ebcc51a898ea4faf552856474bb7f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpsMap1:
+        m_Texture: {fileID: 2800000, guid: f73a2cdadf805264e88a63f9833d5706, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2a35763507951d34cbdce51dfbdfe73c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: 8b3299c606ff06f46b46845faeeed492, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularMap:
+        m_Texture: {fileID: 2800000, guid: 03c1430809e4b1a418c4a25e64af2ef2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularMap2:
+        m_Texture: {fileID: 2800000, guid: 7aca79e8ba9fde24db27f6bb38b04ffb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AMetallicInstensity: 1
+    - _AO: 1
+    - _ASmoothInstensity: 0.3
+    - _BMetallicInstensity: 1
+    - _BSmoothInstensity: 0.3
+    - _Cutoff: 0.5
+    - _Metallic1Instensity: 1
+    - _Metallic2Instensity: 1
+    - _NoneNormal: 0
+    - _OnlyNormal: 0
+    - _Smooth1Instensity: 0.37
+    - _Smooth2Instensity: 0.5
+    - _SmoothOffset: 0.5
+    - __dirty: 0
+    m_Colors:
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor2: {r: 1, g: 1, b: 1, a: 0}
+    - _ReColor: {r: 1, g: 1, b: 1, a: 1}
