@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 2baae05837d14ae46b95e84890922ef2
+timeCreated: 1585831872
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 1_CityBuildingLarge_45_Ruined_geo
+    100002: Building_Fire_Large
+    100004: Building_Fire_Small
+    100006: Building_Smoke_large
+    100008: Building_Smoke_Small
+    100010: CityBuildingLarge_45_Ruined_geo
+    100012: CityBuildingLarge_45_Ruined_geo_LOD1
+    100014: CityBuildingLarge_45_Ruined_geo_LOD2
+    100016: CityBuildingLarge_45_Ruined_geo_LOD3
+    100018: CityBuildingLarge_90_Ruined
+    100020: //RootNode
+    100022: PIVOT - Building_Fire_Large
+    100024: PIVOT - Building_Fire_Small
+    100026: PIVOT - Building_Smoke_large
+    100028: PIVOT - Building_Smoke_Small
+    100030: PIVOT - CityBuildingLarge_45_Ruined_geo
+    100032: PIVOT - CityBuildingLarge_45_Ruined_geo_LOD1
+    100034: PIVOT - CityBuildingLarge_45_Ruined_geo_LOD2
+    100036: PIVOT - CityBuildingLarge_45_Ruined_geo_LOD3
+    100038: PIVOT - Sprite First Ref
+    100040: PIVOT - Sprite Fourth Ref
+    100042: PIVOT - Sprite Second Ref
+    100044: PIVOT - Sprite Third Ref
+    100046: Sprite First Ref
+    100048: Sprite Fourth Ref
+    100050: Sprite Second Ref
+    100052: Sprite Third Ref
+    400000: 1_CityBuildingLarge_45_Ruined_geo
+    400002: Building_Fire_Large
+    400004: Building_Fire_Small
+    400006: Building_Smoke_large
+    400008: Building_Smoke_Small
+    400010: CityBuildingLarge_45_Ruined_geo
+    400012: CityBuildingLarge_45_Ruined_geo_LOD1
+    400014: CityBuildingLarge_45_Ruined_geo_LOD2
+    400016: CityBuildingLarge_45_Ruined_geo_LOD3
+    400018: CityBuildingLarge_90_Ruined
+    400020: //RootNode
+    400022: PIVOT - Building_Fire_Large
+    400024: PIVOT - Building_Fire_Small
+    400026: PIVOT - Building_Smoke_large
+    400028: PIVOT - Building_Smoke_Small
+    400030: PIVOT - CityBuildingLarge_45_Ruined_geo
+    400032: PIVOT - CityBuildingLarge_45_Ruined_geo_LOD1
+    400034: PIVOT - CityBuildingLarge_45_Ruined_geo_LOD2
+    400036: PIVOT - CityBuildingLarge_45_Ruined_geo_LOD3
+    400038: PIVOT - Sprite First Ref
+    400040: PIVOT - Sprite Fourth Ref
+    400042: PIVOT - Sprite Second Ref
+    400044: PIVOT - Sprite Third Ref
+    400046: Sprite First Ref
+    400048: Sprite Fourth Ref
+    400050: Sprite Second Ref
+    400052: Sprite Third Ref
+    2100000: No Name
+    4300000: 1_CityBuildingLarge_45_Ruined_geo
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: 1_CityBuildingLarge_45_Ruined_geo
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
