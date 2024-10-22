@@ -1,0 +1,1052 @@
+fileFormatVersion: 2
+guid: d2e330fb9172d1d419d7fe2b526c877d
+timeCreated: 1586529624
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 1_human_townhall_rig:main_geo
+    100002: 2_human_townhall_rig:main_geo
+    100004: 3_human_townhall_rig:keep_main_geo
+    100006: 4_human_townhall_rig:keep_main_geo
+    100008: 5_human_townhall_rig:castle_main_geo
+    100010: 6_human_townhall_rig:castle_main_geo
+    100012: B_KGS_BoxCol_1
+    100014: B_KGS_BoxCol_2
+    100016: bell_bind_jnt
+    100018: castle_bell_bind_jnt
+    100020: castle_flag_A_01_bind_jnt
+    100022: castle_flag_A_02_bind_jnt
+    100024: castle_flag_A_03_bind_jnt
+    100026: castle_flag_B_01_bind_jnt
+    100028: castle_flag_B_02_bind_jnt
+    100030: castle_flag_B_03_bind_jnt
+    100032: castle_flag_C_01_bind_jnt
+    100034: castle_flag_C_02_bind_jnt
+    100036: castle_flag_C_03_bind_jnt
+    100038: castle_flag_D_01_bind_jnt
+    100040: castle_flag_D_02_bind_jnt
+    100042: castle_flag_D_03_bind_jnt
+    100044: castle_flag_E_01_bind_jnt
+    100046: castle_flag_E_02_bind_jnt
+    100048: castle_flag_E_03_bind_jnt
+    100050: castle_flag_F_01_bind_jnt
+    100052: castle_flag_F_02_bind_jnt
+    100054: castle_flag_F_03_bind_jnt
+    100056: castle_gate_bind_jnt
+    100058: castle_symbol_01_bind_jnt
+    100060: castle_symbol_02_bind_jnt
+    100062: castle_symbol_03_bind_jnt
+    100064: castle_symbol_04_bind_jnt
+    100066: castle_symbol_05_bind_jnt
+    100068: castle_symbol_root_01_bind_jnt
+    100070: castle_symbol_root_02_bind_jnt
+    100072: castle_symbol_root_03_bind_jnt
+    100074: castle_symbol_root_04_bind_jnt
+    100076: castle_symbol_root_05_bind_jnt
+    100078: CastleBirth BirthLink
+    100080: CastleDeath DeathLink
+    100082: chain_01_bind_jnt
+    100084: chain_02_bind_jnt
+    100086: chain_03_bind_jnt
+    100088: clock_01_bind_jnt
+    100090: clock_02_bind_jnt
+    100092: door_bind_jnt
+    100094: flag_A_02_bind_jnt
+    100096: flag_B_02_bind_jnt
+    100098: flag_C_01_bind_jnt
+    100100: flag_C_02_bind_jnt
+    100102: flag_C_03_bind_jnt
+    100104: HUBuildingDeath_Large
+    100106: HumanBuildingBirth_Large
+    100108: keep_bell_bind_jnt
+    100110: keep_clock_01_bind_jnt
+    100112: keep_clock_02_bind_jnt
+    100114: keep_door_L_bind_jnt
+    100116: keep_door_R_bind_jnt
+    100118: keep_flag_A_02_bind_jnt
+    100120: keep_flag_B_02_bind_jnt
+    100122: keep_flag_C_01_bind_jnt
+    100124: keep_flag_C_02_bind_jnt
+    100126: keep_flag_C_03_bind_jnt
+    100128: KeepBirth BirthLink
+    100130: KeepDeath DeathLink
+    100132: Origin Ref
+    100134: OverHead Ref
+    100136: PIVOT - B_KGS_BoxCol_1
+    100138: PIVOT - B_KGS_BoxCol_2
+    100140: PIVOT - bell_bind_jnt
+    100142: PIVOT - castle_bell_bind_jnt
+    100144: PIVOT - castle_flag_A_01_bind_jnt
+    100146: PIVOT - castle_flag_A_02_bind_jnt
+    100148: PIVOT - castle_flag_A_03_bind_jnt
+    100150: PIVOT - castle_flag_B_01_bind_jnt
+    100152: PIVOT - castle_flag_B_02_bind_jnt
+    100154: PIVOT - castle_flag_B_03_bind_jnt
+    100156: PIVOT - castle_flag_C_01_bind_jnt
+    100158: PIVOT - castle_flag_C_02_bind_jnt
+    100160: PIVOT - castle_flag_C_03_bind_jnt
+    100162: PIVOT - castle_flag_D_01_bind_jnt
+    100164: PIVOT - castle_flag_D_02_bind_jnt
+    100166: PIVOT - castle_flag_D_03_bind_jnt
+    100168: PIVOT - castle_flag_E_01_bind_jnt
+    100170: PIVOT - castle_flag_E_02_bind_jnt
+    100172: PIVOT - castle_flag_E_03_bind_jnt
+    100174: PIVOT - castle_flag_F_01_bind_jnt
+    100176: PIVOT - castle_flag_F_02_bind_jnt
+    100178: PIVOT - castle_flag_F_03_bind_jnt
+    100180: PIVOT - castle_gate_bind_jnt
+    100182: PIVOT - castle_symbol_01_bind_jnt
+    100184: PIVOT - castle_symbol_02_bind_jnt
+    100186: PIVOT - castle_symbol_03_bind_jnt
+    100188: PIVOT - castle_symbol_04_bind_jnt
+    100190: PIVOT - castle_symbol_05_bind_jnt
+    100192: PIVOT - castle_symbol_root_01_bind_jnt
+    100194: PIVOT - castle_symbol_root_02_bind_jnt
+    100196: PIVOT - castle_symbol_root_03_bind_jnt
+    100198: PIVOT - castle_symbol_root_04_bind_jnt
+    100200: PIVOT - castle_symbol_root_05_bind_jnt
+    100202: PIVOT - CastleBirth BirthLink
+    100204: PIVOT - CastleDeath DeathLink
+    100206: PIVOT - chain_01_bind_jnt
+    100208: PIVOT - chain_02_bind_jnt
+    100210: PIVOT - chain_03_bind_jnt
+    100212: PIVOT - clock_01_bind_jnt
+    100214: PIVOT - clock_02_bind_jnt
+    100216: PIVOT - door_bind_jnt
+    100218: PIVOT - flag_A_02_bind_jnt
+    100220: PIVOT - flag_B_02_bind_jnt
+    100222: PIVOT - flag_C_01_bind_jnt
+    100224: PIVOT - flag_C_02_bind_jnt
+    100226: PIVOT - flag_C_03_bind_jnt
+    100228: PIVOT - HUBuildingDeath_Large
+    100230: PIVOT - HumanBuildingBirth_Large
+    100232: PIVOT - keep_bell_bind_jnt
+    100234: PIVOT - keep_clock_01_bind_jnt
+    100236: PIVOT - keep_clock_02_bind_jnt
+    100238: PIVOT - keep_door_L_bind_jnt
+    100240: PIVOT - keep_door_R_bind_jnt
+    100242: PIVOT - keep_flag_A_02_bind_jnt
+    100244: PIVOT - keep_flag_B_02_bind_jnt
+    100246: PIVOT - keep_flag_C_01_bind_jnt
+    100248: PIVOT - keep_flag_C_02_bind_jnt
+    100250: PIVOT - keep_flag_C_03_bind_jnt
+    100252: PIVOT - KeepBirth BirthLink
+    100254: PIVOT - KeepDeath DeathLink
+    100256: PIVOT - Origin Ref
+    100258: PIVOT - OverHead Ref
+    100260: PIVOT - root_bind_jnt
+    100262: PIVOT - S_KGS_SphereCol_0
+    100264: PIVOT - SNDxDHLB
+    100266: PIVOT - Sprite Fifth Ref
+    100268: PIVOT - Sprite First Ref
+    100270: PIVOT - Sprite Fourth Ref
+    100272: PIVOT - Sprite RallyPoint Ref
+    100274: PIVOT - Sprite Second Ref
+    100276: PIVOT - Sprite Third Ref
+    100278: PIVOT - TH_WorkGlow
+    100280: PIVOT - TH_WorkGlow1
+    100282: PIVOT - TH_WorkGlow2
+    100284: PIVOT - TownHallBirth BirthLink
+    100286: PIVOT - TownHallDeath DeathLink
+    100288: PIVOT - UBRxDHLB
+    100290: Portrait_Camera.Target.1
+    100292: Portrait_Camera1
+    100294: root_bind_jnt
+    100296: S_KGS_SphereCol_0
+    100298: SNDxDHLB
+    100300: Sprite Fifth Ref
+    100302: Sprite First Ref
+    100304: Sprite Fourth Ref
+    100306: Sprite RallyPoint Ref
+    100308: Sprite Second Ref
+    100310: Sprite Third Ref
+    100312: TH_WorkGlow
+    100314: TH_WorkGlow1
+    100316: TH_WorkGlow2
+    100318: TownHall
+    100320: //RootNode
+    100322: TownHallBirth BirthLink
+    100324: TownHallDeath DeathLink
+    100326: UBRxDHLB
+    100328: Unknown 78
+    100330: Unknown 79
+    400000: 1_human_townhall_rig:main_geo
+    400002: 2_human_townhall_rig:main_geo
+    400004: 3_human_townhall_rig:keep_main_geo
+    400006: 4_human_townhall_rig:keep_main_geo
+    400008: 5_human_townhall_rig:castle_main_geo
+    400010: 6_human_townhall_rig:castle_main_geo
+    400012: B_KGS_BoxCol_1
+    400014: B_KGS_BoxCol_2
+    400016: bell_bind_jnt
+    400018: castle_bell_bind_jnt
+    400020: castle_flag_A_01_bind_jnt
+    400022: castle_flag_A_02_bind_jnt
+    400024: castle_flag_A_03_bind_jnt
+    400026: castle_flag_B_01_bind_jnt
+    400028: castle_flag_B_02_bind_jnt
+    400030: castle_flag_B_03_bind_jnt
+    400032: castle_flag_C_01_bind_jnt
+    400034: castle_flag_C_02_bind_jnt
+    400036: castle_flag_C_03_bind_jnt
+    400038: castle_flag_D_01_bind_jnt
+    400040: castle_flag_D_02_bind_jnt
+    400042: castle_flag_D_03_bind_jnt
+    400044: castle_flag_E_01_bind_jnt
+    400046: castle_flag_E_02_bind_jnt
+    400048: castle_flag_E_03_bind_jnt
+    400050: castle_flag_F_01_bind_jnt
+    400052: castle_flag_F_02_bind_jnt
+    400054: castle_flag_F_03_bind_jnt
+    400056: castle_gate_bind_jnt
+    400058: castle_symbol_01_bind_jnt
+    400060: castle_symbol_02_bind_jnt
+    400062: castle_symbol_03_bind_jnt
+    400064: castle_symbol_04_bind_jnt
+    400066: castle_symbol_05_bind_jnt
+    400068: castle_symbol_root_01_bind_jnt
+    400070: castle_symbol_root_02_bind_jnt
+    400072: castle_symbol_root_03_bind_jnt
+    400074: castle_symbol_root_04_bind_jnt
+    400076: castle_symbol_root_05_bind_jnt
+    400078: CastleBirth BirthLink
+    400080: CastleDeath DeathLink
+    400082: chain_01_bind_jnt
+    400084: chain_02_bind_jnt
+    400086: chain_03_bind_jnt
+    400088: clock_01_bind_jnt
+    400090: clock_02_bind_jnt
+    400092: door_bind_jnt
+    400094: flag_A_02_bind_jnt
+    400096: flag_B_02_bind_jnt
+    400098: flag_C_01_bind_jnt
+    400100: flag_C_02_bind_jnt
+    400102: flag_C_03_bind_jnt
+    400104: HUBuildingDeath_Large
+    400106: HumanBuildingBirth_Large
+    400108: keep_bell_bind_jnt
+    400110: keep_clock_01_bind_jnt
+    400112: keep_clock_02_bind_jnt
+    400114: keep_door_L_bind_jnt
+    400116: keep_door_R_bind_jnt
+    400118: keep_flag_A_02_bind_jnt
+    400120: keep_flag_B_02_bind_jnt
+    400122: keep_flag_C_01_bind_jnt
+    400124: keep_flag_C_02_bind_jnt
+    400126: keep_flag_C_03_bind_jnt
+    400128: KeepBirth BirthLink
+    400130: KeepDeath DeathLink
+    400132: Origin Ref
+    400134: OverHead Ref
+    400136: PIVOT - B_KGS_BoxCol_1
+    400138: PIVOT - B_KGS_BoxCol_2
+    400140: PIVOT - bell_bind_jnt
+    400142: PIVOT - castle_bell_bind_jnt
+    400144: PIVOT - castle_flag_A_01_bind_jnt
+    400146: PIVOT - castle_flag_A_02_bind_jnt
+    400148: PIVOT - castle_flag_A_03_bind_jnt
+    400150: PIVOT - castle_flag_B_01_bind_jnt
+    400152: PIVOT - castle_flag_B_02_bind_jnt
+    400154: PIVOT - castle_flag_B_03_bind_jnt
+    400156: PIVOT - castle_flag_C_01_bind_jnt
+    400158: PIVOT - castle_flag_C_02_bind_jnt
+    400160: PIVOT - castle_flag_C_03_bind_jnt
+    400162: PIVOT - castle_flag_D_01_bind_jnt
+    400164: PIVOT - castle_flag_D_02_bind_jnt
+    400166: PIVOT - castle_flag_D_03_bind_jnt
+    400168: PIVOT - castle_flag_E_01_bind_jnt
+    400170: PIVOT - castle_flag_E_02_bind_jnt
+    400172: PIVOT - castle_flag_E_03_bind_jnt
+    400174: PIVOT - castle_flag_F_01_bind_jnt
+    400176: PIVOT - castle_flag_F_02_bind_jnt
+    400178: PIVOT - castle_flag_F_03_bind_jnt
+    400180: PIVOT - castle_gate_bind_jnt
+    400182: PIVOT - castle_symbol_01_bind_jnt
+    400184: PIVOT - castle_symbol_02_bind_jnt
+    400186: PIVOT - castle_symbol_03_bind_jnt
+    400188: PIVOT - castle_symbol_04_bind_jnt
+    400190: PIVOT - castle_symbol_05_bind_jnt
+    400192: PIVOT - castle_symbol_root_01_bind_jnt
+    400194: PIVOT - castle_symbol_root_02_bind_jnt
+    400196: PIVOT - castle_symbol_root_03_bind_jnt
+    400198: PIVOT - castle_symbol_root_04_bind_jnt
+    400200: PIVOT - castle_symbol_root_05_bind_jnt
+    400202: PIVOT - CastleBirth BirthLink
+    400204: PIVOT - CastleDeath DeathLink
+    400206: PIVOT - chain_01_bind_jnt
+    400208: PIVOT - chain_02_bind_jnt
+    400210: PIVOT - chain_03_bind_jnt
+    400212: PIVOT - clock_01_bind_jnt
+    400214: PIVOT - clock_02_bind_jnt
+    400216: PIVOT - door_bind_jnt
+    400218: PIVOT - flag_A_02_bind_jnt
+    400220: PIVOT - flag_B_02_bind_jnt
+    400222: PIVOT - flag_C_01_bind_jnt
+    400224: PIVOT - flag_C_02_bind_jnt
+    400226: PIVOT - flag_C_03_bind_jnt
+    400228: PIVOT - HUBuildingDeath_Large
+    400230: PIVOT - HumanBuildingBirth_Large
+    400232: PIVOT - keep_bell_bind_jnt
+    400234: PIVOT - keep_clock_01_bind_jnt
+    400236: PIVOT - keep_clock_02_bind_jnt
+    400238: PIVOT - keep_door_L_bind_jnt
+    400240: PIVOT - keep_door_R_bind_jnt
+    400242: PIVOT - keep_flag_A_02_bind_jnt
+    400244: PIVOT - keep_flag_B_02_bind_jnt
+    400246: PIVOT - keep_flag_C_01_bind_jnt
+    400248: PIVOT - keep_flag_C_02_bind_jnt
+    400250: PIVOT - keep_flag_C_03_bind_jnt
+    400252: PIVOT - KeepBirth BirthLink
+    400254: PIVOT - KeepDeath DeathLink
+    400256: PIVOT - Origin Ref
+    400258: PIVOT - OverHead Ref
+    400260: PIVOT - root_bind_jnt
+    400262: PIVOT - S_KGS_SphereCol_0
+    400264: PIVOT - SNDxDHLB
+    400266: PIVOT - Sprite Fifth Ref
+    400268: PIVOT - Sprite First Ref
+    400270: PIVOT - Sprite Fourth Ref
+    400272: PIVOT - Sprite RallyPoint Ref
+    400274: PIVOT - Sprite Second Ref
+    400276: PIVOT - Sprite Third Ref
+    400278: PIVOT - TH_WorkGlow
+    400280: PIVOT - TH_WorkGlow1
+    400282: PIVOT - TH_WorkGlow2
+    400284: PIVOT - TownHallBirth BirthLink
+    400286: PIVOT - TownHallDeath DeathLink
+    400288: PIVOT - UBRxDHLB
+    400290: Portrait_Camera.Target.1
+    400292: Portrait_Camera1
+    400294: root_bind_jnt
+    400296: S_KGS_SphereCol_0
+    400298: SNDxDHLB
+    400300: Sprite Fifth Ref
+    400302: Sprite First Ref
+    400304: Sprite Fourth Ref
+    400306: Sprite RallyPoint Ref
+    400308: Sprite Second Ref
+    400310: Sprite Third Ref
+    400312: TH_WorkGlow
+    400314: TH_WorkGlow1
+    400316: TH_WorkGlow2
+    400318: TownHall
+    400320: //RootNode
+    400322: TownHallBirth BirthLink
+    400324: TownHallDeath DeathLink
+    400326: UBRxDHLB
+    400328: Unknown 78
+    400330: Unknown 79
+    2000000: Portrait_Camera1
+    2100000: No Name
+    2300000: B_KGS_BoxCol_1
+    2300002: B_KGS_BoxCol_2
+    2300004: S_KGS_SphereCol_0
+    3300000: B_KGS_BoxCol_1
+    3300002: B_KGS_BoxCol_2
+    3300004: S_KGS_SphereCol_0
+    4300000: 1_human_townhall_rig:main_geo
+    4300002: 2_human_townhall_rig:main_geo
+    4300004: 3_human_townhall_rig:keep_main_geo
+    4300006: 4_human_townhall_rig:keep_main_geo
+    4300008: 5_human_townhall_rig:castle_main_geo
+    4300010: 6_human_townhall_rig:castle_main_geo
+    4300012: B_KGS_BoxCol_1
+    4300014: B_KGS_BoxCol_2
+    4300016: S_KGS_SphereCol_0
+    7400000: Birth
+    7400002: Stand 1
+    7400004: Stand Work 1
+    7400006: Birth Upgrade First
+    7400008: Stand Upgrade First
+    7400010: Stand Work Upgrade First
+    7400012: Birth Upgrade Second
+    7400014: Stand Upgrade Second
+    7400016: Stand Work Upgrade Second
+    7400018: Death 1
+    7400020: Decay
+    7400022: Death Upgrade First
+    7400024: Death Upgrade Second
+    7400026: Decay Upgrade First
+    7400028: Decay Upgrade Second
+    7400030: Stand Spell 1
+    7400032: Stand Spell Upgrade First
+    7400034: Stand Spell Upgrade Second
+    7400036: Stand Spell Work 1
+    7400038: Stand Spell Work Upgrade First
+    7400040: Stand Spell Work Upgrade Second
+    9500000: //RootNode
+    13700000: 1_human_townhall_rig:main_geo
+    13700002: 2_human_townhall_rig:main_geo
+    13700004: 3_human_townhall_rig:keep_main_geo
+    13700006: 4_human_townhall_rig:keep_main_geo
+    13700008: 5_human_townhall_rig:castle_main_geo
+    13700010: 6_human_townhall_rig:castle_main_geo
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Birth
+      takeName: 
+      firstFrame: 10
+      lastFrame: 1810
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand 1
+      takeName: 
+      firstFrame: 1811
+      lastFrame: 2111
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Work 1
+      takeName: 
+      firstFrame: 2112
+      lastFrame: 2412
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Birth Upgrade First
+      takeName: 
+      firstFrame: 2413
+      lastFrame: 4213
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Upgrade First
+      takeName: 
+      firstFrame: 4214
+      lastFrame: 4514
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Work Upgrade First
+      takeName: 
+      firstFrame: 4515
+      lastFrame: 4815
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Birth Upgrade Second
+      takeName: 
+      firstFrame: 4816
+      lastFrame: 6616
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Upgrade Second
+      takeName: 
+      firstFrame: 6617
+      lastFrame: 6917
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Work Upgrade Second
+      takeName: 
+      firstFrame: 6918
+      lastFrame: 7218
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death 1
+      takeName: 
+      firstFrame: 7219
+      lastFrame: 7314
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Decay
+      takeName: 
+      firstFrame: 7315
+      lastFrame: 9115
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death Upgrade First
+      takeName: 
+      firstFrame: 9116
+      lastFrame: 9211
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death Upgrade Second
+      takeName: 
+      firstFrame: 9212
+      lastFrame: 9307
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Decay Upgrade First
+      takeName: 
+      firstFrame: 9308
+      lastFrame: 11108
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Decay Upgrade Second
+      takeName: 
+      firstFrame: 11109
+      lastFrame: 12909
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Spell 1
+      takeName: 
+      firstFrame: 15311
+      lastFrame: 15611
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Spell Upgrade First
+      takeName: 
+      firstFrame: 15612
+      lastFrame: 15912
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Spell Upgrade Second
+      takeName: 
+      firstFrame: 15913
+      lastFrame: 16213
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Spell Work 1
+      takeName: 
+      firstFrame: 16214
+      lastFrame: 16514
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Spell Work Upgrade First
+      takeName: 
+      firstFrame: 16515
+      lastFrame: 16815
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Spell Work Upgrade Second
+      takeName: 
+      firstFrame: 16816
+      lastFrame: 17116
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 46
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 3abd5849018a50044b514e670b32d070.unity3d
+  assetBundleVariant: 

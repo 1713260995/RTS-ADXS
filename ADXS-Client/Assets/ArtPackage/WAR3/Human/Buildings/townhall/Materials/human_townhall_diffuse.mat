@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: human_townhall_diffuse
+  m_Shader: {fileID: 4800000, guid: 7a62f620360c23848b4b9bd21659061e, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpsMap:
+        m_Texture: {fileID: 2800000, guid: 3628201cc5313ac49960af3add5271fa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GlowMap:
+        m_Texture: {fileID: 2800000, guid: e2e9d67ba23609b49b66669346736731, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: f76e1016866ce0a448604612a7d3656a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularMap:
+        m_Texture: {fileID: 2800000, guid: 1fcb2d10aa1e0324d879a22015c146ef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AMetallicInstensity: 1
+    - _ASmoothInstensity: 0.5
+    - _BMetallicInstensity: 1
+    - _BSmoothInstensity: 0.3
+    - _Cutoff: 0.5
+    - _GlowIntensity: 1
+    - _GlowSpeed: 0.8
+    - _NoneNormal: 0
+    - _OnlyNormal: 0
+    - _SmoothOffset: 0.8
+    - __dirty: 0
+    m_Colors:
+    - _GlowColor: {r: 1, g: 1, b: 1, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ReColor: {r: 0.20626082, g: 0.21036568, b: 0.8014706, a: 1}
