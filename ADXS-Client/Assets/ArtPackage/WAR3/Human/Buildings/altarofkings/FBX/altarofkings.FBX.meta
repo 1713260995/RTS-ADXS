@@ -1,0 +1,388 @@
+fileFormatVersion: 2
+guid: 999550c8de2c868429d6ed6c716482d8
+timeCreated: 1583478431
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 10_human_altarOfKings_rigmain_geo_LOD3
+    100002: 11_human_altarOfKings_rigmain_geo_LOD3
+    100004: 12_human_altarOfKings_rigmain_geo_LOD3
+    100006: 1_human_altarOfKings_rig:main_geo
+    100008: 2_human_altarOfKings_rig:main_geo
+    100010: 3_human_altarOfKings_rig:main_geo
+    100012: 4_human_altarOfKings_rigmain_geo_LOD1
+    100014: 5_human_altarOfKings_rigmain_geo_LOD1
+    100016: 6_human_altarOfKings_rigmain_geo_LOD1
+    100018: 7_human_altarOfKings_rigmain_geo_LOD2
+    100020: 8_human_altarOfKings_rigmain_geo_LOD2
+    100022: 9_human_altarOfKings_rigmain_geo_LOD2
+    100024: AltarOfKings
+    100026: //RootNode
+    100028: AltarOfKingsBirth BirthLink
+    100030: AltarOfKingsDeath DeathLink
+    100032: AOK_Glow
+    100034: B_KGS_BoxCol_0
+    100036: B_KGS_BoxCol_1
+    100038: B_KGS_BoxCol_2
+    100040: Fire_Brazier
+    100042: Fire_Brazier1
+    100044: flag_01_bind_jnt
+    100046: flag_02_bind_jnt
+    100048: HUBuildingDeath_Small
+    100050: HumanBuildingBirth
+    100052: Origin Ref
+    100054: OverHead Ref
+    100056: PIVOT - AltarOfKingsBirth BirthLink
+    100058: PIVOT - AltarOfKingsDeath DeathLink
+    100060: PIVOT - AOK_Glow
+    100062: PIVOT - B_KGS_BoxCol_0
+    100064: PIVOT - B_KGS_BoxCol_1
+    100066: PIVOT - B_KGS_BoxCol_2
+    100068: PIVOT - Fire_Brazier
+    100070: PIVOT - Fire_Brazier1
+    100072: PIVOT - flag_01_bind_jnt
+    100074: PIVOT - flag_02_bind_jnt
+    100076: PIVOT - HUBuildingDeath_Small
+    100078: PIVOT - HumanBuildingBirth
+    100080: PIVOT - Origin Ref
+    100082: PIVOT - OverHead Ref
+    100084: PIVOT - root_bind_jnt
+    100086: PIVOT - SNDxDHLB
+    100088: PIVOT - SPNxHDAL
+    100090: PIVOT - Sprite First Ref
+    100092: PIVOT - Sprite RallyPoint Ref
+    100094: PIVOT - Sprite Second Ref
+    100096: PIVOT - Sprite Third Ref
+    100098: PIVOT - UBRxDHMB
+    100100: Portrait_Camera.Target.1
+    100102: Portrait_Camera1
+    100104: root_bind_jnt
+    100106: SNDxDHLB
+    100108: SPNxHDAL
+    100110: Sprite First Ref
+    100112: Sprite RallyPoint Ref
+    100114: Sprite Second Ref
+    100116: Sprite Third Ref
+    100118: UBRxDHMB
+    400000: 10_human_altarOfKings_rigmain_geo_LOD3
+    400002: 11_human_altarOfKings_rigmain_geo_LOD3
+    400004: 12_human_altarOfKings_rigmain_geo_LOD3
+    400006: 1_human_altarOfKings_rig:main_geo
+    400008: 2_human_altarOfKings_rig:main_geo
+    400010: 3_human_altarOfKings_rig:main_geo
+    400012: 4_human_altarOfKings_rigmain_geo_LOD1
+    400014: 5_human_altarOfKings_rigmain_geo_LOD1
+    400016: 6_human_altarOfKings_rigmain_geo_LOD1
+    400018: 7_human_altarOfKings_rigmain_geo_LOD2
+    400020: 8_human_altarOfKings_rigmain_geo_LOD2
+    400022: 9_human_altarOfKings_rigmain_geo_LOD2
+    400024: AltarOfKings
+    400026: //RootNode
+    400028: AltarOfKingsBirth BirthLink
+    400030: AltarOfKingsDeath DeathLink
+    400032: AOK_Glow
+    400034: B_KGS_BoxCol_0
+    400036: B_KGS_BoxCol_1
+    400038: B_KGS_BoxCol_2
+    400040: Fire_Brazier
+    400042: Fire_Brazier1
+    400044: flag_01_bind_jnt
+    400046: flag_02_bind_jnt
+    400048: HUBuildingDeath_Small
+    400050: HumanBuildingBirth
+    400052: Origin Ref
+    400054: OverHead Ref
+    400056: PIVOT - AltarOfKingsBirth BirthLink
+    400058: PIVOT - AltarOfKingsDeath DeathLink
+    400060: PIVOT - AOK_Glow
+    400062: PIVOT - B_KGS_BoxCol_0
+    400064: PIVOT - B_KGS_BoxCol_1
+    400066: PIVOT - B_KGS_BoxCol_2
+    400068: PIVOT - Fire_Brazier
+    400070: PIVOT - Fire_Brazier1
+    400072: PIVOT - flag_01_bind_jnt
+    400074: PIVOT - flag_02_bind_jnt
+    400076: PIVOT - HUBuildingDeath_Small
+    400078: PIVOT - HumanBuildingBirth
+    400080: PIVOT - Origin Ref
+    400082: PIVOT - OverHead Ref
+    400084: PIVOT - root_bind_jnt
+    400086: PIVOT - SNDxDHLB
+    400088: PIVOT - SPNxHDAL
+    400090: PIVOT - Sprite First Ref
+    400092: PIVOT - Sprite RallyPoint Ref
+    400094: PIVOT - Sprite Second Ref
+    400096: PIVOT - Sprite Third Ref
+    400098: PIVOT - UBRxDHMB
+    400100: Portrait_Camera.Target.1
+    400102: Portrait_Camera1
+    400104: root_bind_jnt
+    400106: SNDxDHLB
+    400108: SPNxHDAL
+    400110: Sprite First Ref
+    400112: Sprite RallyPoint Ref
+    400114: Sprite Second Ref
+    400116: Sprite Third Ref
+    400118: UBRxDHMB
+    2000000: Portrait_Camera1
+    2100000: No Name
+    2300000: B_KGS_BoxCol_0
+    2300002: B_KGS_BoxCol_1
+    2300004: B_KGS_BoxCol_2
+    3300000: B_KGS_BoxCol_0
+    3300002: B_KGS_BoxCol_1
+    3300004: B_KGS_BoxCol_2
+    4300000: 1_human_altarOfKings_rig:main_geo
+    4300002: 2_human_altarOfKings_rig:main_geo
+    4300004: 3_human_altarOfKings_rig:main_geo
+    4300006: 4_human_altarOfKings_rigmain_geo_LOD1
+    4300008: 5_human_altarOfKings_rigmain_geo_LOD1
+    4300010: 6_human_altarOfKings_rigmain_geo_LOD1
+    4300012: 7_human_altarOfKings_rigmain_geo_LOD2
+    4300014: 8_human_altarOfKings_rigmain_geo_LOD2
+    4300016: 9_human_altarOfKings_rigmain_geo_LOD2
+    4300018: 10_human_altarOfKings_rigmain_geo_LOD3
+    4300020: 11_human_altarOfKings_rigmain_geo_LOD3
+    4300022: 12_human_altarOfKings_rigmain_geo_LOD3
+    4300024: B_KGS_BoxCol_0
+    4300026: B_KGS_BoxCol_1
+    4300028: B_KGS_BoxCol_2
+    7400000: Birth
+    7400002: Stand 1
+    7400004: Stand Work 1
+    7400006: Death 1
+    7400008: Decay
+    9500000: //RootNode
+    13700000: 10_human_altarOfKings_rigmain_geo_LOD3
+    13700002: 11_human_altarOfKings_rigmain_geo_LOD3
+    13700004: 12_human_altarOfKings_rigmain_geo_LOD3
+    13700006: 1_human_altarOfKings_rig:main_geo
+    13700008: 2_human_altarOfKings_rig:main_geo
+    13700010: 3_human_altarOfKings_rig:main_geo
+    13700012: 4_human_altarOfKings_rigmain_geo_LOD1
+    13700014: 5_human_altarOfKings_rigmain_geo_LOD1
+    13700016: 6_human_altarOfKings_rigmain_geo_LOD1
+    13700018: 7_human_altarOfKings_rigmain_geo_LOD2
+    13700020: 8_human_altarOfKings_rigmain_geo_LOD2
+    13700022: 9_human_altarOfKings_rigmain_geo_LOD2
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Birth
+      takeName: 
+      firstFrame: 10
+      lastFrame: 1810
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand 1
+      takeName: 
+      firstFrame: 1811
+      lastFrame: 2111
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Work 1
+      takeName: 
+      firstFrame: 2112
+      lastFrame: 2318
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death 1
+      takeName: 
+      firstFrame: 2319
+      lastFrame: 2389
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Decay
+      takeName: 
+      firstFrame: 2390
+      lastFrame: 4190
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 46
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
