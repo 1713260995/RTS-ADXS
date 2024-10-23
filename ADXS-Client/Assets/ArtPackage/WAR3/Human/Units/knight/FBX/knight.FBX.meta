@@ -1,0 +1,1713 @@
+fileFormatVersion: 2
+guid: 5c709e3b3c7d7a44d931daba5c953f46
+timeCreated: 1583566036
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 10_Knight:horse_armor_geo
+    100002: 11_Knight:weapon_01_geo
+    100004: 12_Knight:weapon_02_geo
+    100006: 13_Knight:weapon_02_geo
+    100008: 14_Knight:organs_geo
+    100010: 15_Knight:skeleton_geo
+    100012: 16_Knight:ride_organs_geo
+    100014: 17_Knight:ride_skeleton_geo
+    100016: 18_Knightmain_geo_LOD1
+    100018: 19_Knightmain_geo_LOD1
+    100020: 1_Knight:main_geo
+    100022: 20_Knightmain_geo_LOD2
+    100024: 21_Knightmain_geo_LOD2
+    100026: 22_Knightmain_geo_LOD3
+    100028: 23_Knightmain_geo_LOD3
+    100030: 24_Knighthair_geo_LOD1
+    100032: 25_Knighthair_geo_LOD2
+    100034: 26_Knighthair_geo_LOD3
+    100036: 27_Knightpauldron_geo_LOD1
+    100038: 28_Knightpauldron_geo_LOD2
+    100040: 29_Knightpauldron_geo_LOD3
+    100042: 2_Knight:main_geo
+    100044: 30_Knighthorse_geo_LOD1
+    100046: 31_Knighthorse_geo_LOD1
+    100048: 32_Knighthorse_geo_LOD2
+    100050: 33_Knighthorse_geo_LOD2
+    100052: 34_Knighthorse_geo_LOD3
+    100054: 35_Knighthorse_geo_LOD3
+    100056: 36_Knighthorse_hair_geo_LOD1
+    100058: 37_Knighthorse_hair_geo_LOD1
+    100060: 38_Knighthorse_hair_geo_LOD2
+    100062: 39_Knighthorse_hair_geo_LOD2
+    100064: 3_Knight:hair_geo
+    100066: 40_Knighthorse_hair_geo_LOD3
+    100068: 41_Knighthorse_hair_geo_LOD3
+    100070: 42_Knighthorse_armor_geo_LOD1
+    100072: 43_Knighthorse_armor_geo_LOD1
+    100074: 44_Knighthorse_armor_geo_LOD2
+    100076: 45_Knighthorse_armor_geo_LOD2
+    100078: 46_Knighthorse_armor_geo_LOD3
+    100080: 47_Knighthorse_armor_geo_LOD3
+    100082: 48_Knightweapon_01_geo_LOD1
+    100084: 49_Knightweapon_01_geo_LOD2
+    100086: 4_Knight:pauldron_geo
+    100088: 50_Knightweapon_01_geo_LOD3
+    100090: 51_Knightweapon_02_geo_LOD1
+    100092: 52_Knightweapon_02_geo_LOD1
+    100094: 53_Knightweapon_02_geo_LOD2
+    100096: 54_Knightweapon_02_geo_LOD2
+    100098: 55_Knightweapon_02_geo_LOD3
+    100100: 56_Knightweapon_02_geo_LOD3
+    100102: 57_Knightorgans_geo_LOD1
+    100104: 58_Knightorgans_geo_LOD2
+    100106: 59_Knightorgans_geo_LOD3
+    100108: 5_Knight:horse_geo
+    100110: 60_Knightskeleton_geo_LOD1
+    100112: 61_Knightskeleton_geo_LOD2
+    100114: 62_Knightskeleton_geo_LOD3
+    100116: 63_Knightride_organs_geo_LOD1
+    100118: 64_Knightride_organs_geo_LOD2
+    100120: 65_Knightride_organs_geo_LOD3
+    100122: 66_Knightride_skeleton_geo_LOD1
+    100124: 67_Knightride_skeleton_geo_LOD2
+    100126: 68_Knightride_skeleton_geo_LOD3
+    100128: 6_Knight:horse_geo
+    100130: 7_Knight:horse_hair_geo
+    100132: 8_Knight:horse_hair_geo
+    100134: 9_Knight:horse_armor_geo
+    100136: B_KGS_Arm_L
+    100138: B_KGS_Arm_R
+    100140: B_KGS_Head
+    100142: B_KGS_Leg_L
+    100144: B_KGS_Leg_R
+    100146: B_KGS_MNTHead
+    100148: B_KGS_MNTLeg
+    100150: B_KGS_MNTTail
+    100152: B_KGS_Torso
+    100154: B_KGS_Weapon
+    100156: B_loincloth_01_bind_jnt
+    100158: B_loincloth_02_bind_jnt
+    100160: bone_chest
+    100162: bone_hand_left
+    100164: bone_hand_right
+    100166: bone_leg_left
+    100168: bone_leg_right
+    100170: bone_turret
+    100172: Chest Mount Left Ref
+    100174: Chest Mount Rear Ref
+    100176: Chest Mount Ref
+    100178: Chest Mount Right Ref
+    100180: Chest Ref
+    100182: DustTrail
+    100184: Foot Left Rear Ref
+    100186: Foot Left Ref
+    100188: Foot Right Rear Ref
+    100190: Foot Right Ref
+    100192: FPTxFHL0
+    100194: FPTxFHR0
+    100196: FPTyFHL0
+    100198: FPTyFHR0
+    100200: Hand Left Ref
+    100202: Hand Right Ref
+    100204: hd_anim_bind_jnt
+    100206: Head Mount Ref
+    100208: Head Ref
+    100210: jaw_bind_jnt
+    100212: Knight
+    100214: //RootNode
+    100216: L_armpad_bind_jnt
+    100218: L_cheek_02_bind_jnt
+    100220: L_cheek_03_bind_jnt
+    100222: L_cheek_bind_jnt
+    100224: L_eye_bind_jnt
+    100226: L_ind_finger_01_bind_jnt
+    100228: L_ind_finger_02_bind_jnt
+    100230: L_ind_finger_03_bind_jnt
+    100232: L_inr_eyebrow_bind_jnt
+    100234: L_leg_01_bind_jnt
+    100236: L_leg_02_bind_jnt
+    100238: L_leg_04_bind_jnt
+    100240: L_lip_corner_bind_jnt
+    100242: L_lwr_arm_bind_jnt
+    100244: L_lwr_arm_twist_01_bind_jnt
+    100246: L_lwr_arm_twist_02_bind_jnt
+    100248: L_lwr_eyelid_bind_jnt
+    100250: L_lwr_lip_01_bind_jnt
+    100252: L_lwr_lip_02_bind_jnt
+    100254: L_mid_eyebrow_bind_jnt
+    100256: L_mid_finger_01_bind_jnt
+    100258: L_mid_finger_02_bind_jnt
+    100260: L_mid_finger_03_bind_jnt
+    100262: L_nostril_bind_jnt
+    100264: L_otr_eyebrow_bind_jnt
+    100266: L_pauldron_bind_jnt
+    100268: L_pnk_finger_01_bind_jnt
+    100270: L_pnk_finger_02_bind_jnt
+    100272: L_pnk_finger_03_bind_jnt
+    100274: L_rng_finger_01_bind_jnt
+    100276: L_rng_finger_02_bind_jnt
+    100278: L_rng_finger_03_bind_jnt
+    100280: L_shoulder_bind_jnt
+    100282: L_skirt_01_bind_jnt
+    100284: L_tmb_01_bind_jnt
+    100286: L_tmb_02_bind_jnt
+    100288: L_tmb_03_bind_jnt
+    100290: L_upr_arm_bind_jnt
+    100292: L_upr_eyelid_bind_jnt
+    100294: L_upr_lip_bind_jnt
+    100296: lwr_teeth_bind_jnt
+    100298: M_loincloth_01_bind_jnt
+    100300: M_lwr_lip_bind_jnt
+    100302: M_upr_lip_bind_jnt
+    100304: mount_bone_chest
+    100306: mount_bone_hand_left
+    100308: mount_bone_hand_right
+    100310: mount_bone_leg_left
+    100312: mount_bone_leg_right
+    100314: mount_haunch_armor_bind_jnt
+    100316: mount_hd_anim_bind_jnt
+    100318: mount_jaw_bind_jnt
+    100320: mount_L_arm_01_bind_jnt
+    100322: mount_L_arm_02_bind_jnt
+    100324: mount_L_arm_03_bind_jnt
+    100326: mount_L_arm_04_bind_jnt
+    100328: mount_L_arm_cloth_01_bind_jnt
+    100330: mount_L_ear_bind_jnt
+    100332: mount_L_leg_01_bind_jnt
+    100334: mount_L_leg_02_bind_jnt
+    100336: mount_L_leg_03_bind_jnt
+    100338: mount_L_leg_04_bind_jnt
+    100340: mount_L_leg_cloth_01_bind_jnt
+    100342: mount_L_leg_cloth_02_bind_jnt
+    100344: mount_L_pauldron_bind_jnt
+    100346: mount_L_rein_01_bind_jnt
+    100348: mount_L_rein_02_bind_jnt
+    100350: mount_L_shoulder_bind_jnt
+    100352: mount_L_spine_cloth_01_bind_jnt
+    100354: mount_L_stirrup_bind_jnt
+    100356: mount_L_tassel_01_bind_jnt
+    100358: mount_L_tassel_02_bind_jnt
+    100360: mount_mane_01_bind_jnt
+    100362: mount_mane_02_bind_jnt
+    100364: mount_neck_bind_jnt
+    100366: mount_pelvis_bind_jnt
+    100368: mount_R_arm_01_bind_jnt
+    100370: mount_R_arm_02_bind_jnt
+    100372: mount_R_arm_03_bind_jnt
+    100374: mount_R_arm_04_bind_jnt
+    100376: mount_R_arm_cloth_01_bind_jnt
+    100378: mount_R_ear_bind_jnt
+    100380: mount_R_leg_01_bind_jnt
+    100382: mount_R_leg_02_bind_jnt
+    100384: mount_R_leg_03_bind_jnt
+    100386: mount_R_leg_04_bind_jnt
+    100388: mount_R_leg_cloth_01_bind_jnt
+    100390: mount_R_leg_cloth_02_bind_jnt
+    100392: mount_R_pauldron_bind_jnt
+    100394: mount_R_rein_01_bind_jnt
+    100396: mount_R_rein_02_bind_jnt
+    100398: mount_R_shoulder_bind_jnt
+    100400: mount_R_spine_cloth_01_bind_jnt
+    100402: mount_R_stirrup_bind_jnt
+    100404: mount_R_tassel_01_bind_jnt
+    100406: mount_R_tassel_02_bind_jnt
+    100408: mount_spine_01_bind_jnt
+    100410: mount_spine_02_bind_jnt
+    100412: mount_tail_01_bind_jnt
+    100414: mount_tail_02_bind_jnt
+    100416: mount_tail_03_bind_jnt
+    100418: mount_tail_04_bind_jnt
+    100420: neck_bind_jnt
+    100422: Node
+    100424: nose_bind_jnt
+    100426: Origin Ref
+    100428: OverHead Ref
+    100430: pelvis_bind_jnt
+    100432: PIVOT - B_KGS_Arm_L
+    100434: PIVOT - B_KGS_Arm_R
+    100436: PIVOT - B_KGS_Head
+    100438: PIVOT - B_KGS_Leg_L
+    100440: PIVOT - B_KGS_Leg_R
+    100442: PIVOT - B_KGS_MNTHead
+    100444: PIVOT - B_KGS_MNTLeg
+    100446: PIVOT - B_KGS_MNTTail
+    100448: PIVOT - B_KGS_Torso
+    100450: PIVOT - B_KGS_Weapon
+    100452: PIVOT - B_loincloth_01_bind_jnt
+    100454: PIVOT - B_loincloth_02_bind_jnt
+    100456: PIVOT - bone_chest
+    100458: PIVOT - bone_hand_left
+    100460: PIVOT - bone_hand_right
+    100462: PIVOT - bone_leg_left
+    100464: PIVOT - bone_leg_right
+    100466: PIVOT - bone_turret
+    100468: PIVOT - Chest Mount Left Ref
+    100470: PIVOT - Chest Mount Rear Ref
+    100472: PIVOT - Chest Mount Ref
+    100474: PIVOT - Chest Mount Right Ref
+    100476: PIVOT - Chest Ref
+    100478: PIVOT - DustTrail
+    100480: PIVOT - Foot Left Rear Ref
+    100482: PIVOT - Foot Left Ref
+    100484: PIVOT - Foot Right Rear Ref
+    100486: PIVOT - Foot Right Ref
+    100488: PIVOT - FPTxFHL0
+    100490: PIVOT - FPTxFHR0
+    100492: PIVOT - FPTyFHL0
+    100494: PIVOT - FPTyFHR0
+    100496: PIVOT - Hand Left Ref
+    100498: PIVOT - Hand Right Ref
+    100500: PIVOT - hd_anim_bind_jnt
+    100502: PIVOT - Head Mount Ref
+    100504: PIVOT - Head Ref
+    100506: PIVOT - jaw_bind_jnt
+    100508: PIVOT - L_armpad_bind_jnt
+    100510: PIVOT - L_cheek_02_bind_jnt
+    100512: PIVOT - L_cheek_03_bind_jnt
+    100514: PIVOT - L_cheek_bind_jnt
+    100516: PIVOT - L_eye_bind_jnt
+    100518: PIVOT - L_ind_finger_01_bind_jnt
+    100520: PIVOT - L_ind_finger_02_bind_jnt
+    100522: PIVOT - L_ind_finger_03_bind_jnt
+    100524: PIVOT - L_inr_eyebrow_bind_jnt
+    100526: PIVOT - L_leg_01_bind_jnt
+    100528: PIVOT - L_leg_02_bind_jnt
+    100530: PIVOT - L_leg_04_bind_jnt
+    100532: PIVOT - L_lip_corner_bind_jnt
+    100534: PIVOT - L_lwr_arm_bind_jnt
+    100536: PIVOT - L_lwr_arm_twist_01_bind_jnt
+    100538: PIVOT - L_lwr_arm_twist_02_bind_jnt
+    100540: PIVOT - L_lwr_eyelid_bind_jnt
+    100542: PIVOT - L_lwr_lip_01_bind_jnt
+    100544: PIVOT - L_lwr_lip_02_bind_jnt
+    100546: PIVOT - L_mid_eyebrow_bind_jnt
+    100548: PIVOT - L_mid_finger_01_bind_jnt
+    100550: PIVOT - L_mid_finger_02_bind_jnt
+    100552: PIVOT - L_mid_finger_03_bind_jnt
+    100554: PIVOT - L_nostril_bind_jnt
+    100556: PIVOT - L_otr_eyebrow_bind_jnt
+    100558: PIVOT - L_pauldron_bind_jnt
+    100560: PIVOT - L_pnk_finger_01_bind_jnt
+    100562: PIVOT - L_pnk_finger_02_bind_jnt
+    100564: PIVOT - L_pnk_finger_03_bind_jnt
+    100566: PIVOT - L_rng_finger_01_bind_jnt
+    100568: PIVOT - L_rng_finger_02_bind_jnt
+    100570: PIVOT - L_rng_finger_03_bind_jnt
+    100572: PIVOT - L_shoulder_bind_jnt
+    100574: PIVOT - L_skirt_01_bind_jnt
+    100576: PIVOT - L_tmb_01_bind_jnt
+    100578: PIVOT - L_tmb_02_bind_jnt
+    100580: PIVOT - L_tmb_03_bind_jnt
+    100582: PIVOT - L_upr_arm_bind_jnt
+    100584: PIVOT - L_upr_eyelid_bind_jnt
+    100586: PIVOT - L_upr_lip_bind_jnt
+    100588: PIVOT - lwr_teeth_bind_jnt
+    100590: PIVOT - M_loincloth_01_bind_jnt
+    100592: PIVOT - M_lwr_lip_bind_jnt
+    100594: PIVOT - M_upr_lip_bind_jnt
+    100596: PIVOT - mount_bone_chest
+    100598: PIVOT - mount_bone_hand_left
+    100600: PIVOT - mount_bone_hand_right
+    100602: PIVOT - mount_bone_leg_left
+    100604: PIVOT - mount_bone_leg_right
+    100606: PIVOT - mount_haunch_armor_bind_jnt
+    100608: PIVOT - mount_hd_anim_bind_jnt
+    100610: PIVOT - mount_jaw_bind_jnt
+    100612: PIVOT - mount_L_arm_01_bind_jnt
+    100614: PIVOT - mount_L_arm_02_bind_jnt
+    100616: PIVOT - mount_L_arm_03_bind_jnt
+    100618: PIVOT - mount_L_arm_04_bind_jnt
+    100620: PIVOT - mount_L_arm_cloth_01_bind_jnt
+    100622: PIVOT - mount_L_ear_bind_jnt
+    100624: PIVOT - mount_L_leg_01_bind_jnt
+    100626: PIVOT - mount_L_leg_02_bind_jnt
+    100628: PIVOT - mount_L_leg_03_bind_jnt
+    100630: PIVOT - mount_L_leg_04_bind_jnt
+    100632: PIVOT - mount_L_leg_cloth_01_bind_jnt
+    100634: PIVOT - mount_L_leg_cloth_02_bind_jnt
+    100636: PIVOT - mount_L_pauldron_bind_jnt
+    100638: PIVOT - mount_L_rein_01_bind_jnt
+    100640: PIVOT - mount_L_rein_02_bind_jnt
+    100642: PIVOT - mount_L_shoulder_bind_jnt
+    100644: PIVOT - mount_L_spine_cloth_01_bind_jnt
+    100646: PIVOT - mount_L_stirrup_bind_jnt
+    100648: PIVOT - mount_L_tassel_01_bind_jnt
+    100650: PIVOT - mount_L_tassel_02_bind_jnt
+    100652: PIVOT - mount_mane_01_bind_jnt
+    100654: PIVOT - mount_mane_02_bind_jnt
+    100656: PIVOT - mount_neck_bind_jnt
+    100658: PIVOT - mount_pelvis_bind_jnt
+    100660: PIVOT - mount_R_arm_01_bind_jnt
+    100662: PIVOT - mount_R_arm_02_bind_jnt
+    100664: PIVOT - mount_R_arm_03_bind_jnt
+    100666: PIVOT - mount_R_arm_04_bind_jnt
+    100668: PIVOT - mount_R_arm_cloth_01_bind_jnt
+    100670: PIVOT - mount_R_ear_bind_jnt
+    100672: PIVOT - mount_R_leg_01_bind_jnt
+    100674: PIVOT - mount_R_leg_02_bind_jnt
+    100676: PIVOT - mount_R_leg_03_bind_jnt
+    100678: PIVOT - mount_R_leg_04_bind_jnt
+    100680: PIVOT - mount_R_leg_cloth_01_bind_jnt
+    100682: PIVOT - mount_R_leg_cloth_02_bind_jnt
+    100684: PIVOT - mount_R_pauldron_bind_jnt
+    100686: PIVOT - mount_R_rein_01_bind_jnt
+    100688: PIVOT - mount_R_rein_02_bind_jnt
+    100690: PIVOT - mount_R_shoulder_bind_jnt
+    100692: PIVOT - mount_R_spine_cloth_01_bind_jnt
+    100694: PIVOT - mount_R_stirrup_bind_jnt
+    100696: PIVOT - mount_R_tassel_01_bind_jnt
+    100698: PIVOT - mount_R_tassel_02_bind_jnt
+    100700: PIVOT - mount_spine_01_bind_jnt
+    100702: PIVOT - mount_spine_02_bind_jnt
+    100704: PIVOT - mount_tail_01_bind_jnt
+    100706: PIVOT - mount_tail_02_bind_jnt
+    100708: PIVOT - mount_tail_03_bind_jnt
+    100710: PIVOT - mount_tail_04_bind_jnt
+    100712: PIVOT - neck_bind_jnt
+    100714: PIVOT - nose_bind_jnt
+    100716: PIVOT - Origin Ref
+    100718: PIVOT - OverHead Ref
+    100720: PIVOT - pelvis_bind_jnt
+    100722: PIVOT - R_armpad_bind_jnt
+    100724: PIVOT - R_cheek_02_bind_jnt
+    100726: PIVOT - R_cheek_03_bind_jnt
+    100728: PIVOT - R_cheek_bind_jnt
+    100730: PIVOT - R_eye_bind_jnt
+    100732: PIVOT - R_ind_finger_01_bind_jnt
+    100734: PIVOT - R_ind_finger_02_bind_jnt
+    100736: PIVOT - R_ind_finger_03_bind_jnt
+    100738: PIVOT - R_inr_eyebrow_bind_jnt
+    100740: PIVOT - R_leg_01_bind_jnt
+    100742: PIVOT - R_leg_02_bind_jnt
+    100744: PIVOT - R_leg_04_bind_jnt
+    100746: PIVOT - R_lip_corner_bind_jnt
+    100748: PIVOT - R_lwr_arm_bind_jnt
+    100750: PIVOT - R_lwr_arm_twist_01_bind_jnt
+    100752: PIVOT - R_lwr_arm_twist_02_bind_jnt
+    100754: PIVOT - R_lwr_eyelid_bind_jnt
+    100756: PIVOT - R_lwr_lip_01_bind_jnt
+    100758: PIVOT - R_lwr_lip_02_bind_jnt
+    100760: PIVOT - R_mid_eyebrow_bind_jnt
+    100762: PIVOT - R_mid_finger_01_bind_jnt
+    100764: PIVOT - R_mid_finger_02_bind_jnt
+    100766: PIVOT - R_mid_finger_03_bind_jnt
+    100768: PIVOT - R_nostril_bind_jnt
+    100770: PIVOT - R_otr_eyebrow_bind_jnt
+    100772: PIVOT - R_pauldron_bind_jnt
+    100774: PIVOT - R_pnk_finger_01_bind_jnt
+    100776: PIVOT - R_pnk_finger_02_bind_jnt
+    100778: PIVOT - R_pnk_finger_03_bind_jnt
+    100780: PIVOT - R_rng_finger_01_bind_jnt
+    100782: PIVOT - R_rng_finger_02_bind_jnt
+    100784: PIVOT - R_rng_finger_03_bind_jnt
+    100786: PIVOT - R_shoulder_bind_jnt
+    100788: PIVOT - R_skirt_01_bind_jnt
+    100790: PIVOT - R_tmb_01_bind_jnt
+    100792: PIVOT - R_tmb_02_bind_jnt
+    100794: PIVOT - R_tmb_03_bind_jnt
+    100796: PIVOT - R_upr_arm_bind_jnt
+    100798: PIVOT - R_upr_eyelid_bind_jnt
+    100800: PIVOT - R_upr_lip_bind_jnt
+    100802: PIVOT - SNDXDKNI
+    100804: PIVOT - spine_02_bind_jnt
+    100806: PIVOT - SPLxHBL1
+    100808: PIVOT - SPLxHBL2
+    100810: PIVOT - SPLxHBS0
+    100812: PIVOT - SPLxHBS1
+    100814: PIVOT - SPLxHBS3
+    100816: PIVOT - SPNxHBK0
+    100818: PIVOT - tongue_01_bind_jnt
+    100820: PIVOT - tongue_02_bind_jnt
+    100822: PIVOT - upr_teeth_bind_jnt
+    100824: PIVOT - Weapon Left Ref
+    100826: PIVOT - Weapon Right Ref
+    100828: PIVOT - weapon_01_bind_jnt
+    100830: PIVOT - weapon_01_stretch_bind_jnt
+    100832: PIVOT - weapon_02_bind_jnt
+    100834: PIVOT - weapon_02_cloth_01_bind_jnt
+    100836: PIVOT - weapon_02_cloth_02_bind_jnt
+    100838: PIVOT - weapon_02_cloth_03_bind_jnt
+    100840: Portrait_Camera.Target.1
+    100842: Portrait_Camera1
+    100844: R_armpad_bind_jnt
+    100846: R_cheek_02_bind_jnt
+    100848: R_cheek_03_bind_jnt
+    100850: R_cheek_bind_jnt
+    100852: R_eye_bind_jnt
+    100854: R_ind_finger_01_bind_jnt
+    100856: R_ind_finger_02_bind_jnt
+    100858: R_ind_finger_03_bind_jnt
+    100860: R_inr_eyebrow_bind_jnt
+    100862: R_leg_01_bind_jnt
+    100864: R_leg_02_bind_jnt
+    100866: R_leg_04_bind_jnt
+    100868: R_lip_corner_bind_jnt
+    100870: R_lwr_arm_bind_jnt
+    100872: R_lwr_arm_twist_01_bind_jnt
+    100874: R_lwr_arm_twist_02_bind_jnt
+    100876: R_lwr_eyelid_bind_jnt
+    100878: R_lwr_lip_01_bind_jnt
+    100880: R_lwr_lip_02_bind_jnt
+    100882: R_mid_eyebrow_bind_jnt
+    100884: R_mid_finger_01_bind_jnt
+    100886: R_mid_finger_02_bind_jnt
+    100888: R_mid_finger_03_bind_jnt
+    100890: R_nostril_bind_jnt
+    100892: R_otr_eyebrow_bind_jnt
+    100894: R_pauldron_bind_jnt
+    100896: R_pnk_finger_01_bind_jnt
+    100898: R_pnk_finger_02_bind_jnt
+    100900: R_pnk_finger_03_bind_jnt
+    100902: R_rng_finger_01_bind_jnt
+    100904: R_rng_finger_02_bind_jnt
+    100906: R_rng_finger_03_bind_jnt
+    100908: R_shoulder_bind_jnt
+    100910: R_skirt_01_bind_jnt
+    100912: R_tmb_01_bind_jnt
+    100914: R_tmb_02_bind_jnt
+    100916: R_tmb_03_bind_jnt
+    100918: R_upr_arm_bind_jnt
+    100920: R_upr_eyelid_bind_jnt
+    100922: R_upr_lip_bind_jnt
+    100924: SNDXDKNI
+    100926: spine_02_bind_jnt
+    100928: SPLxHBL1
+    100930: SPLxHBL2
+    100932: SPLxHBS0
+    100934: SPLxHBS1
+    100936: SPLxHBS3
+    100938: SPNxHBK0
+    100940: tongue_01_bind_jnt
+    100942: tongue_02_bind_jnt
+    100944: upr_teeth_bind_jnt
+    100946: Weapon Left Ref
+    100948: Weapon Right Ref
+    100950: weapon_01_bind_jnt
+    100952: weapon_01_stretch_bind_jnt
+    100954: weapon_02_bind_jnt
+    100956: weapon_02_cloth_01_bind_jnt
+    100958: weapon_02_cloth_02_bind_jnt
+    100960: weapon_02_cloth_03_bind_jnt
+    400000: 10_Knight:horse_armor_geo
+    400002: 11_Knight:weapon_01_geo
+    400004: 12_Knight:weapon_02_geo
+    400006: 13_Knight:weapon_02_geo
+    400008: 14_Knight:organs_geo
+    400010: 15_Knight:skeleton_geo
+    400012: 16_Knight:ride_organs_geo
+    400014: 17_Knight:ride_skeleton_geo
+    400016: 18_Knightmain_geo_LOD1
+    400018: 19_Knightmain_geo_LOD1
+    400020: 1_Knight:main_geo
+    400022: 20_Knightmain_geo_LOD2
+    400024: 21_Knightmain_geo_LOD2
+    400026: 22_Knightmain_geo_LOD3
+    400028: 23_Knightmain_geo_LOD3
+    400030: 24_Knighthair_geo_LOD1
+    400032: 25_Knighthair_geo_LOD2
+    400034: 26_Knighthair_geo_LOD3
+    400036: 27_Knightpauldron_geo_LOD1
+    400038: 28_Knightpauldron_geo_LOD2
+    400040: 29_Knightpauldron_geo_LOD3
+    400042: 2_Knight:main_geo
+    400044: 30_Knighthorse_geo_LOD1
+    400046: 31_Knighthorse_geo_LOD1
+    400048: 32_Knighthorse_geo_LOD2
+    400050: 33_Knighthorse_geo_LOD2
+    400052: 34_Knighthorse_geo_LOD3
+    400054: 35_Knighthorse_geo_LOD3
+    400056: 36_Knighthorse_hair_geo_LOD1
+    400058: 37_Knighthorse_hair_geo_LOD1
+    400060: 38_Knighthorse_hair_geo_LOD2
+    400062: 39_Knighthorse_hair_geo_LOD2
+    400064: 3_Knight:hair_geo
+    400066: 40_Knighthorse_hair_geo_LOD3
+    400068: 41_Knighthorse_hair_geo_LOD3
+    400070: 42_Knighthorse_armor_geo_LOD1
+    400072: 43_Knighthorse_armor_geo_LOD1
+    400074: 44_Knighthorse_armor_geo_LOD2
+    400076: 45_Knighthorse_armor_geo_LOD2
+    400078: 46_Knighthorse_armor_geo_LOD3
+    400080: 47_Knighthorse_armor_geo_LOD3
+    400082: 48_Knightweapon_01_geo_LOD1
+    400084: 49_Knightweapon_01_geo_LOD2
+    400086: 4_Knight:pauldron_geo
+    400088: 50_Knightweapon_01_geo_LOD3
+    400090: 51_Knightweapon_02_geo_LOD1
+    400092: 52_Knightweapon_02_geo_LOD1
+    400094: 53_Knightweapon_02_geo_LOD2
+    400096: 54_Knightweapon_02_geo_LOD2
+    400098: 55_Knightweapon_02_geo_LOD3
+    400100: 56_Knightweapon_02_geo_LOD3
+    400102: 57_Knightorgans_geo_LOD1
+    400104: 58_Knightorgans_geo_LOD2
+    400106: 59_Knightorgans_geo_LOD3
+    400108: 5_Knight:horse_geo
+    400110: 60_Knightskeleton_geo_LOD1
+    400112: 61_Knightskeleton_geo_LOD2
+    400114: 62_Knightskeleton_geo_LOD3
+    400116: 63_Knightride_organs_geo_LOD1
+    400118: 64_Knightride_organs_geo_LOD2
+    400120: 65_Knightride_organs_geo_LOD3
+    400122: 66_Knightride_skeleton_geo_LOD1
+    400124: 67_Knightride_skeleton_geo_LOD2
+    400126: 68_Knightride_skeleton_geo_LOD3
+    400128: 6_Knight:horse_geo
+    400130: 7_Knight:horse_hair_geo
+    400132: 8_Knight:horse_hair_geo
+    400134: 9_Knight:horse_armor_geo
+    400136: B_KGS_Arm_L
+    400138: B_KGS_Arm_R
+    400140: B_KGS_Head
+    400142: B_KGS_Leg_L
+    400144: B_KGS_Leg_R
+    400146: B_KGS_MNTHead
+    400148: B_KGS_MNTLeg
+    400150: B_KGS_MNTTail
+    400152: B_KGS_Torso
+    400154: B_KGS_Weapon
+    400156: B_loincloth_01_bind_jnt
+    400158: B_loincloth_02_bind_jnt
+    400160: bone_chest
+    400162: bone_hand_left
+    400164: bone_hand_right
+    400166: bone_leg_left
+    400168: bone_leg_right
+    400170: bone_turret
+    400172: Chest Mount Left Ref
+    400174: Chest Mount Rear Ref
+    400176: Chest Mount Ref
+    400178: Chest Mount Right Ref
+    400180: Chest Ref
+    400182: DustTrail
+    400184: Foot Left Rear Ref
+    400186: Foot Left Ref
+    400188: Foot Right Rear Ref
+    400190: Foot Right Ref
+    400192: FPTxFHL0
+    400194: FPTxFHR0
+    400196: FPTyFHL0
+    400198: FPTyFHR0
+    400200: Hand Left Ref
+    400202: Hand Right Ref
+    400204: hd_anim_bind_jnt
+    400206: Head Mount Ref
+    400208: Head Ref
+    400210: jaw_bind_jnt
+    400212: Knight
+    400214: //RootNode
+    400216: L_armpad_bind_jnt
+    400218: L_cheek_02_bind_jnt
+    400220: L_cheek_03_bind_jnt
+    400222: L_cheek_bind_jnt
+    400224: L_eye_bind_jnt
+    400226: L_ind_finger_01_bind_jnt
+    400228: L_ind_finger_02_bind_jnt
+    400230: L_ind_finger_03_bind_jnt
+    400232: L_inr_eyebrow_bind_jnt
+    400234: L_leg_01_bind_jnt
+    400236: L_leg_02_bind_jnt
+    400238: L_leg_04_bind_jnt
+    400240: L_lip_corner_bind_jnt
+    400242: L_lwr_arm_bind_jnt
+    400244: L_lwr_arm_twist_01_bind_jnt
+    400246: L_lwr_arm_twist_02_bind_jnt
+    400248: L_lwr_eyelid_bind_jnt
+    400250: L_lwr_lip_01_bind_jnt
+    400252: L_lwr_lip_02_bind_jnt
+    400254: L_mid_eyebrow_bind_jnt
+    400256: L_mid_finger_01_bind_jnt
+    400258: L_mid_finger_02_bind_jnt
+    400260: L_mid_finger_03_bind_jnt
+    400262: L_nostril_bind_jnt
+    400264: L_otr_eyebrow_bind_jnt
+    400266: L_pauldron_bind_jnt
+    400268: L_pnk_finger_01_bind_jnt
+    400270: L_pnk_finger_02_bind_jnt
+    400272: L_pnk_finger_03_bind_jnt
+    400274: L_rng_finger_01_bind_jnt
+    400276: L_rng_finger_02_bind_jnt
+    400278: L_rng_finger_03_bind_jnt
+    400280: L_shoulder_bind_jnt
+    400282: L_skirt_01_bind_jnt
+    400284: L_tmb_01_bind_jnt
+    400286: L_tmb_02_bind_jnt
+    400288: L_tmb_03_bind_jnt
+    400290: L_upr_arm_bind_jnt
+    400292: L_upr_eyelid_bind_jnt
+    400294: L_upr_lip_bind_jnt
+    400296: lwr_teeth_bind_jnt
+    400298: M_loincloth_01_bind_jnt
+    400300: M_lwr_lip_bind_jnt
+    400302: M_upr_lip_bind_jnt
+    400304: mount_bone_chest
+    400306: mount_bone_hand_left
+    400308: mount_bone_hand_right
+    400310: mount_bone_leg_left
+    400312: mount_bone_leg_right
+    400314: mount_haunch_armor_bind_jnt
+    400316: mount_hd_anim_bind_jnt
+    400318: mount_jaw_bind_jnt
+    400320: mount_L_arm_01_bind_jnt
+    400322: mount_L_arm_02_bind_jnt
+    400324: mount_L_arm_03_bind_jnt
+    400326: mount_L_arm_04_bind_jnt
+    400328: mount_L_arm_cloth_01_bind_jnt
+    400330: mount_L_ear_bind_jnt
+    400332: mount_L_leg_01_bind_jnt
+    400334: mount_L_leg_02_bind_jnt
+    400336: mount_L_leg_03_bind_jnt
+    400338: mount_L_leg_04_bind_jnt
+    400340: mount_L_leg_cloth_01_bind_jnt
+    400342: mount_L_leg_cloth_02_bind_jnt
+    400344: mount_L_pauldron_bind_jnt
+    400346: mount_L_rein_01_bind_jnt
+    400348: mount_L_rein_02_bind_jnt
+    400350: mount_L_shoulder_bind_jnt
+    400352: mount_L_spine_cloth_01_bind_jnt
+    400354: mount_L_stirrup_bind_jnt
+    400356: mount_L_tassel_01_bind_jnt
+    400358: mount_L_tassel_02_bind_jnt
+    400360: mount_mane_01_bind_jnt
+    400362: mount_mane_02_bind_jnt
+    400364: mount_neck_bind_jnt
+    400366: mount_pelvis_bind_jnt
+    400368: mount_R_arm_01_bind_jnt
+    400370: mount_R_arm_02_bind_jnt
+    400372: mount_R_arm_03_bind_jnt
+    400374: mount_R_arm_04_bind_jnt
+    400376: mount_R_arm_cloth_01_bind_jnt
+    400378: mount_R_ear_bind_jnt
+    400380: mount_R_leg_01_bind_jnt
+    400382: mount_R_leg_02_bind_jnt
+    400384: mount_R_leg_03_bind_jnt
+    400386: mount_R_leg_04_bind_jnt
+    400388: mount_R_leg_cloth_01_bind_jnt
+    400390: mount_R_leg_cloth_02_bind_jnt
+    400392: mount_R_pauldron_bind_jnt
+    400394: mount_R_rein_01_bind_jnt
+    400396: mount_R_rein_02_bind_jnt
+    400398: mount_R_shoulder_bind_jnt
+    400400: mount_R_spine_cloth_01_bind_jnt
+    400402: mount_R_stirrup_bind_jnt
+    400404: mount_R_tassel_01_bind_jnt
+    400406: mount_R_tassel_02_bind_jnt
+    400408: mount_spine_01_bind_jnt
+    400410: mount_spine_02_bind_jnt
+    400412: mount_tail_01_bind_jnt
+    400414: mount_tail_02_bind_jnt
+    400416: mount_tail_03_bind_jnt
+    400418: mount_tail_04_bind_jnt
+    400420: neck_bind_jnt
+    400422: Node
+    400424: nose_bind_jnt
+    400426: Origin Ref
+    400428: OverHead Ref
+    400430: pelvis_bind_jnt
+    400432: PIVOT - B_KGS_Arm_L
+    400434: PIVOT - B_KGS_Arm_R
+    400436: PIVOT - B_KGS_Head
+    400438: PIVOT - B_KGS_Leg_L
+    400440: PIVOT - B_KGS_Leg_R
+    400442: PIVOT - B_KGS_MNTHead
+    400444: PIVOT - B_KGS_MNTLeg
+    400446: PIVOT - B_KGS_MNTTail
+    400448: PIVOT - B_KGS_Torso
+    400450: PIVOT - B_KGS_Weapon
+    400452: PIVOT - B_loincloth_01_bind_jnt
+    400454: PIVOT - B_loincloth_02_bind_jnt
+    400456: PIVOT - bone_chest
+    400458: PIVOT - bone_hand_left
+    400460: PIVOT - bone_hand_right
+    400462: PIVOT - bone_leg_left
+    400464: PIVOT - bone_leg_right
+    400466: PIVOT - bone_turret
+    400468: PIVOT - Chest Mount Left Ref
+    400470: PIVOT - Chest Mount Rear Ref
+    400472: PIVOT - Chest Mount Ref
+    400474: PIVOT - Chest Mount Right Ref
+    400476: PIVOT - Chest Ref
+    400478: PIVOT - DustTrail
+    400480: PIVOT - Foot Left Rear Ref
+    400482: PIVOT - Foot Left Ref
+    400484: PIVOT - Foot Right Rear Ref
+    400486: PIVOT - Foot Right Ref
+    400488: PIVOT - FPTxFHL0
+    400490: PIVOT - FPTxFHR0
+    400492: PIVOT - FPTyFHL0
+    400494: PIVOT - FPTyFHR0
+    400496: PIVOT - Hand Left Ref
+    400498: PIVOT - Hand Right Ref
+    400500: PIVOT - hd_anim_bind_jnt
+    400502: PIVOT - Head Mount Ref
+    400504: PIVOT - Head Ref
+    400506: PIVOT - jaw_bind_jnt
+    400508: PIVOT - L_armpad_bind_jnt
+    400510: PIVOT - L_cheek_02_bind_jnt
+    400512: PIVOT - L_cheek_03_bind_jnt
+    400514: PIVOT - L_cheek_bind_jnt
+    400516: PIVOT - L_eye_bind_jnt
+    400518: PIVOT - L_ind_finger_01_bind_jnt
+    400520: PIVOT - L_ind_finger_02_bind_jnt
+    400522: PIVOT - L_ind_finger_03_bind_jnt
+    400524: PIVOT - L_inr_eyebrow_bind_jnt
+    400526: PIVOT - L_leg_01_bind_jnt
+    400528: PIVOT - L_leg_02_bind_jnt
+    400530: PIVOT - L_leg_04_bind_jnt
+    400532: PIVOT - L_lip_corner_bind_jnt
+    400534: PIVOT - L_lwr_arm_bind_jnt
+    400536: PIVOT - L_lwr_arm_twist_01_bind_jnt
+    400538: PIVOT - L_lwr_arm_twist_02_bind_jnt
+    400540: PIVOT - L_lwr_eyelid_bind_jnt
+    400542: PIVOT - L_lwr_lip_01_bind_jnt
+    400544: PIVOT - L_lwr_lip_02_bind_jnt
+    400546: PIVOT - L_mid_eyebrow_bind_jnt
+    400548: PIVOT - L_mid_finger_01_bind_jnt
+    400550: PIVOT - L_mid_finger_02_bind_jnt
+    400552: PIVOT - L_mid_finger_03_bind_jnt
+    400554: PIVOT - L_nostril_bind_jnt
+    400556: PIVOT - L_otr_eyebrow_bind_jnt
+    400558: PIVOT - L_pauldron_bind_jnt
+    400560: PIVOT - L_pnk_finger_01_bind_jnt
+    400562: PIVOT - L_pnk_finger_02_bind_jnt
+    400564: PIVOT - L_pnk_finger_03_bind_jnt
+    400566: PIVOT - L_rng_finger_01_bind_jnt
+    400568: PIVOT - L_rng_finger_02_bind_jnt
+    400570: PIVOT - L_rng_finger_03_bind_jnt
+    400572: PIVOT - L_shoulder_bind_jnt
+    400574: PIVOT - L_skirt_01_bind_jnt
+    400576: PIVOT - L_tmb_01_bind_jnt
+    400578: PIVOT - L_tmb_02_bind_jnt
+    400580: PIVOT - L_tmb_03_bind_jnt
+    400582: PIVOT - L_upr_arm_bind_jnt
+    400584: PIVOT - L_upr_eyelid_bind_jnt
+    400586: PIVOT - L_upr_lip_bind_jnt
+    400588: PIVOT - lwr_teeth_bind_jnt
+    400590: PIVOT - M_loincloth_01_bind_jnt
+    400592: PIVOT - M_lwr_lip_bind_jnt
+    400594: PIVOT - M_upr_lip_bind_jnt
+    400596: PIVOT - mount_bone_chest
+    400598: PIVOT - mount_bone_hand_left
+    400600: PIVOT - mount_bone_hand_right
+    400602: PIVOT - mount_bone_leg_left
+    400604: PIVOT - mount_bone_leg_right
+    400606: PIVOT - mount_haunch_armor_bind_jnt
+    400608: PIVOT - mount_hd_anim_bind_jnt
+    400610: PIVOT - mount_jaw_bind_jnt
+    400612: PIVOT - mount_L_arm_01_bind_jnt
+    400614: PIVOT - mount_L_arm_02_bind_jnt
+    400616: PIVOT - mount_L_arm_03_bind_jnt
+    400618: PIVOT - mount_L_arm_04_bind_jnt
+    400620: PIVOT - mount_L_arm_cloth_01_bind_jnt
+    400622: PIVOT - mount_L_ear_bind_jnt
+    400624: PIVOT - mount_L_leg_01_bind_jnt
+    400626: PIVOT - mount_L_leg_02_bind_jnt
+    400628: PIVOT - mount_L_leg_03_bind_jnt
+    400630: PIVOT - mount_L_leg_04_bind_jnt
+    400632: PIVOT - mount_L_leg_cloth_01_bind_jnt
+    400634: PIVOT - mount_L_leg_cloth_02_bind_jnt
+    400636: PIVOT - mount_L_pauldron_bind_jnt
+    400638: PIVOT - mount_L_rein_01_bind_jnt
+    400640: PIVOT - mount_L_rein_02_bind_jnt
+    400642: PIVOT - mount_L_shoulder_bind_jnt
+    400644: PIVOT - mount_L_spine_cloth_01_bind_jnt
+    400646: PIVOT - mount_L_stirrup_bind_jnt
+    400648: PIVOT - mount_L_tassel_01_bind_jnt
+    400650: PIVOT - mount_L_tassel_02_bind_jnt
+    400652: PIVOT - mount_mane_01_bind_jnt
+    400654: PIVOT - mount_mane_02_bind_jnt
+    400656: PIVOT - mount_neck_bind_jnt
+    400658: PIVOT - mount_pelvis_bind_jnt
+    400660: PIVOT - mount_R_arm_01_bind_jnt
+    400662: PIVOT - mount_R_arm_02_bind_jnt
+    400664: PIVOT - mount_R_arm_03_bind_jnt
+    400666: PIVOT - mount_R_arm_04_bind_jnt
+    400668: PIVOT - mount_R_arm_cloth_01_bind_jnt
+    400670: PIVOT - mount_R_ear_bind_jnt
+    400672: PIVOT - mount_R_leg_01_bind_jnt
+    400674: PIVOT - mount_R_leg_02_bind_jnt
+    400676: PIVOT - mount_R_leg_03_bind_jnt
+    400678: PIVOT - mount_R_leg_04_bind_jnt
+    400680: PIVOT - mount_R_leg_cloth_01_bind_jnt
+    400682: PIVOT - mount_R_leg_cloth_02_bind_jnt
+    400684: PIVOT - mount_R_pauldron_bind_jnt
+    400686: PIVOT - mount_R_rein_01_bind_jnt
+    400688: PIVOT - mount_R_rein_02_bind_jnt
+    400690: PIVOT - mount_R_shoulder_bind_jnt
+    400692: PIVOT - mount_R_spine_cloth_01_bind_jnt
+    400694: PIVOT - mount_R_stirrup_bind_jnt
+    400696: PIVOT - mount_R_tassel_01_bind_jnt
+    400698: PIVOT - mount_R_tassel_02_bind_jnt
+    400700: PIVOT - mount_spine_01_bind_jnt
+    400702: PIVOT - mount_spine_02_bind_jnt
+    400704: PIVOT - mount_tail_01_bind_jnt
+    400706: PIVOT - mount_tail_02_bind_jnt
+    400708: PIVOT - mount_tail_03_bind_jnt
+    400710: PIVOT - mount_tail_04_bind_jnt
+    400712: PIVOT - neck_bind_jnt
+    400714: PIVOT - nose_bind_jnt
+    400716: PIVOT - Origin Ref
+    400718: PIVOT - OverHead Ref
+    400720: PIVOT - pelvis_bind_jnt
+    400722: PIVOT - R_armpad_bind_jnt
+    400724: PIVOT - R_cheek_02_bind_jnt
+    400726: PIVOT - R_cheek_03_bind_jnt
+    400728: PIVOT - R_cheek_bind_jnt
+    400730: PIVOT - R_eye_bind_jnt
+    400732: PIVOT - R_ind_finger_01_bind_jnt
+    400734: PIVOT - R_ind_finger_02_bind_jnt
+    400736: PIVOT - R_ind_finger_03_bind_jnt
+    400738: PIVOT - R_inr_eyebrow_bind_jnt
+    400740: PIVOT - R_leg_01_bind_jnt
+    400742: PIVOT - R_leg_02_bind_jnt
+    400744: PIVOT - R_leg_04_bind_jnt
+    400746: PIVOT - R_lip_corner_bind_jnt
+    400748: PIVOT - R_lwr_arm_bind_jnt
+    400750: PIVOT - R_lwr_arm_twist_01_bind_jnt
+    400752: PIVOT - R_lwr_arm_twist_02_bind_jnt
+    400754: PIVOT - R_lwr_eyelid_bind_jnt
+    400756: PIVOT - R_lwr_lip_01_bind_jnt
+    400758: PIVOT - R_lwr_lip_02_bind_jnt
+    400760: PIVOT - R_mid_eyebrow_bind_jnt
+    400762: PIVOT - R_mid_finger_01_bind_jnt
+    400764: PIVOT - R_mid_finger_02_bind_jnt
+    400766: PIVOT - R_mid_finger_03_bind_jnt
+    400768: PIVOT - R_nostril_bind_jnt
+    400770: PIVOT - R_otr_eyebrow_bind_jnt
+    400772: PIVOT - R_pauldron_bind_jnt
+    400774: PIVOT - R_pnk_finger_01_bind_jnt
+    400776: PIVOT - R_pnk_finger_02_bind_jnt
+    400778: PIVOT - R_pnk_finger_03_bind_jnt
+    400780: PIVOT - R_rng_finger_01_bind_jnt
+    400782: PIVOT - R_rng_finger_02_bind_jnt
+    400784: PIVOT - R_rng_finger_03_bind_jnt
+    400786: PIVOT - R_shoulder_bind_jnt
+    400788: PIVOT - R_skirt_01_bind_jnt
+    400790: PIVOT - R_tmb_01_bind_jnt
+    400792: PIVOT - R_tmb_02_bind_jnt
+    400794: PIVOT - R_tmb_03_bind_jnt
+    400796: PIVOT - R_upr_arm_bind_jnt
+    400798: PIVOT - R_upr_eyelid_bind_jnt
+    400800: PIVOT - R_upr_lip_bind_jnt
+    400802: PIVOT - SNDXDKNI
+    400804: PIVOT - spine_02_bind_jnt
+    400806: PIVOT - SPLxHBL1
+    400808: PIVOT - SPLxHBL2
+    400810: PIVOT - SPLxHBS0
+    400812: PIVOT - SPLxHBS1
+    400814: PIVOT - SPLxHBS3
+    400816: PIVOT - SPNxHBK0
+    400818: PIVOT - tongue_01_bind_jnt
+    400820: PIVOT - tongue_02_bind_jnt
+    400822: PIVOT - upr_teeth_bind_jnt
+    400824: PIVOT - Weapon Left Ref
+    400826: PIVOT - Weapon Right Ref
+    400828: PIVOT - weapon_01_bind_jnt
+    400830: PIVOT - weapon_01_stretch_bind_jnt
+    400832: PIVOT - weapon_02_bind_jnt
+    400834: PIVOT - weapon_02_cloth_01_bind_jnt
+    400836: PIVOT - weapon_02_cloth_02_bind_jnt
+    400838: PIVOT - weapon_02_cloth_03_bind_jnt
+    400840: Portrait_Camera.Target.1
+    400842: Portrait_Camera1
+    400844: R_armpad_bind_jnt
+    400846: R_cheek_02_bind_jnt
+    400848: R_cheek_03_bind_jnt
+    400850: R_cheek_bind_jnt
+    400852: R_eye_bind_jnt
+    400854: R_ind_finger_01_bind_jnt
+    400856: R_ind_finger_02_bind_jnt
+    400858: R_ind_finger_03_bind_jnt
+    400860: R_inr_eyebrow_bind_jnt
+    400862: R_leg_01_bind_jnt
+    400864: R_leg_02_bind_jnt
+    400866: R_leg_04_bind_jnt
+    400868: R_lip_corner_bind_jnt
+    400870: R_lwr_arm_bind_jnt
+    400872: R_lwr_arm_twist_01_bind_jnt
+    400874: R_lwr_arm_twist_02_bind_jnt
+    400876: R_lwr_eyelid_bind_jnt
+    400878: R_lwr_lip_01_bind_jnt
+    400880: R_lwr_lip_02_bind_jnt
+    400882: R_mid_eyebrow_bind_jnt
+    400884: R_mid_finger_01_bind_jnt
+    400886: R_mid_finger_02_bind_jnt
+    400888: R_mid_finger_03_bind_jnt
+    400890: R_nostril_bind_jnt
+    400892: R_otr_eyebrow_bind_jnt
+    400894: R_pauldron_bind_jnt
+    400896: R_pnk_finger_01_bind_jnt
+    400898: R_pnk_finger_02_bind_jnt
+    400900: R_pnk_finger_03_bind_jnt
+    400902: R_rng_finger_01_bind_jnt
+    400904: R_rng_finger_02_bind_jnt
+    400906: R_rng_finger_03_bind_jnt
+    400908: R_shoulder_bind_jnt
+    400910: R_skirt_01_bind_jnt
+    400912: R_tmb_01_bind_jnt
+    400914: R_tmb_02_bind_jnt
+    400916: R_tmb_03_bind_jnt
+    400918: R_upr_arm_bind_jnt
+    400920: R_upr_eyelid_bind_jnt
+    400922: R_upr_lip_bind_jnt
+    400924: SNDXDKNI
+    400926: spine_02_bind_jnt
+    400928: SPLxHBL1
+    400930: SPLxHBL2
+    400932: SPLxHBS0
+    400934: SPLxHBS1
+    400936: SPLxHBS3
+    400938: SPNxHBK0
+    400940: tongue_01_bind_jnt
+    400942: tongue_02_bind_jnt
+    400944: upr_teeth_bind_jnt
+    400946: Weapon Left Ref
+    400948: Weapon Right Ref
+    400950: weapon_01_bind_jnt
+    400952: weapon_01_stretch_bind_jnt
+    400954: weapon_02_bind_jnt
+    400956: weapon_02_cloth_01_bind_jnt
+    400958: weapon_02_cloth_02_bind_jnt
+    400960: weapon_02_cloth_03_bind_jnt
+    2000000: Portrait_Camera1
+    2100000: 'Material #44'
+    2100002: 'Material #50'
+    2100004: 'Material #25'
+    2100006: 'Material #43'
+    2100008: 'Material #26'
+    2100010: 'Material #32'
+    2100012: 'Material #48'
+    2100014: 'Material #49'
+    2100016: 'Material #27'
+    2100018: 'Material #33'
+    2100020: 'Material #42'
+    2100022: 'Material #36'
+    2100024: 'Material #37'
+    2100026: organs_geo_MAT_14
+    2100028: skeleton_geo_MAT_15
+    2100030: ride_organs_geo_MAT_16
+    2100032: 'Material #61'
+    2100034: main_geo_MAT_1
+    2100036: main_geo_MAT_2
+    2100038: hair_geo_MAT_3
+    2100040: pauldron_geo_MAT_4
+    2100042: horse_geo_MAT_5
+    2100044: horse_geo_MAT_6
+    2100046: horse_hair_geo_MAT_7
+    2100048: horse_hair_geo_MAT_8
+    2100050: horse_armor_geo_MAT_9
+    2100052: horse_armor_geo_MAT_10
+    2100054: weapon_01_geo_MAT_11
+    2100056: weapon_02_geo_MAT_12
+    2100058: weapon_02_geo_MAT_13
+    2100060: ride_skeleton_geo_MAT_17
+    2100062: No Name
+    2300000: B_KGS_Arm_L
+    2300002: B_KGS_Arm_R
+    2300004: B_KGS_Head
+    2300006: B_KGS_Leg_L
+    2300008: B_KGS_Leg_R
+    2300010: B_KGS_MNTHead
+    2300012: B_KGS_MNTLeg
+    2300014: B_KGS_MNTTail
+    2300016: B_KGS_Torso
+    2300018: B_KGS_Weapon
+    3300000: B_KGS_Arm_L
+    3300002: B_KGS_Arm_R
+    3300004: B_KGS_Head
+    3300006: B_KGS_Leg_L
+    3300008: B_KGS_Leg_R
+    3300010: B_KGS_MNTHead
+    3300012: B_KGS_MNTLeg
+    3300014: B_KGS_MNTTail
+    3300016: B_KGS_Torso
+    3300018: B_KGS_Weapon
+    4300000: 1_Knight:main_geo
+    4300002: 2_Knight:main_geo
+    4300004: 3_Knight:hair_geo
+    4300006: 4_Knight:pauldron_geo
+    4300008: 5_Knight:horse_geo
+    4300010: 6_Knight:horse_geo
+    4300012: 7_Knight:horse_hair_geo
+    4300014: 8_Knight:horse_hair_geo
+    4300016: 9_Knight:horse_armor_geo
+    4300018: 10_Knight:horse_armor_geo
+    4300020: 11_Knight:weapon_01_geo
+    4300022: 12_Knight:weapon_02_geo
+    4300024: 13_Knight:weapon_02_geo
+    4300026: 14_Knight:organs_geo
+    4300028: 15_Knight:skeleton_geo
+    4300030: 16_Knight:ride_organs_geo
+    4300032: 17_Knight:ride_skeleton_geo
+    4300034: 18_Knightmain_geo_LOD1
+    4300036: 19_Knightmain_geo_LOD1
+    4300038: 20_Knightmain_geo_LOD2
+    4300040: 21_Knightmain_geo_LOD2
+    4300042: 22_Knightmain_geo_LOD3
+    4300044: 23_Knightmain_geo_LOD3
+    4300046: 24_Knighthair_geo_LOD1
+    4300048: 25_Knighthair_geo_LOD2
+    4300050: 26_Knighthair_geo_LOD3
+    4300052: 27_Knightpauldron_geo_LOD1
+    4300054: 28_Knightpauldron_geo_LOD2
+    4300056: 29_Knightpauldron_geo_LOD3
+    4300058: 30_Knighthorse_geo_LOD1
+    4300060: 31_Knighthorse_geo_LOD1
+    4300062: 32_Knighthorse_geo_LOD2
+    4300064: 33_Knighthorse_geo_LOD2
+    4300066: 34_Knighthorse_geo_LOD3
+    4300068: 35_Knighthorse_geo_LOD3
+    4300070: 36_Knighthorse_hair_geo_LOD1
+    4300072: 37_Knighthorse_hair_geo_LOD1
+    4300074: 38_Knighthorse_hair_geo_LOD2
+    4300076: 39_Knighthorse_hair_geo_LOD2
+    4300078: 40_Knighthorse_hair_geo_LOD3
+    4300080: 41_Knighthorse_hair_geo_LOD3
+    4300082: 42_Knighthorse_armor_geo_LOD1
+    4300084: 43_Knighthorse_armor_geo_LOD1
+    4300086: 44_Knighthorse_armor_geo_LOD2
+    4300088: 45_Knighthorse_armor_geo_LOD2
+    4300090: 46_Knighthorse_armor_geo_LOD3
+    4300092: 47_Knighthorse_armor_geo_LOD3
+    4300094: 48_Knightweapon_01_geo_LOD1
+    4300096: 49_Knightweapon_01_geo_LOD2
+    4300098: 50_Knightweapon_01_geo_LOD3
+    4300100: 51_Knightweapon_02_geo_LOD1
+    4300102: 52_Knightweapon_02_geo_LOD1
+    4300104: 53_Knightweapon_02_geo_LOD2
+    4300106: 54_Knightweapon_02_geo_LOD2
+    4300108: 55_Knightweapon_02_geo_LOD3
+    4300110: 56_Knightweapon_02_geo_LOD3
+    4300112: 57_Knightorgans_geo_LOD1
+    4300114: 58_Knightorgans_geo_LOD2
+    4300116: 59_Knightorgans_geo_LOD3
+    4300118: 60_Knightskeleton_geo_LOD1
+    4300120: 61_Knightskeleton_geo_LOD2
+    4300122: 62_Knightskeleton_geo_LOD3
+    4300124: 63_Knightride_organs_geo_LOD1
+    4300126: 64_Knightride_organs_geo_LOD2
+    4300128: 65_Knightride_organs_geo_LOD3
+    4300130: 66_Knightride_skeleton_geo_LOD1
+    4300132: 67_Knightride_skeleton_geo_LOD2
+    4300134: 68_Knightride_skeleton_geo_LOD3
+    4300136: B_KGS_Weapon
+    4300138: B_KGS_MNTLeg
+    4300140: B_KGS_MNTHead
+    4300142: B_KGS_MNTTail
+    4300144: B_KGS_Torso
+    4300146: B_KGS_Head
+    4300148: B_KGS_Arm_L
+    4300150: B_KGS_Arm_R
+    4300152: B_KGS_Leg_L
+    4300154: B_KGS_Leg_R
+    7400000: Walk 1
+    7400002: Stand 1
+    7400004: Stand 2
+    7400006: Stand 3
+    7400008: Stand 4
+    7400010: Attack 1
+    7400012: Attack 2
+    7400014: Death 1
+    7400016: Decay Flesh
+    7400018: Stand Ready 1
+    7400020: Stand Victory 1
+    7400022: Decay Bone
+    7400024: Cinematic Stand 1
+    7400026: Cinematic Walk 1
+    7400028: Cinematic Point One
+    7400030: Cinematic Standard One
+    9500000: //RootNode
+    13700000: 10_Knight:horse_armor_geo
+    13700002: 11_Knight:weapon_01_geo
+    13700004: 12_Knight:weapon_02_geo
+    13700006: 13_Knight:weapon_02_geo
+    13700008: 14_Knight:organs_geo
+    13700010: 15_Knight:skeleton_geo
+    13700012: 16_Knight:ride_organs_geo
+    13700014: 17_Knight:ride_skeleton_geo
+    13700016: 18_Knightmain_geo_LOD1
+    13700018: 19_Knightmain_geo_LOD1
+    13700020: 1_Knight:main_geo
+    13700022: 20_Knightmain_geo_LOD2
+    13700024: 21_Knightmain_geo_LOD2
+    13700026: 22_Knightmain_geo_LOD3
+    13700028: 23_Knightmain_geo_LOD3
+    13700030: 24_Knighthair_geo_LOD1
+    13700032: 25_Knighthair_geo_LOD2
+    13700034: 26_Knighthair_geo_LOD3
+    13700036: 27_Knightpauldron_geo_LOD1
+    13700038: 28_Knightpauldron_geo_LOD2
+    13700040: 29_Knightpauldron_geo_LOD3
+    13700042: 2_Knight:main_geo
+    13700044: 30_Knighthorse_geo_LOD1
+    13700046: 31_Knighthorse_geo_LOD1
+    13700048: 32_Knighthorse_geo_LOD2
+    13700050: 33_Knighthorse_geo_LOD2
+    13700052: 34_Knighthorse_geo_LOD3
+    13700054: 35_Knighthorse_geo_LOD3
+    13700056: 36_Knighthorse_hair_geo_LOD1
+    13700058: 37_Knighthorse_hair_geo_LOD1
+    13700060: 38_Knighthorse_hair_geo_LOD2
+    13700062: 39_Knighthorse_hair_geo_LOD2
+    13700064: 3_Knight:hair_geo
+    13700066: 40_Knighthorse_hair_geo_LOD3
+    13700068: 41_Knighthorse_hair_geo_LOD3
+    13700070: 42_Knighthorse_armor_geo_LOD1
+    13700072: 43_Knighthorse_armor_geo_LOD1
+    13700074: 44_Knighthorse_armor_geo_LOD2
+    13700076: 45_Knighthorse_armor_geo_LOD2
+    13700078: 46_Knighthorse_armor_geo_LOD3
+    13700080: 47_Knighthorse_armor_geo_LOD3
+    13700082: 48_Knightweapon_01_geo_LOD1
+    13700084: 49_Knightweapon_01_geo_LOD2
+    13700086: 4_Knight:pauldron_geo
+    13700088: 50_Knightweapon_01_geo_LOD3
+    13700090: 51_Knightweapon_02_geo_LOD1
+    13700092: 52_Knightweapon_02_geo_LOD1
+    13700094: 53_Knightweapon_02_geo_LOD2
+    13700096: 54_Knightweapon_02_geo_LOD2
+    13700098: 55_Knightweapon_02_geo_LOD3
+    13700100: 56_Knightweapon_02_geo_LOD3
+    13700102: 57_Knightorgans_geo_LOD1
+    13700104: 58_Knightorgans_geo_LOD2
+    13700106: 59_Knightorgans_geo_LOD3
+    13700108: 5_Knight:horse_geo
+    13700110: 60_Knightskeleton_geo_LOD1
+    13700112: 61_Knightskeleton_geo_LOD2
+    13700114: 62_Knightskeleton_geo_LOD3
+    13700116: 63_Knightride_organs_geo_LOD1
+    13700118: 64_Knightride_organs_geo_LOD2
+    13700120: 65_Knightride_organs_geo_LOD3
+    13700122: 66_Knightride_skeleton_geo_LOD1
+    13700124: 67_Knightride_skeleton_geo_LOD2
+    13700126: 68_Knightride_skeleton_geo_LOD3
+    13700128: 6_Knight:horse_geo
+    13700130: 7_Knight:horse_hair_geo
+    13700132: 8_Knight:horse_hair_geo
+    13700134: 9_Knight:horse_armor_geo
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk 1
+      takeName: 
+      firstFrame: 10
+      lastFrame: 27
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand 1
+      takeName: 
+      firstFrame: 28
+      lastFrame: 113
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand 2
+      takeName: 
+      firstFrame: 114
+      lastFrame: 199
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand 3
+      takeName: 
+      firstFrame: 200
+      lastFrame: 255
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand 4
+      takeName: 
+      firstFrame: 256
+      lastFrame: 341
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack 1
+      takeName: 
+      firstFrame: 342
+      lastFrame: 375
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack 2
+      takeName: 
+      firstFrame: 376
+      lastFrame: 408
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death 1
+      takeName: 
+      firstFrame: 409
+      lastFrame: 562
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Decay Flesh
+      takeName: 
+      firstFrame: 563
+      lastFrame: 2363
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Ready 1
+      takeName: 
+      firstFrame: 2364
+      lastFrame: 2449
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand Victory 1
+      takeName: 
+      firstFrame: 2450
+      lastFrame: 2511
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Decay Bone
+      takeName: 
+      firstFrame: 2512
+      lastFrame: 4312
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Cinematic Stand 1
+      takeName: 
+      firstFrame: 4313
+      lastFrame: 4398
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Cinematic Walk 1
+      takeName: 
+      firstFrame: 4399
+      lastFrame: 4431
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Cinematic Point One
+      takeName: 
+      firstFrame: 4432
+      lastFrame: 4491
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Cinematic Standard One
+      takeName: 
+      firstFrame: 4492
+      lastFrame: 4691
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 45
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
