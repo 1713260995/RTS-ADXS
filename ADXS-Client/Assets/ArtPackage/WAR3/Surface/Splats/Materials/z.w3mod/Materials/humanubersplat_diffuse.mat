@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: humanubersplat_diffuse
+  m_Shader: {fileID: 4800000, guid: c807c16855e4ab4488f32f221f3badcc, type: 3}
+  m_ShaderKeywords: _AO_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpsMap:
+        m_Texture: {fileID: 2800000, guid: bcc95fed06bf42742a8c0242d2e7b073, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 3b6750021a0e72c40a880818595ae0d8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularMap:
+        m_Texture: {fileID: 2800000, guid: fd886a8b039d29e47bd7952be9501b81, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AMetallicInstensity: 1
+    - _AO: 1
+    - _ASmoothInstensity: 0.5
+    - _BMetallicInstensity: 1
+    - _BSmoothInstensity: 0.5
+    - _Cutoff: 0.5
+    - _NoneNormal: 0
+    - _OnlyNormal: 0
+    - _SmoothOffset: 0.8
+    - __dirty: 0
+    m_Colors:
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ReColor: {r: 1, g: 1, b: 1, a: 1}
