@@ -1,0 +1,301 @@
+fileFormatVersion: 2
+guid: b4c1e740c79ab7b4da9d0677e7ebdef8
+timeCreated: 1583739949
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 1_human_farm_rig:main_geo
+    100002: 2_human_farm_rigmain_geo_LOD1
+    100004: 3_human_farm_rigmain_geo_LOD2
+    100006: 4_human_farm_rigmain_geo_LOD3
+    100008: B_KGS_BoxCol_0
+    100010: Farm
+    100012: //RootNode
+    100014: Farm_Smoke
+    100016: FarmBirth BirthLink
+    100018: FarmDeath DeathLink
+    100020: HUBuildingDeath_Small
+    100022: HumanBuildingBirth_Small
+    100024: lamp_bind_jnt
+    100026: Origin Ref
+    100028: OverHead Ref
+    100030: PIVOT - B_KGS_BoxCol_0
+    100032: PIVOT - Farm_Smoke
+    100034: PIVOT - FarmBirth BirthLink
+    100036: PIVOT - FarmDeath DeathLink
+    100038: PIVOT - HUBuildingDeath_Small
+    100040: PIVOT - HumanBuildingBirth_Small
+    100042: PIVOT - lamp_bind_jnt
+    100044: PIVOT - Origin Ref
+    100046: PIVOT - OverHead Ref
+    100048: PIVOT - root_bind_jnt
+    100050: PIVOT - SNDxDFAM
+    100052: PIVOT - SNDxDHLS
+    100054: PIVOT - SPNxHDFA
+    100056: PIVOT - Sprite First Ref
+    100058: PIVOT - Sprite RallyPoint Ref
+    100060: PIVOT - Sprite Second Ref
+    100062: PIVOT - UBRxDHSB
+    100064: Portrait_Camera.Target.1
+    100066: Portrait_Camera1
+    100068: root_bind_jnt
+    100070: SNDxDFAM
+    100072: SNDxDHLS
+    100074: SPNxHDFA
+    100076: Sprite First Ref
+    100078: Sprite RallyPoint Ref
+    100080: Sprite Second Ref
+    100082: UBRxDHSB
+    400000: 1_human_farm_rig:main_geo
+    400002: 2_human_farm_rigmain_geo_LOD1
+    400004: 3_human_farm_rigmain_geo_LOD2
+    400006: 4_human_farm_rigmain_geo_LOD3
+    400008: B_KGS_BoxCol_0
+    400010: Farm
+    400012: //RootNode
+    400014: Farm_Smoke
+    400016: FarmBirth BirthLink
+    400018: FarmDeath DeathLink
+    400020: HUBuildingDeath_Small
+    400022: HumanBuildingBirth_Small
+    400024: lamp_bind_jnt
+    400026: Origin Ref
+    400028: OverHead Ref
+    400030: PIVOT - B_KGS_BoxCol_0
+    400032: PIVOT - Farm_Smoke
+    400034: PIVOT - FarmBirth BirthLink
+    400036: PIVOT - FarmDeath DeathLink
+    400038: PIVOT - HUBuildingDeath_Small
+    400040: PIVOT - HumanBuildingBirth_Small
+    400042: PIVOT - lamp_bind_jnt
+    400044: PIVOT - Origin Ref
+    400046: PIVOT - OverHead Ref
+    400048: PIVOT - root_bind_jnt
+    400050: PIVOT - SNDxDFAM
+    400052: PIVOT - SNDxDHLS
+    400054: PIVOT - SPNxHDFA
+    400056: PIVOT - Sprite First Ref
+    400058: PIVOT - Sprite RallyPoint Ref
+    400060: PIVOT - Sprite Second Ref
+    400062: PIVOT - UBRxDHSB
+    400064: Portrait_Camera.Target.1
+    400066: Portrait_Camera1
+    400068: root_bind_jnt
+    400070: SNDxDFAM
+    400072: SNDxDHLS
+    400074: SPNxHDFA
+    400076: Sprite First Ref
+    400078: Sprite RallyPoint Ref
+    400080: Sprite Second Ref
+    400082: UBRxDHSB
+    2000000: Portrait_Camera1
+    2100000: No Name
+    2300000: B_KGS_BoxCol_0
+    3300000: B_KGS_BoxCol_0
+    4300000: 1_human_farm_rig:main_geo
+    4300002: 2_human_farm_rigmain_geo_LOD1
+    4300004: 3_human_farm_rigmain_geo_LOD2
+    4300006: 4_human_farm_rigmain_geo_LOD3
+    4300008: B_KGS_BoxCol_0
+    7400000: Birth
+    7400002: Stand 1
+    7400004: Death 1
+    7400006: Decay
+    9500000: //RootNode
+    13700000: 1_human_farm_rig:main_geo
+    13700002: 2_human_farm_rigmain_geo_LOD1
+    13700004: 3_human_farm_rigmain_geo_LOD2
+    13700006: 4_human_farm_rigmain_geo_LOD3
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Birth
+      takeName: 
+      firstFrame: 10
+      lastFrame: 1810
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stand 1
+      takeName: 
+      firstFrame: 1811
+      lastFrame: 2111
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death 1
+      takeName: 
+      firstFrame: 2112
+      lastFrame: 2162
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Decay
+      takeName: 
+      firstFrame: 2163
+      lastFrame: 3963
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.2
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 46
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
