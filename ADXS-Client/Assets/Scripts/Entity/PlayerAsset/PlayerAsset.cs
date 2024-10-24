@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Entity
 {
-    public class GameResources
+    public class PlayerAsset
     {
         // 资源属性
         public int gold { get; private set; }

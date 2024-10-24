@@ -8,14 +8,14 @@ namespace Assets.Scripts.Entity
 {
     public class Room
     {
-        public int id { get; set; }
+        public string id { get; set; }
 
         public string homeowner { get; set; }
 
 
         public Room()
         {
-            id = Guid.NewGuid().GetHashCode();
+            id = Guid.NewGuid().ToString();
         }
     }
 
