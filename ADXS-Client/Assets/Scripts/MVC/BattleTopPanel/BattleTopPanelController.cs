@@ -10,7 +10,7 @@ namespace Assets.Scripts.UI.Top
     public class BattleTopPanelController
     {
         public BattleTopPanelView view { get; private set; }
-        public PlayerAsset gameResources { get; private set; }
+        public GameResource gameResources { get; private set; }
 
         public BattleTopPanelModel model { get; private set; }
 
@@ -18,7 +18,7 @@ namespace Assets.Scripts.UI.Top
         public BattleTopPanelController(BattleTopPanelView _view)
         {
             view = _view;
-            gameResources = new PlayerAsset();
+            gameResources = new GameResource();
             InitBtnEvent();
             RefreshGameResources();
         }
