@@ -11,19 +11,16 @@ namespace Assets.Scripts.Modules.Role
     {
         public string id { get; set; }
         public RoleType roleType { get; set; }
-        public RoleAttributesBase attributes { get; set; }
-        public RoleStateBase state { get; set; }
-        public List<BuffBase> buffs { get; set; }
+        public RoleAttributesBase attributesBase { get; set; }
+        public RoleStateBase stateBase { get; set; }
+        public List<BuffBase> buffsB { get; set; }
 
         public RoleBase()
         {
             id = Guid.NewGuid().ToString();
         }
 
-        public void CreateRole()
-        {
 
-        }
 
     }
 }

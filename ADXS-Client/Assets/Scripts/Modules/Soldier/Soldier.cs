@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Modules.Soldier
 {
+    /// <summary>
+    /// 士兵
+    /// </summary>
     public class Soldier : RoleBase
     {
     }
