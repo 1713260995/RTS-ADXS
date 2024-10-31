@@ -12,14 +12,17 @@ namespace BehaviorDesigner.Runtime.Tasks
         public SharedBool logError;
         [Tooltip("Should the time be included in the log message?")]
         public SharedBool logTime;
-        
+
         public override TaskStatus OnUpdate()
         {
             // Log the text and return success
-            if (logError.Value) {
+            if (logError.Value)
+            {
                 Debug.LogError(logTime.Value ? string.Format("{0}: {1}", Time.time, text) : text);
-            } else {
-                Debug.Log(logTime.Value ? string.Format("{0}: {1}",Time.time, text) : text);
+            }
+            else
+            {
+                Debug.Log(logTime.Value ? string.Format("{0}: {1}", Time.time, text) : text);
             }
             return TaskStatus.Success;
         }

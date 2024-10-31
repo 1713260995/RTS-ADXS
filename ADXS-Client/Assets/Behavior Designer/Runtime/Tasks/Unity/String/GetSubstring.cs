@@ -16,9 +16,12 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityString
 
         public override TaskStatus OnUpdate()
         {
-            if (length.Value != -1) {
+            if (length.Value != -1)
+            {
                 storeResult.Value = targetString.Value.Substring(startIndex.Value, length.Value);
-            } else {
+            }
+            else
+            {
                 storeResult.Value = targetString.Value.Substring(startIndex.Value);
             }
             return TaskStatus.Success;

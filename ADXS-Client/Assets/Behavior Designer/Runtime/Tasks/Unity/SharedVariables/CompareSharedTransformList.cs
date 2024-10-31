@@ -18,8 +18,10 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.SharedVariables
             if (variable.Value.Count != compareTo.Value.Count)
                 return TaskStatus.Failure;
 
-            for (int i = 0; i < variable.Value.Count; ++i) {
-                if (variable.Value[i] != compareTo.Value[i]) {
+            for (int i = 0; i < variable.Value.Count; ++i)
+            {
+                if (variable.Value[i] != compareTo.Value[i])
+                {
                     return TaskStatus.Failure;
                 }
             }

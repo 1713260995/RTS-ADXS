@@ -22,7 +22,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityVector2
 
         public override void OnReset()
         {
-            firstVector2 = Vector2.zero; 
+            firstVector2 = Vector2.zero;
             secondVector2 = Vector2.zero;
             storeResult = 0;
         }

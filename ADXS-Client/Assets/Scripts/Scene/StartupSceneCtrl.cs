@@ -5,7 +5,6 @@ using Assets.Scripts.Manager;
 using Assets.Scripts.Modules.User;
 using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Scene
 {

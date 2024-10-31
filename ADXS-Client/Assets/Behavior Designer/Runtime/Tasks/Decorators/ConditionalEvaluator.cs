@@ -20,7 +20,8 @@ namespace BehaviorDesigner.Runtime.Tasks
 
         public override void OnAwake()
         {
-            if (conditionalTask != null) {
+            if (conditionalTask != null)
+            {
                 conditionalTask.Owner = Owner;
                 conditionalTask.GameObject = gameObject;
                 conditionalTask.Transform = transform;
@@ -30,7 +31,8 @@ namespace BehaviorDesigner.Runtime.Tasks
 
         public override void OnStart()
         {
-            if (conditionalTask != null) {
+            if (conditionalTask != null)
+            {
                 conditionalTask.OnStart();
             }
         }
@@ -38,12 +40,14 @@ namespace BehaviorDesigner.Runtime.Tasks
         public override bool CanExecute()
         {
             // CanExecute is called when checking the condition within a while loop so it will be called at least twice. Ensure the conditional task is checked only once
-            if (checkConditionalTask) {
+            if (checkConditionalTask)
+            {
                 checkConditionalTask = false;
                 OnUpdate();
             }
 
-            if (conditionalTaskFailed) {
+            if (conditionalTaskFailed)
+            {
                 return false;
             }
             return executionStatus == TaskStatus.Inactive || executionStatus == TaskStatus.Running;
@@ -87,14 +91,16 @@ namespace BehaviorDesigner.Runtime.Tasks
             executionStatus = TaskStatus.Inactive;
             checkConditionalTask = true;
             conditionalTaskFailed = false;
-            if (conditionalTask != null) {
+            if (conditionalTask != null)
+            {
                 conditionalTask.OnEnd();
             }
         }
 
         public override string OnDrawNodeText()
         {
-            if (conditionalTask == null || !graphLabel) {
+            if (conditionalTask == null || !graphLabel)
+            {
                 return string.Empty;
             }
 

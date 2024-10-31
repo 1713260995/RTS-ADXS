@@ -1,6 +1,5 @@
 ﻿using Assets.GameClientLib.Utils.Singleton;
 using Assets.Scripts.Modules.User;
-using System;
 
 namespace Assets.Scripts.Manager
 {

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject
+﻿namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject
 {
     [TaskCategory("Unity/GameObject")]
     [TaskDescription("Sends a message to the target GameObject. Returns Success.")]
@@ -15,9 +13,12 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject
 
         public override TaskStatus OnUpdate()
         {
-            if (value.Value != null) {
+            if (value.Value != null)
+            {
                 GetDefaultGameObject(targetGameObject.Value).SendMessage(message.Value, value.Value.value.GetValue());
-            } else {
+            }
+            else
+            {
                 GetDefaultGameObject(targetGameObject.Value).SendMessage(message.Value);
             }
 

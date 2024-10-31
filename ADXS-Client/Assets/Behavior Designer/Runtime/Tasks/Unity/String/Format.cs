@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityString
 {
@@ -24,13 +24,17 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityString
 
         public override TaskStatus OnUpdate()
         {
-            for (int i = 0; i < variableValues.Length; ++i) {
+            for (int i = 0; i < variableValues.Length; ++i)
+            {
                 variableValues[i] = variables[i].Value.value.GetValue();
             }
 
-            try {
+            try
+            {
                 storeResult.Value = string.Format(format.Value, variableValues);
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogError(e.Message);
                 return TaskStatus.Failure;
             }

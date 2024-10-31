@@ -17,7 +17,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnitySphereCollider
         public override void OnStart()
         {
             var currentGameObject = GetDefaultGameObject(targetGameObject.Value);
-            if (currentGameObject != prevGameObject) {
+            if (currentGameObject != prevGameObject)
+            {
                 sphereCollider = currentGameObject.GetComponent<SphereCollider>();
                 prevGameObject = currentGameObject;
             }
@@ -25,7 +26,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnitySphereCollider
 
         public override TaskStatus OnUpdate()
         {
-            if (sphereCollider == null) {
+            if (sphereCollider == null)
+            {
                 Debug.LogWarning("SphereCollider is null");
                 return TaskStatus.Failure;
             }

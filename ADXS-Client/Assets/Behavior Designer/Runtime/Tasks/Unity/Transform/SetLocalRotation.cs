@@ -17,7 +17,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform
         public override void OnStart()
         {
             var currentGameObject = GetDefaultGameObject(targetGameObject.Value);
-            if (currentGameObject != prevGameObject) {
+            if (currentGameObject != prevGameObject)
+            {
                 targetTransform = currentGameObject.GetComponent<Transform>();
                 prevGameObject = currentGameObject;
             }
@@ -25,7 +26,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform
 
         public override TaskStatus OnUpdate()
         {
-            if (targetTransform == null) {
+            if (targetTransform == null)
+            {
                 Debug.LogWarning("Transform is null");
                 return TaskStatus.Failure;
             }

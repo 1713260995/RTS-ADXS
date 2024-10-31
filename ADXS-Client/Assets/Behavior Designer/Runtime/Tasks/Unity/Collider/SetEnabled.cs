@@ -13,7 +13,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.Collider
 
         public override TaskStatus OnUpdate()
         {
-            if (specifiedCollider == null) {
+            if (specifiedCollider == null)
+            {
                 Debug.LogWarning("SpecifiedCollider is null");
                 return TaskStatus.Failure;
             }

@@ -2,11 +2,11 @@
 using Assets.GameClientLib.Scripts.Config;
 using Assets.GameClientLib.Scripts.Config.SO;
 using Assets.GameClientLib.Scripts.Utils.Singleton;
-using Assets.Scripts.NetWork;
-using System;
-using Cysharp.Threading.Tasks;
 using Assets.GameClientLib.Utils.Json;
+using Assets.Scripts.NetWork;
+using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
+using System;
 using UnityEngine;
 
 namespace Assets.GameClientLib.Scripts.Game

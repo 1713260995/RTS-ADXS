@@ -3,7 +3,6 @@ using Assets.GameClientLib.Scripts.Event;
 using Assets.GameClientLib.Scripts.Network.Base;
 using Assets.GameClientLib.Scripts.Network.Message;
 using Assets.GameClientLib.Scripts.Network.Udp;
-using GameNetLib.NetWork;
 
 namespace Assets.Scripts.NetWork
 {

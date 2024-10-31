@@ -24,7 +24,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimation
         public override void OnStart()
         {
             var currentGameObject = GetDefaultGameObject(targetGameObject.Value);
-            if (currentGameObject != prevGameObject) {
+            if (currentGameObject != prevGameObject)
+            {
                 animation = currentGameObject.GetComponent<Animation>();
                 prevGameObject = currentGameObject;
             }
@@ -32,13 +33,15 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimation
 
         public override TaskStatus OnUpdate()
         {
-            if (animation == null) {
+            if (animation == null)
+            {
                 Debug.LogWarning("Animation is null");
                 return TaskStatus.Failure;
             }
 
             animation[animationName.Value].speed = animationSpeed.Value;
-            if (animation[animationName.Value].speed < 0) {
+            if (animation[animationName.Value].speed < 0)
+            {
                 animation[animationName.Value].time = animation[animationName.Value].length;
             }
             animation.CrossFade(animationName.Value, fadeLength.Value, playMode);

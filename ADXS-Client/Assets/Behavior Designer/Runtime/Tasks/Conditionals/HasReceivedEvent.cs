@@ -22,7 +22,8 @@ namespace BehaviorDesigner.Runtime.Tasks
         public override void OnStart()
         {
             // Let the behavior tree know that we are interested in receiving the event specified
-            if (!registered) {
+            if (!registered)
+            {
                 Owner.RegisterEvent(eventName.Value, ReceivedEvent);
                 Owner.RegisterEvent<object>(eventName.Value, ReceivedEvent);
                 Owner.RegisterEvent<object, object>(eventName.Value, ReceivedEvent);
@@ -38,7 +39,8 @@ namespace BehaviorDesigner.Runtime.Tasks
 
         public override void OnEnd()
         {
-            if (eventReceived) {
+            if (eventReceived)
+            {
                 Owner.UnregisterEvent(eventName.Value, ReceivedEvent);
                 Owner.UnregisterEvent<object>(eventName.Value, ReceivedEvent);
                 Owner.UnregisterEvent<object, object>(eventName.Value, ReceivedEvent);
@@ -57,7 +59,8 @@ namespace BehaviorDesigner.Runtime.Tasks
         {
             ReceivedEvent();
 
-            if (storedValue1 != null && !storedValue1.IsNone) {
+            if (storedValue1 != null && !storedValue1.IsNone)
+            {
                 storedValue1.SetValue(arg1);
             }
         }
@@ -66,11 +69,13 @@ namespace BehaviorDesigner.Runtime.Tasks
         {
             ReceivedEvent();
 
-            if (storedValue1 != null && !storedValue1.IsNone) {
+            if (storedValue1 != null && !storedValue1.IsNone)
+            {
                 storedValue1.SetValue(arg1);
             }
 
-            if (storedValue2 != null && !storedValue2.IsNone) {
+            if (storedValue2 != null && !storedValue2.IsNone)
+            {
                 storedValue2.SetValue(arg2);
             }
         }
@@ -79,15 +84,18 @@ namespace BehaviorDesigner.Runtime.Tasks
         {
             ReceivedEvent();
 
-            if (storedValue1 != null && !storedValue1.IsNone) {
+            if (storedValue1 != null && !storedValue1.IsNone)
+            {
                 storedValue1.SetValue(arg1);
             }
 
-            if (storedValue2 != null && !storedValue2.IsNone) {
+            if (storedValue2 != null && !storedValue2.IsNone)
+            {
                 storedValue2.SetValue(arg2);
             }
 
-            if (storedValue3 != null && !storedValue3.IsNone) {
+            if (storedValue3 != null && !storedValue3.IsNone)
+            {
                 storedValue3.SetValue(arg3);
             }
         }

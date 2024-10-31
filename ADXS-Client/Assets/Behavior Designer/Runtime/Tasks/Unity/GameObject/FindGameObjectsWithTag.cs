@@ -16,7 +16,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject
         {
             storeValue.Value.Clear();
             var gameObjects = GameObject.FindGameObjectsWithTag(tag.Value);
-            for (int i = 0; i < gameObjects.Length; ++i) {
+            for (int i = 0; i < gameObjects.Length; ++i)
+            {
                 storeValue.Value.Add(gameObjects[i]);
             }
 

@@ -23,7 +23,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.Math
 
         public override TaskStatus OnUpdate()
         {
-            switch (operation) {
+            switch (operation)
+            {
                 case Operation.AND:
                     storeResult.Value = bool1.Value && bool2.Value;
                     break;

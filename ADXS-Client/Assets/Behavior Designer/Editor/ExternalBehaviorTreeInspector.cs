@@ -1,6 +1,5 @@
-using UnityEngine;
-using UnityEditor;
 using BehaviorDesigner.Runtime;
+using UnityEditor;
 
 namespace BehaviorDesigner.Editor
 {

@@ -14,7 +14,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityBehaviour
 
         public override TaskStatus OnUpdate()
         {
-            if (specifiedObject == null) {
+            if (specifiedObject == null)
+            {
                 Debug.LogWarning("SpecifiedObject is null");
                 return TaskStatus.Failure;
             }

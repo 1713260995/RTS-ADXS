@@ -14,7 +14,8 @@ namespace BehaviorDesigner.Runtime.Tasks
 
         public override bool CanExecute()
         {
-            if (cooldownTime == -1) {
+            if (cooldownTime == -1)
+            {
                 return true;
             }
 
@@ -23,7 +24,8 @@ namespace BehaviorDesigner.Runtime.Tasks
 
         public override int CurrentChildIndex()
         {
-            if (cooldownTime == -1) {
+            if (cooldownTime == -1)
+            {
                 return 0;
             }
             return -1;
@@ -32,14 +34,16 @@ namespace BehaviorDesigner.Runtime.Tasks
         public override void OnChildExecuted(TaskStatus childStatus)
         {
             executionStatus = childStatus;
-            if (executionStatus == TaskStatus.Failure || executionStatus == TaskStatus.Success) {
+            if (executionStatus == TaskStatus.Failure || executionStatus == TaskStatus.Success)
+            {
                 cooldownTime = Time.time;
             }
         }
 
         public override TaskStatus OverrideStatus()
         {
-            if (!CanExecute()) {
+            if (!CanExecute())
+            {
                 return TaskStatus.Running;
             }
             return executionStatus;
@@ -47,7 +51,8 @@ namespace BehaviorDesigner.Runtime.Tasks
 
         public override TaskStatus OverrideStatus(TaskStatus status)
         {
-            if (status == TaskStatus.Running) {
+            if (status == TaskStatus.Running)
+            {
                 return status;
             }
             return executionStatus;

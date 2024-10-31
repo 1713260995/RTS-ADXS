@@ -31,12 +31,14 @@
         public override bool CanExecute()
         {
             // We can continue to execuate as long as we have children that haven't been executed and no child has returned success.
-            if (executionStatus == TaskStatus.Success || executionStatus == TaskStatus.Running) {
+            if (executionStatus == TaskStatus.Success || executionStatus == TaskStatus.Running)
+            {
                 return false;
             }
 
             // Used the storedCurrentChildIndex if reevaluating, otherwise the currentChildIndex
-            if (storedCurrentChildIndex != -1) {
+            if (storedCurrentChildIndex != -1)
+            {
                 return currentChildIndex < storedCurrentChildIndex - 1;
             }
             return currentChildIndex < children.Count;
@@ -45,12 +47,14 @@
         public override void OnChildExecuted(int childIndex, TaskStatus childStatus)
         {
             // A disabled task is the equivalent of the task failing for a selector evaluator.
-            if (childStatus == TaskStatus.Inactive && children[childIndex].Disabled) {
+            if (childStatus == TaskStatus.Inactive && children[childIndex].Disabled)
+            {
                 executionStatus = TaskStatus.Failure;
             }
             // The child status will be inactive immediately following an abort from OnReevaluationEnded. The status will be running if the 
             // child task is interrupted. Ignore the status for both of these. 
-            if (childStatus != TaskStatus.Inactive && childStatus != TaskStatus.Running) {
+            if (childStatus != TaskStatus.Inactive && childStatus != TaskStatus.Running)
+            {
                 executionStatus = childStatus;
             }
         }
@@ -91,7 +95,8 @@
         public override bool OnReevaluationStarted()
         {
             // Cannot reevaluate if the task hasn't even started yet
-            if (executionStatus == TaskStatus.Inactive) {
+            if (executionStatus == TaskStatus.Inactive)
+            {
                 return false;
             }
 
@@ -107,9 +112,12 @@
         public override void OnReevaluationEnded(TaskStatus status)
         {
             // Interrupt the currently running index if a lower priority child returns a status of running or success.
-            if (executionStatus != TaskStatus.Failure && executionStatus != TaskStatus.Inactive) {
+            if (executionStatus != TaskStatus.Failure && executionStatus != TaskStatus.Inactive)
+            {
                 BehaviorManager.instance.Interrupt(Owner, children[storedCurrentChildIndex - 1], this, TaskStatus.Inactive);
-            } else {
+            }
+            else
+            {
                 // The lower priority children returned the same status so resume with the current child
                 currentChildIndex = storedCurrentChildIndex;
                 executionStatus = storedExecutionStatus;

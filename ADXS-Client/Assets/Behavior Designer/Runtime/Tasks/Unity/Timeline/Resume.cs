@@ -19,7 +19,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.Timeline
         public override void OnStart()
         {
             var currentGameObject = GetDefaultGameObject(targetGameObject.Value);
-            if (currentGameObject != prevGameObject) {
+            if (currentGameObject != prevGameObject)
+            {
                 playableDirector = currentGameObject.GetComponent<PlayableDirector>();
                 prevGameObject = currentGameObject;
             }
@@ -28,13 +29,16 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.Timeline
 
         public override TaskStatus OnUpdate()
         {
-            if (playableDirector == null) {
+            if (playableDirector == null)
+            {
                 Debug.LogWarning("PlayableDirector is null");
                 return TaskStatus.Failure;
             }
 
-            if (playbackStarted) {
-                if (stopWhenComplete.Value && playableDirector.state == PlayState.Playing) {
+            if (playbackStarted)
+            {
+                if (stopWhenComplete.Value && playableDirector.state == PlayState.Playing)
+                {
                     return TaskStatus.Running;
                 }
                 return TaskStatus.Success;
