@@ -4,18 +4,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.Modules
 {
-
-    public class GameUnit : MonoBehaviour
+    [Serializable]
+    public abstract class GameUnit
     {
-        public string id { get; set; }
+        public int unitId { get; set; }
+        public string unitName { get; set; }
         public GameUnitType unitType { get; set; }
-
-        public GameUnit()
-        {
-            id = Guid.NewGuid().ToString();
-        }
-
-
-
     }
 }

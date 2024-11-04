@@ -1,30 +1,27 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Modules.Role;
+using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    static int count;
-    // Start is called before the first frame update
-    void Start()
+
+    public int n1;
+    public int n2 { get; set; }
+    public int n3 { get; protected set; }
+    private int n4 { get; }
+    protected int n5 { get; }
+    [HideInInspector]
+    public int n6 { get; protected set; }
+    public RoleBase role { get; set; }
+
+
+    [ContextMenu("Print")]
+    public void Print()
     {
-        print("id:" + gameObject.GetInstanceID() + ",count=" + count++);
+        print(n1);
+        print(n2);
+        print(n3);
+        print(n4);
+        print(n5);
+        print(n6);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Destroy(gameObject);
-        }
-
-
-    }
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // print($"id={gameObject.GetInstanceID()},collision:" + LayerMask.LayerToName(collision.gameObject.layer));
-    }
-
-
 }

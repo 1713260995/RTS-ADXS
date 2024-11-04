@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Modules
+﻿using Assets.Scripts.Common.Enum;
+
+namespace Assets.Scripts.Modules
 {
 
     /// <summary>
@@ -6,6 +8,7 @@
     /// </summary>
     public class GoldMine : GameUnit
     {
+
     }
 
 }

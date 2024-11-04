@@ -3,17 +3,21 @@ using Assets.GameClientLib.Scripts.Config;
 using Assets.GameClientLib.Scripts.Config.SO;
 using Assets.GameClientLib.Scripts.Utils.Singleton;
 using Assets.GameClientLib.Utils.Json;
+using Assets.Scripts.Modules.Builder;
 using Assets.Scripts.NetWork;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.GameClientLib.Scripts.Game
 {
     public class GameManager : SingletonMono<GameManager>
     {
-        private event Action OnInitCompleted = null;
+        private event Action onInitCompleted;
+        private event Action onGameQuitEvent;
+
 
         [SerializeField]
         private InitConfigSO initSO;
@@ -26,12 +30,7 @@ namespace Assets.GameClientLib.Scripts.Game
 
         public void OnDestroy()
         {
-            ResourceSystem.Destroy();
-            if (initSO.networkConnectMode != NetworkConnectMode.SinglePlayer)
-            {
-                TcpManager.Instance.Destory();
-                UdpManager.Instance.Destory();
-            }
+            onGameQuitEvent?.Invoke();
         }
 
         #region Init
@@ -51,12 +50,17 @@ namespace Assets.GameClientLib.Scripts.Game
                 TcpManager.Instance.Init();
                 UdpManager.Instance.Init();
             }
-            OnInitCompleted?.Invoke();
+            onInitCompleted?.Invoke();
         }
 
         public void AddInitCompletedEvent(Action action)
         {
-            OnInitCompleted += action;
+            onInitCompleted += action;
+        }
+
+        public void AddGameQuitEvent(Action action)
+        {
+            onGameQuitEvent += action;
         }
 
         private void GlobalJsonSetting()

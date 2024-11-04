@@ -1,5 +1,6 @@
 ﻿using Assets.GameClientLib.Scripts.Config;
 using Assets.GameClientLib.Scripts.Event;
+using Assets.GameClientLib.Scripts.Game;
 using Assets.GameClientLib.Scripts.Network.Base;
 using Assets.GameClientLib.Scripts.Network.Message;
 using Assets.GameClientLib.Scripts.Network.Udp;
@@ -19,6 +20,7 @@ namespace Assets.Scripts.NetWork
             udpServer = new UdpServer(netConfig, messageHandler, eventSystem);
             server = udpServer;
             server.Start();
+            GameManager.Instance.AddGameQuitEvent(Destory);
             InitListenEvent();
         }
 

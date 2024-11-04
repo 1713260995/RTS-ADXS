@@ -3,5 +3,9 @@
     public enum GameUnitType
     {
         Unknow,
+        Role,
+        Building,
+        GoldMine,
+        Tree,
     }
 }
