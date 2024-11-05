@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using Assets.Scripts.Common.Enum;
 using System.Collections.Generic;
+using Assets.Scripts.MyAttribute;
 
 
 namespace Assets.Scripts.Factory
@@ -13,6 +14,18 @@ namespace Assets.Scripts.Factory
         public override RoleBase Create()
         {
             throw new NotImplementedException();
+        }
+
+        [ShowButton]
+        public void Print()
+        {
+            Debug.Log("hello");
+        }
+
+        [ShowButton]
+        public void Print2()
+        {
+            Debug.Log("hello2");
         }
     }
 }

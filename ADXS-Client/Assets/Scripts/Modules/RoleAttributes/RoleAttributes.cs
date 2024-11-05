@@ -2,15 +2,20 @@
 {
     public class RoleAttributes : GameUnitAttributes
     {
-        public float hp { get; set; }
-        public float maxHp { get; set; }
-        public float restoreHp { get; set; }
+        public float currentHP { get; set; }
+        public float maxHP { get; set; }
+        public float HPRestore { get; set; }//生命恢复
+        public float MP { get; set; }
+        public float maxMP { get; set; }
+        public float MPRestore { get; set; }//魔法恢复
         public float defense { get; set; }
-        public float mp { get; set; }
-        public float maxMp { get; set; }
-        public float mpRestore { get; set; }
-        public float attackSpeed { get; set; }
         public float attack { get; set; }
+        public float attackSpeed { get; set; }
         public float moveSpeed { get; set; }
+
+        public RoleAttributes()
+        {
+            isInvincible = false;
+        }
     }
 }

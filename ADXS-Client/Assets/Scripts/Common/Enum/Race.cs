@@ -1,5 +1,8 @@
 ﻿namespace Assets.Scripts.Common.Enum
 {
+    /// <summary>
+    /// 种族
+    /// </summary>
     public enum Race
     {
         Unknown,
