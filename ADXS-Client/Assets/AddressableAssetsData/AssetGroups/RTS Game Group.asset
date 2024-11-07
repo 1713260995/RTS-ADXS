@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: RTS Game Group
+  m_EditorClassIdentifier: 
+  m_GroupName: RTS Game Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c9dffb3ecefc9894b898bb82331fa271
+  m_SerializeEntries:
+  - m_GUID: 0b177d385d8565247b0c67868a87fccf
+    m_Address: Assets/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6adbb674da7d80344a4ed10e0bdc228d
+    m_Address: Assets/ScriptableObject
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7545a7529a14a3f41a0eab565c2e4208, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e4bf0232a1f5c1044bb7b81485cae140, type: 2}
+    - {fileID: 11400000, guid: 3a40e1d326e95d54bb3b7bf5be8e122d, type: 2}

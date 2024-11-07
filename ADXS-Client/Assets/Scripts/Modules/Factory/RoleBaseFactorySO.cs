@@ -1,31 +1,48 @@
 ﻿using Assets.Scripts.Modules.Role;
 using UnityEngine;
-using System;
 using Assets.Scripts.Common.Enum;
-using System.Collections.Generic;
-using Assets.Scripts.MyAttribute;
+using Assets.Scripts.Modules;
 
 
 namespace Assets.Scripts.Factory
 {
-    [CreateAssetMenu(fileName = "RoleFactory", menuName = "ScriptableObject/Factory/Role")]
-    public class RoleBaseFactorySO : GameUnitFactorySO<RoleBase>
+    [CreateAssetMenu(fileName = "NewRoleFactory", menuName = "ScriptableObject/Factory/Role")]
+    public class RoleBaseFactorySO : GameUnitFactorySO<RoleBaseCtrl, RoleBase>
     {
-        public override RoleBase Create()
+        public RoleType roleType;
+        public Race raceType;
+
+        public float maxHP;
+        public float HPRestore;//生命恢复
+        public float maxMP;
+        public float MPRestore;//魔法恢复
+        public float defense;
+        public float attack;
+        public float attackSpeed;
+        public float moveSpeed;
+
+
+        protected override RoleBase CreateEnity()
         {
-            throw new NotImplementedException();
+            RoleBase role = base.CreateEnity();
+            role.roleType = roleType;
+            role.raceType = raceType;
+            role.roleAttributes = CreateAttributes();
+            return role;
         }
 
-        [ShowButton]
-        public void Print()
+        protected RoleAttributes CreateAttributes()
         {
-            Debug.Log("hello");
-        }
-
-        [ShowButton]
-        public void Print2()
-        {
-            Debug.Log("hello2");
+            RoleAttributes model = new RoleAttributes();
+            model.maxMP = maxMP;
+            model.HPRestore = HPRestore;
+            model.maxMP = maxMP;
+            model.MPRestore = MPRestore;
+            model.defense = defense;
+            model.attack = attack;
+            model.attackSpeed = attackSpeed;
+            model.moveSpeed = moveSpeed;
+            return model;
         }
     }
 }

@@ -3,5 +3,5 @@
     /// <summary>
     /// 是否无敌
     /// </summary>
-    public bool isInvincible { get; set; }
+    public bool isInvincible;
 }

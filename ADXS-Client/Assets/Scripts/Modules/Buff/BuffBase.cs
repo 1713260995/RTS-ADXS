@@ -4,6 +4,6 @@
     public class BuffBase
     {
         public string id;
-        public string Name { get; set; }
+        public string name;
     }
 }

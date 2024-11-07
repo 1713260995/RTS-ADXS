@@ -5,7 +5,7 @@
         public float currentHP { get; set; }
         public float maxHP { get; set; }
         public float HPRestore { get; set; }//生命恢复
-        public float MP { get; set; }
+        public float currentMP { get; set; }
         public float maxMP { get; set; }
         public float MPRestore { get; set; }//魔法恢复
         public float defense { get; set; }

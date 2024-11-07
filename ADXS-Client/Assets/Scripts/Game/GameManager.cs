@@ -43,7 +43,6 @@ namespace Assets.GameClientLib.Scripts.Game
         public async UniTask Init()
         {
             GlobalJsonSetting();
-            ResourceSystem.Init(initSO.assetLoadMode);
             await GlobalConfig.Instance.Init(initSO);
             if (initSO.networkConnectMode != NetworkConnectMode.SinglePlayer)
             {

@@ -4,13 +4,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.Modules
 {
-    [ShowProperty(true)]
+    [Serializable]
     public abstract class GameUnit
     {
-        public int unitId { get; set; }
-        public string unitName { get; set; }
-        public GameUnitType unitType { get; set; }
-
-
+        public GameUnitName unitName;
+        public GameUnitType unitType;
     }
 }
