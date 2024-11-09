@@ -1,17 +1,20 @@
-﻿namespace Assets.Scripts.Modules
+﻿using System;
+
+namespace Assets.Scripts.Modules
 {
+    [Serializable]
     public class RoleAttributes : GameUnitAttributes
     {
-        public float currentHP { get; set; }
-        public float maxHP { get; set; }
-        public float HPRestore { get; set; }//生命恢复
-        public float currentMP { get; set; }
-        public float maxMP { get; set; }
-        public float MPRestore { get; set; }//魔法恢复
-        public float defense { get; set; }
-        public float attack { get; set; }
-        public float attackSpeed { get; set; }
-        public float moveSpeed { get; set; }
+        public float currentHP;
+        public float maxHP;
+        public float HPRestore;//生命恢复
+        public float currentMP;
+        public float maxMP;
+        public float MPRestore;//魔法恢复
+        public float defense;
+        public float attack;
+        public float attackSpeed;
+        public float moveSpeed;
 
         public RoleAttributes()
         {

@@ -1,8 +1,11 @@
-﻿namespace Assets.Scripts.Modules.Battle
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Modules.Battle
 {
 
-    public class BattleSystem
+    public class BattleSystem : MonoBehaviour
     {
+
 
     }
 }

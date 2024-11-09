@@ -470,7 +470,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4382750695025550}
   - component: {fileID: 95593263450661480}
-  - component: {fileID: -2851830437204506501}
   m_Layer: 0
   m_Name: peasant
   m_TagString: Untagged
@@ -721,23 +720,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-2851830437204506501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063493905589236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed16ee621aa5e7845a2ee0b91e71b966, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entity:
-    unitName: 0
-    unitType: 1
-    roleType: 0
-    raceType: 0
 --- !u!1 &1063892631929988
 GameObject:
   m_ObjectHideFlags: 0

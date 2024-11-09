@@ -21,11 +21,11 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   roleType: 1
   raceType: 1
-  maxHP: 0
-  HPRestore: 0
-  maxMP: 0
-  MPRestore: 0
-  defense: 0
-  attack: 0
-  attackSpeed: 0
-  moveSpeed: 0
+  maxHP: 312
+  HPRestore: 312
+  maxMP: 3123
+  MPRestore: 312
+  defense: 3
+  attack: 56
+  attackSpeed: 645
+  moveSpeed: 123

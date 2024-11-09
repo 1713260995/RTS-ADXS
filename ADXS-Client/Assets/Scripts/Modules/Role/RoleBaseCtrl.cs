@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RoleBaseCtrl : GameUnitCtrl
 {
-    public RoleBase entity;
+    public RoleBase roleEntity;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class RoleBaseCtrl : GameUnitCtrl
 
     public override void Init(GameUnit _gameUnit)
     {
-        base.Init(gameUnit);
-        entity = _gameUnit as RoleBase;
+        base.Init(_gameUnit);
+        roleEntity = _gameUnit as RoleBase;
     }
 }

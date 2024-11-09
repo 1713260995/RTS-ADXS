@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Scripts.Modules
 {
     [Serializable]
-    public abstract class GameUnit
+    public class GameUnit
     {
         public GameUnitName unitName;
         public GameUnitType unitType;
