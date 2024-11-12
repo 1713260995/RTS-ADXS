@@ -1,27 +1,38 @@
-﻿using Assets.Scripts.Modules.Role;
+﻿using Assets.Scripts.Common.Enum;
+using Assets.Scripts.Modules;
+using Assets.Scripts.Modules.Role;
+using Assets.Scripts.Modules.Spawn;
+using BehaviorDesigner.Runtime;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Test : MonoBehaviour
 {
 
-    public int n1;
-    public int n2 { get; set; }
-    public int n3 { get; protected set; }
-    private int n4 { get; }
-    protected int n5 { get; }
-    [HideInInspector]
-    public int n6 { get; protected set; }
-    public RoleBase role { get; set; }
+    public SpawnSystem spawnSystem;
+
+    private IObjectPool<GameRoleCtrl> objectPool;
+    public GameRoleCtrl role;
 
 
-    [ContextMenu("Print")]
-    public void Print()
+    [ShowButton]
+    public void CreateFarmer()
     {
-        print(n1);
-        print(n2);
-        print(n3);
-        print(n4);
-        print(n5);
-        print(n6);
+        objectPool = spawnSystem.GetUnitPool<GameRoleCtrl>(GameUnitName.Peasant);
+        role = objectPool.Get();
+    }
+
+
+    [ShowButton]
+    public void IdleToMove()
+    {
+        role.stateMachine.TryTrigger(StateName.Idle, StateName.Move).Forget();
+    }
+
+    [ShowButton]
+    public void MoveToIdle()
+    {
+        role.stateMachine.TryTrigger(StateName.Move, StateName.Idle).Forget();
     }
 }

@@ -5,10 +5,11 @@ public class GameUnitCtrl : MonoBehaviour
 {
     public GameUnit unitEnity;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame

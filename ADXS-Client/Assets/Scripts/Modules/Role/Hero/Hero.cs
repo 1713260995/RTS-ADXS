@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Modules.Hero
 {
-    public class Hero : RoleBase
+    public class Hero : GameRole
     {
 
     }

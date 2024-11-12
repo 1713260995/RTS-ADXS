@@ -3,7 +3,7 @@
 namespace Assets.Scripts.Modules
 {
     [Serializable]
-    public class RoleAttributes : GameUnitAttributes
+    public class RoleAttributes : UnitAttributes
     {
         public float currentHP;
         public float maxHP;

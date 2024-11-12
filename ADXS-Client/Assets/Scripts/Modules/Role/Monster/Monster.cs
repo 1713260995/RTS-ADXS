@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Modules.Monster
 {
-    public class Monster : RoleBase
+    public class Monster : GameRole
     {
     }
 }

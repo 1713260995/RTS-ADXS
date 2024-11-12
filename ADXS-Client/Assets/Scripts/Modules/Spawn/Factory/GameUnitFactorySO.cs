@@ -25,8 +25,6 @@ namespace Assets.Scripts.Modules.Role
             LoadPrebfab();
         }
 
-
-
         private void OnDisable()
         {
             prefab = null;
@@ -37,12 +35,12 @@ namespace Assets.Scripts.Modules.Role
             LoadPrebfab();
             GameObject obj = Instantiate(prefab);
             TCtrl ctrl = obj.AddComponent<TCtrl>();
-            GameUnit entity = CreateEnity();
+            GameUnit entity = CreateEnity(ctrl);
             ctrl.Init(entity);
             return ctrl;
         }
 
-        protected virtual TEnity CreateEnity()
+        protected virtual TEnity CreateEnity(TCtrl _ctrl)
         {
             TEnity entity = new TEnity();
             entity.unitName = unitName;

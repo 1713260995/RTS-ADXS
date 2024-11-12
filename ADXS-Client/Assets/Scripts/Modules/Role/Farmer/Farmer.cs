@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Modules
 {
-    public class Farmer : RoleBase
+    public class Farmer : GameRole
     {
 
     }

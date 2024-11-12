@@ -9,30 +9,18 @@ using UnityEngine.Pool;
 
 namespace Assets.Scripts.Modules.Spawn
 {
-    public enum SpwanWay
-    {
-        Pool,
-        Factory
-    }
-    public interface ISpwanUnit
-    {
-        GameUnitName spwanUnit { get; }
-    }
-
     public class SpawnSystem : MonoBehaviour
     {
-
         private Dictionary<GameUnitName, ISpwanUnit> spawnDic;
 
-        public List<AssetReference> assetReferenceList;
-
+        [SerializeField]
+        private List<AssetReference> assetReferenceList;
 
         private void Awake()
         {
             spawnDic = new Dictionary<GameUnitName, ISpwanUnit>();
             Init();
         }
-
 
         public void Init()
         {
@@ -49,23 +37,6 @@ namespace Assets.Scripts.Modules.Spawn
                     throw new ArgumentException("AssetReference is error");
                 }
             }
-        }
-
-
-        [ShowButton]
-        public IFactory<GameUnitCtrl> GetUnitFactory()
-        {
-            var f = GetUnitFactory<RoleBaseCtrl>(GameUnitName.MountainKing);
-            f.Create();
-            return null;
-        }
-
-        [ShowButton]
-        public IObjectPool<GameUnitCtrl> GetUnitPool()
-        {
-            var f = GetUnitPool<RoleBaseCtrl>(GameUnitName.Peasant);
-            f.Get();
-            return null;
         }
 
         public IFactory<TCtrl> GetUnitFactory<TCtrl>(GameUnitName unitName) where TCtrl : GameUnitCtrl

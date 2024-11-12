@@ -5,7 +5,7 @@ namespace Assets.Scripts.Modules.Soldier
     /// <summary>
     /// 士兵
     /// </summary>
-    public class Soldier : RoleBase
+    public class Soldier : GameRole
     {
     }
 }

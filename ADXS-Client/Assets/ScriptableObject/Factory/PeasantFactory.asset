@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb4a9d9148e0aa14689c8a7bd2c43294, type: 3}
+  m_Script: {fileID: 11500000, guid: 2977b8beb7976fe44a4057f8364ab98a, type: 3}
   m_Name: PeasantFactory
   m_EditorClassIdentifier: 
   unitName: 1
@@ -21,11 +21,11 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   roleType: 1
   raceType: 1
-  maxHP: 312
-  HPRestore: 312
-  maxMP: 3123
-  MPRestore: 312
-  defense: 3
-  attack: 56
-  attackSpeed: 645
-  moveSpeed: 123
+  maxHP: 0
+  HPRestore: 0
+  maxMP: 0
+  MPRestore: 0
+  defense: 0
+  attack: 0
+  attackSpeed: 0
+  moveSpeed: 0

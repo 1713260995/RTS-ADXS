@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 4382750695025550}
   - component: {fileID: 95593263450661480}
   m_Layer: 0
-  m_Name: peasant
+  m_Name: Peasant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -709,7 +709,7 @@ Animator:
   m_GameObject: {fileID: 1063493905589236}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d0e567bf250bf9049b2b74078e39f72d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9ddfa8b70b95e3e419c27033587dfd16, type: 2}
+  m_Controller: {fileID: 22100000, guid: 320df233728c2794b9581848faf3c3a5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
