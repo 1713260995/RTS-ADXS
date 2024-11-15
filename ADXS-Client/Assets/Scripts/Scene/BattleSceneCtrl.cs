@@ -8,25 +8,12 @@ namespace Assets.Scripts.Scene
 {
     public class BattleSceneCtrl : MonoBehaviour
     {
-        [SerializeField]
-        private GameManager gameManagerPrefab;
-
-        [SerializeField]
-        private StartupSceneConfigSO startupSceneConfig;
 
         public static BattleSystem battleSystem { get; private set; }
 
         private void Awake()
         {
-            if (startupSceneConfig.sceneName == SceneName.Battle)
-            {
-                GameManager manager = Instantiate(gameManagerPrefab);
-                manager.AddInitCompletedEvent(Init);
-            }
-            else
-            {
-                Init();
-            }
+            Init();
         }
 
         public void Init()
