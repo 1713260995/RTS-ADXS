@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Common.Enum;
+﻿using Assets.GameClientLib.Scripts;
+using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
 using Assets.Scripts.Modules.Role;
 using Assets.Scripts.Modules.Spawn;
@@ -14,6 +15,7 @@ public class Test : MonoBehaviour
 
     private IObjectPool<GameRoleCtrl> objectPool;
     public GameRoleCtrl role;
+
 
 
     [ShowButton]
