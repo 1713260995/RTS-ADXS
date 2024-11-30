@@ -16,6 +16,6 @@ namespace Assets.Scripts.Modules.Role
         public List<BuffBase> buffList;
         public BuffBase buff;
         public RoleAttributes roleAttributes;
-
+        public List<CommandId> commandIds;
     }
 }

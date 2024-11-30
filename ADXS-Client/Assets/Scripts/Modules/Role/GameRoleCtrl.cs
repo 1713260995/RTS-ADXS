@@ -3,13 +3,17 @@ using Assets.Scripts.Modules.FSM;
 using Assets.Scripts.Modules.Role;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Input;
 using UnityEngine;
 
-public class GameRoleCtrl : GameUnitCtrl
+public class GameRoleCtrl : GameUnitCtrl, CanExecuteCommands
 {
     public GameRole roleEntity;
     public Animator animator { get; private set; }
     public RoleStateMachine stateMachine => roleEntity.stateMachine;
+
+
+    public List<CommandId> CommandIds => roleEntity.commandIds;
 
     // Start is called before the first frame update
     void Start()
@@ -28,5 +32,6 @@ public class GameRoleCtrl : GameUnitCtrl
     {
         base.Init(_gameUnit);
         roleEntity = _gameUnit as GameRole;
+
     }
 }
