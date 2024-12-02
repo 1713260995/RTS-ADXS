@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Modules.Team.Control;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Assets.Scripts.Modules.Team
 {
@@ -6,17 +9,31 @@ namespace Assets.Scripts.Modules.Team
     {
         public int id { get; set; }
 
-        public ITeamControl command { get; set; }
+        public ITeamControl control { get; set; }
 
-        private void Start()
+        public List<Transform> teamUnitList;
+
+
+        private void Awake()
         {
-            command = new KeyboardCommand();
+            control = new KeyboardCommand(teamUnitList, o =>
+            {
+                o.ForEach(t =>
+                {
+                    Debug.Log("多选到单位：" + t.name);
+                });
+            });
         }
 
-
-        private void Update()
+        private void OnEnable()
         {
-            //    command.Command();
+            control.OpenControl();
         }
+
+        private void OnDisable()
+        {
+            control.CloseControl();
+        }
+
     }
 }

@@ -1,9 +1,8 @@
 ﻿using Assets.Scripts.Modules;
 using Assets.Scripts.Modules.FSM;
 using Assets.Scripts.Modules.Role;
-using System.Collections;
+using Assets.Scripts.Modules.Team.Control;
 using System.Collections.Generic;
-using System.Windows.Input;
 using UnityEngine;
 
 public class GameRoleCtrl : GameUnitCtrl, CanExecuteCommands
@@ -16,14 +15,14 @@ public class GameRoleCtrl : GameUnitCtrl, CanExecuteCommands
     public List<CommandId> CommandIds => roleEntity.commandIds;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         roleEntity.stateMachine.Restart();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         roleEntity.stateMachine.OnUpdate();
     }

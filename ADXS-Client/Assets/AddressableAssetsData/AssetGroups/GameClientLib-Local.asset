@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 519dcc2066884f14cb5d2ea702a6d862
+    m_Address: Assets/GameClientLib/Art
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7545a7529a14a3f41a0eab565c2e4208, type: 2}
   m_SchemaSet:
