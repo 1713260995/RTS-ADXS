@@ -1,7 +1,4 @@
-﻿using Assets.GameClientLib.Scripts.Config.SO;
-using Assets.GameClientLib.Scripts.Game;
-using Assets.Scripts.Common.Enum;
-using Assets.Scripts.Modules.Battle;
+﻿using Assets.Scripts.Modules.Battle;
 using UnityEngine;
 
 namespace Assets.Scripts.Scene

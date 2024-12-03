@@ -1,5 +1,4 @@
-﻿using Assets.GameClientLib.Scripts.Game;
-using Assets.Scripts.Common.Enum;
+﻿using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Game;
 using Assets.Scripts.Manager;
 using Assets.Scripts.Modules.User;

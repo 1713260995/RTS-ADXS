@@ -1,6 +1,5 @@
 ﻿using Assets.GameClientLib.Scripts.Config;
 using Assets.GameClientLib.Scripts.Event;
-using Assets.GameClientLib.Scripts.Game;
 using Assets.GameClientLib.Scripts.Network.Base;
 using Assets.GameClientLib.Scripts.Network.Message;
 using Assets.GameClientLib.Scripts.Network.Tcp;
@@ -14,10 +13,9 @@ namespace Assets.Scripts.NetWork
         {
             eventSystem = new EventSystem<TcpMessageArgs>();
             messageHandler = new MessageSerializeByJson<TcpMessageArgs>();
-            netConfig = GlobalConfig.Instance.netConfig;
+            netConfig = GlobalConfig.netConfig;
             server = new TcpServer(netConfig, messageHandler, eventSystem);
             server.Start();
-            GameManager.Instance.AddGameQuitEvent(Destory);
             InitListenEvent();
         }
 

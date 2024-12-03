@@ -5,14 +5,11 @@ using Assets.Scripts.Modules.Team.Control;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameRoleCtrl : GameUnitCtrl, CanExecuteCommands
+public class GameRoleCtrl : GameUnitCtrl
 {
     public GameRole roleEntity;
     public Animator animator { get; private set; }
     public RoleStateMachine stateMachine => roleEntity.stateMachine;
-
-
-    public List<CommandId> CommandIds => roleEntity.commandIds;
 
     // Start is called before the first frame update
     private void Start()

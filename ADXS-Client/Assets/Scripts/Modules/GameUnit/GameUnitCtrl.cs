@@ -10,6 +10,7 @@ public class GameUnitCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameUnitManager.Instance.allGameUnits.Add(this);
     }
 
     // Update is called once per frame

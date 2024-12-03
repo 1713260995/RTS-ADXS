@@ -9,20 +9,14 @@ namespace Assets.Scripts.Modules.Team
     {
         public int id { get; set; }
 
-        public ITeamControl control { get; set; }
+        private ITeamControl control { get; set; }
 
-        public List<Transform> teamUnitList;
-
+        public Transform testCube;
 
         private void Awake()
         {
-            control = new KeyboardCommand(teamUnitList, o =>
-            {
-                o.ForEach(t =>
-                {
-                    Debug.Log("多选到单位：" + t.name);
-                });
-            });
+
+            SetControlWay(new KeyboardCommand(this));
         }
 
         private void OnEnable()
@@ -34,6 +28,13 @@ namespace Assets.Scripts.Modules.Team
         {
             control.CloseControl();
         }
+
+
+        public void SetControlWay(ITeamControl _control)
+        {
+            control = _control;
+        }
+
 
     }
 }

@@ -1,4 +1,4 @@
-﻿using Assets.GameClientLib.Utils.Singleton;
+﻿using Assets.GameClientLib.Scripts.Utils.Singleton;
 using Assets.Scripts.Entity;
 using Assets.Scripts.Modules.Battle;
 

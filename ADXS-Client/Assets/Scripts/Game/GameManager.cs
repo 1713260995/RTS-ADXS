@@ -2,13 +2,12 @@
 using Assets.GameClientLib.Scripts.Config.SO;
 using Assets.GameClientLib.Scripts.Utils.Singleton;
 using Assets.GameClientLib.Utils.Json;
-using Assets.Scripts.NetWork;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using System;
 using UnityEngine;
 
-namespace Assets.GameClientLib.Scripts.Game
+namespace Assets.Scripts.Game
 {
     public class GameManager : SingletonMono<GameManager>
     {
@@ -40,12 +39,7 @@ namespace Assets.GameClientLib.Scripts.Game
         public async UniTask Init()
         {
             GlobalJsonSetting();
-            await GlobalConfig.Instance.Init(initSO);
-            if (initSO.networkConnectMode != NetworkConnectMode.SinglePlayer)
-            {
-                TcpManager.Instance.Init();
-                UdpManager.Instance.Init();
-            }
+            await GlobalConfig.Init(initSO);
             onInitCompleted?.Invoke();
         }
 
