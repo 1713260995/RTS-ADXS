@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.GameClientLib.Scripts.Utils.FSM;
+using Assets.Scripts.Common.Enum;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.Scripts.Modules.FSM
@@ -11,12 +12,12 @@ namespace Assets.Scripts.Modules.FSM
         public Func<bool> canTransition { get; set; }
         public Func<UniTask> doTransition { get; set; }
 
-        public RoleTransition(StateName _origin, StateName _target) : base(_origin.ToString(), _target.ToString())
+        public RoleTransition(RoleState _origin, RoleState _target) : base(_origin.ToString(), _target.ToString())
         {
             _id = GenerateId(_origin, _target);
         }
 
-        public static string GenerateId(StateName ori, StateName target)
+        public static string GenerateId(RoleState ori, RoleState target)
         {
             return ori.ToString() + "->" + target.ToString();
         }

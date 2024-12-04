@@ -1,8 +1,7 @@
-﻿using Assets.Scripts.Modules;
+﻿using Assets.Scripts.Common.Enum;
+using Assets.Scripts.Modules;
 using Assets.Scripts.Modules.FSM;
 using Assets.Scripts.Modules.Role;
-using Assets.Scripts.Modules.Team.Control;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameRoleCtrl : GameUnitCtrl
@@ -10,6 +9,8 @@ public class GameRoleCtrl : GameUnitCtrl
     public GameRole roleEntity;
     public Animator animator { get; private set; }
     public RoleStateMachine stateMachine => roleEntity.stateMachine;
+
+    public RoleState currentState { get; set; }
 
     // Start is called before the first frame update
     private void Start()

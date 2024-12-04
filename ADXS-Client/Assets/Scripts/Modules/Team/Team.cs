@@ -10,13 +10,13 @@ namespace Assets.Scripts.Modules.Team
         public int id { get; set; }
 
         private ITeamControl control { get; set; }
+        public List<GameUnitCtrl> selectedUnits { get; set; }
 
         public Transform testCube;
 
         private void Awake()
         {
-
-            SetControlWay(new KeyboardCommand(this));
+            Test();
         }
 
         private void OnEnable()
@@ -27,6 +27,11 @@ namespace Assets.Scripts.Modules.Team
         private void OnDisable()
         {
             control.CloseControl();
+        }
+
+        private void Test()
+        {
+            SetControlWay(new KeyboardCommand(this));
         }
 
 

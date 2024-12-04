@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assets.Scripts.Modules.AI
+{
+    internal class BTGlobeVariable
+    {
+        public const string roleNextState = "nextState";
+    }
+}

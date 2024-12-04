@@ -29,12 +29,12 @@ public class Test : MonoBehaviour
     [ShowButton]
     public void IdleToMove()
     {
-        role.stateMachine.TryTrigger(StateName.Idle, StateName.Move).Forget();
+        role.stateMachine.TryTrigger(RoleState.Idle, RoleState.Move).Forget();
     }
 
     [ShowButton]
     public void MoveToIdle()
     {
-        role.stateMachine.TryTrigger(StateName.Move, StateName.Idle).Forget();
+        role.stateMachine.TryTrigger(RoleState.Move, RoleState.Idle).Forget();
     }
 }

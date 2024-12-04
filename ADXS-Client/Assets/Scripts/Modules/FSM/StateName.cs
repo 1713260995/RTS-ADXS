@@ -4,11 +4,3 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum StateName
-{
-    //Base
-    Unknow,
-    Idle,
-    Move,
-    Attack,
-}

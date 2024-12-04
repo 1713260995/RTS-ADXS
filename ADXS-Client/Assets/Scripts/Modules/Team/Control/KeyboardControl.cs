@@ -10,13 +10,12 @@ namespace Assets.Scripts.Modules.Team.Control
     {
         private InputHandler handler { get; set; }
         private Team team { get; set; }
-        private List<GameUnitCtrl> selectedUnits { get; set; }
+        private List<GameUnitCtrl> selectedUnits => team.selectedUnits;
 
         public KeyboardCommand(Team _team)
         {
             team = _team;
             handler = InputHandler.Create();
-            selectedUnits = new List<GameUnitCtrl>();
         }
 
         public void OpenControl()
@@ -48,7 +47,8 @@ namespace Assets.Scripts.Modules.Team.Control
         /// <param name="list"></param>
         private void MultipleSelectCallback(List<Component> list)
         {
-            selectedUnits = list.Cast<GameUnitCtrl>().ToList();
+            selectedUnits.Clear();
+            selectedUnits.AddRange(list.Cast<GameUnitCtrl>().ToList());
         }
 
         /// <summary>
@@ -81,7 +81,6 @@ namespace Assets.Scripts.Modules.Team.Control
 
         #region 控制选中选中的单位
 
-
         public void RightClickEvent()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -105,6 +104,7 @@ namespace Assets.Scripts.Modules.Team.Control
                 }
             }
         }
+
         #endregion
     }
 }

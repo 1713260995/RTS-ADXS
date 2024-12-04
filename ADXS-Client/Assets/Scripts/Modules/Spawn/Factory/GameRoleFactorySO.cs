@@ -57,18 +57,18 @@ namespace Assets.Scripts.Factory
                 Idle(),
                 Move(),
             };
-            return new RoleStateMachine(states, StateName.Idle, _ctrl);
+            return new RoleStateMachine(states, RoleState.Idle, _ctrl);
         }
 
         protected virtual State Idle()
         {
-            RoleState idle = RoleState.QuickCreate(StateName.Idle, new List<StateName> { StateName.Move });
+            RoleStateBase idle = RoleStateBase.QuickCreate(RoleState.Idle, new List<RoleState> { RoleState.Move });
             return idle;
         }
 
         protected virtual State Move()
         {
-            RoleState idle = RoleState.QuickCreate(StateName.Move, new List<StateName> { StateName.Idle });
+            RoleStateBase idle = RoleStateBase.QuickCreate(RoleState.Move, new List<RoleState> { RoleState.Idle });
             return idle;
         }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Behavior
   m_EditorClassIdentifier: 
   mBehaviorSource:
-    behaviorName: Behavior
+    behaviorName: Behavior123
     behaviorDescription: 
     mTaskData:
       types: []

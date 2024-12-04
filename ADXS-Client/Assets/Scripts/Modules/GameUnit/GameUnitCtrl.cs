@@ -1,11 +1,17 @@
-﻿using Assets.Scripts.Modules;
+﻿using Assets.GameClientLib.Scripts.Utils;
+using Assets.Scripts.Modules;
 using UnityEngine;
 
 public class GameUnitCtrl : MonoBehaviour
 {
+
+    public int id;
     public GameUnit unitEnity;
 
-
+    protected virtual void Awake()
+    {
+        id = MyMath.UniqueNum();
+    }
 
     // Start is called before the first frame update
     void Start()
