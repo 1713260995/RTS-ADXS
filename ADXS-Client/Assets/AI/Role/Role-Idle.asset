@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23f08d2ae4cba14087c1ed36193d82b, type: 3}
+  m_Name: Role-Idle
+  m_EditorClassIdentifier: 
+  mBehaviorSource:
+    behaviorName: Role-Idle
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(129.42868,-92.85719)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-4.324379,131.35141)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Assets.Scripts.Modules.AI.Role.RoleStateConditional","NodeData":{"Offset":"(-141.69101,123.9687)","Comment":"Check
+        if the current status of the character is idle"},"ID":2,"Name":"Role State
+        Conditional","Instant":true,"RoleStatetargetState":"Idle"},{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(198.849365,121.536255)"},"ID":3,"Name":"Parallel","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Assets.Scripts.Modules.AI.Role.RoleIdle","NodeData":{"Offset":"(-106.216133,135.1351)"},"ID":4,"Name":"Role
+        Idle","Instant":true},{"Type":"Assets.Scripts.Modules.AI.Role.RoleScout","NodeData":{"Offset":"(139.729736,141.621552)"},"ID":5,"Name":"Role
+        Scout","Instant":true,"Singleradious":0}]}]}}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.11

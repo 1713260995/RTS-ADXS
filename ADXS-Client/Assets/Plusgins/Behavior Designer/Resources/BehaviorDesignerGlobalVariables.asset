@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mVariableData:
     variableStartIndex: 
-    JSONSerialization: '{"Variables":[{"Type":"SharedRoleState","Name":"roleNextState","IsShared":true,"IsGlobal":true,"RoleStatemValue":"Unknow"}]}'
+    JSONSerialization: '{"Variables":[]}'
     fieldSerializationData:
       typeName: []
       fieldNameHash: 

@@ -1,25 +1,30 @@
 ﻿using Assets.Scripts.Common.Enum;
+using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Modules.AI.Role
 {
-    public class ChangeRoleState : BehaviorDesigner.Runtime.Tasks.Action
+    [TaskCategory(BTShareStr.taskCategoryRole)]
+    [TaskDescription("将用户当前状态改为目标状态")]
+    public class ChangeRoleState : Action
     {
-        public GameRoleCtrl roleCtrl;
-
-
+        private GameRoleCtrl roleCtrl;
+        private SharedRoleState share;
 
         public override void OnAwake()
         {
-            base.OnAwake();
             roleCtrl = GetComponent<GameRoleCtrl>();
+            share = Owner.GetVariable(BTShareStr.roleNextState) as SharedRoleState;
         }
+
 
         public override void OnEnd()
         {
-            RoleState nextState = (RoleState)((SharedRoleState)Owner.GetVariable(BTGlobeVariable.roleNextState)).GetValue();
+            RoleState nextState = (RoleState)share.GetValue();
             roleCtrl.currentState = nextState;
-            Debug.Log("用户当前状态：=" + roleCtrl.currentState);
+            share.SetValue(RoleState.Unknow);
+            Debug.Log("ChangeRoleState：" + roleCtrl.currentState);
         }
+
     }
 }
