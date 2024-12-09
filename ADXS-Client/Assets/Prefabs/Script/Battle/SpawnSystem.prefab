@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assetReferenceList:
-  - m_AssetGUID: da7a68cc644800045b714a8c0a19e109
+  - m_AssetGUID: f9525afd26ddf4d469110baff40a9f8f
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  - m_AssetGUID: c6eb055a8949e6e439747cf19788be33
+  - m_AssetGUID: 9a2e6beaf3577f946b2a15ac2306a9f8
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

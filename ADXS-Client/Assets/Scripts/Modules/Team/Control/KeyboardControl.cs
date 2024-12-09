@@ -88,7 +88,7 @@ namespace Assets.Scripts.Modules.Team.Control
                 return;
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer(GameLayer.Ground.ToString()))
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer(GameLayerName.Ground.ToString()))
                 {
                     selectedUnits.First().transform.position = hit.point;
                     return;

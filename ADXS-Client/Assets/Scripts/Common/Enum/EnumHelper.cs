@@ -8,5 +8,10 @@ namespace Assets.Scripts.Common.Enum
         {
             return Animator.StringToHash(name.ToString());
         }
+
+        public static int GetLayer(this GameLayerName gameLayer)
+        {
+            return LayerMask.NameToLayer(gameLayer.ToString());
+        }
     }
 }

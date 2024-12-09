@@ -11,48 +11,66 @@ namespace Assets.Scripts.Modules.Spawn
 {
     public class SpawnSystem : MonoBehaviour
     {
-        private Dictionary<GameUnitName, ISpwanUnit> spawnDic;
+        private Dictionary<GameUnitName, SpwanUnit> spawnDic;
 
         [SerializeField]
         private List<AssetReference> assetReferenceList;
 
         private void Awake()
         {
-            spawnDic = new Dictionary<GameUnitName, ISpwanUnit>();
             Init();
         }
 
-        public void Init()
+        private void Init()
         {
+            spawnDic = new();
             foreach (var item in assetReferenceList)
             {
-                ScriptableObject so = ResSystem.Load<ScriptableObject>(item);
+                GameUnitCtrl ctrl = ResSystem.Load<GameObject>(item).GetComponent<GameUnitCtrl>();
 
-                if (so is ISpwanUnit pool)
+                ISpwanPool spwanPool = ctrl as ISpwanPool;
+                if (spwanPool != null)
                 {
-                    spawnDic.Add(pool.spwanUnit, pool);
+                    spawnDic.Add(ctrl.unitName, new SpwanUnitByPool(ctrl));
                 }
                 else
                 {
-                    throw new ArgumentException("AssetReference is error");
+                    spawnDic.Add(ctrl.unitName, new SpwanUnit(ctrl));
                 }
             }
         }
 
-        public IFactory<TCtrl> GetUnitFactory<TCtrl>(GameUnitName unitName) where TCtrl : GameUnitCtrl
+        public TCtrl GetCtrl<TCtrl>(GameUnitName _name) where TCtrl : GameUnitCtrl
         {
-            ISpwanUnit so = spawnDic[unitName];
-            IFactory<TCtrl> factory = so as IFactory<TCtrl>;
-            return factory;
+            var c = spawnDic[_name].Create();
+            return c as TCtrl;
         }
 
-        public IObjectPool<TCtrl> GetUnitPool<TCtrl>(GameUnitName unitName) where TCtrl : GameUnitCtrl
+        public void DestroyCtrl(GameUnitCtrl ctrl)
         {
-            ISpwanUnit so = spawnDic[unitName];
-            GameUnitPoolSO<TCtrl> poolso = so as GameUnitPoolSO<TCtrl>;
-            return poolso.GetPool();
+            spawnDic[ctrl.unitName].Destory(ctrl);
         }
 
 
+        #region test
+        [ReadOnlyField]
+        public GameUnitName testName;
+
+        private GameRoleCtrl testRole;
+
+        [ShowButton]
+        public void GetCtrl()
+        {
+            testRole = GetCtrl<GameRoleCtrl>(testName);
+        }
+
+
+        [ShowButton]
+        public void DestroyCtrl()
+        {
+            DestroyCtrl(testRole);
+        }
+
+        #endregion
     }
 }

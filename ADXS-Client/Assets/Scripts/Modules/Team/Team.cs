@@ -10,13 +10,14 @@ namespace Assets.Scripts.Modules.Team
         public int id { get; set; }
 
         private ITeamControl control { get; set; }
-        public List<GameUnitCtrl> selectedUnits { get; set; }
+        public List<GameUnitCtrl> selectedUnits { get; private set; }
 
         public Transform testCube;
 
         private void Awake()
         {
             Test();
+            selectedUnits = new List<GameUnitCtrl>();
         }
 
         private void OnEnable()

@@ -18,23 +18,7 @@ public class Test : MonoBehaviour
 
 
 
-    [ShowButton]
-    public void CreateFarmer()
-    {
-        objectPool = spawnSystem.GetUnitPool<GameRoleCtrl>(GameUnitName.Peasant);
-        role = objectPool.Get();
-    }
 
 
-    [ShowButton]
-    public void IdleToMove()
-    {
-        role.stateMachine.TryTrigger(RoleState.Idle, RoleState.Move).Forget();
-    }
 
-    [ShowButton]
-    public void MoveToIdle()
-    {
-        role.stateMachine.TryTrigger(RoleState.Move, RoleState.Idle).Forget();
-    }
 }

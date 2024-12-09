@@ -23,8 +23,8 @@ MonoBehaviour:
       JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(129.42868,-92.85719)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-4.324379,131.35141)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Assets.Scripts.Modules.AI.Role.RoleStateConditional","NodeData":{"Offset":"(-141.69101,123.9687)","Comment":"Check
         if the current status of the character is idle"},"ID":2,"Name":"Role State
         Conditional","Instant":true,"RoleStatetargetState":"Idle"},{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(198.849365,121.536255)"},"ID":3,"Name":"Parallel","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Assets.Scripts.Modules.AI.Role.RoleIdle","NodeData":{"Offset":"(-106.216133,135.1351)"},"ID":4,"Name":"Role
-        Idle","Instant":true},{"Type":"Assets.Scripts.Modules.AI.Role.RoleScout","NodeData":{"Offset":"(139.729736,141.621552)"},"ID":5,"Name":"Role
-        Scout","Instant":true,"Singleradious":0}]}]}}'
+        Idle","Instant":true},{"Type":"Assets.Scripts.Modules.AI.Role.UnitDetector","NodeData":{"Offset":"(117.15564,153.528625)"},"ID":5,"Name":"Unit
+        Detector","Instant":true,"SingledisRange":0}]}]}}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 

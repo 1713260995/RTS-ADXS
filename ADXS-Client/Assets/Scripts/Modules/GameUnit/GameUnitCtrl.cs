@@ -1,12 +1,14 @@
 ﻿using Assets.GameClientLib.Scripts.Utils;
+using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
 using UnityEngine;
 
 public class GameUnitCtrl : MonoBehaviour
 {
-
+    [HideInInspector]
     public int id;
-    public GameUnit unitEnity;
+    public GameUnitName unitName;
+    public GameUnitType unitType;
 
     protected virtual void Awake()
     {
@@ -25,8 +27,5 @@ public class GameUnitCtrl : MonoBehaviour
 
     }
 
-    public virtual void Init(GameUnit _gameUnit)
-    {
-        unitEnity = _gameUnit;
-    }
+
 }

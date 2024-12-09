@@ -12,7 +12,7 @@ namespace Assets.Scripts.Modules.FSM
         protected readonly RoleState stateName;
 
         protected RoleStateMachine roleSM { get; private set; }
-        protected Animator anim => roleSM.ctrl.animator;
+        protected Animator anim => roleSM.ctrl.GetComponent<Animator>();
 
         private int stateHash;
 
