@@ -1,14 +1,16 @@
 ﻿using Assets.GameClientLib.Scripts.Utils;
 using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Database;
 using UnityEngine;
 
 public class GameUnitCtrl : MonoBehaviour
 {
-    [HideInInspector]
-    public int id;
     public GameUnitName unitName;
     public GameUnitType unitType;
+
+    public int id { get; private set; }
+    public Agent agent { get; private set; }
 
     protected virtual void Awake()
     {
@@ -27,5 +29,18 @@ public class GameUnitCtrl : MonoBehaviour
 
     }
 
+
+    public virtual void Init(Agent _agent)
+    {
+        agent = agent;
+        agent.gameUnitCtrls.Add(this);
+    }
+
+
+    private void OnDestroy()
+    {
+        agent?.gameUnitCtrls.Remove(this);
+        GameUnitManager.Instance.allGameUnits.Remove(this);
+    }
 
 }

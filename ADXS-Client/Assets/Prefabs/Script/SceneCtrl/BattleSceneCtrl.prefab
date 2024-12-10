@@ -44,5 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1beb0330b46e08489f466f1f2cea2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManagerPrefab: {fileID: 608102057448307236, guid: f92e31f3f2596b141994ba8f4adccf58, type: 3}
-  startupSceneConfig: {fileID: 11400000, guid: e79830545ea7ba44ebd457a001a7d80d, type: 2}
+  battleSystemPrefab: {fileID: 2444911606020460886, guid: ab78870991f79b541b9a8cfc926f7673, type: 3}

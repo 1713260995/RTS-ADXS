@@ -12,8 +12,6 @@ public class GameRoleCtrl : GameUnitCtrl
     public RoleType roleType;
     public RaceType raceType;
 
-
-    public int teamId { get; private set; }
     public RoleState currentState { get; set; }
     public List<BuffBase> buffList { get; private set; }
     public RoleAttributes roleAttributes { get; private set; }

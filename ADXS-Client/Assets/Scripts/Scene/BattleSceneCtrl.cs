@@ -5,17 +5,18 @@ namespace Assets.Scripts.Scene
 {
     public class BattleSceneCtrl : MonoBehaviour
     {
-
-        public static BattleSystem battleSystem { get; private set; }
+        [SerializeField]
+        private BattleSystem battleSystemPrefab;
 
         private void Awake()
         {
-            Init();
+            Instantiate(battleSystemPrefab);
         }
 
-        public void Init()
+
+        private void OnDestroy()
         {
-            battleSystem = new BattleSystem();
+            BattleSystem.DestroySingleton();
         }
     }
 }

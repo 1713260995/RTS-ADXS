@@ -11,17 +11,13 @@ namespace Assets.Scripts.Modules.Spawn
 {
     public class SpawnSystem : MonoBehaviour
     {
-        private Dictionary<GameUnitName, SpwanUnit> spawnDic;
-
         [SerializeField]
         private List<AssetReference> assetReferenceList;
 
-        private void Awake()
-        {
-            Init();
-        }
+        private Dictionary<GameUnitName, SpwanUnit> spawnDic { get; set; }
 
-        private void Init()
+
+        private void Awake()
         {
             spawnDic = new();
             foreach (var item in assetReferenceList)
@@ -40,7 +36,7 @@ namespace Assets.Scripts.Modules.Spawn
             }
         }
 
-        public TCtrl GetCtrl<TCtrl>(GameUnitName _name) where TCtrl : GameUnitCtrl
+        public TCtrl CreateCtrl<TCtrl>(GameUnitName _name) where TCtrl : GameUnitCtrl
         {
             var c = spawnDic[_name].Create();
             return c as TCtrl;
@@ -51,7 +47,6 @@ namespace Assets.Scripts.Modules.Spawn
             spawnDic[ctrl.unitName].Destory(ctrl);
         }
 
-
         #region test
         [ReadOnlyField]
         public GameUnitName testName;
@@ -61,7 +56,7 @@ namespace Assets.Scripts.Modules.Spawn
         [ShowButton]
         public void GetCtrl()
         {
-            testRole = GetCtrl<GameRoleCtrl>(testName);
+            testRole = CreateCtrl<GameRoleCtrl>(testName);
         }
 
 

@@ -28,7 +28,7 @@ namespace Assets.Scripts.Modules.AI.Role
         public override TaskStatus OnUpdate()
         {
             enemyList = detector.GetNearbyObjs();
-            enemyList = enemyList.Where(o => o.teamId != roleCtrl.teamId).ToList();
+            enemyList = enemyList.Where(o => o.agent.id != roleCtrl.agent.id).ToList();
             if (enemyList.Count == 0)
             {
                 return TaskStatus.Running;
