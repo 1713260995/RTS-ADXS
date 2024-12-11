@@ -18,7 +18,7 @@ public class Test : MonoBehaviour
     [ShowButton]
     public void TestAgent()
     {
-        Agent agent1 = new Agent(1, GameColor.Red, new KeyboardCommand());
+        Agent agent1 = new Agent(1, GameColor.Red, AgentControlWay.Keyboard);
         BattleSystem.Instance.AddAgent(agent1);
         BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(GameUnitName.Peasant, agent1.id, Vector3.zero);
     }

@@ -1,7 +1,6 @@
 ﻿using Assets.GameClientLib.Scripts.Utils;
 using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Database;
 using UnityEngine;
 
 public class GameUnitCtrl : MonoBehaviour
@@ -43,4 +42,17 @@ public class GameUnitCtrl : MonoBehaviour
         GameUnitManager.Instance.allGameUnits.Remove(this);
     }
 
+
+    public bool CanAttack(Agent attacker)
+    {
+        if (unitType == GameUnitType.GoldMine || unitType == GameUnitType.Tree)
+        {
+            return false;
+        }
+        if (attacker.teamId != agent.teamId)
+        {
+            return true;
+        }
+        return false;
+    }
 }

@@ -18,12 +18,12 @@ namespace Assets.Scripts.Modules
         public List<GameUnitCtrl> gameUnitCtrls { get; set; }
 
 
-        public Agent(int _teamId, GameColor _color, IAgentControl _control)
+        public Agent(int _teamId, GameColor _color, AgentControlWay controlWay)
         {
             id = MyMath.UniqueNum();
             teamId = _teamId;
             color = _color;
-            control = _control;
+            GenerateControl(controlWay);
         }
 
         public void OnEnable()
@@ -36,5 +36,18 @@ namespace Assets.Scripts.Modules
             control.CloseControl();
         }
 
+        private void GenerateControl(AgentControlWay controlWay)
+        {
+            switch (controlWay)
+            {
+                case AgentControlWay.AI:
+                    break;
+                case AgentControlWay.Keyboard:
+                    control = new KeyboardCommand(this);
+                    break;
+                case AgentControlWay.FrameSync:
+                    break;
+            }
+        }
     }
 }

@@ -8,8 +8,6 @@ namespace Assets.Scripts.Modules
     /// </summary>
     public interface IAgentControl
     {
-        Agent agent { get; set; }
-
         void OpenControl();
 
         void CloseControl();

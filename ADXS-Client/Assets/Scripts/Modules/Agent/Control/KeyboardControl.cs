@@ -8,24 +8,25 @@ namespace Assets.Scripts.Modules
 {
     public class KeyboardCommand : IAgentControl
     {
-        public Agent agent { get; set; }
-
+        public Agent agent { get; }
         private InputHandler handler { get; set; }
-        private List<GameUnitCtrl> selectedUnits { get; set; }
+        private ArmyAI currentArmy { get; set; }
+        private KeyCode keyIdle { get; set; }
+        private List<GameUnitCtrl> selectUnits = new List<GameUnitCtrl>();
 
-
-
-        public KeyboardCommand()
+        public KeyboardCommand(Agent _agent)
         {
+            agent = _agent;
             handler = InputHandler.Create();
-            selectedUnits = new List<GameUnitCtrl>();
+            currentArmy = new ArmyAI(agent.id);
         }
 
         public void OpenControl()
         {
             handler.EnableSingleSelect(MouseInfo.MouseId.Left, SingleSelectCallback);
-            handler.EnableMultipleSelect(MouseInfo.MouseId.Left, SelectableUnits, MultipleSelectCallback);
+            handler.EnableMultipleSelect(MouseInfo.MouseId.Left, MultipleSelectAbleUnits, MultipleSelectCallback);
             handler.mouseRight.keyUpEvent += RightClickEvent;
+            handler.AddkeyboardDownEvent(keyIdle, Idle);
         }
 
         public void CloseControl()
@@ -33,6 +34,7 @@ namespace Assets.Scripts.Modules
             handler.DisableSingleSelect();
             handler.DisableMultipleSelect();
             handler.mouseRight.keyUpEvent -= RightClickEvent;
+            handler.RemovekeyboardDownEvent(keyIdle, Idle);
         }
 
         #region 选中单位
@@ -41,9 +43,9 @@ namespace Assets.Scripts.Modules
         /// 多选时可选单位
         /// 1.多选时只可以选我方单位
         /// </summary>
-        public List<Component> SelectableUnits()
+        public List<Component> MultipleSelectAbleUnits()
         {
-            return agent.gameUnitCtrls.Cast<Component>().ToList();
+            return agent.gameUnitCtrls.Where(o => o is GameRoleCtrl).Cast<Component>().ToList();
         }
 
         /// <summary>
@@ -52,51 +54,75 @@ namespace Assets.Scripts.Modules
         /// <param name="list"></param>
         private void MultipleSelectCallback(List<Component> list)
         {
-            selectedUnits.Clear();
-            selectedUnits.AddRange(list.Cast<GameUnitCtrl>().ToList());
+            selectUnits = list.Cast<GameUnitCtrl>().ToList();
+            currentArmy.ReplaceMembers(list.Cast<GameRoleCtrl>().ToList());
         }
 
+
         /// <summary>
-        /// 单选游戏回调
+        /// 单选回调。
+        /// 1. 单选没有可选单位，所以可以是任何单位或者为null
         /// </summary>
         /// <param name="o"></param>
         private void SingleSelectCallback(Component o)
         {
-            selectedUnits.Clear();
-            if (o == null)
-                return;//单击未选中时直接返回，o==null
-            GameUnitCtrl ctrl = o.GetComponent<GameUnitCtrl>();
+            GameUnitCtrl ctrl = o == null ? null : o.GetComponent<GameUnitCtrl>();
             if (ctrl == null)
-                return;//单击选中有碰撞体的物体时，但不属于游戏单位时返回。
-            selectedUnits.Add(ctrl);
+            {
+                selectUnits.Clear();
+                currentArmy.ReplaceMember(null);
+            }
+            else
+            {
+                selectUnits.Add(ctrl);
+                if (ctrl is GameRoleCtrl role && role.agent.id == agent.id)
+                {
+                    currentArmy.ReplaceMember(role);
+                }
+                else
+                {
+                    currentArmy.ReplaceMember(null);
+                }
+            }
         }
 
         #endregion
 
-        #region 控制选中选中的单位
+        #region 控制选中单位
 
         public void RightClickEvent()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (selectedUnits.Count == 0)
-                return;
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000))
             {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer(GameLayerName.Ground.ToString()))
                 {
-                    selectedUnits.First().transform.position = hit.point;
+                    currentArmy.Move(hit.point);
                     return;
                 }
                 GameUnitCtrl ctrl = hit.transform.GetComponent<GameUnitCtrl>();
-                if (ctrl != null)
+                if (ctrl == null)
                 {
-                    Debug.Log("右击选中单位" + ctrl.name);
+                    return;
                 }
-                else
+                else if (ctrl.CanAttack(agent))
                 {
-                    Debug.Log("右击选中普通对象" + hit.transform.name);
+                    currentArmy.Attack(ctrl);
+                }
+                else if (ctrl is TreeCtrl tree)
+                {
+                    currentArmy.Lumbering(tree);
+                }
+                else if (ctrl is GoldMine goldMine)
+                {
+                    currentArmy.Mining(goldMine);
                 }
             }
+        }
+
+        public void Idle()
+        {
+            currentArmy.Idle();
         }
 
         #endregion

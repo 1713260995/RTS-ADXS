@@ -7,5 +7,6 @@
         Building,
         GoldMine,
         Tree,
+        Monster,
     }
 }
