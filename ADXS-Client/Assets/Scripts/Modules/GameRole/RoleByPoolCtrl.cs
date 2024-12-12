@@ -1,0 +1,20 @@
+﻿using Assets.Scripts.Modules.Spawn;
+
+namespace Assets.Scripts.Modules.GameRole
+{
+    /// <summary>
+    /// 需要使用对象池的角色
+    /// </summary>
+    public class RoleByPoolCtrl : GameRoleCtrl, ISpwanPool
+    {
+        public virtual void GetFromPool()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public virtual void ReturnedToPool()
+        {
+            gameObject.SetActive(false);
+        }
+    }
+}

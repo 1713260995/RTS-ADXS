@@ -45,7 +45,7 @@ namespace Assets.Scripts.Modules
         /// </summary>
         public List<Component> MultipleSelectAbleUnits()
         {
-            return agent.gameUnitCtrls.Where(o => o is GameRoleCtrl).Cast<Component>().ToList();
+            return agent.allUnits.Where(o => o is GameRoleCtrl).Cast<Component>().ToList();
         }
 
         /// <summary>

@@ -22,23 +22,16 @@ public class GameUnitCtrl : MonoBehaviour
         GameUnitManager.Instance.allGameUnits.Add(this);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
     public virtual void Init(Agent _agent)
     {
-        agent = agent;
-        agent.gameUnitCtrls.Add(this);
+        agent = _agent;
+        agent.allUnits.Add(this);
     }
 
 
     private void OnDestroy()
     {
-        agent?.gameUnitCtrls.Remove(this);
+        agent?.allUnits.Remove(this);
         GameUnitManager.Instance.allGameUnits.Remove(this);
     }
 
