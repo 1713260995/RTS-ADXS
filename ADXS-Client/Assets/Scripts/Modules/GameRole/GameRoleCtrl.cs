@@ -6,6 +6,7 @@ using Assets.Scripts.Modules.FSM;
 using Assets.Scripts.Modules.Role;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameRoleCtrl : GameUnitCtrl, IIdle, IAttack, IMove
 {
@@ -44,6 +45,8 @@ public class GameRoleCtrl : GameUnitCtrl, IIdle, IAttack, IMove
     public void Move(Vector3 targetPoint)
     {
         Debug.Log("移动");
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.SetDestination(targetPoint);
     }
 
 }

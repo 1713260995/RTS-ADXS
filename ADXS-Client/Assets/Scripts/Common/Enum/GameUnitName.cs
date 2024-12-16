@@ -10,6 +10,12 @@ namespace Assets.Scripts.Common.Enum
     {
         Unknown = 0,
 
+        #region 环境
+
+        Tree01,
+
+        #endregion
+
         #region 人族
 
         /// <summary>

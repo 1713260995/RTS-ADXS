@@ -10,6 +10,8 @@ namespace Assets.Scripts.Common.Enum
     {
         Default,
         Ground,
-        Role
+        Water,
+        Scene,
+        Role,
     }
 }

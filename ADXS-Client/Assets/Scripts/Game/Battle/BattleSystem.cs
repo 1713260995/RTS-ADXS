@@ -16,6 +16,7 @@ namespace Assets.Scripts.Modules.Battle
         private SpawnSystem spawnSystem;
 
         public List<Agent> agents { get; private set; }
+        public bool isRuning { get; private set; }
         public static BattleSystem Instance;
 
         private void Awake()
@@ -32,6 +33,8 @@ namespace Assets.Scripts.Modules.Battle
         [ShowButton]
         public void StartGame()
         {
+            if (isRuning) return;
+            isRuning = true;
             foreach (var item in agents)
             {
                 item.OnEnable();
@@ -41,6 +44,8 @@ namespace Assets.Scripts.Modules.Battle
         [ShowButton]
         public void StopGame()
         {
+            if (!isRuning) return;
+            isRuning = false;
             foreach (var item in agents)
             {
                 item.OnDisable();

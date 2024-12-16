@@ -21,6 +21,7 @@ public class Test : MonoBehaviour
         Agent agent1 = new Agent(1, GameColor.Red, AgentControlWay.Keyboard);
         BattleSystem.Instance.AddAgent(agent1);
         BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(GameUnitName.Peasant, agent1.id, Vector3.zero);
+        BattleSystem.Instance.StartGame();
     }
 
 

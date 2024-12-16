@@ -90,14 +90,24 @@ namespace Assets.Scripts.Modules
 
         #region 控制选中单位
 
+        private int waterLayerMask = GameLayerName.Water.GetLayerMask();
+        private int sceneLayerMask = GameLayerName.Scene.GetLayerMask();
+        private int groundLayerMask = GameLayerName.Ground.GetLayerMask();
+
         public void RightClickEvent()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 1000))
             {
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer(GameLayerName.Ground.ToString()))
+                int hitLayerMask = 1 << hit.transform.gameObject.layer;
+                if (hitLayerMask == groundLayerMask)
                 {
                     currentArmy.Move(hit.point);
+                    return;
+                }
+                if ((hitLayerMask & (waterLayerMask | sceneLayerMask)) != 0)
+                {
+                    Debug.Log("点击到水或场景，无法操作");
                     return;
                 }
                 GameUnitCtrl ctrl = hit.transform.GetComponent<GameUnitCtrl>();

@@ -10579,8 +10579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa91e5b3358304b44b905980e5b0889e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  unitName: 6
+  unitName: 7
   unitType: 1
   roleType: 1
   raceType: 1
