@@ -6,7 +6,7 @@ namespace Assets.Scripts.Modules.AI.Role
     [TaskCategory(BTShareStr.taskCategoryRole)]
     public class RoleStateConditional : Conditional
     {
-        public RoleState targetState;
+        public StateName targetState;
 
         private GameRoleCtrl roleCtrl;
 

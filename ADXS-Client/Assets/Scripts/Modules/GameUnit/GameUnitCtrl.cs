@@ -35,14 +35,16 @@ public class GameUnitCtrl : MonoBehaviour
         GameUnitManager.Instance.allGameUnits.Remove(this);
     }
 
-
-    public bool CanAttack(Agent attacker)
+    /// <summary>
+    /// 判断目标能否被我攻击
+    /// </summary>
+    public virtual bool CanAttack(GameUnitCtrl target)
     {
-        if (unitType == GameUnitType.GoldMine || unitType == GameUnitType.Tree)
+        if (target.unitType == GameUnitType.GoldMine || target.unitType == GameUnitType.Tree)
         {
             return false;
         }
-        if (attacker.teamId != agent.teamId)
+        if (target.agent.teamId != agent.teamId)
         {
             return true;
         }

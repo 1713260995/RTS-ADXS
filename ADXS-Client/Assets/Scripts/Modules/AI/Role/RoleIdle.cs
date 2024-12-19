@@ -15,7 +15,7 @@ namespace Assets.Scripts.Modules.AI.Role
         {
             anim = GetComponent<Animator>();
             roleCtrl = GetComponent<GameRoleCtrl>();
-            animHash = RoleAnimName.Idle.GetAnimHash();
+            animHash = RoleAnimFlags.Idle.GetAnimHash();
         }
 
         public override void OnStart()
@@ -25,7 +25,7 @@ namespace Assets.Scripts.Modules.AI.Role
 
         public override TaskStatus OnUpdate()
         {
-            if (roleCtrl.currentState == RoleState.Idle)
+            if (roleCtrl.currentState == StateName.Idle)
             {
                 return TaskStatus.Running;
             }

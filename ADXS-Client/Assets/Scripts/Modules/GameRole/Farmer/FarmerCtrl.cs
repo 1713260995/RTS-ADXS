@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Modules
 {
-    public class FarmerCtrl : RoleByPoolCtrl, ILumbering, IMining
+    public class FarmerCtrl : RoleByPoolCtrl
     {
         public void Lumbering(TreeCtrl tree)
         {

@@ -41,7 +41,7 @@ namespace Assets.Scripts.Modules.AI.Role
 
         public override void OnEnd()
         {
-            Owner.SendEvent("ChangeRoleState", RoleState.Attack);
+            Owner.SendEvent("ChangeRoleState", StateName.Attack);
         }
 
         public override void OnDrawGizmos()

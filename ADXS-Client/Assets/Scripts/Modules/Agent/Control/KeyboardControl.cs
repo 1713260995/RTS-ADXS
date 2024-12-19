@@ -10,15 +10,15 @@ namespace Assets.Scripts.Modules
     {
         public Agent agent { get; }
         private InputHandler handler { get; set; }
-        private ArmyAI currentArmy { get; set; }
-        private KeyCode keyIdle { get; set; }
+        private Army currentArmy { get; set; }
+        private KeyCode keyIdle = KeyCode.S;
         private List<GameUnitCtrl> selectUnits = new List<GameUnitCtrl>();
 
         public KeyboardCommand(Agent _agent)
         {
             agent = _agent;
             handler = InputHandler.Create();
-            currentArmy = new ArmyAI(agent.id);
+            currentArmy = new Army(agent.id);
         }
 
         public void OpenControl()
@@ -100,14 +100,14 @@ namespace Assets.Scripts.Modules
             if (Physics.Raycast(ray, out RaycastHit hit, 1000))
             {
                 int hitLayerMask = 1 << hit.transform.gameObject.layer;
-                if (hitLayerMask == groundLayerMask)
-                {
-                    currentArmy.Move(hit.point);
-                    return;
-                }
                 if ((hitLayerMask & (waterLayerMask | sceneLayerMask)) != 0)
                 {
                     Debug.Log("点击到水或场景，无法操作");
+                    return;
+                }
+                if (hitLayerMask == groundLayerMask)
+                {
+                    currentArmy.ExecuteCmd(hit.point);
                     return;
                 }
                 GameUnitCtrl ctrl = hit.transform.GetComponent<GameUnitCtrl>();
@@ -115,24 +115,13 @@ namespace Assets.Scripts.Modules
                 {
                     return;
                 }
-                else if (ctrl.CanAttack(agent))
-                {
-                    currentArmy.Attack(ctrl);
-                }
-                else if (ctrl is TreeCtrl tree)
-                {
-                    currentArmy.Lumbering(tree);
-                }
-                else if (ctrl is GoldMine goldMine)
-                {
-                    currentArmy.Mining(goldMine);
-                }
+                currentArmy.ExecuteCmd(ctrl);
             }
         }
 
         public void Idle()
         {
-            currentArmy.Idle();
+            currentArmy.ExecuteCmd<object>(CommandFalgs.Idle, null);
         }
 
         #endregion

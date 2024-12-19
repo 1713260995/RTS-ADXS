@@ -1,59 +1,48 @@
 ﻿using Assets.GameClientLib.Scripts.Utils.FSM;
 using Assets.Scripts.Common.Enum;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Modules.FSM
 {
-    public class RoleStateBase : State
+    public abstract class RoleStateBase : State
     {
-        public override string id => stateName.ToString();
+        public override string id { get; }
+        public abstract StateName stateId { get; }
+        protected abstract StateName[] nextStates { get; }
+        protected abstract RoleAnimFlags animName { get; }
+        protected int animNameHash { get; }
+        protected Animator anim { get; private set; }
 
-        protected readonly RoleState stateName;
-
-        protected RoleStateMachine roleSM { get; private set; }
-        protected Animator anim => roleSM.ctrl.GetComponent<Animator>();
-
-        private int stateHash;
-
-        public RoleStateBase(RoleState _stateName)
+        public RoleStateBase()
         {
-            stateName = _stateName;
+            id = stateId.ToString();
+            animNameHash = Animator.StringToHash(animName.ToString());
+            GenerateTransitions();
+        }
 
-            stateHash = Animator.StringToHash(stateName.ToString());
+        protected virtual void GenerateTransitions()
+        {
+            foreach (var next in nextStates)
+            {
+                RoleTransition transition = new RoleTransition(stateId, next);
+                AddTransition(transition);
+            }
         }
 
         public override void SetStateMachine(StateMachine _stateMachine)
         {
             base.SetStateMachine(_stateMachine);
-            roleSM = stateMachine as RoleStateMachine;
+            var roleSM = stateMachine as RoleStateMachine;
+            anim = roleSM.ctrl.animator;
         }
 
-
-        public override void OnEnter()
+        public RoleTransition FindTransition(StateName next)
         {
-            anim.SetBool(stateHash, true);
+            RoleTransition roleTran = (RoleTransition)transitions.First(o => o.Id == RoleTransition.GenerateId(stateId, next));
+            return roleTran;
         }
 
-        public override void OnExit()
-        {
-            anim.SetBool(stateHash, false);
-        }
-
-        public override void OnUpdate()
-        {
-
-        }
-
-        public static RoleStateBase QuickCreate(RoleState orgin, List<RoleState> targets)
-        {
-            RoleStateBase state = new RoleStateBase(orgin);
-            foreach (var target in targets)
-            {
-                RoleTransition roleTransition = new RoleTransition(orgin, target);
-                state.AddTransition(roleTransition);
-            }
-            return state;
-        }
     }
 }

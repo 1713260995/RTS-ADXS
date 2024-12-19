@@ -20,10 +20,10 @@ namespace Assets.Scripts.Modules.AI.Role
 
         public override void OnEnd()
         {
-            RoleState nextState = (RoleState)share.GetValue();
-            roleCtrl.currentState = nextState;
-            share.SetValue(RoleState.Unknow);
-            Debug.Log("ChangeRoleState：" + roleCtrl.currentState);
+            //StateName nextState = (StateName)share.GetValue();
+            //roleCtrl.currentState = nextState;
+            //share.SetValue(StateName.Unknown);
+            //Debug.Log("ChangeRoleState：" + roleCtrl.currentState);
         }
 
     }

@@ -1,14 +1,20 @@
-﻿using System.Linq;
+﻿using Assets.Scripts.Modules;
+using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Common.Enum
 {
+    //1.状态枚举（Status）
+    //2.权限标志位枚举（Flags后缀）
+    //3.游戏模式枚举(Mode)
     public static class EnumHelper
     {
-        public static int GetAnimHash(this RoleAnimName name)
+        public static int GetAnimHash(this RoleAnimFlags name)
         {
             return Animator.StringToHash(name.ToString());
         }
+
 
         /// <summary>
         /// 1-32

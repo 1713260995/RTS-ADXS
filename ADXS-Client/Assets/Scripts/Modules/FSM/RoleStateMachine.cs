@@ -11,14 +11,30 @@ namespace Assets.Scripts.Modules.FSM
     {
         public GameRoleCtrl ctrl { get; private set; }
 
-        public RoleStateMachine(List<State> stateList, RoleState defaultStateId, GameRoleCtrl _ctrl) : base(stateList, defaultStateId.ToString())
+        public RoleStateMachine(List<State> stateList, StateName defaultStateId, GameRoleCtrl _ctrl) : base(stateList, defaultStateId.ToString())
         {
             ctrl = _ctrl;
         }
 
-        public async UniTask<bool> TryTrigger(RoleState origin, RoleState target)
+        public StateName GetCurrentStateName()
         {
-            return await TryTrigger(RoleTransition.GenerateId(origin, target));
+            var s = currentState as RoleStateBase;
+            return s.stateId;
+        }
+
+        public bool TryTrigger(StateName target)
+        {
+            return TryTrigger(ctrl.currentState, target);
+        }
+
+        public bool TryTrigger(StateName origin, StateName target)
+        {
+            return TryTrigger(RoleTransition.GenerateId(origin, target));
+        }
+
+        public bool CanTransition(StateName origin, StateName target)
+        {
+            return CanTransition(RoleTransition.GenerateId(origin, target));
         }
 
     }

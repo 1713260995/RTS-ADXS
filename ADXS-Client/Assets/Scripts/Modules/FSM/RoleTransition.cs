@@ -7,19 +7,18 @@ namespace Assets.Scripts.Modules.FSM
 {
     public class RoleTransition : Transition
     {
-        private string _id;
-        public override string Id => _id;
+        public override string Id { get; }
         public Func<bool> canTransition { get; set; }
-        public Func<UniTask> doTransition { get; set; }
+        public Action doTransition { get; set; }
 
-        public RoleTransition(RoleState _origin, RoleState _target) : base(_origin.ToString(), _target.ToString())
+        public RoleTransition(StateName _origin, StateName _next) : base(_origin.ToString(), _next.ToString())
         {
-            _id = GenerateId(_origin, _target);
+            Id = GenerateId(_origin, _next);
         }
 
-        public static string GenerateId(RoleState ori, RoleState target)
+        public static string GenerateId(StateName ori, StateName _next)
         {
-            return ori.ToString() + "->" + target.ToString();
+            return ori.ToString() + "->" + _next.ToString();
         }
 
         public override bool CanTransition()
@@ -27,9 +26,9 @@ namespace Assets.Scripts.Modules.FSM
             return canTransition == null ? true : canTransition();
         }
 
-        public override async UniTask DoTransition()
+        public override void DoTransition()
         {
-            await (doTransition == null ? UniTask.CompletedTask : doTransition());
+            doTransition?.Invoke();
         }
     }
 }
