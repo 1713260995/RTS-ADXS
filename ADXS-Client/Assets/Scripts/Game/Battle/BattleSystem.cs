@@ -73,7 +73,7 @@ namespace Assets.Scripts.Modules.Battle
         {
             TCtrl ctrl = spawnSystem.CreateCtrl<TCtrl>(unitName);
             Agent agent = GetAgent(agentId);
-            ctrl.Init(agent);
+            ctrl.SetAgent(agent);
             ctrl.transform.position = worldPos;
         }
 

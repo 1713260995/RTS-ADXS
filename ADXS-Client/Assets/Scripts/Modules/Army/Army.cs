@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Scripts.Modules
 {
@@ -62,20 +63,28 @@ namespace Assets.Scripts.Modules
 
         #region Command
 
-        public void ExecuteCmd<T>(T ctrl)
+        public void Move(Vector3 point)
         {
             roleCtrls.ForEach(o =>
             {
-                o.AutoExecuteCmd(ctrl);
+                o.Move(point);
+            });
+        }
+
+        public void Attack(GameUnitCtrl target)
+        {
+            roleCtrls.ForEach(o =>
+            {
+                o.Attack(target);
             });
         }
 
 
-        public void ExecuteCmd<T>(CommandFalgs falgs, T arg)
+        public void Idle()
         {
             roleCtrls.ForEach(o =>
             {
-                o.ExecuteTargetCmd(falgs, arg);
+                o.Idle();
             });
         }
 

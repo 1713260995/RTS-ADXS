@@ -1,5 +1,4 @@
 ﻿using Assets.GameClientLib.Scripts.Utils;
-using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
 using UnityEngine;
 
@@ -13,27 +12,28 @@ public class GameUnitCtrl : MonoBehaviour
 
     protected virtual void Awake()
     {
-        id = MyMath.UniqueNum();
+        OnAwake();
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameUnitManager.Instance.allGameUnits.Add(this);
-    }
-
-    public virtual void Init(Agent _agent)
-    {
-        agent = _agent;
-        agent.allUnits.Add(this);
-    }
-
 
     private void OnDestroy()
     {
         agent?.allUnits.Remove(this);
         GameUnitManager.Instance.allGameUnits.Remove(this);
     }
+
+    protected virtual void OnAwake()
+    {
+        id = MyMath.UniqueNum();
+        GameUnitManager.Instance.allGameUnits.Add(this);
+    }
+
+
+    public void SetAgent(Agent _agent)
+    {
+        agent = _agent;
+        agent.allUnits.Add(this);
+    }
+
 
     /// <summary>
     /// 判断目标能否被我攻击

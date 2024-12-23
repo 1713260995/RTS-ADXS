@@ -1,17 +1,13 @@
-﻿using Assets.GameClientLib.Scripts.Utils.Factory;
-using Assets.GameClientLib.Scripts.Utils.FSM;
+﻿using Assets.GameClientLib.Scripts.Utils.FSM;
 using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
+using Assets.Scripts.Modules.AI;
+using Assets.Scripts.Modules.AI.FindWay;
 using Assets.Scripts.Modules.Buff;
-using Assets.Scripts.Modules.Cmd;
-using Assets.Scripts.Modules.Command;
 using Assets.Scripts.Modules.FSM;
 using Assets.Scripts.Modules.FSM.Role;
-using Assets.Scripts.Modules.Role;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class GameRoleCtrl : GameUnitCtrl
 {
@@ -22,28 +18,35 @@ public class GameRoleCtrl : GameUnitCtrl
     public RoleAttributes roleAttributes { get; private set; }
     public Animator animator { get; private set; }
 
-    private void Start()
+
+    protected override void OnAwake()
     {
-        animator = GetComponent<Animator>();
-        stateMachine = new RoleStateMachine(InitRoleStates(), defaultState, this);
-        stateMachine.Restart();
-        Commands = InitCmd();
+        base.OnAwake();
+        InitFSM();
+        InitCmd();
     }
+
 
     #region State
 
     public StateName currentState => stateMachine.GetCurrentStateName();
     public RoleStateMachine stateMachine { get; private set; }
     protected virtual StateName defaultState => StateName.Idle;
+
+    private void InitFSM()
+    {
+        animator = GetComponent<Animator>();
+        stateMachine = new RoleStateMachine(this);
+        stateMachine.Start(InitRoleStates(), defaultState.ToString());
+    }
+
     protected virtual List<State> InitRoleStates()
     {
         var list = new List<State>()
         {
             new MoveState(),
             new IdleState(),
-
         };
-
         return list;
     }
 
@@ -51,46 +54,38 @@ public class GameRoleCtrl : GameUnitCtrl
     #endregion
 
     #region CMD
-    public virtual Dictionary<CommandFalgs, ICmd> Commands { get; private set; }
 
-    protected virtual Dictionary<CommandFalgs, ICmd> InitCmd()
+    protected IFindWay findWay { get; private set; }
+
+    public void InitCmd()
     {
-        var cmds = new Dictionary<CommandFalgs, ICmd> {
-            { CommandFalgs.Idle,new IdleCmdBase(this)},
-            { CommandFalgs.Move,new MoveCmdByNav(this)},
-           // { CommandFalgs.Attack,new AttackCmdBase(this) },
-        };
-        return cmds;
+        findWay = new FindWayByNav(this);
     }
 
-    /// <summary>
-    /// 执行指定命令
-    /// </summary>
-    public bool ExecuteTargetCmd<T>(CommandFalgs falgs, T arg)
+    public bool Attack(GameUnitCtrl target)
     {
-        if (Commands.TryGetValue(falgs, out ICmd cmd))
-        {
-            return cmd.Execute(arg);
-        }
-        return false;
+        if (!CanAttack(target)) return false;
+
+        return stateMachine.TryTrigger(currentState, StateName.Attack);
     }
 
-    /// <summary>
-    /// 根据参数类型，自动判断需要执行哪个命令
-    /// </summary>
-    public virtual bool AutoExecuteCmd<T>(T obj)
+
+    public void Move(Vector3 point)
     {
-        bool result = false;
-        if (obj is Vector3 point)
+        if (currentState != StateName.Move)
         {
-            result = ExecuteTargetCmd(CommandFalgs.Move, obj);
+            stateMachine.TryTrigger(StateName.Move);
         }
-        else if (obj is GameUnitCtrl unit && CanAttack(unit))
-        {
-            ExecuteTargetCmd(CommandFalgs.Attack, obj);
-        }
-        return result;
+        findWay.FindWay(point, Idle);
     }
+
+
+    public void Idle()
+    {
+        stateMachine.TryTrigger(StateName.Idle);
+    }
+
+
 
     #endregion
 }

@@ -107,7 +107,7 @@ namespace Assets.Scripts.Modules
                 }
                 if (hitLayerMask == groundLayerMask)
                 {
-                    currentArmy.ExecuteCmd(hit.point);
+                    currentArmy.Move(hit.point);
                     return;
                 }
                 GameUnitCtrl ctrl = hit.transform.GetComponent<GameUnitCtrl>();
@@ -115,13 +115,13 @@ namespace Assets.Scripts.Modules
                 {
                     return;
                 }
-                currentArmy.ExecuteCmd(ctrl);
+                currentArmy.Attack(ctrl);
             }
         }
 
         public void Idle()
         {
-            currentArmy.ExecuteCmd<object>(CommandFalgs.Idle, null);
+            currentArmy.Idle();
         }
 
         #endregion

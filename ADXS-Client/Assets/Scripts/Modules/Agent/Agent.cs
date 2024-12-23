@@ -14,9 +14,7 @@ namespace Assets.Scripts.Modules
         public int teamId { get; private set; }
         public GameColor color { get; private set; }
         private IAgentControl control { get; set; }
-
         public List<GameUnitCtrl> allUnits { get; set; }
-
 
         public Agent(int _teamId, GameColor _color, AgentControlWay controlWay)
         {
@@ -50,5 +48,7 @@ namespace Assets.Scripts.Modules
                     break;
             }
         }
+
+
     }
 }

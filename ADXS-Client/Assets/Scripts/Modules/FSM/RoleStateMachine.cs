@@ -11,7 +11,7 @@ namespace Assets.Scripts.Modules.FSM
     {
         public GameRoleCtrl ctrl { get; private set; }
 
-        public RoleStateMachine(List<State> stateList, StateName defaultStateId, GameRoleCtrl _ctrl) : base(stateList, defaultStateId.ToString())
+        public RoleStateMachine(GameRoleCtrl _ctrl)
         {
             ctrl = _ctrl;
         }
