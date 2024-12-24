@@ -28,7 +28,7 @@ public class GameRoleCtrl : GameUnitCtrl
 
 
     #region State
-
+    [HideInInspector]
     public StateName currentState => stateMachine.GetCurrentStateName();
     public RoleStateMachine stateMachine { get; private set; }
     protected virtual StateName defaultState => StateName.Idle;
@@ -46,14 +46,14 @@ public class GameRoleCtrl : GameUnitCtrl
         {
             new MoveState(),
             new IdleState(),
+            new AttackState(),
         };
         return list;
     }
 
-
     #endregion
 
-    #region CMD
+    #region CMD 
 
     protected IFindWay findWay { get; private set; }
 
@@ -62,13 +62,10 @@ public class GameRoleCtrl : GameUnitCtrl
         findWay = new FindWayByNav(this);
     }
 
-    public bool Attack(GameUnitCtrl target)
+    public void Idle()
     {
-        if (!CanAttack(target)) return false;
-
-        return stateMachine.TryTrigger(currentState, StateName.Attack);
+        stateMachine.TryTrigger(StateName.Idle);
     }
-
 
     public void Move(Vector3 point)
     {
@@ -79,13 +76,39 @@ public class GameRoleCtrl : GameUnitCtrl
         findWay.FindWay(point, Idle);
     }
 
-
-    public void Idle()
+    public void Attack(GameUnitCtrl target)
     {
-        stateMachine.TryTrigger(StateName.Idle);
+        if (!CanAttack(target)) return;
+
+        stateMachine.TryTrigger(currentState, StateName.Attack);
+    }
+
+    #endregion Attacking
+
+    #region
+    public bool isAttacking { get; set; }
+    public bool isAttackJudge { get; private set; }
+
+    /// <summary>
+    /// 攻击判定开始
+    /// </summary>
+    public void AttackJudgeStart()
+    {
+        isAttackJudge = true;
+    }
+
+    /// <summary>
+    /// 攻击判定结束
+    /// </summary>
+    public void AttackJudgetDone()
+    {
+        isAttackJudge = false;
     }
 
 
-
+    public void AttackDone()
+    {
+        Idle();
+    }
     #endregion
 }

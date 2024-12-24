@@ -9,12 +9,12 @@ namespace Assets.Scripts.Modules
 {
     public class Agent
     {
-
         public int id { get; private set; }
         public int teamId { get; private set; }
         public GameColor color { get; private set; }
         private IAgentControl control { get; set; }
         public List<GameUnitCtrl> allUnits { get; set; }
+
 
         public Agent(int _teamId, GameColor _color, AgentControlWay controlWay)
         {
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Modules
 
         public void OnEnable()
         {
-            control.OpenControl();
+            control?.OpenControl();
         }
 
         public void OnDisable()
@@ -49,6 +49,10 @@ namespace Assets.Scripts.Modules
             }
         }
 
+        public override string ToString()
+        {
+            return $"id={id},teamId={teamId},color={color},control={control}";
+        }
 
     }
 }

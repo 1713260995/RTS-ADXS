@@ -1,6 +1,7 @@
 ﻿using Assets.GameClientLib.Scripts.Utils.FSM;
 using Assets.Scripts.Common.Enum;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace Assets.Scripts.Modules.FSM
         protected abstract RoleAnimFlags animName { get; }
         protected int animNameHash { get; }
         protected Animator anim { get; private set; }
+        public GameRoleCtrl role { get; private set; }
 
         public RoleStateBase()
         {
@@ -35,6 +37,7 @@ namespace Assets.Scripts.Modules.FSM
         {
             base.SetStateMachine(_stateMachine);
             var roleSM = stateMachine as RoleStateMachine;
+            role = roleSM.ctrl;
             anim = roleSM.ctrl.animator;
         }
 

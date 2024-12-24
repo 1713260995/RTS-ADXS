@@ -1,4 +1,4 @@
-// Made with Amplify Shader Editor
+﻿// Made with Amplify Shader Editor
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "E3D/War3R-Hero/Actor-CST-N-Spm"
 {
@@ -242,7 +242,7 @@ Shader "E3D/War3R-Hero/Actor-CST-N-Spm"
 		}
 	}
 	Fallback "Diffuse"
-	CustomEditor "ASEMaterialInspector"
+	//CustomEditor "ASEMaterialInspector"
 }
 /*ASEBEGIN
 Version=17101

@@ -7,7 +7,7 @@ namespace Assets.Scripts.Modules.FSM.Role
     {
         public override StateName stateId => StateName.Idle;
 
-        protected override StateName[] nextStates => new StateName[] { StateName.Move };
+        protected override StateName[] nextStates => new StateName[] { StateName.Move, StateName.Attack };
 
         protected override RoleAnimFlags animName => RoleAnimFlags.Idle;
 

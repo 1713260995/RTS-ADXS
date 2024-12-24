@@ -1,5 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Assets.Scripts.Game;
+using Assets.Scripts.Modules.Battle;
+using Cysharp.Threading.Tasks;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,38 +17,39 @@ namespace Assets.Scripts.Modules.AI.FindWay
         public FindWayByNav(GameRoleCtrl _ctrl)
         {
             agent = _ctrl.GetComponent<NavMeshAgent>();
-            Wait().Forget();
         }
 
+        public Vector3 currentEndPoint;
 
         public bool FindWay(Vector3 point, Action onComplete)
         {
             bool isSuccess = agent.SetDestination(point);
             if (!isSuccess) return false;
-            this.onComplete = onComplete;
-            endPoint = point;
+            currentEndPoint = point;
+            BattleSystem.Instance.StartCoroutine(WaitComplete(point, onComplete));
             return true;
         }
 
 
-        private async UniTask Wait()
+        public IEnumerator WaitComplete(Vector3 endPoint, Action onComplete)
         {
             while (true)
             {
-                if (agent == null)
+                if (endPoint != currentEndPoint)
                 {
-                    return;
+                    yield break;
                 }
-                if (endPoint != null && onComplete != null && (endPoint.Value - agent.transform.position).magnitude <= 1f)
+                if ((endPoint - agent.transform.position).magnitude <= 0.5f)
                 {
-                    Debug.Log("到达终点");
-                    onComplete.Invoke();
-                    onComplete = null;
-                    endPoint = null;
+                    if (agent.pathStatus == NavMeshPathStatus.PathComplete)
+                    {
+                        onComplete.Invoke();
+                        Debug.Log("到达终点");
+                        yield break;
+                    }
                 }
-                await UniTask.Yield();
+                yield return null;
             }
         }
-
     }
 }

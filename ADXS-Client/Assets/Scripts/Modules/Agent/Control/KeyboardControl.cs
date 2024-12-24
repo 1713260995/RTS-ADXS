@@ -13,6 +13,7 @@ namespace Assets.Scripts.Modules
         private Army currentArmy { get; set; }
         private KeyCode keyIdle = KeyCode.S;
         private List<GameUnitCtrl> selectUnits = new List<GameUnitCtrl>();
+        private bool isRunning;
 
         public KeyboardCommand(Agent _agent)
         {
@@ -23,6 +24,8 @@ namespace Assets.Scripts.Modules
 
         public void OpenControl()
         {
+            if (isRunning) return;
+            isRunning = true;
             handler.EnableSingleSelect(MouseInfo.MouseId.Left, SingleSelectCallback);
             handler.EnableMultipleSelect(MouseInfo.MouseId.Left, MultipleSelectAbleUnits, MultipleSelectCallback);
             handler.mouseRight.keyUpEvent += RightClickEvent;
@@ -31,6 +34,8 @@ namespace Assets.Scripts.Modules
 
         public void CloseControl()
         {
+            if (!isRunning) return;
+            isRunning = false;
             handler.DisableSingleSelect();
             handler.DisableMultipleSelect();
             handler.mouseRight.keyUpEvent -= RightClickEvent;
