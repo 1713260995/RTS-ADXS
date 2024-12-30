@@ -12,20 +12,27 @@ public class GameUnitCtrl : MonoBehaviour
 
     protected virtual void Awake()
     {
-        OnAwake();
+        id = MyMath.UniqueNum();
+        GameUnitManager.Instance.allGameUnits.Add(this);
     }
 
-    private void OnDestroy()
+    protected virtual void Start()
+    {
+
+    }
+
+    protected virtual void Update()
+    {
+
+    }
+
+    protected virtual void OnDestroy()
     {
         agent?.allUnits.Remove(this);
         GameUnitManager.Instance.allGameUnits.Remove(this);
     }
 
-    protected virtual void OnAwake()
-    {
-        id = MyMath.UniqueNum();
-        GameUnitManager.Instance.allGameUnits.Add(this);
-    }
+
 
 
     public void SetAgent(Agent _agent)

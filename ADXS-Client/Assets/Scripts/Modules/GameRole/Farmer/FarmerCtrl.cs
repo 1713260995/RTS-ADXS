@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Modules.GameRole;
-
-namespace Assets.Scripts.Modules
+﻿namespace Assets.Scripts.Modules
 {
     public class FarmerCtrl : RoleByPoolCtrl
     {

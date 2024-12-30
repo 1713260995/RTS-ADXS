@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Modules.Spawn;
 
-namespace Assets.Scripts.Modules.GameRole
+namespace Assets.Scripts.Modules
 {
     /// <summary>
     /// 需要使用对象池的角色

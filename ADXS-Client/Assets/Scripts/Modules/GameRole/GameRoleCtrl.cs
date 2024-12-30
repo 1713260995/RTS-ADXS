@@ -1,13 +1,16 @@
-﻿using Assets.GameClientLib.Scripts.Utils.FSM;
+﻿using Assets.GameClientLib.Scripts.Utils;
+using Assets.GameClientLib.Scripts.Utils.FSM;
 using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
-using Assets.Scripts.Modules.AI;
-using Assets.Scripts.Modules.AI.FindWay;
 using Assets.Scripts.Modules.Buff;
 using Assets.Scripts.Modules.FSM;
 using Assets.Scripts.Modules.FSM.Role;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameRoleCtrl : GameUnitCtrl
 {
@@ -19,15 +22,22 @@ public class GameRoleCtrl : GameUnitCtrl
     public Animator animator { get; private set; }
 
 
-    protected override void OnAwake()
+    protected override void Awake()
     {
-        base.OnAwake();
+        base.Awake();
         InitFSM();
         InitCmd();
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        stateMachine.OnUpdate();
+    }
+
 
     #region State
+
     [HideInInspector]
     public StateName currentState => stateMachine.GetCurrentStateName();
     public RoleStateMachine stateMachine { get; private set; }
@@ -53,41 +63,113 @@ public class GameRoleCtrl : GameUnitCtrl
 
     #endregion
 
-    #region CMD 
+    #region Cmd
 
-    protected IFindWay findWay { get; private set; }
-
-    public void InitCmd()
+    protected virtual void InitCmd()
     {
-        findWay = new FindWayByNav(this);
+        navAgent = GetComponent<NavMeshAgent>();
+        navAgent.angularSpeed = 0;
+        navAgent.speed = moveSpeed;
     }
 
-    public void Idle()
+    #region Idle
+
+    public void OnIdle()
     {
         stateMachine.TryTrigger(StateName.Idle);
     }
 
-    public void Move(Vector3 point)
+    #endregion
+
+    #region Move
+
+    public float maxMoveInterval = 0.5f;
+    public float moveSpeed = 5;
+    public float rotateLerp = 0.01f;
+
+    public NavMeshAgent navAgent { get; private set; }
+    public Vector3 currentEndPoint { get; private set; }
+    protected Coroutine moveTask { get; private set; }
+
+
+
+    public void OnMove(Vector3 endPoint, Action onComplete = null)
     {
+        if (currentEndPoint == endPoint && currentState == StateName.Move)
+            return;//如果更新目标点时，新目标点和当前移动的点位置一致，则不需要更新
+        moveTask = StartCoroutine(Move(endPoint, onComplete));
+    }
+
+    protected virtual IEnumerator Move(Vector3 endPoint, Action onComplete)
+    {
+        currentEndPoint = endPoint;
         if (currentState != StateName.Move)
         {
             stateMachine.TryTrigger(StateName.Move);
         }
-        findWay.FindWay(point, Idle);
+        navAgent.isStopped = false;
+        navAgent.SetDestination(endPoint);
+        while (currentEndPoint == endPoint)
+        {
+            var s = MyMath.LookAt(transform, endPoint);
+            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, s, MyMath.GetLerp(rotateLerp));
+            if ((endPoint - transform.position).magnitude <= maxMoveInterval && navAgent.pathStatus == NavMeshPathStatus.PathComplete)
+            {
+                OnIdle();
+                onComplete?.Invoke();
+                Debug.Log("到达终点");
+                break;
+            }
+            // transform.rotation=Quaternion.ler
+            yield return null;
+        }
+        moveTask = null;
     }
 
-    public void Attack(GameUnitCtrl target)
+
+    public IEnumerator Follow(GameUnitCtrl target, float stopDis, Action onComplete = null)
     {
-        if (!CanAttack(target)) return;
 
-        stateMachine.TryTrigger(currentState, StateName.Attack);
+        while ((transform.position - target.transform.position).magnitude > stopDis)
+        {
+            OnMove(target.transform.position, onComplete);
+            yield return null;
+        }
+        StopMove();
     }
 
-    #endregion Attacking
+    [ShowButton]
+    public void StopMove()
+    {
+        navAgent.isStopped = true;
+        OnIdle();
+    }
 
-    #region
-    public bool isAttacking { get; set; }
-    public bool isAttackJudge { get; private set; }
+    #endregion
+
+    #region Attack
+
+    public float attackDistance = 1.5f;
+    public bool isAttacking { get; set; }//正在攻击
+    public bool isAttackJudge { get; private set; }//正在进行攻击判定
+    protected Coroutine currentAttackTask { get; private set; }
+
+    public void OnAttack(GameUnitCtrl target)
+    {
+        if (!CanAttack(target))
+            return;
+        if (currentAttackTask != null)
+            StopCoroutine(currentAttackTask);
+        currentAttackTask = StartCoroutine(Attack(target));
+
+    }
+
+    protected IEnumerator Attack(GameUnitCtrl target)
+    {
+        yield return StartCoroutine(Follow(target, attackDistance));
+        stateMachine.TryTrigger(currentState, StateName.Attack);
+        currentAttackTask = null;
+    }
 
     /// <summary>
     /// 攻击判定开始
@@ -105,10 +187,12 @@ public class GameRoleCtrl : GameUnitCtrl
         isAttackJudge = false;
     }
 
-
     public void AttackDone()
     {
-        Idle();
+        OnIdle();
     }
+
+    #endregion
+
     #endregion
 }
