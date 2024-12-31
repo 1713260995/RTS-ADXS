@@ -15,8 +15,19 @@ namespace Assets.Scripts.Modules.AI.Idel
             this.role = role;
         }
 
+        public bool IsAlive => role.currentState == StateName.Idle;
+
+        public void AbortAI()
+        {
+            throw new InvalidOperationException("can't abort IdleAI");
+        }
+
         public void OnIdle()
         {
+            if (IsAlive)
+            {
+                return;
+            }
             role.stateMachine.TryTrigger(StateName.Idle);
         }
     }

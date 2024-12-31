@@ -3,6 +3,7 @@ using Assets.GameClientLib.Scripts.Utils.FSM;
 using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
 using Assets.Scripts.Modules.AI;
+using Assets.Scripts.Modules.AI.Follow;
 using Assets.Scripts.Modules.AI.Idel;
 using Assets.Scripts.Modules.AI.Move;
 using Assets.Scripts.Modules.Buff;
@@ -70,19 +71,21 @@ public class GameRoleCtrl : GameUnitCtrl
     public IIdleAI idleAI { get; protected set; }
     public IMoveAI moveAI { get; protected set; }
     public IAttackAI attackAI { get; protected set; }
+    public IFollowAI followAI { get; protected set; }
 
     protected virtual void InitAI()
     {
-        attackAI = new NoramlAttackAI(this);
+        attackAI = new AttackAI(this);
         idleAI = new IdleAI(this);
         moveAI = new MoveAIByNav(this);
+        followAI = new FollowAI(this);
     }
 
     #endregion
 
     #region Move
 
-    public float maxMoveInterval = 0.5f;
+    public float moveStopDis = 0.5f;
     public float moveSpeed = 5;
     public float rotateLerp = 0.01f;
 

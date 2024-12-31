@@ -1,4 +1,5 @@
 ﻿using Assets.GameClientLib.Scripts.Utils;
+using Assets.Scripts.Modules.AI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -67,7 +68,7 @@ namespace Assets.Scripts.Modules
         {
             roleCtrls.ForEach(o =>
             {
-                o.moveAI.OnMove(point);
+                o.moveAI.OnMove(new MoveInfo(point, o.moveStopDis, null));
             });
         }
 

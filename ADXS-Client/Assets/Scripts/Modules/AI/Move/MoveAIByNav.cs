@@ -1,6 +1,8 @@
-﻿using Assets.GameClientLib.Scripts.Utils;
+﻿using Assets.GameClientLib.Scripts;
+using Assets.GameClientLib.Scripts.Utils;
 using System;
 using System.Collections;
+using System.Net;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,76 +11,54 @@ namespace Assets.Scripts.Modules.AI.Move
     public class MoveAIByNav : IMoveAI
     {
         protected GameRoleCtrl role { get; set; }
-        protected Vector3 currentEndPoint { get; set; }
-        protected Coroutine moveTask { get; set; }
-        protected NavMeshAgent navAgent { get; set; }
         protected Transform transform { get; set; }
+        protected NavMeshAgent navAgent { get; set; }
+        protected Coroutine moveTask { get; set; }
+        protected MoveInfo moveInfo { get; set; }
+
 
         public MoveAIByNav(GameRoleCtrl role)
         {
             this.role = role;
             transform = role.transform;
             navAgent = role.GetComponent<NavMeshAgent>();
-            navAgent.angularSpeed = 0;
+            navAgent.angularSpeed = 0;//禁止nav自带旋转
+        }
+
+        public bool IsAlive => moveTask != null;
+
+        public void OnMove(MoveInfo _moveInfo)
+        {
+            moveInfo = _moveInfo;
+            navAgent.SetDestination(moveInfo.endPoint);
             navAgent.speed = role.moveSpeed;
-
-        }
-
-        public void OnMove(Vector3 endPoint, Action onComplete = null)
-        {
-            moveTask = role.StartCoroutine(Move(endPoint, onComplete));
-        }
-
-        protected IEnumerator Move(Vector3 endPoint, Action onComplete)
-        {
-            if (currentEndPoint == endPoint && role.currentState == StateName.Move)
-            {
-                yield break;//如果更新目标点时，新目标点和当前移动的点位置一致，则不需要更新
-            }
-            if (role.currentState != StateName.Move)
+            if (!IsAlive)
             {
                 role.stateMachine.TryTrigger(StateName.Move);
+                navAgent.isStopped = false;
+                moveTask = role.StartCoroutine(Move());
             }
-            currentEndPoint = endPoint;
-            navAgent.isStopped = false;
-            navAgent.SetDestination(endPoint);
-            while (currentEndPoint == endPoint)
-            {
+        }
 
-                var s = MyMath.LookAt(transform, endPoint);
-                transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, s, MyMath.GetLerp(role.rotateLerp));
-                if ((endPoint - transform.position).magnitude <= role.maxMoveInterval && navAgent.pathStatus == NavMeshPathStatus.PathComplete)
-                {
-                    role.idleAI.OnIdle();
-                    onComplete?.Invoke();
-                    Debug.Log("到达终点");
-                    break;
-                }
+        protected IEnumerator Move()
+        {
+            while ((moveInfo.endPoint - transform.position).magnitude > moveInfo.moveStopDis)
+            {
+                Vector3 rotateEuler = MyMath.LookAt(transform, moveInfo.endPoint);
+                transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, rotateEuler, MyMath.GetLerp(role.rotateLerp));
                 yield return null;
             }
+            navAgent.isStopped = true;
+            moveInfo.onComplete?.Invoke();
+            role.idleAI.OnIdle();
             moveTask = null;
-        }
-
-        public void OnFollow(GameUnitCtrl target, float stopDis, Action onComplete = null)
-        {
-            moveTask = role.StartCoroutine(Follow(target, stopDis, onComplete));
-        }
-
-        protected IEnumerator Follow(GameUnitCtrl target, float stopDis, Action onComplete = null)
-        {
-            while ((transform.position - target.transform.position).magnitude > stopDis)
-            {
-                OnMove(target.transform.position, onComplete);
-                yield return null;
-            }
-            Debug.Log("跟随结束");
-            AbortTask();
+            Debug.Log("到达终点");
         }
 
 
-        public void AbortTask()
+        public void AbortAI()
         {
-            if (moveTask != null)
+            if (IsAlive)
             {
                 navAgent.isStopped = true;
                 role.StopCoroutine(moveTask);

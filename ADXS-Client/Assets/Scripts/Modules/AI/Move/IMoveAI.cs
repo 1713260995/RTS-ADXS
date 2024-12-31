@@ -2,23 +2,27 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.Modules.AI.Move
+namespace Assets.Scripts.Modules.AI
 {
-    public interface IMoveAI
+    public interface IMoveAI : IAIBase
     {
         /// <summary>
         /// 到达指定位置
         /// </summary>
-        void OnMove(Vector3 endPoint, Action onComplete = null);
+        void OnMove(MoveInfo info);
+    }
 
-        /// <summary>
-        /// 跟随目标直至距离差小于stopDis
-        /// </summary>
-        void OnFollow(GameUnitCtrl target, float stopDis, Action onComplete = null);
+    public struct MoveInfo
+    {
+        public Vector3 endPoint;
+        public float moveStopDis;
+        public Action onComplete;
 
-        /// <summary>
-        /// 中止（移动/跟随）
-        /// </summary>
-        void AbortTask();
+        public MoveInfo(Vector3 endPoint, float moveStopDis, Action onComplete)
+        {
+            this.endPoint = endPoint;
+            this.moveStopDis = moveStopDis;
+            this.onComplete = onComplete;
+        }
     }
 }
