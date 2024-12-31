@@ -14,9 +14,6 @@ public class TestSence : MonoBehaviour
     public Transform A2;
     public Transform B2;
 
-
-    public bool isRun = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,16 +26,6 @@ public class TestSence : MonoBehaviour
     void Update()
     {
 
-        //if (isRun)
-        //{
-        //    var s = MyMath.GetRotateAngle(A1, B1.position);
-        //    var rotate = A1.localEulerAngles;
-        //    rotate.y = MyMath.Lerp(rotate.y, rotate.y + s, 0.01f);
-        //    A1.localEulerAngles = rotate;
-
-
-        //    A2.localEulerAngles = Vector3.Lerp(A2.localEulerAngles, MyMath.LookAt(A2, B2.position), speedLerp * Time.deltaTime);
-        //}
     }
 
     private IEnumerator TestA1()

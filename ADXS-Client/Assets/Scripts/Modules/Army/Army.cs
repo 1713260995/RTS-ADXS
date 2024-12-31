@@ -67,7 +67,7 @@ namespace Assets.Scripts.Modules
         {
             roleCtrls.ForEach(o =>
             {
-                o.OnMove(point);
+                o.moveAI.OnMove(point);
             });
         }
 
@@ -75,7 +75,7 @@ namespace Assets.Scripts.Modules
         {
             roleCtrls.ForEach(o =>
             {
-                o.OnAttack(target);
+                o.attackAI.OnAttack(target);
             });
         }
 
@@ -84,7 +84,7 @@ namespace Assets.Scripts.Modules
         {
             roleCtrls.ForEach(o =>
             {
-                o.OnIdle();
+                o.idleAI.OnIdle();
             });
         }
 
