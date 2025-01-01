@@ -1,20 +1,13 @@
-﻿using Assets.GameClientLib.Scripts.Utils;
-using Assets.GameClientLib.Scripts.Utils.FSM;
+﻿using Assets.GameClientLib.Scripts.Utils.FSM;
 using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
 using Assets.Scripts.Modules.AI;
 using Assets.Scripts.Modules.AI.Follow;
-using Assets.Scripts.Modules.AI.Idel;
-using Assets.Scripts.Modules.AI.Move;
 using Assets.Scripts.Modules.Buff;
 using Assets.Scripts.Modules.FSM;
 using Assets.Scripts.Modules.FSM.Role;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class GameRoleCtrl : GameUnitCtrl
 {
@@ -67,6 +60,7 @@ public class GameRoleCtrl : GameUnitCtrl
     #endregion
 
     #region AI 
+    public List<IAIBase> aIBases = new List<IAIBase>();
 
     public IIdleAI idleAI { get; protected set; }
     public IMoveAI moveAI { get; protected set; }
@@ -79,7 +73,13 @@ public class GameRoleCtrl : GameUnitCtrl
         idleAI = new IdleAI(this);
         moveAI = new MoveAIByNav(this);
         followAI = new FollowAI(this);
+
     }
+
+    #endregion
+
+    #region Idle
+    //待添加参数
 
     #endregion
 

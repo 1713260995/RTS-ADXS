@@ -4,16 +4,15 @@ using UnityEngine;
 
 namespace Assets.Scripts.Modules.AI.Follow
 {
-    public class FollowAI : IFollowAI
+    public class FollowAI : AIBase, IFollowAI
     {
-        protected GameRoleCtrl role { get; set; }
         protected Coroutine followTask { get; set; }
         FollowInfo followInfo { get; set; }
-        public bool IsAlive => followTask != null;
+        public override bool IsAlive => followTask != null;
 
-        public FollowAI(GameRoleCtrl _role)
+        public FollowAI(GameRoleCtrl role) : base(role)
         {
-            role = _role;
+
         }
 
 
@@ -40,11 +39,13 @@ namespace Assets.Scripts.Modules.AI.Follow
             followTask = null;
         }
 
-        public void AbortAI()
+        //moveAI.AbortAI()内部已转换到idle
+        public override void AbortAI()
         {
             if (IsAlive)
             {
                 role.StopCoroutine(followTask);
+                role.moveAI.AbortAI();
                 followTask = null;
             }
         }

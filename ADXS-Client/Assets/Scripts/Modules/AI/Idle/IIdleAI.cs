@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Modules.AI.Idel
+namespace Assets.Scripts.Modules.AI
 {
     public interface IIdleAI : IAIBase
     {

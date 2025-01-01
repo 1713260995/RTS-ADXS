@@ -6,26 +6,20 @@ using System.Net;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets.Scripts.Modules.AI.Move
+namespace Assets.Scripts.Modules.AI
 {
-    public class MoveAIByNav : IMoveAI
+    public class MoveAIByNav : AIBase, IMoveAI
     {
-        protected GameRoleCtrl role { get; set; }
-        protected Transform transform { get; set; }
         protected NavMeshAgent navAgent { get; set; }
         protected Coroutine moveTask { get; set; }
         protected MoveInfo moveInfo { get; set; }
+        public override bool IsAlive => moveTask != null;
 
-
-        public MoveAIByNav(GameRoleCtrl role)
+        public MoveAIByNav(GameRoleCtrl role) : base(role)
         {
-            this.role = role;
-            transform = role.transform;
             navAgent = role.GetComponent<NavMeshAgent>();
             navAgent.angularSpeed = 0;//禁止nav自带旋转
         }
-
-        public bool IsAlive => moveTask != null;
 
         public void OnMove(MoveInfo _moveInfo)
         {
@@ -48,15 +42,12 @@ namespace Assets.Scripts.Modules.AI.Move
                 transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, rotateEuler, MyMath.GetLerp(role.rotateLerp));
                 yield return null;
             }
-            navAgent.isStopped = true;
             moveInfo.onComplete?.Invoke();
-            role.idleAI.OnIdle();
-            moveTask = null;
             Debug.Log("到达终点");
+            AbortAI();
         }
 
-
-        public void AbortAI()
+        public override void AbortAI()
         {
             if (IsAlive)
             {
