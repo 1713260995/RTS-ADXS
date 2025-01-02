@@ -12,7 +12,7 @@ public class TestNormal : MonoBehaviour
     [ShowButton]
     public void AddAgent()
     {
-        Agent agent1 = new Agent(teamId, color, controlWay);
+        TeamAgent agent1 = new TeamAgent(teamId, color, controlWay);
         BattleSystem.Instance.AddAgent(agent1);
         agent1.OnEnable();
         Debug.Log("AddAgent:" + agent1);

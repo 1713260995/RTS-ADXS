@@ -73,7 +73,8 @@ namespace Assets.Scripts.Modules
         {
             roleCtrlList.ForEach(o =>
             {
-                o.moveAI.OnMove(new MoveInfo(point, o.moveStopDis, null));
+                Vector3 endPoint = (o.transform.position - roleCtrlList[0].transform.position) + point;
+                o.moveAI.OnMove(new MoveInfo(endPoint, o.moveStopDis, null));
             });
         }
 

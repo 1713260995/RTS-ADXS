@@ -15,13 +15,13 @@ namespace Assets.Scripts.Modules.Battle
         [SerializeField]
         private SpawnSystem spawnSystem;
 
-        public List<Agent> agents { get; private set; }
+        public List<TeamAgent> agents { get; private set; }
         public bool isRunning { get; private set; }
         public static BattleSystem Instance;
 
         private void Awake() {
             Instance = this;
-            agents = new List<Agent>();
+            agents = new List<TeamAgent>();
         }
 
         private void Start() { }
@@ -55,11 +55,11 @@ namespace Assets.Scripts.Modules.Battle
 
         #region Agent
 
-        public void AddAgent(Agent agent) {
+        public void AddAgent(TeamAgent agent) {
             agents.Add(agent);
         }
 
-        public Agent GetAgent(int id) {
+        public TeamAgent GetAgent(int id) {
             return agents.First(o => o.id == id);
         }
 
@@ -72,7 +72,7 @@ namespace Assets.Scripts.Modules.Battle
 
         public void CreateGameUnit<TCtrl>(GameUnitName unitName, int agentId, Vector3 worldPos) where TCtrl : GameUnitCtrl {
             TCtrl ctrl = spawnSystem.CreateCtrl<TCtrl>(unitName);
-            Agent agent = GetAgent(agentId);
+            TeamAgent agent = GetAgent(agentId);
             ctrl.SetAgent(agent);
             if (!unitGroupDic.TryGetValue(agentId, out Transform group)) {
                 group = new GameObject("Agent Group " + agent.id).transform;

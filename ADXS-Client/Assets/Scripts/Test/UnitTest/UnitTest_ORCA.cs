@@ -8,31 +8,48 @@ namespace Test
     /// 测试接入ORCA后避障效果
     /// 
     /// </summary>
-    public class UnitTest_ORCA
+    public class UnitTest_ORCA : MonoBehaviour
     {
-        public GameColor groupPlayerColor = GameColor.Blue;
+        public float interval = 1.5f;
+        public GameUnitName unitName = GameUnitName.Peasant;
 
-        // [ShowButton]
-        // public void Test() {
-        //     Agent agent1 = new Agent(1, groupAIColor, AgentControlWay.Keyboard);
-        //
-        //     BattleSystem.Instance.AddAgent(agent1);
-        //     BattleSystem.Instance.AddAgent(agent2);
-        //     BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent1.id, birthLocation);
-        //     BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent2.id, new Vector3(5, 0, 0));
-        //     BattleSystem.Instance.StartGame();
-        // }
-        //
-        // [Header("GroupAI")]
-        // public GameColor groupAIColor = GameColor.Red;
-        // //  public 
-        //
-        //
-        // private void CreateGroupAI() {
-        //     Agent agent2 = new Agent(2, groupPlayerColor, AgentControlWay.AI);
-        //     BattleSystem.Instance.AddAgent(agent2);
-        //
-        //     BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent1.id, birthLocation);
-        // }
+        [ShowButton]
+        public void Test()
+        {
+            CreateGroupAI();
+            CreateGroupPlayer();
+            BattleSystem.Instance.StartGame();
+        }
+
+        private void CreateGroupAI()
+        {
+            TeamAgent agent = new TeamAgent(2, GameColor.Red, AgentControlWay.AI);
+            BattleSystem.Instance.AddAgent(agent);
+            Vector3 birthPos = new Vector3(7, 0, 7);
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Vector3 pos = new Vector3(birthPos.x + interval * i, 0, birthPos.z + interval * j);
+                    BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent.id, pos);
+                }
+            }
+        }
+
+
+        private void CreateGroupPlayer()
+        {
+            TeamAgent agent = new TeamAgent(2, GameColor.Red, AgentControlWay.Keyboard);
+            BattleSystem.Instance.AddAgent(agent);
+            Vector3 birthPos = new Vector3(-7, 0, -7);
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Vector3 pos = new Vector3(birthPos.x - interval * i, 0, birthPos.z - interval * j);
+                    BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent.id, pos);
+                }
+            }
+        }
     }
 }

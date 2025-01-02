@@ -8,14 +8,14 @@ namespace Assets.Scripts.Modules
 {
     public class KeyboardCommand : IAgentControl
     {
-        public Agent agent { get; }
+        public TeamAgent agent { get; }
         private InputHandler handler { get; set; }
         private Army currentArmy { get; set; }
         private KeyCode keyIdle = KeyCode.S;
         private List<GameUnitCtrl> selectUnits = new List<GameUnitCtrl>();
         private bool isRunning;
 
-        public KeyboardCommand(Agent _agent)
+        public KeyboardCommand(TeamAgent _agent)
         {
             agent = _agent;
             handler = InputHandler.Create();

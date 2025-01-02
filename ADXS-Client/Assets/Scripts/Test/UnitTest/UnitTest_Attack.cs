@@ -15,8 +15,8 @@ namespace Test
         /// </summary>
         [ShowButton]
         public void TestAttack() {
-            Agent agent1 = new Agent(1, color, AgentControlWay.Keyboard);
-            Agent agent2 = new Agent(2, color, AgentControlWay.AI);
+            TeamAgent agent1 = new TeamAgent(1, color, AgentControlWay.Keyboard);
+            TeamAgent agent2 = new TeamAgent(2, color, AgentControlWay.AI);
             BattleSystem.Instance.AddAgent(agent1);
             BattleSystem.Instance.AddAgent(agent2);
             BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent1.id, birthLocation);

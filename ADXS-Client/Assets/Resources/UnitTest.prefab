@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4096325940573422616}
   - component: {fileID: 5930249271715593256}
   - component: {fileID: 476489494120294500}
+  - component: {fileID: 3022179756083039117}
   m_Layer: 0
   m_Name: UnitTest
   m_TagString: Untagged
@@ -66,3 +67,17 @@ MonoBehaviour:
   color: 0
   unitName: 2
   birthLocation: {x: 0, y: 0, z: 0}
+--- !u!114 &3022179756083039117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3614032866413620351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42455cf814b248868cedc819942aa9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 1
+  unitName: 2

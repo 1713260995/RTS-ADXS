@@ -8,7 +8,7 @@ public class GameUnitCtrl : MonoBehaviour
     public GameUnitType unitType;
 
     public int id { get; private set; }
-    public Agent agent { get; private set; }
+    public TeamAgent agent { get; private set; }
 
     protected virtual void Awake()
     {
@@ -35,7 +35,7 @@ public class GameUnitCtrl : MonoBehaviour
 
 
 
-    public void SetAgent(Agent _agent)
+    public void SetAgent(TeamAgent _agent)
     {
         agent = _agent;
         agent.allUnits.Add(this);

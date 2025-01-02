@@ -10,7 +10,7 @@ namespace Assets.Scripts.Modules
     /// <summary>
     /// 每个团队由一个Agent进行控制
     /// </summary>
-    public class Agent
+    public class TeamAgent
     {
         public int id { get; private set; }
         /// <summary>
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Modules
         public List<GameUnitCtrl> allUnits { get; set; }
 
 
-        public Agent(int _groupId, GameColor _color, AgentControlWay controlWay)
+        public TeamAgent(int _groupId, GameColor _color, AgentControlWay controlWay)
         {
             id = MyMath.UniqueNum();
             groupId = _groupId;
@@ -38,7 +38,7 @@ namespace Assets.Scripts.Modules
 
         public void OnDisable()
         {
-            control.CloseControl();
+            control?.CloseControl();
         }
 
         private void GenerateControl(AgentControlWay controlWay)
