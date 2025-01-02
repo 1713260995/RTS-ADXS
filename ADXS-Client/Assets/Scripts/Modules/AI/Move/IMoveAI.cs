@@ -17,7 +17,7 @@ namespace Assets.Scripts.Modules.AI
         public Vector3 endPoint;
         public float moveStopDis;
         public Action onComplete;
-
+        
         public MoveInfo(Vector3 endPoint, float moveStopDis, Action onComplete)
         {
             this.endPoint = endPoint;

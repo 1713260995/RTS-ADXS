@@ -51,7 +51,7 @@ public class GameUnitCtrl : MonoBehaviour
         {
             return false;
         }
-        if (target.agent.teamId != agent.teamId)
+        if (target.agent.groupId != agent.groupId)
         {
             return true;
         }

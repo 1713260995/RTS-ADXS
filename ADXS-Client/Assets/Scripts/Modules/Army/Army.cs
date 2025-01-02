@@ -7,17 +7,22 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Scripts.Modules
 {
+    /// <summary>
+    /// 部队队
+    /// 1.每个Team通过部队控制部队内所有角色
+    /// 2.每个Team可以有多个部队
+    /// </summary>
     public class Army
     {
         public int id;
         public int agentId;
 
-        private List<GameRoleCtrl> roleCtrls { get; set; }
+        private List<GameRoleCtrl> roleCtrlList { get; set; }
 
         public Army(int agentId)
         {
             id = MyMath.UniqueNum();
-            roleCtrls = new();
+            roleCtrlList = new();
             this.agentId = agentId;
         }
 
@@ -26,10 +31,10 @@ namespace Assets.Scripts.Modules
         /// </summary>
         public void ReplaceMember(GameRoleCtrl _newUnits)
         {
-            roleCtrls.Clear();
+            roleCtrlList.Clear();
             if (_newUnits != null)
             {
-                roleCtrls.Add(_newUnits);
+                roleCtrlList.Add(_newUnits);
             }
         }
 
@@ -38,11 +43,11 @@ namespace Assets.Scripts.Modules
         {
             if (_newUnits == null)
             {
-                roleCtrls.Clear();
+                roleCtrlList.Clear();
             }
             else
             {
-                roleCtrls = _newUnits;
+                roleCtrlList = _newUnits;
             }
         }
 
@@ -55,10 +60,10 @@ namespace Assets.Scripts.Modules
         public void GetMembersByDelta(List<GameRoleCtrl> _newRoles, out List<int> deleteIds, out List<int> addIds)
         {
             //任何在旧集合存在但不在新集合中存在的角色都需要删除
-            deleteIds = roleCtrls.Where(o => _newRoles.Exists(o1 => o1.id == o.id) == false).Select(o => o.id).ToList();
+            deleteIds = roleCtrlList.Where(o => _newRoles.Exists(o1 => o1.id == o.id) == false).Select(o => o.id).ToList();
 
             //任何新集合存在就集合不存在都需要添加
-            addIds = _newRoles.Where(o => roleCtrls.Exists(o1 => o1.id == o.id) == false).Select(o => o.id).ToList();
+            addIds = _newRoles.Where(o => roleCtrlList.Exists(o1 => o1.id == o.id) == false).Select(o => o.id).ToList();
         }
 
 
@@ -66,7 +71,7 @@ namespace Assets.Scripts.Modules
 
         public void Move(Vector3 point)
         {
-            roleCtrls.ForEach(o =>
+            roleCtrlList.ForEach(o =>
             {
                 o.moveAI.OnMove(new MoveInfo(point, o.moveStopDis, null));
             });
@@ -74,7 +79,7 @@ namespace Assets.Scripts.Modules
 
         public void Attack(GameUnitCtrl target)
         {
-            roleCtrls.ForEach(o =>
+            roleCtrlList.ForEach(o =>
             {
                 o.attackAI.OnAttack(target);
             });
@@ -83,7 +88,7 @@ namespace Assets.Scripts.Modules
 
         public void Idle()
         {
-            roleCtrls.ForEach(o =>
+            roleCtrlList.ForEach(o =>
             {
                 o.idleAI.OnIdle();
             });

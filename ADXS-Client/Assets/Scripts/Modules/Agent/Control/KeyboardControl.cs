@@ -101,7 +101,7 @@ namespace Assets.Scripts.Modules
 
         public void RightClickEvent()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main!.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 1000))
             {
                 int hitLayerMask = 1 << hit.transform.gameObject.layer;

@@ -25,7 +25,7 @@ namespace Assets.Scripts.Modules.AI
         {
             moveInfo = _moveInfo;
             navAgent.SetDestination(moveInfo.endPoint);
-            navAgent.speed = role.moveSpeed;
+            navAgent.speed = role.MoveSpeed;
             if (!IsAlive)
             {
                 role.stateMachine.TryTrigger(StateName.Move);

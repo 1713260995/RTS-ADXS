@@ -448,7 +448,7 @@ MonoBehaviour:
   unitType: 1
   roleType: 1
   raceType: 1
-  maxMoveInterval: 0.5
+  moveStopDis: 1
   moveSpeed: 5
   rotateLerp: 0.01
   attackDistance: 3

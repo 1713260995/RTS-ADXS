@@ -7,19 +7,25 @@ using UnityEngine;
 
 namespace Assets.Scripts.Modules
 {
+    /// <summary>
+    /// 每个团队由一个Agent进行控制
+    /// </summary>
     public class Agent
     {
         public int id { get; private set; }
-        public int teamId { get; private set; }
+        /// <summary>
+        /// 多个Agent可以属于同一个组
+        /// </summary>
+        public int groupId { get; private set; }
         public GameColor color { get; private set; }
         private IAgentControl control { get; set; }
         public List<GameUnitCtrl> allUnits { get; set; }
 
 
-        public Agent(int _teamId, GameColor _color, AgentControlWay controlWay)
+        public Agent(int _groupId, GameColor _color, AgentControlWay controlWay)
         {
             id = MyMath.UniqueNum();
-            teamId = _teamId;
+            groupId = _groupId;
             color = _color;
             allUnits = new();
             GenerateControl(controlWay);
@@ -51,7 +57,7 @@ namespace Assets.Scripts.Modules
 
         public override string ToString()
         {
-            return $"id={id},teamId={teamId},color={color},control={control}";
+            return $"id={id},teamId={groupId},color={color},control={control}";
         }
 
     }
