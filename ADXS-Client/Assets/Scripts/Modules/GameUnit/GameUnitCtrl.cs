@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Assets.GameClientLib.Scripts.Utils;
 using Assets.Scripts.Modules;
+using Assets.Scripts.Modules.AI;
 using UnityEngine;
 
 public class GameUnitCtrl : MonoBehaviour
@@ -10,33 +12,44 @@ public class GameUnitCtrl : MonoBehaviour
     public Action OnDead { get; set; }
     public int id { get; private set; }
     public TeamAgent agent { get; private set; }
+    public List<IAIBase> aIBases { get; private set; }
 
-    protected virtual void Awake() {
+    protected virtual void Awake()
+    {
         id = MyMath.UniqueNum();
         GameUnitManager.Instance.allGameUnits.Add(this);
     }
 
-    protected virtual void Start() { }
+    protected virtual void Start()
+    { }
 
-    protected virtual void Update() { }
+    protected virtual void Update()
+    { }
 
-    protected virtual void OnDestroy() {
+    protected virtual void OnDestroy()
+    {
         agent?.allUnits.Remove(this);
         GameUnitManager.Instance.allGameUnits.Remove(this);
         OnDead?.Invoke();
     }
 
 
-    public void SetAgent(TeamAgent _agent) {
+    public void SetAgent(TeamAgent _agent)
+    {
         agent = _agent;
         agent.allUnits.Add(this);
     }
 
+    protected virtual void InitAI()
+    {
+        aIBases = new List<IAIBase>();
+    }
 
     /// <summary>
     /// 判断目标能否被我攻击
     /// </summary>
-    public virtual bool CanAttack(GameUnitCtrl target) {
+    public virtual bool CanAttack(GameUnitCtrl target)
+    {
         if (target.unitType == GameUnitType.GoldMine || target.unitType == GameUnitType.Tree) {
             return false;
         }
