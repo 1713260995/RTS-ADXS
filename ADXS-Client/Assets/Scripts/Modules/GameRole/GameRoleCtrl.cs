@@ -32,6 +32,12 @@ public class GameRoleCtrl : GameUnitCtrl
         stateMachine.OnUpdate();
     }
 
+    [ShowButton]
+    private void TestDestroy()
+    {
+        Destroy(gameObject);
+    }
+
     #region State
 
     [HideInInspector]
