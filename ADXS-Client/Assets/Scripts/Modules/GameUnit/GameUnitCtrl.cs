@@ -1,4 +1,5 @@
-﻿using Assets.GameClientLib.Scripts.Utils;
+﻿using System;
+using Assets.GameClientLib.Scripts.Utils;
 using Assets.Scripts.Modules;
 using UnityEngine;
 
@@ -6,37 +7,27 @@ public class GameUnitCtrl : MonoBehaviour
 {
     public GameUnitName unitName;
     public GameUnitType unitType;
-
+    public Action OnDead { get; set; }
     public int id { get; private set; }
     public TeamAgent agent { get; private set; }
 
-    protected virtual void Awake()
-    {
+    protected virtual void Awake() {
         id = MyMath.UniqueNum();
         GameUnitManager.Instance.allGameUnits.Add(this);
     }
 
-    protected virtual void Start()
-    {
+    protected virtual void Start() { }
 
-    }
+    protected virtual void Update() { }
 
-    protected virtual void Update()
-    {
-
-    }
-
-    protected virtual void OnDestroy()
-    {
+    protected virtual void OnDestroy() {
         agent?.allUnits.Remove(this);
         GameUnitManager.Instance.allGameUnits.Remove(this);
+        OnDead?.Invoke();
     }
 
 
-
-
-    public void SetAgent(TeamAgent _agent)
-    {
+    public void SetAgent(TeamAgent _agent) {
         agent = _agent;
         agent.allUnits.Add(this);
     }
@@ -45,16 +36,15 @@ public class GameUnitCtrl : MonoBehaviour
     /// <summary>
     /// 判断目标能否被我攻击
     /// </summary>
-    public virtual bool CanAttack(GameUnitCtrl target)
-    {
-        if (target.unitType == GameUnitType.GoldMine || target.unitType == GameUnitType.Tree)
-        {
+    public virtual bool CanAttack(GameUnitCtrl target) {
+        if (target.unitType == GameUnitType.GoldMine || target.unitType == GameUnitType.Tree) {
             return false;
         }
-        if (target.agent.groupId != agent.groupId)
-        {
+
+        if (target.agent.groupId != agent.groupId) {
             return true;
         }
+
         return false;
     }
 }
