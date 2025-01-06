@@ -32,6 +32,12 @@ public class GameRoleCtrl : GameUnitCtrl
         stateMachine.OnUpdate();
     }
 
+    [ShowButton]
+    private void TestDestroy()
+    {
+        Destroy(gameObject);
+    }
+
     #region State
 
     [HideInInspector]
@@ -61,18 +67,17 @@ public class GameRoleCtrl : GameUnitCtrl
 
     #region AI
 
-    public List<IAIBase> aIBases = new List<IAIBase>();
-
     public IIdleAI idleAI { get; protected set; }
     public IMoveAI moveAI { get; protected set; }
     public IAttackAI attackAI { get; protected set; }
     public IFollowAI followAI { get; protected set; }
 
-    protected virtual void InitAI()
+    protected override void InitAI()
     {
+        base.InitAI();
         attackAI = new AttackAI(this);
         idleAI = new IdleAI(this);
-        moveAI = new MoveAIByORCA(this);
+        moveAI = new MoveAIBase(this);
         followAI = new FollowAI(this);
     }
 
