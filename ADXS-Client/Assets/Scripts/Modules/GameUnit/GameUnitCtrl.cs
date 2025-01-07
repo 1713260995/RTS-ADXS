@@ -9,9 +9,9 @@ public class GameUnitCtrl : MonoBehaviour
 {
     public GameUnitName unitName;
     public GameUnitType unitType;
-    public Action OnDead { get; set; }
     public int id { get; private set; }
     public TeamAgent agent { get; private set; }
+    public Action OnDead { get; set; }
     public List<IAIBase> aIBases { get; private set; }
 
     protected virtual void Awake()
@@ -50,11 +50,13 @@ public class GameUnitCtrl : MonoBehaviour
     /// </summary>
     public virtual bool CanAttack(GameUnitCtrl target)
     {
-        if (target.unitType == GameUnitType.GoldMine || target.unitType == GameUnitType.Tree) {
+        if (target.unitType == GameUnitType.GoldMine || target.unitType == GameUnitType.Tree)
+        {
             return false;
         }
 
-        if (target.agent.groupId != agent.groupId) {
+        if (target.agent.groupId != agent.groupId)
+        {
             return true;
         }
 
