@@ -67,18 +67,71 @@ public class GameRoleCtrl : GameUnitCtrl
 
     #region AI
 
-    public IIdleAI idleAI { get; protected set; }
-    public IMoveAI moveAI { get; protected set; }
-    public IAttackAI attackAI { get; protected set; }
-    public IFollowAI followAI { get; protected set; }
+    protected IIdleAI idleAI { get; set; }
+    protected IMoveAI moveAI { get; set; }
+    protected IAttackAI attackAI { get; set; }
+    protected IFollowAI followAI { get; set; }
+    public IAIBase currentAI { get; set; }
+
 
     protected override void InitAI()
     {
         base.InitAI();
-        attackAI = new AttackAI(this);
         idleAI = new IdleAI(this);
         moveAI = new MoveAIBase(this);
-        followAI = new FollowAI(this);
+        followAI = new FollowAI(this, moveAI);
+        attackAI = new AttackAI(this, followAI);
+    }
+
+    public void OnIdle()
+    {
+        if (SwitchCurrentAI(idleAI))
+        {
+            idleAI.OnIdle();
+        }
+    }
+
+    public void OnMove(MoveInfo moveInfo)
+    {
+        if (SwitchCurrentAI(moveAI))
+        {
+            moveAI.OnMove(moveInfo);
+        }
+
+    }
+
+    public void OnFollow(FollowInfo info)
+    {
+        if (SwitchCurrentAI(followAI))
+        {
+            followAI.OnFollow(info);
+        }
+    }
+
+    public void OnAttack(GameUnitCtrl target)
+    {
+        if (SwitchCurrentAI(attackAI))
+        {
+            attackAI.OnAttack(target);
+        }
+    }
+
+    /// <summary>
+    /// 切换AI
+    /// </summary>
+    /// <param name="ai"></param>
+    private bool SwitchCurrentAI(IAIBase ai)
+    {
+        if (isAttacking)
+        {
+            return false;
+        }
+        if (ai != currentAI && currentAI != null)
+        {
+            currentAI.AbortAI();
+        }
+        currentAI = ai;
+        return true;
     }
 
     #endregion
@@ -134,7 +187,8 @@ public class GameRoleCtrl : GameUnitCtrl
     /// </summary>
     protected void AttackDone()
     {
-        idleAI.OnIdle();
+        isAttacking = false;
+        OnIdle();
     }
 
     #endregion

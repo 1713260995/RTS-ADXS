@@ -9,14 +9,19 @@ namespace Assets.Scripts.Modules.AI
         public override bool IsAlive => moveTask != null;
         protected Coroutine moveTask { get; set; }
         protected MoveInfo moveInfo { get; set; }
-        public MoveAIBase(GameRoleCtrl role) : base(role) { }
+        public MoveAIBase(GameRoleCtrl role) : base(role)
+        {
+        }
 
         public virtual void OnMove(MoveInfo _moveInfo)
         {
             moveInfo = _moveInfo;
             if (!IsAlive)
             {
-                role.stateMachine.TryTrigger(StateName.Move);
+                if (role.currentState != StateName.Move)
+                {
+                    role.stateMachine.TryTrigger(StateName.Move);
+                }
                 moveTask = role.StartCoroutine(Move());
             }
         }
@@ -31,7 +36,6 @@ namespace Assets.Scripts.Modules.AI
 
             moveInfo.onComplete?.Invoke();
             Debug.Log("到达终点");
-            AbortAI();
         }
         /// <summary>
         /// 更新移动时位置和方向
@@ -50,7 +54,6 @@ namespace Assets.Scripts.Modules.AI
             {
                 role.StopCoroutine(moveTask);
                 moveTask = null;
-                role.idleAI.OnIdle();
             }
         }
     }

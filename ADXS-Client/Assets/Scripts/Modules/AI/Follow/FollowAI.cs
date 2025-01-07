@@ -10,9 +10,11 @@ namespace Assets.Scripts.Modules.AI.Follow
         FollowInfo followInfo { get; set; }
         public override bool IsAlive => followTask != null;
 
-        public FollowAI(GameRoleCtrl role) : base(role)
-        {
+        protected IMoveAI moveAI { get; set; }
 
+        public FollowAI(GameRoleCtrl role, IMoveAI moveAI) : base(role)
+        {
+            this.moveAI = moveAI;
         }
 
 
@@ -30,11 +32,11 @@ namespace Assets.Scripts.Modules.AI.Follow
             while ((role.transform.position - followInfo.currentTargetPos).magnitude > followInfo.stopDis)
             {
                 MoveInfo moveInfo = new MoveInfo(followInfo.currentTargetPos, followInfo.stopDis, null);
-                role.moveAI.OnMove(moveInfo);
+                moveAI.OnMove(moveInfo);
                 yield return null;
             }
             Debug.Log("跟随结束");
-            role.moveAI.AbortAI();
+            moveAI.AbortAI();
             followInfo.onComplete?.Invoke();
             followTask = null;
         }
@@ -45,7 +47,7 @@ namespace Assets.Scripts.Modules.AI.Follow
             if (IsAlive)
             {
                 role.StopCoroutine(followTask);
-                role.moveAI.AbortAI();
+                moveAI.AbortAI();
                 followTask = null;
             }
         }

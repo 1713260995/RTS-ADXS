@@ -11,7 +11,8 @@ namespace Assets.Scripts.Modules
         public TeamAgent agent { get; }
         private InputHandler handler { get; set; }
         private Army currentArmy { get; set; }
-        private KeyCode keyIdle = KeyCode.S;
+        private KeyCode idleKey = KeyCode.S;
+        private KeyCode resetCameraPosKey = KeyCode.Space;
         private List<GameUnitCtrl> selectUnits = new List<GameUnitCtrl>();
         private bool isRunning;
 
@@ -29,7 +30,9 @@ namespace Assets.Scripts.Modules
             handler.EnableSingleSelect(MouseInfo.MouseId.Left, SingleSelectCallback);
             handler.EnableMultipleSelect(MouseInfo.MouseId.Left, MultipleSelectAbleUnits, MultipleSelectCallback);
             handler.mouseRight.keyUpEvent += RightClickEvent;
-            handler.AddkeyboardDownEvent(keyIdle, Idle);
+            handler.AddkeyboardDownEvent(idleKey, Idle);
+            handler.AddkeyboardStayEvent(resetCameraPosKey, ResetCameraPos);
+
         }
 
         public void CloseControl()
@@ -39,7 +42,8 @@ namespace Assets.Scripts.Modules
             handler.DisableSingleSelect();
             handler.DisableMultipleSelect();
             handler.mouseRight.keyUpEvent -= RightClickEvent;
-            handler.RemovekeyboardDownEvent(keyIdle, Idle);
+            handler.RemovekeyboardDownEvent(idleKey, Idle);
+            handler.RemovekeyboardStayEvent(resetCameraPosKey, ResetCameraPos);
         }
 
         #region 选中单位
@@ -62,7 +66,6 @@ namespace Assets.Scripts.Modules
             selectUnits = list.Cast<GameUnitCtrl>().ToList();
             currentArmy.ReplaceMembers(list.Cast<GameRoleCtrl>().ToList());
         }
-
 
         /// <summary>
         /// 单选回调。
@@ -129,6 +132,20 @@ namespace Assets.Scripts.Modules
             currentArmy.Idle();
         }
 
+        public void ResetCameraPos()
+        {
+            if (selectUnits != null && selectUnits.Count > 0)
+            {
+                Vector3 pos = GetFirstUnit().transform.position;
+                Camera.main.transform.position = new Vector3(pos.x, Camera.main.transform.position.y, pos.z - 5);
+            }
+        }
+
+
+        public GameUnitCtrl GetFirstUnit()
+        {
+            return selectUnits.First();
+        }
         #endregion
     }
 }

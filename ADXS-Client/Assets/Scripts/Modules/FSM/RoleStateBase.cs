@@ -11,7 +11,7 @@ namespace Assets.Scripts.Modules.FSM
     {
         public override string id { get; }
         public abstract StateName stateId { get; }
-        protected abstract StateName[] nextStates { get; }
+        protected StateName[] nextStates { get; }
         protected abstract RoleAnimFlags animName { get; }
         protected int animNameHash { get; }
         protected Animator anim { get; private set; }
@@ -21,8 +21,11 @@ namespace Assets.Scripts.Modules.FSM
         {
             id = stateId.ToString();
             animNameHash = Animator.StringToHash(animName.ToString());
+            nextStates = InitNextState();
             GenerateTransitions();
         }
+
+        protected abstract StateName[] InitNextState();
 
         protected virtual void GenerateTransitions()
         {

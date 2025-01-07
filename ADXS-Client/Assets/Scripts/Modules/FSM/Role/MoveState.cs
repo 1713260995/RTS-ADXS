@@ -5,8 +5,8 @@ namespace Assets.Scripts.Modules.FSM
     internal class MoveState : RoleStateBase
     {
         public override StateName stateId => StateName.Move;
-        protected override StateName[] nextStates => new StateName[] { StateName.Idle };
         protected override RoleAnimFlags animName => RoleAnimFlags.Walk;
+        protected override StateName[] InitNextState() => new StateName[] { StateName.Idle, StateName.Attack };
 
         public override void OnEnter()
         {

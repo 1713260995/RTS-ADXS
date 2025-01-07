@@ -74,7 +74,7 @@ namespace Assets.Scripts.Modules
             roleCtrlList.ForEach(o =>
             {
                 Vector3 endPoint = (o.transform.position - roleCtrlList[0].transform.position) + point;
-                o.moveAI.OnMove(new MoveInfo(endPoint, o.moveStopDis, null));
+                o.OnMove(new MoveInfo(endPoint, o.moveStopDis, o.OnIdle));
             });
         }
 
@@ -82,7 +82,7 @@ namespace Assets.Scripts.Modules
         {
             roleCtrlList.ForEach(o =>
             {
-                o.attackAI.OnAttack(target);
+                o.OnAttack(target);
             });
         }
 
@@ -91,7 +91,7 @@ namespace Assets.Scripts.Modules
         {
             roleCtrlList.ForEach(o =>
             {
-                o.idleAI.OnIdle();
+                o.OnIdle();
             });
         }
 

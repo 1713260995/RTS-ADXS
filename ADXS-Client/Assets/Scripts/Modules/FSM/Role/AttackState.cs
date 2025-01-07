@@ -7,19 +7,19 @@ namespace Assets.Scripts.Modules.FSM.Role
     {
         public override StateName stateId => StateName.Attack;
 
-        protected override StateName[] nextStates => new StateName[] { StateName.Idle };
-
         protected override RoleAnimFlags animName => RoleAnimFlags.Attack;
+
+        protected override StateName[] InitNextState() => new StateName[] { StateName.Idle };
 
         public override void OnEnter()
         {
-            anim.SetTrigger(animNameHash);
             role.isAttacking = true;
+            anim.SetTrigger(animNameHash);
         }
 
         public override void OnExit()
         {
-            role.isAttacking = false;
+
         }
 
         public override void OnUpdate()
