@@ -21,7 +21,6 @@ namespace Assets.Scripts.Modules
         private IAgentControl control { get; set; }
         public List<GameUnitCtrl> allUnits { get; set; }
 
-
         public TeamAgent(int _groupId, GameColor _color, AgentControlWay controlWay)
         {
             id = MyMath.UniqueNum();

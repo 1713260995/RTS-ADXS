@@ -59,7 +59,6 @@ namespace Assets.Scripts.Modules.Spawn
             testRole = CreateCtrl<GameRoleCtrl>(testName);
         }
 
-
         [ShowButton]
         public void DestroyCtrl()
         {

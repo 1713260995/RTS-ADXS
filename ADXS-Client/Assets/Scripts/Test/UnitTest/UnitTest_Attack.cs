@@ -14,14 +14,16 @@ namespace Test
         /// 测试，
         /// </summary>
         [ShowButton]
-        public void TestAttack() {
+        public void TestAttack()
+        {
             TeamAgent agent1 = new TeamAgent(1, color, AgentControlWay.Keyboard);
             TeamAgent agent2 = new TeamAgent(2, color, AgentControlWay.AI);
             BattleSystem.Instance.AddAgent(agent1);
             BattleSystem.Instance.AddAgent(agent2);
+            BattleSystem.Instance.StartGame();
             BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent1.id, birthLocation);
             BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent2.id, new Vector3(5, 0, 0));
-            BattleSystem.Instance.StartGame();
+
         }
     }
 }

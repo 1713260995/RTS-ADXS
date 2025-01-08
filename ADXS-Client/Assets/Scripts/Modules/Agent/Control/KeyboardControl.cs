@@ -32,7 +32,6 @@ namespace Assets.Scripts.Modules
             handler.mouseRight.keyUpEvent += RightClickEvent;
             handler.AddkeyboardDownEvent(idleKey, Idle);
             handler.AddkeyboardStayEvent(resetCameraPosKey, ResetCameraPos);
-
         }
 
         public void CloseControl()
@@ -134,17 +133,18 @@ namespace Assets.Scripts.Modules
 
         public void ResetCameraPos()
         {
-            if (selectUnits != null && selectUnits.Count > 0)
+            var ctrl = GetUnitFirstOrDefault();
+            if (ctrl != null)
             {
-                Vector3 pos = GetFirstUnit().transform.position;
+                Vector3 pos = ctrl.transform.position;
                 Camera.main.transform.position = new Vector3(pos.x, Camera.main.transform.position.y, pos.z - 5);
             }
         }
 
 
-        public GameUnitCtrl GetFirstUnit()
+        private GameUnitCtrl GetUnitFirstOrDefault()
         {
-            return selectUnits.First();
+            return selectUnits?.FirstOrDefault();
         }
         #endregion
     }
