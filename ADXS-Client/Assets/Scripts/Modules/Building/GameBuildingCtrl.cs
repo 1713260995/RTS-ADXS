@@ -5,10 +5,8 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts.Modules.Role
 {
-    public abstract class BuildingBase : GameUnitCtrl
+    public class GameBuildingCtrl : GameUnitCtrl
     {
-        public RaceFlags raceType { get; set; }
-        public StateMachine stateBase { get; set; }
-        public List<BuffBase> buffList { get; set; }
+
     }
 }

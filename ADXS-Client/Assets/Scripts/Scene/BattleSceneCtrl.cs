@@ -16,7 +16,7 @@ namespace Assets.Scripts.Scene
 
         private void OnDestroy()
         {
-            //    BattleSystem.DestroySingleton();
+
         }
     }
 }
