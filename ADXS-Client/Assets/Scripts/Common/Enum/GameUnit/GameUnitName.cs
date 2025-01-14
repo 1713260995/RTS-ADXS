@@ -51,5 +51,9 @@ public enum GameUnitName
     /// </summary>
     Paladin,
 
+    /// <summary>
+    /// 兵营
+    /// </summary>
+    Barracks,
     #endregion
 }

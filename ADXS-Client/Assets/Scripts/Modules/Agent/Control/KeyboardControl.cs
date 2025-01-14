@@ -12,7 +12,7 @@ namespace Assets.Scripts.Modules
         private InputHandler handler { get; set; }
         private Army currentArmy { get; set; }
         private KeyCode idleKey = KeyCode.S;
-        private KeyCode resetCameraPosKey = KeyCode.Space;
+        private KeyCode cameraFollowKey = KeyCode.Space;
         private List<GameUnitCtrl> selectUnits = new List<GameUnitCtrl>();
         private bool isRunning;
 
@@ -23,6 +23,8 @@ namespace Assets.Scripts.Modules
             currentArmy = new Army(agent.id);
         }
 
+        #region Control
+
         public void OpenControl()
         {
             if (isRunning) return;
@@ -31,7 +33,7 @@ namespace Assets.Scripts.Modules
             handler.EnableMultipleSelect(MouseInfo.MouseId.Left, MultipleSelectAbleUnits, MultipleSelectCallback);
             handler.mouseRight.keyUpEvent += RightClickEvent;
             handler.AddkeyboardDownEvent(idleKey, Idle);
-            handler.AddkeyboardStayEvent(resetCameraPosKey, ResetCameraPos);
+            handler.AddkeyboardStayEvent(cameraFollowKey, CameraFollow);
         }
 
         public void CloseControl()
@@ -42,10 +44,12 @@ namespace Assets.Scripts.Modules
             handler.DisableMultipleSelect();
             handler.mouseRight.keyUpEvent -= RightClickEvent;
             handler.RemovekeyboardDownEvent(idleKey, Idle);
-            handler.RemovekeyboardStayEvent(resetCameraPosKey, ResetCameraPos);
+            handler.RemovekeyboardStayEvent(cameraFollowKey, CameraFollow);
         }
 
-        #region 选中单位
+        #endregion
+
+        #region Select Units
 
         /// <summary>
         /// 多选时可选单位
@@ -95,7 +99,7 @@ namespace Assets.Scripts.Modules
 
         #endregion
 
-        #region 控制选中单位
+        #region Control the selected units
 
         private int waterLayerMask = GameLayerName.Water.GetLayerMask();
         private int sceneLayerMask = GameLayerName.Scene.GetLayerMask();
@@ -131,21 +135,35 @@ namespace Assets.Scripts.Modules
             currentArmy.Idle();
         }
 
-        public void ResetCameraPos()
+        #endregion
+
+        #region Camera Follow
+
+        public Transform cameraTran;
+
+        public void CameraFollow()
         {
             var ctrl = GetUnitFirstOrDefault();
             if (ctrl != null)
             {
                 Vector3 pos = ctrl.transform.position;
-                Camera.main.transform.position = new Vector3(pos.x, Camera.main.transform.position.y, pos.z - 5);
+                if (cameraTran == null)
+                {
+                    cameraTran = Camera.main.transform;
+                }
+                cameraTran.position = new Vector3(pos.x, Camera.main.transform.position.y, pos.z - 5);
             }
         }
+        #endregion
 
+        #region Helper
 
         private GameUnitCtrl GetUnitFirstOrDefault()
         {
+            //TODO 后面可能需要修改：第一个单位是英雄
             return selectUnits?.FirstOrDefault();
         }
+
         #endregion
     }
 }
