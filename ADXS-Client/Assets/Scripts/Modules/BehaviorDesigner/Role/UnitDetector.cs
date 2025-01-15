@@ -22,7 +22,7 @@ namespace Assets.Scripts.Modules.AI.Role
         public override void OnAwake()
         {
             roleCtrl = GetComponent<GameRoleCtrl>();
-            detector = new UnitDetectorByPhysicsSphere<GameRoleCtrl>(roleCtrl, disRange, GameLayerName.Role.GetLayer());
+            detector = new UnitDetectorByPhysicsSphere<GameRoleCtrl>(roleCtrl, disRange, GameLayerName.GameUnit.GetLayer());
         }
 
         public override TaskStatus OnUpdate()

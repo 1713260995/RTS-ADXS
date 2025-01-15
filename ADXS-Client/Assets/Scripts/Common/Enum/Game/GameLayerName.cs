@@ -10,5 +10,5 @@ public enum GameLayerName
     Ground,
     Water,
     Scene,
-    Role,
+    GameUnit,
 }

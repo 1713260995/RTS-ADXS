@@ -1,15 +1,17 @@
-﻿using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
+﻿using Assets.Scripts.Common.Enum;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-using TreeEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Modules.Role
 {
     /// <summary>
-    /// 1. 初始化网格数据，计算每个网格点的高度,坡度
-    /// 2. 添加测试按钮，按下按钮生成预览建筑，该建筑随
+	///	1. 准备建造时，建造物变成预览样式。
+	///	2. 预览时，建筑随鼠标移动
+	///	3. 若地形不平坦或者地形上有其他障碍物，则提示无法建筑。
+	///	4. 按鼠标右键取消建造。
+    /// 5. 按下鼠标左键，开始建造。
     /// </summary>
     public class BuildManager : MonoBehaviour
     {
@@ -23,7 +25,6 @@ namespace Assets.Scripts.Modules.Role
             terrain = GetComponent<Terrain>();
             mainCamera = mainCamera == null ? Camera.main : mainCamera;
             LoadPreBuildings();
-            InitMapCells();
         }
 
         private void Update()
@@ -31,16 +32,8 @@ namespace Assets.Scripts.Modules.Role
             UpdatePreview();
         }
 
-        #region Cell
+        #region Prefab
 
-        private MapCellNode[,] mapCells;
-        /// <summary>
-        /// 整个的网格大小
-        /// gridSize.x在X轴方向cell的数量
-        /// gridSize.y在Z轴方向cell的数量
-        /// Tips: cell指单元格，grid是由多个cell组成的结构或区域
-        /// </summary>
-        private Vector2Int gridSize;
 
         private Dictionary<GameUnitName, GameBuildingCtrl> preBuildings;
 
@@ -53,46 +46,13 @@ namespace Assets.Scripts.Modules.Role
             }
         }
 
-        // 初始化格子，计算每个格子的高度和坡度
-        private void InitMapCells()
-        {
-            var terrainData = terrain.terrainData;
-            gridSize.x = (int)(terrainData.bounds.size.x / cellSize.x);
-            gridSize.y = (int)(terrainData.bounds.size.z / cellSize.y);
-
-            mapCells = new MapCellNode[gridSize.x, gridSize.y];
-            for (int i = 0; i < gridSize.x; ++i)
-            {
-                for (int j = 0; j < gridSize.y; ++j)
-                {
-                    mapCells[i, j].current = null;
-
-                    var center = GetCellLocalPosByIndex(i, j);
-                    mapCells[i, j].height = center.y;
-                    var steepness = terrainData.GetSteepness(center.x / terrainData.size.x, center.z / terrainData.size.z);
-                    mapCells[i, j].steepness = steepness;
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// 根据索引获取cell中心点的本地坐标
-        /// </summary>
-        public Vector3 GetCellLocalPosByIndex(int indexX, int indexY)
-        {
-            Vector3 cellLocalPos = new(cellSize.x * (indexX + 0.5f), 0, cellSize.y * (indexY + 0.5f));//+0.5是因为cell的中心点需要偏移
-            cellLocalPos.y = terrain.SampleHeight(cellLocalPos);
-            return cellLocalPos;
-        }
         #endregion
 
         #region Preview
 
 
-        private GameBuildingCtrl previewBuilding;
+        private GameBuildingCtrl currentBuilding;
         public GameUnitName previewUnitName;
-        public Transform buildGridLine;
         public float maxheightDifference;//地形最大高度差
 
         [ShowButton]
@@ -103,22 +63,35 @@ namespace Assets.Scripts.Modules.Role
 
         private void EnterPreview(GameUnitName name)
         {
-            var ctrl = Instantiate(preBuildings[name]);
-            previewBuilding = ctrl;
+            //if (Application.isEditor)
+            //{
+            //    UniTask.Create(async () =>
+            //    {
+            //        await UniTask.Delay(1000);
+            //        currentBuilding = Instantiate(preBuildings[name]);
+            //    });
+            //    return;
+            //}
+            currentBuilding = Instantiate(preBuildings[name]);
         }
 
         private void CancelPreview()
         {
-            Destroy(previewBuilding.gameObject);
-            previewBuilding = null;
-            buildGridLine.gameObject.SetActive(false);
+            Destroy(currentBuilding.gameObject);
+            currentBuilding = null;
         }
 
+        private void StartBuild()
+        {
+            currentBuilding.StartBuild();
+            currentBuilding = null;
+
+        }
 
 
         private void UpdatePreview()
         {
-            if (previewBuilding == null)
+            if (currentBuilding == null)
             {
                 return;
             }
@@ -129,81 +102,102 @@ namespace Assets.Scripts.Modules.Role
             }
 
             Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100, 1 << terrain.gameObject.layer);
-            previewBuilding.transform.position = hit.point;
-            buildGridLine.gameObject.SetActive(true);
-            buildGridLine.position = new Vector3(hit.point.x, hit.point.y + 10, hit.point.z);
-            GetGridCellIndex(hit.point, out int index1, out int index2);
-            print($"index1={index1},index2={index2},{GetCellLocalPosByIndex(index1, index2)}");
-            CheckBuildingIndexPosOnGrid(index1, index2);
-        }
+            currentBuilding.transform.position = hit.point;
+            Vector3 buildingSize = currentBuilding.GetBuildingSize();
+            bool canBuild = IsTerrainFlat(hit.point, buildingSize.x, buildingSize.z) && !IsCollision();
 
-        /// <summary>
-        /// 通过世界坐标获取地形网格的指定单元格索引
-        /// </summary>
-        public void GetGridCellIndex(Vector3 worldPos, out int index1, out int index2)
-        {
-            Vector3 localPosTerrain = terrain.transform.InverseTransformPoint(worldPos);//将世界坐标转换为地形的本地坐标
-            index1 = (int)(localPosTerrain.x / cellSize.x);
-            index2 = (int)(localPosTerrain.z / cellSize.y);
-        }
-
-
-        public bool CheckBuildingIndexPosOnGrid(int index1, int index2)
-        {
-            bool canBuild = true;
-            previewBuilding.GetBuildingSize(out float lenX, out float _, out float lenZ);
-
-            float aheight = GetTerrieAverageHeight(index1, index2, (int)lenX, (int)lenZ);
-            Debug.Log("aheight:" + aheight);
-
-
-            return canBuild;
-        }
-
-        /// <summary>
-        /// 计算指定区域地形的平均高度，根据cell索引以及模型长宽，
-        /// </summary>
-        /// <param name="index1"></param>
-        /// <param name="index2"></param>
-        /// <param name="lenX">指定区域x轴方向的长度</param>
-        /// <param name="lenZ">指定区域z轴方向的长度</param>
-        /// <returns></returns>
-        public float GetTerrieAverageHeight(int index1, int index2, int lenX, int lenZ)
-        {
-            int cellXNum = Mathf.CeilToInt(lenX / cellSize.x);//获取该模型在地形的x轴占多少个格子
-            int cellZNum = Mathf.CeilToInt(lenZ / cellSize.y);//获取该模型在地形的z轴占多少个格子
-            int cellXIndex = index1 - cellXNum / 2;
-            int cellZIndex = index2 - cellZNum / 2;
-            float minHeight = float.MaxValue;
-            float maxHeight = float.MinValue;
-            for (int i = cellXIndex; i < cellXIndex + cellXNum; i++)
+            if (canBuild)
             {
-                if (i < 0 || i >= gridSize.x)
-                    throw new System.Exception("Model at the edge of terrain");
-                for (int j = cellZIndex; j < cellZIndex + cellZNum; j++)
-                {
-                    if (j < 0 || j > gridSize.y)
-                        throw new System.Exception("Model at the edge of terrain");
-                    float height = mapCells[i, j].height;
-                    minHeight = Mathf.Min(minHeight, height);
-                    maxHeight = Mathf.Max(maxHeight, height);
-                }
+                currentBuilding.SetNormalPreview();
+            }
+            else
+            {
+                currentBuilding.SetFailedPreview();
             }
 
-            return maxHeight - minHeight;
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!canBuild)
+                {
+                    print("无法建造");
+                }
+                else
+                {
+                    StartBuild();
+                }
+            }
         }
 
 
+        public float maxHeightDifference = 0.5f; // 允许的最大高度差
+
+        /// <summary>
+        /// 判断指定区域的地形是否平坦
+        /// </summary>
+        /// <param name="worldPos">该区域的世界坐标</param>
+        /// <param name="lenX">该区域的长度</param>
+        /// <param name="lenZ">该区域的宽度</param>
+        /// <returns></returns>
+        public bool IsTerrainFlat(Vector3 worldPos, float lenX, float lenZ)
+        {
+            TerrainData terrainData = terrain.terrainData;
+            Vector3 localPos = terrain.transform.InverseTransformPoint(worldPos);
+            float startX = localPos.x - lenX / 2;
+            float endX = localPos.x + lenX / 2;
+            float startZ = localPos.z - lenZ / 2;
+            float endZ = localPos.z + lenZ / 2;
+            if (startX < 0 || endX > terrainData.size.x || startZ < 0 || endZ > terrainData.size.z)
+            {
+                Debug.Log("该区域超出边界");
+                return false;
+            }
+            float minHeight = float.MaxValue;
+            float maxHeight = float.MinValue;
+            // 以一定间隔采样区域内的高度
+            int sampleXNum = Mathf.CeilToInt(lenX);
+            int sampleZNum = Mathf.CeilToInt(lenZ);
+            for (int i = 0; i <= sampleXNum; i++)
+            {
+                for (int j = 0; j <= sampleZNum; j++)
+                {
+                    float sampleX = Mathf.Lerp(startX, endX, i / (float)sampleXNum);
+                    float sampleZ = Mathf.Lerp(startZ, endZ, j / (float)sampleZNum);
+                    float normalizedX = sampleX / terrainData.size.x;
+                    float normalizedZ = sampleZ / terrainData.size.z;
+                    float height = terrainData.GetInterpolatedHeight(normalizedX, normalizedZ);
+                    // 更新最小和最大高度
+                    minHeight = Mathf.Min(minHeight, height);
+                    maxHeight = Mathf.Max(maxHeight, height);
+                    // 如果高度差超过限制，直接返回
+                    if (maxHeight - minHeight > maxHeightDifference)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool IsCollision()
+        {
+            Vector3 buildingSize = currentBuilding.GetBuildingSize() / 2;
+            float radius = 1;
+            buildingSize.x += radius;//给x,z轴额外增加一些距离
+            buildingSize.z += radius;
+            Transform tran = currentBuilding.transform;
+            Collider[] colliders = Physics.OverlapBox(tran.position, buildingSize, tran.rotation, GameLayerName.GameUnit.GetLayerMask());
+            foreach (var collider in colliders)
+            {
+                if (collider.transform != tran)//碰撞检测时，会碰撞到自己
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         #endregion
 
     }
 
-
-    public struct MapCellNode
-    {
-        public float height;
-        public float steepness;
-        public GameBuildingCtrl current;
-    }
 }
