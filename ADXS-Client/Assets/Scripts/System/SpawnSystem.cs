@@ -9,16 +9,16 @@ using UnityEngine.Pool;
 
 namespace Assets.Scripts.Modules.Spawn
 {
-    public class SpawnSystem : MonoBehaviour
+    public class SpawnSystem : SystemBase<SpawnSystem>
     {
         [SerializeField]
         private List<AssetReference> assetReferenceList;
 
         private Dictionary<GameUnitName, SpwanUnit> spawnDic { get; set; }
 
-
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             spawnDic = new();
             foreach (var item in assetReferenceList)
             {
@@ -35,6 +35,7 @@ namespace Assets.Scripts.Modules.Spawn
                 }
             }
         }
+
 
         public TCtrl CreateCtrl<TCtrl>(GameUnitName _name) where TCtrl : GameUnitCtrl
         {

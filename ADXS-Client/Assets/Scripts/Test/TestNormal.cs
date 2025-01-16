@@ -26,7 +26,7 @@ public class TestNormal : MonoBehaviour
     [ShowButton]
     public void AddGameUnit()
     {
-        BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agentId, unitPos);
+        BattleSystem.Instance.CreateUnit<GameUnitCtrl>(unitName, unitPos, agentId);
     }
 
     [ShowButton]
@@ -37,7 +37,8 @@ public class TestNormal : MonoBehaviour
 
 
     [ShowButton]
-    public void StopBattle() {
+    public void StopBattle()
+    {
         BattleSystem.Instance.StopGame();
     }
 

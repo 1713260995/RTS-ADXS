@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9097395777952165447}
   - component: {fileID: 9097395777952165446}
   m_Layer: 0
-  m_Name: BuildGridLiner
+  m_Name: PreviewBuildingGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

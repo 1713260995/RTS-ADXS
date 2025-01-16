@@ -21,8 +21,8 @@ namespace Test
             BattleSystem.Instance.AddAgent(agent1);
             BattleSystem.Instance.AddAgent(agent2);
             BattleSystem.Instance.StartGame();
-            BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent1.id, birthLocation);
-            BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent2.id, new Vector3(5, 0, 0));
+            BattleSystem.Instance.CreateUnit<GameUnitCtrl>(unitName, birthLocation, agent1.id);
+            BattleSystem.Instance.CreateUnit<GameUnitCtrl>(unitName, new Vector3(5, 0, 0), agent2.id);
 
         }
     }

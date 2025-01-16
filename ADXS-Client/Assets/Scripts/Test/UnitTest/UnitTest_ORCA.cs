@@ -31,7 +31,7 @@ namespace Test
                 for (int j = 0; j < 5; j++)
                 {
                     Vector3 pos = new Vector3(birthPos.x + interval * i, 0, birthPos.z + interval * j);
-                    BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent.id, pos);
+                    BattleSystem.Instance.CreateUnit<GameUnitCtrl>(unitName, pos, agent.id);
                 }
             }
         }
@@ -47,7 +47,7 @@ namespace Test
                 for (int j = 0; j < 5; j++)
                 {
                     Vector3 pos = new Vector3(birthPos.x - interval * i, 0, birthPos.z - interval * j);
-                    BattleSystem.Instance.CreateGameUnit<GameUnitCtrl>(unitName, agent.id, pos);
+                    BattleSystem.Instance.CreateUnit<GameUnitCtrl>(unitName, pos, agent.id);
                 }
             }
         }

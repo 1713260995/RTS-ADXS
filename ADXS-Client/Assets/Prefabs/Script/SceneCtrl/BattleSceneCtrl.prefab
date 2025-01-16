@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleSystemPrefab: {fileID: 2444911606020460886, guid: ab78870991f79b541b9a8cfc926f7673, type: 3}
+  spawnSystemPrefab: {fileID: 4458856804840787658, guid: 309bb86b3affafa4bba211b71e4a2ec5, type: 3}
