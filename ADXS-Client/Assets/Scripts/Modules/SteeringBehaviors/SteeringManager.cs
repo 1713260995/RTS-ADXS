@@ -94,6 +94,19 @@ namespace Modules.SteeringBehaviors
             vector.y = Mathf.Sin(value) * len;
         }
 
+        /// <summary>
+        /// 追逐行为
+        /// 追逐行为的工作方式与Seek的方式几乎相同，唯一的区别是追逐者不会搜索目标本身，而是搜索目标在不久的将来的位置。
+        /// </summary>
+        /// <param name="boid"></param>
+        /// <returns></returns>
+        public Vector3 Pursuit(IBoid boid)
+        {
+            Vector3 distance = boid.Position - Host.Position;
+            float time = distance.magnitude / Host.MaxSpeed;
+            Vector3 futurePosition = boid.Position + boid.Velocity * time;
+            return Seek(futurePosition);
+        }
 
 
         public void Update()
@@ -104,10 +117,7 @@ namespace Modules.SteeringBehaviors
             Host.transform.position += Host.Velocity * Time.deltaTime;
         }
 
-        public void Reset()
-        {
-            Steering = Vector3.zero;
-        }
+
 
         private void ApplyForce(Vector3 force)
         {
