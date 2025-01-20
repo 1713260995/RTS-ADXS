@@ -9,6 +9,6 @@ namespace Assets.Scripts.Modules.AI
         /// <summary>
         /// 到达指定位置
         /// </summary>
-        void OnMove(MoveInfo info);
+        void OnMove(IMoveInfo info);
     }
 }

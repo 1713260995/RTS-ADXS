@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using Assets.Scripts.Modules.Spawn;
+using Assets.Scripts.Modules.Role;
 
 namespace Assets.Scripts.Test.UnitTest
 {
@@ -16,16 +17,37 @@ namespace Assets.Scripts.Test.UnitTest
     /// <summary>
     /// 创建一个农民，控制农民建造建筑物
     /// </summary>
-    public class UnitTest_Build : MonoBehaviour
+    public class UnitTest_Build : UnitTest_Base
     {
-
+        public GameUnitName buildingName = GameUnitName.Barracks;
 
         [ShowButton]
         public void TestBuild()
         {
-            TeamAgent agent1 = new TeamAgent(1, GameColor.Red, AgentControlWay.Keyboard);
-            GameRoleCtrl Peasant = SpawnSystem.Instance.CreateCtrl<GameRoleCtrl>(GameUnitName.Peasant);
+            TeamAgent agent = new TeamAgent(1, GameColor.Red, AgentControlWay.Keyboard);
+            BattleSystem.Instance.AddAgent(agent);
+            BattleSystem.Instance.StartGame();
+            FarmerCtrl peasant = BattleSystem.Instance.CreateUnit<FarmerCtrl>(GameUnitName.Peasant, Vector3.zero, agent.id);
+            BuildSystem.Instance.EnterPreview(buildingName, peasant);
+        }
 
+
+
+
+        protected override void CheckRequireModule()
+        {
+            if (BuildSystem.Instance == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (SpawnSystem.Instance == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (BattleSystem.Instance == null)
+            {
+                throw new ArgumentNullException();
+            }
         }
 
     }

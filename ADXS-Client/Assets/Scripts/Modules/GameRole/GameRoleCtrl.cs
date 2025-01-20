@@ -2,7 +2,6 @@
 using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules;
 using Assets.Scripts.Modules.AI;
-using Assets.Scripts.Modules.AI.Follow;
 using Assets.Scripts.Modules.Buff;
 using Assets.Scripts.Modules.FSM;
 using Assets.Scripts.Modules.FSM.Role;
@@ -50,7 +49,7 @@ public class GameRoleCtrl : GameUnitCtrl
     {
         animator = GetComponent<Animator>();
         stateMachine = new RoleStateMachine(this);
-        stateMachine.Start(InitRoleStates(), defaultState.ToString());
+        stateMachine.OnStart(InitRoleStates(), defaultState.ToString());
     }
 
     protected virtual List<State> InitRoleStates()
@@ -70,8 +69,7 @@ public class GameRoleCtrl : GameUnitCtrl
     protected IIdleAI idleAI { get; set; }
     protected IMoveAI moveAI { get; set; }
     protected IAttackAI attackAI { get; set; }
-    protected IFollowAI followAI { get; set; }
-    public IAIBase currentAI { get; set; }
+    private IAIBase currentAI { get; set; }
 
 
     protected override void InitAI()
@@ -79,8 +77,7 @@ public class GameRoleCtrl : GameUnitCtrl
         base.InitAI();
         idleAI = new IdleAI(this);
         moveAI = new MoveAIBase(this);
-        followAI = new FollowAI(this, moveAI);
-        attackAI = new AttackAI(this, followAI);
+        attackAI = new AttackAI(this, moveAI);
     }
 
     public void OnIdle()
@@ -91,20 +88,11 @@ public class GameRoleCtrl : GameUnitCtrl
         }
     }
 
-    public void OnMove(MoveInfo moveInfo)
+    public void OnMove(IMoveInfo moveInfo)
     {
         if (SwitchCurrentAI(moveAI))
         {
             moveAI.OnMove(moveInfo);
-        }
-
-    }
-
-    public void OnFollow(FollowInfo info)
-    {
-        if (SwitchCurrentAI(followAI))
-        {
-            followAI.OnFollow(info);
         }
     }
 
@@ -187,8 +175,7 @@ public class GameRoleCtrl : GameUnitCtrl
     /// </summary>
     protected void AttackDone()
     {
-        isAttacking = false;
-        OnIdle();
+        attackAI.AttackDone();
     }
 
     #endregion

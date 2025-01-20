@@ -8,12 +8,11 @@ namespace Assets.Scripts.Modules.AI
     {
         public override bool IsAlive => moveTask != null;
         protected Coroutine moveTask { get; set; }
-        protected MoveInfo moveInfo { get; set; }
-        public MoveAIBase(GameRoleCtrl role) : base(role)
-        {
-        }
+        protected IMoveInfo moveInfo { get; set; }
 
-        public virtual void OnMove(MoveInfo _moveInfo)
+        public MoveAIBase(GameRoleCtrl role) : base(role) { }
+
+        public virtual void OnMove(IMoveInfo _moveInfo)
         {
             moveInfo = _moveInfo;
             if (!IsAlive)
@@ -28,13 +27,14 @@ namespace Assets.Scripts.Modules.AI
 
         protected IEnumerator Move()
         {
-            while ((moveInfo.endPoint - transform.position).magnitude > moveInfo.moveStopDis)
+            while (!moveInfo.IsArray())//如果未到达就继续移动
             {
                 UpdatePosAndDir();
                 yield return null;
             }
 
-            moveInfo.onComplete?.Invoke();
+            moveInfo.OnArray?.Invoke();
+            moveTask = null;
             Debug.Log("到达终点");
         }
         /// <summary>
@@ -42,9 +42,9 @@ namespace Assets.Scripts.Modules.AI
         /// </summary>
         protected virtual void UpdatePosAndDir()
         {
-            Vector3 rotateEuler = MyMath.LookAt(transform, moveInfo.endPoint);
+            Vector3 rotateEuler = MyMath.LookAt(transform, moveInfo.Destination);
             transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, rotateEuler, MyMath.GetLerp(role.rotateLerp));
-            Vector3 currentVelocity = (moveInfo.endPoint - transform.position).normalized * (role.MoveSpeed * Time.deltaTime);
+            Vector3 currentVelocity = (moveInfo.Destination - transform.position).normalized * (role.MoveSpeed * Time.deltaTime);
             transform.position += currentVelocity;
         }
 

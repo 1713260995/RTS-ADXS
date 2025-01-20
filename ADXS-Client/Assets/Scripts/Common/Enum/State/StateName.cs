@@ -12,5 +12,6 @@ public enum StateName
     Attack,
     Lumbering,
     Mining,
+    Build,
     Die,
 }

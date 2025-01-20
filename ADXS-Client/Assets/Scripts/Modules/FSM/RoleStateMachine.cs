@@ -1,8 +1,5 @@
 ﻿using Assets.GameClientLib.Scripts.Utils.FSM;
-using Assets.Scripts.Common.Enum;
-using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Assets.Scripts.Modules.FSM
@@ -35,6 +32,43 @@ namespace Assets.Scripts.Modules.FSM
         public bool CanTransition(StateName origin, StateName target)
         {
             return CanTransition(RoleTransition.GenerateId(origin, target));
+        }
+
+        public bool IsCurrentStateOnAnimation(StateName stateName, int layerIndex = 0)
+        {
+            AnimatorStateInfo currentStateInfo = ctrl.animator.GetCurrentAnimatorStateInfo(layerIndex);
+            return currentStateInfo.IsName(stateName.ToString());
+        }
+
+
+        private bool IsInSubStateMachine(AnimatorStateInfo stateInfo, out string subStateMachineName)
+        {
+            subStateMachineName = null;
+
+            // 获取 Animator Controller
+            var runtimeController = ctrl.animator.runtimeAnimatorController as AnimatorController;
+            if (runtimeController == null) return false;
+
+            // 遍历 Animator 的所有层
+            foreach (var layer in runtimeController.layers)
+            {
+                foreach (var stateMachine in layer.stateMachine.stateMachines)
+                {
+                    if (stateMachine.stateMachine.states.Length > 0)
+                    {
+                        foreach (var subState in stateMachine.stateMachine.states)
+                        {
+                            if (subState.state.nameHash == stateInfo.shortNameHash)
+                            {
+                                subStateMachineName = stateMachine.stateMachine.name;
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
 
     }

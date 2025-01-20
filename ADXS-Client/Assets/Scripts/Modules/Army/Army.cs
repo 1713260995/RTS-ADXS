@@ -2,6 +2,7 @@
 using Assets.Scripts.Modules.AI;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -74,9 +75,16 @@ namespace Assets.Scripts.Modules
             roleCtrlList.ForEach(o =>
             {
                 Vector3 endPoint = (o.transform.position - roleCtrlList[0].transform.position) + point;
-                o.OnMove(new MoveInfo(endPoint, o.moveStopDis, o.OnIdle));
+                o.OnMove(new MoveInfoByPoint(endPoint, () => IsArray(o, point), o.OnIdle));
             });
         }
+
+        private bool IsArray(GameRoleCtrl o, Vector3 point)
+        {
+            bool result = (o.transform.position - point).magnitude <= o.moveStopDis;
+            return result;
+        }
+
 
         public void Attack(GameUnitCtrl target)
         {

@@ -51,7 +51,7 @@ MonoBehaviour:
   unitType: 2
   buildRenderers:
   - {fileID: 9138278905720886601}
-  buildTime: 5
+  buildTime: 10
 --- !u!65 &5004636989288367073
 BoxCollider:
   m_ObjectHideFlags: 0

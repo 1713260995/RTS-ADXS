@@ -21,10 +21,10 @@ namespace Assets.Scripts.Modules.AI
             role.OnDead += orcaAgentInfo.Remove;
         }
 
-        public override void OnMove(MoveInfo _moveInfo)
+        public override void OnMove(IMoveInfo _moveInfo)
         {
             base.OnMove(_moveInfo);
-            orcaAgentInfo.SetGoalPoint(_moveInfo.endPoint);
+            orcaAgentInfo.SetGoalPoint(_moveInfo.Destination);
         }
 
         protected override void UpdatePosAndDir()

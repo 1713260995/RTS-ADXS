@@ -9,7 +9,7 @@ namespace Assets.Scripts.Modules.FSM.Role
 
         protected override RoleAnimFlags animName => RoleAnimFlags.Idle;
 
-        protected override StateName[] InitNextState() => new StateName[] { StateName.Move, StateName.Attack };
+        protected override StateName[] InitNextState() => new StateName[] { StateName.Move, StateName.Attack, StateName.Build };
 
         public override void OnEnter()
         {

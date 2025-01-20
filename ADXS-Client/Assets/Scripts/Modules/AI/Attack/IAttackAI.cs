@@ -14,6 +14,9 @@ namespace Assets.Scripts.Modules.AI
         /// </summary>
         void OnAttack(GameUnitCtrl target);
 
+
+        void AttackDone();
+
     }
 
 

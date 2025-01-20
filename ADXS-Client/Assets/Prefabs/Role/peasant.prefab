@@ -452,7 +452,7 @@ MonoBehaviour:
   moveStopDis: 1
   moveSpeed: 5
   rotateLerp: 0.01
-  attackDistance: 3
+  attackDistance: 1
 --- !u!195 &-1000576311932652193
 NavMeshAgent:
   m_ObjectHideFlags: 0

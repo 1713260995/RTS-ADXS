@@ -31,25 +31,36 @@ namespace Assets.Scripts.Modules.Role
             return collider.bounds.size;
         }
 
+
         public void BuildComplete()
         {
             isBuildComplete = true;
-
         }
 
-        public void SetBuildMat(Material buildMat, bool isAdd)
+        public Material buildMat { get; private set; }
+
+
+        public void AddBuildMat(Material _buildMat)
         {
+            if (buildMat != null) throw new System.Exception("buildMat is exist");
             foreach (var renderer in buildRenderers)
             {
                 List<Material> materials = renderer.materials.ToList();
-                if (isAdd)
-                {
-                    materials.Add(buildMat);
-                }
-                else
-                {
-                    materials.Remove(buildMat);
-                }
+                materials.Add(_buildMat);
+                buildMat = _buildMat;
+                renderer.SetMaterials(materials);
+            }
+        }
+
+        public void RemoveBuildMat()
+        {
+            if (buildMat == null) throw new System.Exception("buildMat is null");
+            foreach (var renderer in buildRenderers)
+            {
+                List<Material> materials = renderer.materials.ToList();
+                materials.Remove(buildMat);
+                buildMat = null;
+                Destroy(buildMat);
                 renderer.SetMaterials(materials);
             }
         }

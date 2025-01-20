@@ -1,16 +1,18 @@
-﻿namespace Assets.Scripts.Modules.AI
+﻿using System.Data;
+
+namespace Assets.Scripts.Modules.AI
 {
     public class AttackAI : AIBase, IAttackAI
     {
         public GameUnitCtrl currentTarget { get; private set; }
 
         public override bool IsAlive => currentTarget != null;
-        public IFollowAI followAI { get; private set; }
+        public IMoveAI moveAI { get; private set; }
 
-        public AttackAI(GameRoleCtrl role, IFollowAI followAI) : base(role)
+        public AttackAI(GameRoleCtrl role, IMoveAI moveAI) : base(role)
         {
             currentTarget = null;
-            this.followAI = followAI;
+            this.moveAI = moveAI;
         }
 
         public void OnAttack(GameUnitCtrl target)
@@ -22,12 +24,29 @@
 
             currentTarget = target;
             //追踪目标直至到达攻击距离
-            followAI.OnFollow(new FollowInfo(currentTarget, role.attackDistance, () =>
-            {
-                role.stateMachine.TryTrigger(StateName.Attack);
-                currentTarget = null;
-            }));
+            IMoveInfo moveInfo = new MoveInfoByObj(target.gameObject, () => IsArray(target), StartAttack);
+            moveAI.OnMove(moveInfo);
+
         }
+
+
+        private bool IsArray(GameUnitCtrl target)
+        {
+            return (target.transform.position - role.transform.position).magnitude <= role.attackDistance;
+        }
+
+        private void StartAttack()
+        {
+            role.stateMachine.TryTrigger(StateName.Attack);
+            currentTarget = null;
+        }
+
+        public void AttackDone()
+        {
+            role.isAttacking = false;
+            role.OnIdle();
+        }
+
 
         //如果当前处于跟随状态，会自动切换至idle状态
         //如果当前处于攻击状态，会在攻击完成后自动切换至idle状态
@@ -38,7 +57,7 @@
                 if (role.currentState == StateName.Move)
                 {
                     //如果当前运行攻击AI，并在在追踪目标。则结束此任务
-                    followAI.AbortAI();
+                    moveAI.AbortAI();
                 }
                 currentTarget = null;
             }

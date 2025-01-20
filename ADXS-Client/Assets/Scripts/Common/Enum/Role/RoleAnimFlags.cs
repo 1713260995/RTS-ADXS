@@ -12,6 +12,7 @@
         #region 农民
         Gold,
         Tree,
+        Build,
         AttackGold,
         AttackTree,
         #endregion
