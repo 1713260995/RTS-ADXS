@@ -41,5 +41,24 @@ namespace Modules.SteeringBehaviors
             Vector3 steering = desiredVelocity - currentVelocity;
             return steering;
         }
+
+ 
+
+        private Vector3 Separation()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private Vector3 Arrive(Vector3 behind, int i)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private Vector3 Evade(IBoid leader)
+        {
+            throw new System.NotImplementedException();
+        }
+
+     
     }
 }
