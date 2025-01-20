@@ -65,6 +65,8 @@ namespace Assets.Scripts.Modules.Role
             previewBuilding = null;
         }
 
+        public float lerp = 5f;
+
         private IEnumerator UpdatePreview(GameBuildingCtrl previewBuilding)
         {
             GameObject previewGrid = Instantiate(previewGridPrefab, previewBuilding.transform);
@@ -93,11 +95,18 @@ namespace Assets.Scripts.Modules.Role
                 if (canBuild)
                 {
                     Color hdrColor = normalGridColor * colorIntensity;
+                    Color currentColor = previewGridMat.GetColor(shaderId_PreviewGridColor);
+                    hdrColor = Color.Lerp(currentColor, hdrColor, lerp * Time.deltaTime);
+
                     previewGridMat.SetColor(shaderId_PreviewGridColor, hdrColor);
                 }
                 else
                 {
                     Color hdrColor = faileGridColor * colorIntensity;
+
+                    Color currentColor = previewGridMat.GetColor(shaderId_PreviewGridColor);
+                    hdrColor = Color.Lerp(currentColor, hdrColor, lerp * Time.deltaTime);
+
                     previewGridMat.SetColor(shaderId_PreviewGridColor, hdrColor);
                 }
 
