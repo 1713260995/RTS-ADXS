@@ -39,18 +39,17 @@ namespace Modules.SteeringBehaviors
         /// 新向量的计算方法是从目标的位置中减去角色的位置，从而生成从目标到角色的向量
         /// </summary>
         /// <param name="target"></param>
-        public void Flee(Vector3 target)
+        public Vector3 Flee(Vector3 target)
         {
             Vector3 desired_velocity = (Host.Position - target).normalized * Host.MaxSpeed;
-            Vector3 steering = desired_velocity - Host.Velocity;
-            ApplyForce(steering);
+            return desired_velocity - Host.Velocity;
         }
 
         /// <summary>
         /// 到达行为
         /// 当角色进入减速区域时，其速度将线性下降到零。
         /// </summary>
-        public void Array(Vector3 targetPos, float slowingRadius = 5)
+        public Vector3 Array(Vector3 targetPos, float slowingRadius = 5)
         {
             Vector3 desired_velocity = targetPos - Host.Position;
             var distance = desired_velocity.magnitude;
@@ -62,7 +61,7 @@ namespace Modules.SteeringBehaviors
             }
 
             Vector3 steering = desired_velocity - Host.Velocity;
-            ApplyForce(steering);
+            return steering;
         }
 
         /// <summary>
@@ -108,6 +107,64 @@ namespace Modules.SteeringBehaviors
             return Seek(futurePosition);
         }
 
+        public Vector3 FollowLeader(IBoid leader, float LEADER_BEHIND_DIST)
+        {
+            var tv = leader.Velocity;
+            Vector3 force = Vector3.zero;
+            tv.Normalize();
+            tv *= LEADER_BEHIND_DIST;
+            var ahead = leader.Position + tv;
+            tv *= -1;
+            var behind = leader.Position + tv;
+            if (isOnLeaderSight(leader, ahead, leaderSightRadius: 50)) {
+                force += Evade(leader);
+            }
+
+            force += Array(behind, 50);
+            force += Separation();
+            return force;
+        }
+
+        private Vector3 Evade(IBoid t)
+        {
+            Vector3 distance = t.Position - Host.Position;
+            float updatesAhead = distance.magnitude / Host.MaxSpeed;
+            Vector3 futurePosition = t.Position + t.Velocity * updatesAhead;
+            return Flee(futurePosition);
+        }
+
+        private Vector3 Separation()
+        {
+            float SEPARATION_RADIUS = 50; //TODO: need set
+            float MAX_SEPARATION = 10; //TODO: need set
+            IBoid[] boids = { }; //TODO: get all boids
+            Vector3 force = Vector3.zero;
+            int neighborCount = 0;
+            for (int i = 0; i < boids.Length; i++) {
+                var b = boids[i];
+                if (b != Host && (b.Position - Host.Position).magnitude <= SEPARATION_RADIUS) {
+                    force.x += b.Position.x - Host.Position.x;
+                    force.y += b.Position.y - Host.Position.y;
+                    neighborCount++;
+                }
+            }
+
+            if (neighborCount != 0) {
+                force.x /= neighborCount;
+                force.y /= neighborCount;
+                force *= -1;
+            }
+
+            force.Normalize();
+            force *= MAX_SEPARATION;
+            return force;
+        }
+
+        private bool isOnLeaderSight(IBoid leader, Vector3 ahead, float leaderSightRadius)
+        {
+            return (ahead - Host.Position).magnitude <= leaderSightRadius || (leader.Position - Host.Position).magnitude <= leaderSightRadius;
+        }
+
 
         public void Update()
         {
@@ -116,7 +173,6 @@ namespace Modules.SteeringBehaviors
             Host.Velocity = Vector3.ClampMagnitude(Host.Velocity + Steering, Host.MaxSpeed);
             Host.transform.position += Host.Velocity * Time.deltaTime;
         }
-
 
 
         private void ApplyForce(Vector3 force)
