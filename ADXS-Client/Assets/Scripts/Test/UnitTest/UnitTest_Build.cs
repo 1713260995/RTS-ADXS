@@ -21,13 +21,32 @@ namespace Assets.Scripts.Test.UnitTest
     {
         public GameUnitName buildingName = GameUnitName.Barracks;
 
+        private FarmerCtrl peasant;
+
+
+        protected override void Start()
+        {
+            base.Start();
+
+        }
+
         [ShowButton]
-        public void TestBuild()
+        public void CreateFarmer()
         {
             TeamAgent agent = new TeamAgent(1, GameColor.Red, AgentControlWay.Keyboard);
             BattleSystem.Instance.AddAgent(agent);
+            peasant = BattleSystem.Instance.CreateUnit<FarmerCtrl>(GameUnitName.Peasant, Vector3.zero, agent.id);
             BattleSystem.Instance.StartGame();
-            FarmerCtrl peasant = BattleSystem.Instance.CreateUnit<FarmerCtrl>(GameUnitName.Peasant, Vector3.zero, agent.id);
+        }
+
+
+        [ShowButton]
+        public void TestBuild()
+        {
+            if (peasant == null)
+            {
+                CreateFarmer();
+            }
             BuildSystem.Instance.EnterPreview(buildingName, peasant);
         }
 

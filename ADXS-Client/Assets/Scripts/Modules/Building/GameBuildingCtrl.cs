@@ -1,24 +1,23 @@
-﻿using Assets.Scripts.Common.Enum;
+﻿using Assets.GameClientLib.Resource;
+using Assets.GameClientLib.Scripts.Utils;
+using Assets.Scripts.Common.Enum;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Modules.Role
 {
     public class GameBuildingCtrl : GameUnitCtrl
     {
-        private new Collider collider;
-        [SerializeField] private List<Renderer> buildRenderers;
-
-        public float buildTime = 5;
-        public bool isBuildComplete { get; private set; }
+        private Collider m_collider;
         public bool isInitComplete { get; private set; }
 
         protected override void Start()
         {
             base.Start();
-            collider = GetComponent<Collider>();
-            isBuildComplete = false;
+            m_collider = GetComponent<Collider>();
             isInitComplete = true;
         }
 
@@ -26,11 +25,10 @@ namespace Assets.Scripts.Modules.Role
 
         #region Build
 
-        public Vector3 GetBuildingSize()
-        {
-            return collider.bounds.size;
-        }
+        public float buildTime = 5;
+        [SerializeField] private List<Renderer> buildRenderers;
 
+        public bool isBuildComplete { get; private set; }
 
         public void BuildComplete()
         {
@@ -38,7 +36,6 @@ namespace Assets.Scripts.Modules.Role
         }
 
         public Material buildMat { get; private set; }
-
 
         public void AddBuildMat(Material _buildMat)
         {
@@ -63,6 +60,33 @@ namespace Assets.Scripts.Modules.Role
                 Destroy(buildMat);
                 renderer.SetMaterials(materials);
             }
+        }
+
+
+        [SerializeField] private AssetReference buildProgressBarPrefab;
+        public float buildProgressBarPosY;
+
+        private BuildProgressBar buildProgressBar { get; set; }
+        public float buildProgress { get; private set; }
+
+        public void SetBuildProgress(float progress)
+        {
+            if (buildProgressBar == null)
+            {
+                buildProgressBar = ResSystem.Instantiate<GameObject>(buildProgressBarPrefab).GetComponent<BuildProgressBar>();
+                buildProgressBar.transform.SetParent(transform);
+
+            }
+            buildProgressBar.SetBuildProgress(progress);
+            buildProgressBar.transform.localPosition = new Vector3(0, GetBuildingSize().y + buildProgressBarPosY, 0);
+        }
+        #endregion
+
+        #region Helper
+
+        public Vector3 GetBuildingSize()
+        {
+            return m_collider.bounds.size;
         }
 
         #endregion

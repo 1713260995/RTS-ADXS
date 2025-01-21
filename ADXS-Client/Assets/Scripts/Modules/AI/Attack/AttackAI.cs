@@ -24,16 +24,12 @@ namespace Assets.Scripts.Modules.AI
 
             currentTarget = target;
             //追踪目标直至到达攻击距离
-            IMoveInfo moveInfo = new MoveInfoByObj(target.gameObject, () => IsArray(target), StartAttack);
+            IMoveInfo moveInfo = new MoveInfoByObj(target.gameObject, () => ArriveWay.IsArriveByAttackDistance(role, target), StartAttack);
             moveAI.OnMove(moveInfo);
 
         }
 
 
-        private bool IsArray(GameUnitCtrl target)
-        {
-            return (target.transform.position - role.transform.position).magnitude <= role.attackDistance;
-        }
 
         private void StartAttack()
         {

@@ -27,15 +27,15 @@ namespace Assets.Scripts.Modules.AI
 
         protected IEnumerator Move()
         {
-            while (!moveInfo.IsArray())//如果未到达就继续移动
+            while (!moveInfo.IsArrive())//如果未到达就继续移动
             {
                 UpdatePosAndDir();
                 yield return null;
             }
 
-            moveInfo.OnArray?.Invoke();
+            moveInfo.OnArrive?.Invoke();
             moveTask = null;
-            Debug.Log("到达终点");
+            // Debug.Log("到达终点");
         }
         /// <summary>
         /// 更新移动时位置和方向

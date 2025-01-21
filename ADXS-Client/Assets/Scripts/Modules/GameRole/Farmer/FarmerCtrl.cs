@@ -1,4 +1,5 @@
 ﻿using Assets.GameClientLib.Scripts.Utils.FSM;
+using Assets.Scripts.Common.Enum;
 using Assets.Scripts.Modules.FSM.Role;
 using Assets.Scripts.Modules.Role;
 using System.Collections.Generic;
@@ -11,10 +12,13 @@ namespace Assets.Scripts.Modules
 
         protected IBuildAI buildAI;
 
+
+
+
         protected override void InitAI()
         {
             base.InitAI();
-            buildAI = new BuildAI(this, moveAI, idleAI);
+            buildAI = new BuildAI(this, moveAI);
         }
 
         protected override List<State> InitRoleStates()
@@ -37,6 +41,14 @@ namespace Assets.Scripts.Modules
         public void OnBuild(BuildInfo info)
         {
             buildAI.OnBuild(info);
+        }
+
+        private void BuildAnimDone()
+        {
+            if (buildAI.CurrentBuilding != null && buildAI.CurrentBuilding.isBuildComplete == false)
+            {
+                animator.SetTrigger(RoleAnimFlags.Build.ToString());
+            }
         }
     }
 }

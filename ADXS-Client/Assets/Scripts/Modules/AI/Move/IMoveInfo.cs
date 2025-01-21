@@ -12,51 +12,51 @@ namespace Assets.Scripts.Modules.AI
         /// <summary>
         /// 到达终点回调
         /// </summary>
-        Action OnArray { get; }
+        Action OnArrive { get; }
         /// <summary>
         /// 是否已经到达终点
         /// </summary>
-        Func<bool> IsArray { get; }
+        Func<bool> IsArrive { get; }
     }
 
     public struct MoveInfoByPoint : IMoveInfo
     {
         private Vector3 endPoint;
-        private Action onArray;
-        private Func<bool> isArray;
+        private Action onArrive;
+        private Func<bool> isArrive;
+        public Vector3 Destination => endPoint;
+        public Action OnArrive => onArrive;
+        public Func<bool> IsArrive => isArrive;
 
-        public MoveInfoByPoint(Vector3 endPoint, Func<bool> isArray, Action onArray)
+
+        public MoveInfoByPoint(Vector3 endPoint, Func<bool> isArrive, Action onArrive)
         {
             this.endPoint = endPoint;
-            this.onArray = onArray;
-            this.isArray = isArray;
+            this.onArrive = onArrive;
+            this.isArrive = isArrive;
         }
 
-        public Vector3 Destination => endPoint;
-
-        public Action OnArray => onArray;
-
-        public Func<bool> IsArray => isArray;
     }
 
     public struct MoveInfoByObj : IMoveInfo
     {
         private GameObject obj;
-        private Action onArray;
-        private Func<bool> isArray;
-
-        public MoveInfoByObj(GameObject obj, Func<bool> isArray, Action onArray)
-        {
-            this.obj = obj;
-            this.onArray = onArray;
-            this.isArray = isArray;
-        }
-
+        private Action onArrive;
+        private Func<bool> isArrive;
         public Vector3 Destination => obj.transform.position;
 
-        public Action OnArray => onArray;
+        public Action OnArrive => onArrive;
 
-        public Func<bool> IsArray => isArray;
+        public Func<bool> IsArrive => isArrive;
+
+
+        public MoveInfoByObj(GameObject obj, Func<bool> isArrive, Action onArrive)
+        {
+            this.obj = obj;
+            this.onArrive = onArrive;
+            this.isArrive = isArrive;
+        }
+
     }
 
 }

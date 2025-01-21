@@ -6,7 +6,7 @@ namespace Assets.Scripts.Modules.FSM
     {
         public override StateName stateId => StateName.Move;
         protected override RoleAnimFlags animName => RoleAnimFlags.Walk;
-        protected override StateName[] InitNextState() => new StateName[] { StateName.Idle, StateName.Attack };
+        protected override StateName[] InitNextState() => new StateName[] { StateName.Idle, StateName.Attack, StateName.Build };
 
         public override void OnEnter()
         {

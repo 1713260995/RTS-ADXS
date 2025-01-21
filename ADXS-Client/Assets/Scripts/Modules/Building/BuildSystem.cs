@@ -40,6 +40,7 @@ namespace Assets.Scripts.Modules.Role
         [SerializeField] private float maxHeightDifference = 0.55f; // 建造时允许最大的地形高度差
         [SerializeField] private GameObject previewGridPrefab; //预览的网格预制体
         [SerializeField] private Material buildMaterialPrefab; //预览建筑需要添加的材质的预制体
+        [SerializeField] private float colorLerp = 5f;
 
         private readonly int shaderId_BuildProgress = Shader.PropertyToID("_BuildValue");//shader属性-建造进度
         private readonly int shaderId_PreviewGridColor = Shader.PropertyToID("_Color");//shader属性-网格颜色
@@ -57,8 +58,6 @@ namespace Assets.Scripts.Modules.Role
             Destroy(previewBuilding.gameObject);
             previewBuilding = null;
         }
-
-        public float lerp = 5f;
 
         private IEnumerator UpdatePreview(GameBuildingCtrl previewBuilding, FarmerCtrl farmer)
         {
@@ -89,7 +88,7 @@ namespace Assets.Scripts.Modules.Role
                 {
                     Color hdrColor = normalGridColor * colorIntensity;
                     Color currentColor = previewGridMat.GetColor(shaderId_PreviewGridColor);
-                    hdrColor = Color.Lerp(currentColor, hdrColor, lerp * Time.deltaTime);
+                    hdrColor = Color.Lerp(currentColor, hdrColor, colorLerp * Time.deltaTime);
 
                     previewGridMat.SetColor(shaderId_PreviewGridColor, hdrColor);
                 }
@@ -98,7 +97,7 @@ namespace Assets.Scripts.Modules.Role
                     Color hdrColor = faileGridColor * colorIntensity;
 
                     Color currentColor = previewGridMat.GetColor(shaderId_PreviewGridColor);
-                    hdrColor = Color.Lerp(currentColor, hdrColor, lerp * Time.deltaTime);
+                    hdrColor = Color.Lerp(currentColor, hdrColor, colorLerp * Time.deltaTime);
 
                     previewGridMat.SetColor(shaderId_PreviewGridColor, hdrColor);
                 }
@@ -125,6 +124,8 @@ namespace Assets.Scripts.Modules.Role
 
         #region Build
 
+
+
         private void StartBuild(GameBuildingCtrl previewBuilding, Material buildMat, FarmerCtrl farmer)
         {
             BuildInfo buildInfo = new BuildInfo(previewBuilding, (onComplete) => StartCoroutine(ExecuteBuild(previewBuilding, onComplete)));
@@ -140,6 +141,7 @@ namespace Assets.Scripts.Modules.Role
                 progress = currentTime / previewBuilding.buildTime;
                 previewBuilding.buildMat.SetFloat(shaderId_BuildProgress, Mathf.Clamp01(1 - progress));
                 currentTime += Time.deltaTime;
+                previewBuilding.SetBuildProgress(progress);
                 yield return null;
             }
             previewBuilding.RemoveBuildMat();

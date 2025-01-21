@@ -4,7 +4,7 @@ using System;
 
 public interface IBuildAI : IAIBase
 {
-
+    GameBuildingCtrl CurrentBuilding { get; }
     void OnBuild(BuildInfo info);
 }
 

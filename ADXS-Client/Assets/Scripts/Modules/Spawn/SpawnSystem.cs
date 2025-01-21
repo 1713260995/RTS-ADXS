@@ -22,7 +22,7 @@ namespace Assets.Scripts.Modules.Spawn
             spawnDic = new();
             foreach (var item in assetReferenceList)
             {
-                GameUnitCtrl ctrl = ResSystem.Load<GameObject>(item).GetComponent<GameUnitCtrl>();
+                GameUnitCtrl ctrl = ResSystem.LoadAsset<GameObject>(item).GetComponent<GameUnitCtrl>();
 
                 ISpwanPool spwanPool = ctrl as ISpwanPool;
                 if (spwanPool != null)

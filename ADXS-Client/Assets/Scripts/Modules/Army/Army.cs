@@ -75,15 +75,10 @@ namespace Assets.Scripts.Modules
             roleCtrlList.ForEach(o =>
             {
                 Vector3 endPoint = (o.transform.position - roleCtrlList[0].transform.position) + point;
-                o.OnMove(new MoveInfoByPoint(endPoint, () => IsArray(o, point), o.OnIdle));
+                o.OnMove(new MoveInfoByPoint(endPoint, () => ArriveWay.IsArriveByDistance(o, point), o.OnIdle));
             });
         }
 
-        private bool IsArray(GameRoleCtrl o, Vector3 point)
-        {
-            bool result = (o.transform.position - point).magnitude <= o.moveStopDis;
-            return result;
-        }
 
 
         public void Attack(GameUnitCtrl target)

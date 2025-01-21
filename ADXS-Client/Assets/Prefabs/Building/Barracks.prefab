@@ -49,9 +49,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: 9
   unitType: 2
+  buildTime: 10
   buildRenderers:
   - {fileID: 9138278905720886601}
-  buildTime: 10
+  buildProgressBarPrefab:
+    m_AssetGUID: 2c76e15c84dfe4a4ca7d9f41402a7787
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  buildProgressBarPosY: 1
 --- !u!65 &5004636989288367073
 BoxCollider:
   m_ObjectHideFlags: 0
