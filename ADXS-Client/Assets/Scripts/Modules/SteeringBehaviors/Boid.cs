@@ -9,30 +9,22 @@ namespace Modules.SteeringBehaviors
         public float MaxSpeed => maxSpeed;
         public float MaxForce => maxForce;
         public float Mass => mass;
+        [Header("最大速度")]
         public float maxSpeed;
+        [Header("steering force最大值")]
         public float maxForce;
+        [Header("steering force整体缩放权重")]
         public float mass = 1;
-        public float slowingRadius = 1;
-        private SteeringManager steeringManager;
+        [Header("arrive行为 减速半径")]
+        public float arriveSlowingRadius = 4;
+        public SteeringManager steeringManager { get;private set; }
 
         private void Awake()
         {
             steeringManager = new SteeringManager(this);
         }
 
-        private Vector3 targetPos;
-
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(1)) {
-                Ray ray = Camera.main!.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit)) {
-                    targetPos = hit.point;
-                }
-            }
-
-            steeringManager.Seek(targetPos);
-            steeringManager.Update();
-        }
+        
+        
     }
 }

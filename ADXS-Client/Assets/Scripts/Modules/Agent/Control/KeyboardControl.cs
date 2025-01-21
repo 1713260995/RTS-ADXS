@@ -149,9 +149,9 @@ namespace Assets.Scripts.Modules
                 Vector3 pos = ctrl.transform.position;
                 if (cameraTran == null)
                 {
-                    cameraTran = Camera.main.transform;
+                    cameraTran = Camera.main!.transform;
                 }
-                cameraTran.position = new Vector3(pos.x, Camera.main.transform.position.y, pos.z - 5);
+                cameraTran.position = new Vector3(pos.x, cameraTran.transform.position.y, pos.z - 5);
             }
         }
         #endregion
