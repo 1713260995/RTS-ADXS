@@ -1,5 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Assets.GameClientLib.Scripts.Utils;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 namespace Modules.SteeringBehaviors
 {
@@ -10,6 +15,12 @@ namespace Modules.SteeringBehaviors
         Vector3 Velocity { get; set; }
         float MaxSpeed { get; }
         float MaxForce { get; }
+        float Radius { get; }
+        float AvoidanceRadius { get; }
+
+        /// <summary>
+        /// 整个转向行为对当前速度影响的权重
+        /// </summary>
         float Mass { get; }
     }
 
@@ -52,7 +63,7 @@ namespace Modules.SteeringBehaviors
             Vector3 desired_velocity = targetPos - host.Position;
             var distance = desired_velocity.magnitude;
             if (distance < slowingRadius) {
-                desired_velocity = desired_velocity.normalized * host.MaxSpeed * (distance / slowingRadius);
+                desired_velocity = desired_velocity.normalized * (host.MaxSpeed * (distance / slowingRadius));
             }
             else {
                 desired_velocity = desired_velocity.normalized * host.MaxSpeed;
@@ -118,36 +129,35 @@ namespace Modules.SteeringBehaviors
         /// <summary>
         /// 避障行为
         /// </summary>
-        public Vector3 CollisionAvoidance(Obstacle[] obstacles, float MAX_AVOID_FORCE = 10)
+        public Vector3 CollisionAvoidance(float maxAvoidForce = 10)
         {
             float dynamic_length = host.Velocity.magnitude / host.MaxSpeed; //变量的范围是 0 到 1。当角色全速移动时，为 1;当角色减速或加速时，为 0 或更大（例如 0.5）。
             Vector3 ahead = host.Position + host.Velocity.normalized * dynamic_length;
-            Vector3 ahead2 = host.Position + host.Velocity.normalized * dynamic_length * 0.5f;
-            Obstacle mostThreatening = FindMostThreateningObstacle(ahead, ahead2, obstacles);
+            Vector3 ahead2 = host.Position + host.Velocity.normalized * (dynamic_length * 0.5f);
+            Obstacle mostThreatening = FindMostThreateningObstacle(ahead, ahead2);
             Vector3 avoidance = Vector3.zero;
-            if (mostThreatening != null) {
+            if (mostThreatening.transform != null) {
                 avoidance = ahead - mostThreatening.center;
                 avoidance.Normalize();
-                avoidance *= MAX_AVOID_FORCE;
-            }
-            else {
-                avoidance *= 0; // nullify the avoidance force 
+                avoidance *= maxAvoidForce;
+                //Debug.Log(avoidance);
             }
 
             return avoidance;
         }
 
+
         /// <summary>
-        /// 查找最近的障碍物
+        /// 查找最近的障碍物,且将会碰撞到的障碍物
         /// </summary>
-        private Obstacle FindMostThreateningObstacle(Vector3 ahead, Vector3 ahead2, Obstacle[] obstacles)
+        private Obstacle FindMostThreateningObstacle(Vector3 ahead, Vector3 ahead2)
         {
-            Obstacle mostThreatening = null;
+            Obstacle[] obstacles = GetNearestObstacles(host.AvoidanceRadius);
+            Obstacle mostThreatening = new Obstacle();
             for (int i = 0; i < obstacles.Length; i++) {
                 Obstacle obstacle = obstacles[i];
                 bool isCollision = (obstacle.center - ahead).magnitude <= obstacle.radius || (obstacle.center - ahead2).magnitude <= obstacle.radius;
-                // "position" is the character's current position 
-                if (isCollision && (mostThreatening == null || (host.Position - obstacle.center).magnitude < (host.Position - mostThreatening.center).magnitude)) {
+                if (isCollision && (mostThreatening.transform == null || (host.Position - obstacle.center).magnitude < (host.Position - mostThreatening.center).magnitude)) {
                     mostThreatening = obstacle;
                 }
             }
@@ -162,54 +172,60 @@ namespace Modules.SteeringBehaviors
         /// <summary>
         /// 跟随领导者行为
         /// </summary>
-        public Vector3 FollowLeader(IBoid leader, float LEADER_BEHIND_DIST, IBoid[] boids, float SEPARATION_RADIUS, float MAX_SEPARATION)
+        /// <param name="leader"></param>
+        /// <param name="boids">所有跟随者</param>
+        /// <param name="leaderBehindDist">跟随者离领导的距离</param>
+        /// <param name="separationRadius">跟随者之间分离的半径</param>
+        /// <param name="maxSeparationForce">分离力</param>
+        /// <param name="leaderSightRadius">领导者前方的可视范围</param>
+        /// <returns></returns>
+        public Vector3 FollowLeader(IBoid leader, IBoid[] boids, float leaderBehindDist, float separationRadius, float maxSeparationForce, float leaderSightRadius)
         {
-            var tv = leader.Velocity;
-            Vector3 force = Vector3.zero;
-            tv.Normalize();
-            tv *= LEADER_BEHIND_DIST;
-            var ahead = leader.Position + tv;
+            Vector2 tv = leader.Velocity.GetXZ();
+            tv = tv.normalized * leaderBehindDist; //这里使用Vector2是因为如果使用Vector3归一化后再乘以距离会使y轴的值变大而使结果错误
+            Vector2 ahead = leader.Position.GetXZ() + tv;
             tv *= -1;
-            var behind = leader.Position + tv;
-            if (isOnLeaderSight(leader, ahead, leaderSightRadius: 50)) {
-                force += Evade(leader);
+            Vector2 behind = leader.Position.GetXZ() + tv;
+            Vector3 force = Vector3.zero;
+            //是否在领导者的前方
+            bool isOnLeaderSight = (ahead - host.Position.GetXZ()).magnitude <= leaderSightRadius || (leader.Position - host.Position).magnitude <= leaderSightRadius;
+            if (isOnLeaderSight) {
+                //如果当前角色在领导者的前方视线范围内，给领导者让路
+                // force += Evade(leader);
             }
 
-            force += Arrive(behind, 50);
-            force += Separation(boids, SEPARATION_RADIUS, MAX_SEPARATION);
+            Vector3 pos = Random.insideUnitSphere * leaderBehindDist;
+            
+            
+            
+            force += Arrive(behind.XZToXYZ(), 3);
+            force += Separation(boids, separationRadius, maxSeparationForce);
             return force;
         }
 
         /// <summary>
-        /// 避免拥挤
+        /// 分离行为，避免拥挤
         /// </summary>
-        private Vector3 Separation(IBoid[] boids, float SEPARATION_RADIUS, float MAX_SEPARATION)
+        private Vector3 Separation(IBoid[] boids, float separationRadius, float maxSeparationForce)
         {
-            Vector3 force = Vector3.zero;
+            Vector2 force = Vector2.zero;
             int neighborCount = 0;
             for (int i = 0; i < boids.Length; i++) {
                 var b = boids[i];
-                if (b != host && (b.Position - host.Position).magnitude <= SEPARATION_RADIUS) {
-                    force.x += b.Position.x - host.Position.x;
-                    force.y += b.Position.y - host.Position.y;
+                if (b != host && (b.Position - host.Position).magnitude <= separationRadius) {
+                    force += b.Position.GetXZ() - host.Position.GetXZ();
                     neighborCount++;
                 }
             }
 
             if (neighborCount != 0) {
-                force.x /= neighborCount;
-                force.y /= neighborCount;
+                force /= neighborCount;
                 force *= -1;
             }
 
             force.Normalize();
-            force *= MAX_SEPARATION;
-            return force;
-        }
-
-        private bool isOnLeaderSight(IBoid leader, Vector3 ahead, float leaderSightRadius)
-        {
-            return (ahead - host.Position).magnitude <= leaderSightRadius || (leader.Position - host.Position).magnitude <= leaderSightRadius;
+            force *= maxSeparationForce;
+            return force.XZToXYZ();
         }
 
         #endregion
@@ -222,7 +238,7 @@ namespace Modules.SteeringBehaviors
         /// 当队伍中的第一个人移动时，其余的人也跟着移动，形成一个看起来像火车拉货车的模式。等待时，角色不应离开该行。
         /// </summary>
         /// <returns></returns>
-        private Vector3 Queue(Vector3 finalSteering,IBoid[] boids)
+        private Vector3 Queue(Vector3 finalSteering, IBoid[] boids)
         {
             float MAX_QUEUE_RADIUS = 5; //TODO: need set
             Vector3 v = host.Velocity;
@@ -270,17 +286,50 @@ namespace Modules.SteeringBehaviors
             steering = Vector3.ClampMagnitude(steering, host.MaxForce);
             steering /= host.Mass;
             host.Velocity = Vector3.ClampMagnitude(host.Velocity + steering, host.MaxSpeed);
+            var v = host.Velocity * Time.deltaTime;
 
-            host.transform.position += host.Velocity * Time.deltaTime;
-            if (host.transform.position.y >= 0.3f) {
-                Debug.Log(host.transform.position);
+            host.transform.position += new Vector3(v.x, v.y, v.z);
+            if (host.transform.position.y > 0.8f) {
+                // Debug.Log($"{host.transform.name}:{host.transform.position},v:" + v);
             }
         }
 
-        public class Obstacle
+
+        public Obstacle[] GetNearestObstacles(float radius)
         {
-            public Vector3 center;
+            Collider[] results = new Collider[10];
+            Physics.OverlapSphereNonAlloc(host.Position, radius, results, GameLayerName.GameUnit.GetLayerMask());
+            List<Obstacle> obstacles = new();
+            for (int i = 0; i < results.Length; i++) {
+                var result = results[i];
+                if (result == null || result.transform == host.transform) {
+                    continue;
+                }
+
+                result.TryGetComponent<Boid>(out var boid);
+                obstacles.Add(new Obstacle(boid));
+            }
+
+            return obstacles.ToArray();
+        }
+
+        public struct Obstacle
+        {
+            public Transform transform;
             public float radius;
+            public Vector3 center => transform.position;
+
+            public Obstacle(Transform transform, float radius)
+            {
+                this.transform = transform;
+                this.radius = radius;
+            }
+
+            public Obstacle(IBoid boid)
+            {
+                transform = boid.transform;
+                radius = boid.Radius;
+            }
         }
     }
 }

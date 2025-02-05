@@ -211,9 +211,9 @@ namespace Assets.Scripts.Modules.Role
             buildingSize.z += radius;
             Transform tran = previewBuilding.transform;
             Collider[] colliders = Physics.OverlapBox(tran.position, buildingSize, tran.rotation, GameLayerName.GameUnit.GetLayerMask());
-            foreach (var collider in colliders)
+            foreach (var item in colliders)
             {
-                if (collider.transform != tran)//碰撞检测时，会碰撞到自己
+                if (item.transform != tran)//碰撞检测时，会碰撞到自己
                 {
                     return true;
                 }

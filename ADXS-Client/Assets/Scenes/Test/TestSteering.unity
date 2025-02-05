@@ -375,6 +375,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   host: {fileID: 656220533}
   group: {fileID: 804547516}
+  maxAvoidForce: 5
+  leaderBehindDist: 5
+  separationRadius: 3
+  maxSeparationForce: 3
+  leaderSightRadius: 3
 --- !u!1 &656220525
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,13 +389,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 656220529}
+  - component: {fileID: 656220533}
   - component: {fileID: 656220528}
   - component: {fileID: 656220527}
   - component: {fileID: 656220526}
   - component: {fileID: 656220532}
-  - component: {fileID: 656220533}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 7
+  m_Name: Leader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,6 +529,8 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 6
   mass: 1
+  radius: 2
+  avoidanceRadius: 5
   arriveSlowingRadius: 4
 --- !u!1 &804547515
 GameObject:
@@ -577,7 +584,7 @@ GameObject:
   - component: {fileID: 860873693}
   - component: {fileID: 860873692}
   - component: {fileID: 860873691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +600,7 @@ Transform:
   m_GameObject: {fileID: 860873689}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.87}
+  m_LocalPosition: {x: 0, y: 0.5, z: 3.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -614,6 +621,8 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 6
   mass: 1
+  radius: 2
+  avoidanceRadius: 5
   arriveSlowingRadius: 4
 --- !u!54 &860873692
 Rigidbody:
@@ -640,7 +649,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &860873693
 BoxCollider:
@@ -727,7 +736,7 @@ GameObject:
   - component: {fileID: 1273104888}
   - component: {fileID: 1273104887}
   - component: {fileID: 1273104886}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,7 +752,7 @@ Transform:
   m_GameObject: {fileID: 1273104884}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.35, y: 0, z: 3.87}
+  m_LocalPosition: {x: -5.35, y: 0.5, z: 3.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -764,6 +773,8 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 6
   mass: 1
+  radius: 2
+  avoidanceRadius: 5
   arriveSlowingRadius: 4
 --- !u!54 &1273104887
 Rigidbody:
@@ -790,7 +801,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &1273104888
 BoxCollider:
@@ -877,7 +888,7 @@ GameObject:
   - component: {fileID: 1424741484}
   - component: {fileID: 1424741483}
   - component: {fileID: 1424741482}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -893,7 +904,7 @@ Transform:
   m_GameObject: {fileID: 1424741480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25, y: 0, z: 3.87}
+  m_LocalPosition: {x: 2.25, y: 0.5, z: 3.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -914,6 +925,8 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 6
   mass: 1
+  radius: 2
+  avoidanceRadius: 5
   arriveSlowingRadius: 4
 --- !u!54 &1424741483
 Rigidbody:
@@ -940,7 +953,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &1424741484
 BoxCollider:
@@ -1027,7 +1040,7 @@ GameObject:
   - component: {fileID: 1479655489}
   - component: {fileID: 1479655488}
   - component: {fileID: 1479655487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1043,7 +1056,7 @@ Transform:
   m_GameObject: {fileID: 1479655485}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.16, y: 0, z: 3.87}
+  m_LocalPosition: {x: 6.16, y: 0.5, z: 3.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1064,6 +1077,8 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 6
   mass: 1
+  radius: 2
+  avoidanceRadius: 5
   arriveSlowingRadius: 4
 --- !u!54 &1479655488
 Rigidbody:
@@ -1090,7 +1105,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &1479655489
 BoxCollider:
@@ -1177,7 +1192,7 @@ GameObject:
   - component: {fileID: 1481557357}
   - component: {fileID: 1481557356}
   - component: {fileID: 1481557355}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1193,7 +1208,7 @@ Transform:
   m_GameObject: {fileID: 1481557353}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.89, y: 0, z: 3.87}
+  m_LocalPosition: {x: 3.89, y: 0.5, z: 3.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1214,6 +1229,8 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 6
   mass: 1
+  radius: 2
+  avoidanceRadius: 5
   arriveSlowingRadius: 4
 --- !u!54 &1481557356
 Rigidbody:
@@ -1240,7 +1257,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &1481557357
 BoxCollider:
@@ -1421,7 +1438,7 @@ GameObject:
   - component: {fileID: 1705635241}
   - component: {fileID: 1705635240}
   - component: {fileID: 1705635239}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1437,7 +1454,7 @@ Transform:
   m_GameObject: {fileID: 1705635237}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.94, y: 0, z: 3.87}
+  m_LocalPosition: {x: -1.94, y: 0.5, z: 3.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1458,6 +1475,8 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 6
   mass: 1
+  radius: 2
+  avoidanceRadius: 5
   arriveSlowingRadius: 4
 --- !u!54 &1705635240
 Rigidbody:
@@ -1484,7 +1503,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &1705635241
 BoxCollider:
@@ -1571,7 +1590,7 @@ GameObject:
   - component: {fileID: 1748102742}
   - component: {fileID: 1748102741}
   - component: {fileID: 1748102740}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,7 +1606,7 @@ Transform:
   m_GameObject: {fileID: 1748102738}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.21, y: 0, z: 0.61}
+  m_LocalPosition: {x: -7.21, y: 0.5, z: 0.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1608,6 +1627,8 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 6
   mass: 1
+  radius: 2
+  avoidanceRadius: 5
   arriveSlowingRadius: 4
 --- !u!54 &1748102741
 Rigidbody:
@@ -1634,7 +1655,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &1748102742
 BoxCollider:
@@ -1714,6 +1735,6 @@ SceneRoots:
   - {fileID: 117112389}
   - {fileID: 1511256830}
   - {fileID: 319716130}
-  - {fileID: 656220529}
   - {fileID: 599466146}
+  - {fileID: 656220529}
   - {fileID: 804547516}

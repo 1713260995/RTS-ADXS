@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Modules;
 using Assets.Scripts.Test.UnitTest;
 using Modules.SteeringBehaviors;
@@ -11,28 +12,30 @@ namespace Test
     public class UnitTest_Steering : UnitTest_Base
     {
         public Boid host;
-        private Vector3 targetPos;
         public Transform group;
+        public float maxAvoidForce = 10;
 
-        List<Boid> boids = new List<Boid>();
+
+        private List<Boid> boids = new List<Boid>();
+        private Vector3 targetPos;
+        private List<SteeringManager.Obstacle> obstacles;
 
         protected override void Start()
         {
             base.Start();
-            //  CreateBoids();
+            //CreateBoids();
             targetPos = host.Position;
             obstacles = new List<SteeringManager.Obstacle>();
             for (int i = 0; i < group.childCount; i++) {
                 Boid boid = group.GetChild(i).GetComponent<Boid>();
                 boids.Add(boid);
-                obstacles.Add(new SteeringManager.Obstacle() { center = boid.Position, radius = 2 });
+                obstacles.Add(new SteeringManager.Obstacle(boid.transform, 2));
             }
         }
 
         private void Update()
         {
-           // Arrive();
-            //Wander();
+            Arrive();
             FollowLeader();
         }
 
@@ -45,7 +48,7 @@ namespace Test
                 item.steeringManager.Update(steering1);
             }
         }
-        
+
         private void Arrive()
         {
             if (Input.GetMouseButtonDown(1)) {
@@ -57,24 +60,26 @@ namespace Test
 
             Vector3 steering = Vector3.zero;
             steering += host.steeringManager.Arrive(targetPos, host.arriveSlowingRadius);
-            steering += host.steeringManager.CollisionAvoidance(obstacles.ToArray());
+            //steering += host.steeringManager.CollisionAvoidance(maxAvoidForce);
             host.steeringManager.Update(steering);
         }
 
+        public float leaderBehindDist = 5;
+        public float separationRadius = 3;
+        public float maxSeparationForce = 3;
+        public float leaderSightRadius = 3;
+
         private void FollowLeader()
         {
-            Arrive();
-
             Vector3 steering = Vector3.zero;
             foreach (var boid in boids) {
-                steering += boid.steeringManager.FollowLeader(host, 5, boids!.ToArray(), 2, 1);
+                steering += boid.steeringManager.FollowLeader(host, boids.Cast<IBoid>().ToArray(), leaderBehindDist, separationRadius, maxSeparationForce, leaderSightRadius);
+             
+
                 boid.steeringManager.Update(steering);
             }
-           
         }
-        
-        
-        private List<SteeringManager.Obstacle> obstacles;
+
 
         private void CreateBoids()
         {
