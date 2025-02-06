@@ -28,6 +28,10 @@ namespace Test
             obstacles = new List<SteeringManager.Obstacle>();
             for (int i = 0; i < group.childCount; i++) {
                 Boid boid = group.GetChild(i).GetComponent<Boid>();
+                if (!boid.gameObject.activeInHierarchy) {
+                    continue;
+                }
+
                 boids.Add(boid);
                 obstacles.Add(new SteeringManager.Obstacle(boid.transform, 2));
             }
@@ -37,16 +41,6 @@ namespace Test
         {
             Arrive();
             FollowLeader();
-        }
-
-
-        private void Wander()
-        {
-            foreach (var item in boids) {
-                Vector3 steering1 = Vector3.zero;
-                steering1 += item.steeringManager.Wander(2, 2, 180, 20);
-                item.steeringManager.Update(steering1);
-            }
         }
 
         private void Arrive()
@@ -71,23 +65,21 @@ namespace Test
 
         private void FollowLeader()
         {
+            boidArriveDistance = _boidArriveDistance;
+            boidSeparateDistance = _boidSeparateDistance;
             Vector3 steering = Vector3.zero;
             foreach (var boid in boids) {
-                steering += boid.steeringManager.FollowLeader(host, boids.Cast<IBoid>().ToArray(), leaderBehindDist, separationRadius, maxSeparationForce, leaderSightRadius);
-             
+                // steering += boid.steeringManager.FollowLeader(host, boids.Cast<IBoid>().ToArray(), leaderBehindDist, separationRadius, maxSeparationForce, leaderSightRadius);
+                // boid.steeringManager.Update(steering);
 
-                boid.steeringManager.Update(steering);
+                steering += boid.boidBehavior.TestBoids(host, boids.Cast<IBoid>().ToList(), 3);
+               // boid.steeringManager.Update(steering);
             }
         }
 
-
-        private void CreateBoids()
-        {
-            for (int i = 0; i < 10; i++) {
-                Vector3 birthPos = Random.insideUnitSphere * 10;
-                Boid boid = Instantiate(host, birthPos, Quaternion.identity);
-                boids.Add(boid);
-            }
-        }
+        public static float boidArriveDistance = 5;
+        public static float boidSeparateDistance = 5;
+        public float _boidArriveDistance = 5;
+        public float _boidSeparateDistance = 5;
     }
 }

@@ -33,9 +33,12 @@ namespace Modules.SteeringBehaviors
 
         public SteeringManager steeringManager { get; private set; }
 
+        public BoidBehavior boidBehavior { get; private set; }
+
         private void Awake()
         {
             steeringManager = new SteeringManager(this);
+            boidBehavior = new BoidBehavior() { host = this };
         }
     }
 }

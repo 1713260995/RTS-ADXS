@@ -33,6 +33,55 @@ namespace Modules.SteeringBehaviors
             this.host = host;
         }
 
+        public void Update(Vector3 steering)
+        {
+            steering = Vector3.ClampMagnitude(steering, host.MaxForce);
+            steering /= host.Mass;
+            host.Velocity = Vector3.ClampMagnitude(host.Velocity + steering, host.MaxSpeed);
+            var v = host.Velocity * Time.deltaTime;
+
+            host.transform.position += new Vector3(v.x, v.y, v.z);
+        }
+
+        public Obstacle[] GetNearestObstacles(float radius)
+        {
+            Collider[] results = new Collider[10];
+            Physics.OverlapSphereNonAlloc(host.Position, radius, results, GameLayerName.GameUnit.GetLayerMask());
+            List<Obstacle> obstacles = new();
+            for (int i = 0; i < results.Length; i++) {
+                var result = results[i];
+                if (result == null || result.transform == host.transform) {
+                    continue;
+                }
+
+                result.TryGetComponent<Boid>(out var boid);
+                obstacles.Add(new Obstacle(boid));
+            }
+
+            return obstacles.ToArray();
+        }
+
+
+        public struct Obstacle
+        {
+            public Transform transform;
+            public float radius;
+            public Vector3 center => transform.position;
+
+            public Obstacle(Transform transform, float radius)
+            {
+                this.transform = transform;
+                this.radius = radius;
+            }
+
+            public Obstacle(IBoid boid)
+            {
+                transform = boid.transform;
+                radius = boid.Radius;
+            }
+        }
+
+
         /// <summary>
         /// 在每帧的速度上增加转向力将使角色平稳地放弃其旧的直线路线并朝着目标前进
         /// </summary>
@@ -194,10 +243,6 @@ namespace Modules.SteeringBehaviors
                 // force += Evade(leader);
             }
 
-            Vector3 pos = Random.insideUnitSphere * leaderBehindDist;
-            
-            
-            
             force += Arrive(behind.XZToXYZ(), 3);
             force += Separation(boids, separationRadius, maxSeparationForce);
             return force;
@@ -226,6 +271,51 @@ namespace Modules.SteeringBehaviors
             force.Normalize();
             force *= maxSeparationForce;
             return force.XZToXYZ();
+        }
+
+
+        public Vector3 Leader(IBoid leader)
+        {
+            Vector3 force = Vector3.zero;
+            var separation = Vector3.zero;
+            var alignment = leader.transform.forward;
+            var cohesion = leader.transform.position;
+            var nearbyBoids = GetNearestObstacles(host.AvoidanceRadius);
+            if (nearbyBoids.Length == 0) {
+                return force;
+            }
+
+            foreach (var boid in nearbyBoids) {
+                if (boid.transform == host.transform) continue;
+                var t = boid.transform;
+                separation += GetSeparationVector(t);
+                alignment += t.forward;
+                cohesion += t.position;
+            }
+
+            var avg = 1.0f / nearbyBoids.Length;
+            alignment *= avg;
+            cohesion *= avg;
+            cohesion = (cohesion - host.Position).normalized;
+            force = separation + alignment + cohesion;
+
+            var rotation = Quaternion.FromToRotation(Vector3.forward, force.normalized);
+
+            // Applys the rotation with interpolation.
+            if (rotation != host.transform.rotation) {
+                var ip = Mathf.Exp(-4 * Time.deltaTime);
+                host.transform.rotation = Quaternion.Slerp(rotation, host.transform.rotation, ip);
+            }
+
+            return force;
+        }
+
+        private Vector3 GetSeparationVector(Transform target)
+        {
+            var diff = host.transform.position - target.transform.position;
+            var diffLen = diff.magnitude;
+            var scale = Mathf.Clamp01(1.0f - diffLen / host.AvoidanceRadius);
+            return diff * (scale / diffLen);
         }
 
         #endregion
@@ -280,56 +370,5 @@ namespace Modules.SteeringBehaviors
         }
 
         #endregion
-
-        public void Update(Vector3 steering)
-        {
-            steering = Vector3.ClampMagnitude(steering, host.MaxForce);
-            steering /= host.Mass;
-            host.Velocity = Vector3.ClampMagnitude(host.Velocity + steering, host.MaxSpeed);
-            var v = host.Velocity * Time.deltaTime;
-
-            host.transform.position += new Vector3(v.x, v.y, v.z);
-            if (host.transform.position.y > 0.8f) {
-                // Debug.Log($"{host.transform.name}:{host.transform.position},v:" + v);
-            }
-        }
-
-
-        public Obstacle[] GetNearestObstacles(float radius)
-        {
-            Collider[] results = new Collider[10];
-            Physics.OverlapSphereNonAlloc(host.Position, radius, results, GameLayerName.GameUnit.GetLayerMask());
-            List<Obstacle> obstacles = new();
-            for (int i = 0; i < results.Length; i++) {
-                var result = results[i];
-                if (result == null || result.transform == host.transform) {
-                    continue;
-                }
-
-                result.TryGetComponent<Boid>(out var boid);
-                obstacles.Add(new Obstacle(boid));
-            }
-
-            return obstacles.ToArray();
-        }
-
-        public struct Obstacle
-        {
-            public Transform transform;
-            public float radius;
-            public Vector3 center => transform.position;
-
-            public Obstacle(Transform transform, float radius)
-            {
-                this.transform = transform;
-                this.radius = radius;
-            }
-
-            public Obstacle(IBoid boid)
-            {
-                transform = boid.transform;
-                radius = boid.Radius;
-            }
-        }
     }
 }
