@@ -1,7 +1,6 @@
-using Assets.GameClientLib.Scripts.Utils;
 using UnityEngine;
 
-namespace Modules.SteeringBehaviors
+namespace Assets.Scripts.Modules.SteeringBehaviors
 {
     public class Boid : MonoBehaviour, IBoid
     {
@@ -30,15 +29,13 @@ namespace Modules.SteeringBehaviors
         public float MaxForce => maxForce;
         public float Radius => radius;
         public float AvoidanceRadius => avoidanceRadius;
+        public SteeringBehavior SteeringBehavior => steeringManager;
 
-        public SteeringManager steeringManager { get; private set; }
-
-        public BoidBehavior boidBehavior { get; private set; }
+        private SteeringBehavior steeringManager;
 
         private void Awake()
         {
-            steeringManager = new SteeringManager(this);
-            boidBehavior = new BoidBehavior() { host = this };
+            steeringManager = new SteeringBehavior(this);
         }
     }
 }

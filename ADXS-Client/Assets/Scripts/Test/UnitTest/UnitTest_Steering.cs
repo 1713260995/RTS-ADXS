@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Modules;
+using Assets.Scripts.Modules.SteeringBehaviors;
 using Assets.Scripts.Test.UnitTest;
-using Modules.SteeringBehaviors;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,24 +16,26 @@ namespace Test
         public float maxAvoidForce = 10;
 
 
-        private List<Boid> boids = new List<Boid>();
-        private Vector3 targetPos;
-        private List<SteeringManager.Obstacle> obstacles;
+        private List<IBoid> boids = new();
+        public static Vector3 targetPos;
+        private List<SteeringBehavior.Obstacle> obstacles;
 
         protected override void Start()
         {
             base.Start();
             //CreateBoids();
             targetPos = host.Position;
-            obstacles = new List<SteeringManager.Obstacle>();
-            for (int i = 0; i < group.childCount; i++) {
+            obstacles = new List<SteeringBehavior.Obstacle>();
+            for (int i = 0; i < group.childCount; i++)
+            {
                 Boid boid = group.GetChild(i).GetComponent<Boid>();
-                if (!boid.gameObject.activeInHierarchy) {
+                if (!boid.gameObject.activeInHierarchy)
+                {
                     continue;
                 }
 
                 boids.Add(boid);
-                obstacles.Add(new SteeringManager.Obstacle(boid.transform, 2));
+                obstacles.Add(new SteeringBehavior.Obstacle(boid.transform, 2));
             }
         }
 
@@ -45,17 +47,19 @@ namespace Test
 
         private void Arrive()
         {
-            if (Input.GetMouseButtonDown(1)) {
+            if (Input.GetMouseButtonDown(1))
+            {
                 Ray ray = Camera.main!.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit, 1000)) {
+                if (Physics.Raycast(ray, out RaycastHit hit, 1000))
+                {
                     targetPos = hit.point;
                 }
             }
 
             Vector3 steering = Vector3.zero;
-            steering += host.steeringManager.Arrive(targetPos, host.arriveSlowingRadius);
+            steering += host.SteeringBehavior.Arrive(targetPos, host.arriveSlowingRadius);
             //steering += host.steeringManager.CollisionAvoidance(maxAvoidForce);
-            host.steeringManager.Update(steering);
+            host.SteeringBehavior.Update(steering);
         }
 
         public float leaderBehindDist = 5;
@@ -67,13 +71,13 @@ namespace Test
         {
             boidArriveDistance = _boidArriveDistance;
             boidSeparateDistance = _boidSeparateDistance;
-            Vector3 steering = Vector3.zero;
-            foreach (var boid in boids) {
-                // steering += boid.steeringManager.FollowLeader(host, boids.Cast<IBoid>().ToArray(), leaderBehindDist, separationRadius, maxSeparationForce, leaderSightRadius);
-                // boid.steeringManager.Update(steering);
 
-                steering += boid.boidBehavior.TestBoids(host, boids.Cast<IBoid>().ToList(), 3);
-               // boid.steeringManager.Update(steering);
+            foreach (var boid in boids)
+            {
+
+                Vector3 steering = Vector3.zero;
+                steering += boid.SteeringBehavior.BoidBehavior(host, boids, 4);
+                boid.SteeringBehavior.Update(steering);
             }
         }
 
@@ -81,5 +85,6 @@ namespace Test
         public static float boidSeparateDistance = 5;
         public float _boidArriveDistance = 5;
         public float _boidSeparateDistance = 5;
+        public float ignoreSteering = 0.3f;
     }
 }

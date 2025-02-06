@@ -2,33 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.GameClientLib.Scripts.Utils;
+using Test;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
-namespace Modules.SteeringBehaviors
+namespace Assets.Scripts.Modules.SteeringBehaviors
 {
-    public interface IBoid
-    {
-        Transform transform { get; }
-        Vector3 Position { get; }
-        Vector3 Velocity { get; set; }
-        float MaxSpeed { get; }
-        float MaxForce { get; }
-        float Radius { get; }
-        float AvoidanceRadius { get; }
-
-        /// <summary>
-        /// 整个转向行为对当前速度影响的权重
-        /// </summary>
-        float Mass { get; }
-    }
-
-    public class SteeringManager
+    public class SteeringBehavior
     {
         public IBoid host { get; }
 
-        public SteeringManager(IBoid host)
+        public SteeringBehavior(IBoid host)
         {
             this.host = host;
         }
@@ -39,48 +23,10 @@ namespace Modules.SteeringBehaviors
             steering /= host.Mass;
             host.Velocity = Vector3.ClampMagnitude(host.Velocity + steering, host.MaxSpeed);
             var v = host.Velocity * Time.deltaTime;
-
             host.transform.position += new Vector3(v.x, v.y, v.z);
         }
 
-        public Obstacle[] GetNearestObstacles(float radius)
-        {
-            Collider[] results = new Collider[10];
-            Physics.OverlapSphereNonAlloc(host.Position, radius, results, GameLayerName.GameUnit.GetLayerMask());
-            List<Obstacle> obstacles = new();
-            for (int i = 0; i < results.Length; i++) {
-                var result = results[i];
-                if (result == null || result.transform == host.transform) {
-                    continue;
-                }
-
-                result.TryGetComponent<Boid>(out var boid);
-                obstacles.Add(new Obstacle(boid));
-            }
-
-            return obstacles.ToArray();
-        }
-
-
-        public struct Obstacle
-        {
-            public Transform transform;
-            public float radius;
-            public Vector3 center => transform.position;
-
-            public Obstacle(Transform transform, float radius)
-            {
-                this.transform = transform;
-                this.radius = radius;
-            }
-
-            public Obstacle(IBoid boid)
-            {
-                transform = boid.transform;
-                radius = boid.Radius;
-            }
-        }
-
+        #region Steering 一般的转向行为
 
         /// <summary>
         /// 在每帧的速度上增加转向力将使角色平稳地放弃其旧的直线路线并朝着目标前进
@@ -111,18 +57,18 @@ namespace Modules.SteeringBehaviors
         {
             Vector3 desired_velocity = targetPos - host.Position;
             var distance = desired_velocity.magnitude;
-            if (distance < slowingRadius) {
+            if (distance < slowingRadius)
+            {
                 desired_velocity = desired_velocity.normalized * (host.MaxSpeed * (distance / slowingRadius));
             }
-            else {
+            else
+            {
                 desired_velocity = desired_velocity.normalized * host.MaxSpeed;
             }
 
             Vector3 steering = desired_velocity - host.Velocity;
             return steering;
         }
-
-        #region Wander
 
         /// <summary>
         /// 游荡行为
@@ -137,15 +83,6 @@ namespace Modules.SteeringBehaviors
             Vector3 wanderForce = circleCenter + displacement;
             return wanderForce;
         }
-
-        private void SetAngle(ref Vector3 vector, float value)
-        {
-            float len = vector.magnitude;
-            vector.x = Mathf.Cos(value) * len;
-            vector.y = Mathf.Sin(value) * len;
-        }
-
-        #endregion
 
         /// <summary>
         /// 追逐行为
@@ -173,7 +110,9 @@ namespace Modules.SteeringBehaviors
             return Flee(futurePosition);
         }
 
-        #region Avoidance
+        #endregion
+
+        #region Avoidance 避障行为
 
         /// <summary>
         /// 避障行为
@@ -185,16 +124,15 @@ namespace Modules.SteeringBehaviors
             Vector3 ahead2 = host.Position + host.Velocity.normalized * (dynamic_length * 0.5f);
             Obstacle mostThreatening = FindMostThreateningObstacle(ahead, ahead2);
             Vector3 avoidance = Vector3.zero;
-            if (mostThreatening.transform != null) {
+            if (mostThreatening.transform != null)
+            {
                 avoidance = ahead - mostThreatening.center;
                 avoidance.Normalize();
                 avoidance *= maxAvoidForce;
-                //Debug.Log(avoidance);
             }
 
             return avoidance;
         }
-
 
         /// <summary>
         /// 查找最近的障碍物,且将会碰撞到的障碍物
@@ -203,10 +141,12 @@ namespace Modules.SteeringBehaviors
         {
             Obstacle[] obstacles = GetNearestObstacles(host.AvoidanceRadius);
             Obstacle mostThreatening = new Obstacle();
-            for (int i = 0; i < obstacles.Length; i++) {
+            for (int i = 0; i < obstacles.Length; i++)
+            {
                 Obstacle obstacle = obstacles[i];
                 bool isCollision = (obstacle.center - ahead).magnitude <= obstacle.radius || (obstacle.center - ahead2).magnitude <= obstacle.radius;
-                if (isCollision && (mostThreatening.transform == null || (host.Position - obstacle.center).magnitude < (host.Position - mostThreatening.center).magnitude)) {
+                if (isCollision && (mostThreatening.transform == null || (host.Position - obstacle.center).magnitude < (host.Position - mostThreatening.center).magnitude))
+                {
                     mostThreatening = obstacle;
                 }
             }
@@ -216,111 +156,117 @@ namespace Modules.SteeringBehaviors
 
         #endregion
 
-        #region FollowLeader
+        #region BoidBehavior 鸟群行为
 
-        /// <summary>
-        /// 跟随领导者行为
-        /// </summary>
-        /// <param name="leader"></param>
-        /// <param name="boids">所有跟随者</param>
-        /// <param name="leaderBehindDist">跟随者离领导的距离</param>
-        /// <param name="separationRadius">跟随者之间分离的半径</param>
-        /// <param name="maxSeparationForce">分离力</param>
-        /// <param name="leaderSightRadius">领导者前方的可视范围</param>
-        /// <returns></returns>
-        public Vector3 FollowLeader(IBoid leader, IBoid[] boids, float leaderBehindDist, float separationRadius, float maxSeparationForce, float leaderSightRadius)
+
+
+        public Vector3 BoidBehavior(IBoid leader, List<IBoid> boids, int groupNum = 3)
         {
-            Vector2 tv = leader.Velocity.GetXZ();
-            tv = tv.normalized * leaderBehindDist; //这里使用Vector2是因为如果使用Vector3归一化后再乘以距离会使y轴的值变大而使结果错误
-            Vector2 ahead = leader.Position.GetXZ() + tv;
-            tv *= -1;
-            Vector2 behind = leader.Position.GetXZ() + tv;
             Vector3 force = Vector3.zero;
-            //是否在领导者的前方
-            bool isOnLeaderSight = (ahead - host.Position.GetXZ()).magnitude <= leaderSightRadius || (leader.Position - host.Position).magnitude <= leaderSightRadius;
-            if (isOnLeaderSight) {
-                //如果当前角色在领导者的前方视线范围内，给领导者让路
-                // force += Evade(leader);
+            boids = boids.OrderBy(o => (o.Position - leader.Position).magnitude).ToList();
+            List<List<IBoid>> neighbors = new() { new List<IBoid>() { leader } };
+            int s = boids.Count / groupNum;
+            int add1 = boids.Count % groupNum == 0 ? 0 : 1;
+            s += add1;
+            int index = 0;
+            for (int i = 0; i < s; i++)
+            {
+                IBoid[] group = boids.Skip(i * groupNum).Take(groupNum).ToArray();
+                neighbors.Add(group.ToList());
+                if (group.ToList().Exists(o => o == host))
+                {
+                    index = i + 1;
+                }
             }
 
-            force += Arrive(behind.XZToXYZ(), 3);
-            force += Separation(boids, separationRadius, maxSeparationForce);
-            return force;
+            boids.Add(leader);
+            List<IBoid> otherBoids = boids.Where(o => o.transform != host.transform).ToList();
+
+            force += Separation(otherBoids, 5, UnitTest_Steering.boidSeparateDistance);
+            force += Cohesion(neighbors[index - 1], 2, UnitTest_Steering.boidArriveDistance);
+            Vector3 steering = force - host.Velocity;
+            return steering;
         }
 
         /// <summary>
-        /// 分离行为，避免拥挤
+        /// 聚集——使该Boid靠近上一梯队的鸟群
         /// </summary>
-        private Vector3 Separation(IBoid[] boids, float separationRadius, float maxSeparationForce)
+        private Vector3 Cohesion(List<IBoid> lastBoids, int num = 3, float arriveDistance = 3)
         {
-            Vector2 force = Vector2.zero;
+            num = Mathf.Min(lastBoids.Count, num);
+            List<IBoid> nearbyBoids = GetRecentlyBoids(lastBoids, num);
+            Vector3 force = Vector3.zero;
+            foreach (var boid in nearbyBoids)
+            {
+                force = boid.Position - host.Position;
+            }
+
+            force /= num;
+            if (force.magnitude > arriveDistance)
+            {
+                return force;
+            }
+            return Vector3.zero;
+        }
+
+        private Vector3 Cohesion1(List<IBoid> allBoids, int groupNum = 4, float arriveDistance = 3)
+        {
+            Vector3 force = Vector3.zero;
+            int index = allBoids.IndexOf(host);
+
+
+            return Vector3.zero;
+        }
+
+        public int GetRangeValue(int n)
+        {
+            if (n < 1) throw new ArgumentException("输入必须大于等于1");
+
+            int value = 1; // 初始返回值
+            int lowerBound = 1; // 每个范围的最小值
+
+            while (lowerBound <= n)
+            {
+                if (n == lowerBound) return value; // 如果刚好是下界，直接返回
+                lowerBound = lowerBound * 2 + 1;  // 计算下一个区间的上界
+                value *= 2; // 结果翻倍
+            }
+
+            return value / 2; // 由于最后一次循环会超出范围，需要返回上一次的值
+        }
+
+
+        /// <summary>
+        /// 分离——使该Boid与其他Boid保持距离
+        /// </summary>
+        private Vector3 Separation(List<IBoid> otherBoids, int num = 5, float separateDistance = 2, float maxSeparationForce = 3)
+        {
+            var boids = GetRecentlyBoids(otherBoids, num);
+            Vector3 force = Vector3.zero;
             int neighborCount = 0;
-            for (int i = 0; i < boids.Length; i++) {
+            for (int i = 0; i < boids.Count; i++)
+            {
                 var b = boids[i];
-                if (b != host && (b.Position - host.Position).magnitude <= separationRadius) {
-                    force += b.Position.GetXZ() - host.Position.GetXZ();
+                if ((b.Position - host.Position).magnitude <= separateDistance)
+                {
+                    force += b.Position - host.Position;
                     neighborCount++;
                 }
             }
 
-            if (neighborCount != 0) {
-                force /= neighborCount;
-                force *= -1;
+            if (neighborCount == 0)
+            {
+                return Vector3.zero;
             }
-
-            force.Normalize();
-            force *= maxSeparationForce;
-            return force.XZToXYZ();
+            force /= neighborCount;
+            Vector2 f = force.GetXZ().normalized * -maxSeparationForce;
+            return f.XZToXYZ();
         }
 
-
-        public Vector3 Leader(IBoid leader)
-        {
-            Vector3 force = Vector3.zero;
-            var separation = Vector3.zero;
-            var alignment = leader.transform.forward;
-            var cohesion = leader.transform.position;
-            var nearbyBoids = GetNearestObstacles(host.AvoidanceRadius);
-            if (nearbyBoids.Length == 0) {
-                return force;
-            }
-
-            foreach (var boid in nearbyBoids) {
-                if (boid.transform == host.transform) continue;
-                var t = boid.transform;
-                separation += GetSeparationVector(t);
-                alignment += t.forward;
-                cohesion += t.position;
-            }
-
-            var avg = 1.0f / nearbyBoids.Length;
-            alignment *= avg;
-            cohesion *= avg;
-            cohesion = (cohesion - host.Position).normalized;
-            force = separation + alignment + cohesion;
-
-            var rotation = Quaternion.FromToRotation(Vector3.forward, force.normalized);
-
-            // Applys the rotation with interpolation.
-            if (rotation != host.transform.rotation) {
-                var ip = Mathf.Exp(-4 * Time.deltaTime);
-                host.transform.rotation = Quaternion.Slerp(rotation, host.transform.rotation, ip);
-            }
-
-            return force;
-        }
-
-        private Vector3 GetSeparationVector(Transform target)
-        {
-            var diff = host.transform.position - target.transform.position;
-            var diffLen = diff.magnitude;
-            var scale = Mathf.Clamp01(1.0f - diffLen / host.AvoidanceRadius);
-            return diff * (scale / diffLen);
-        }
 
         #endregion
 
-        #region Queue(排队行为) 狭窄地形有序出入
+        #region Queue(排队行为) 狭窄地形有序出入-未测试
 
         /// <summary>
         /// 排队行为（排队行为需要放到所有转向行为的最后）
@@ -328,17 +274,19 @@ namespace Modules.SteeringBehaviors
         /// 当队伍中的第一个人移动时，其余的人也跟着移动，形成一个看起来像火车拉货车的模式。等待时，角色不应离开该行。
         /// </summary>
         /// <returns></returns>
-        private Vector3 Queue(Vector3 finalSteering, IBoid[] boids)
+        private Vector3 Queue(Vector3 finalSteering, List<IBoid> boids)
         {
             float MAX_QUEUE_RADIUS = 5; //TODO: need set
             Vector3 v = host.Velocity;
             Vector3 brake = Vector3.zero;
             IBoid neighbor = getNeighborAhead();
-            if (neighbor != null) {
+            if (neighbor != null)
+            {
                 brake = -finalSteering * 0.8f;
                 v *= -1;
                 brake = brake + v + Separation(boids, 5, 1);
-                if ((host.Position - neighbor.Position).magnitude <= MAX_QUEUE_RADIUS) {
+                if ((host.Position - neighbor.Position).magnitude <= MAX_QUEUE_RADIUS)
+                {
                     host.Velocity *= 0.3f;
                 }
             }
@@ -357,10 +305,12 @@ namespace Modules.SteeringBehaviors
             qa *= MAX_QUEUE_AHEAD;
             Vector3 ahead = host.Position + qa;
 
-            for (int i = 0; i < boids.Length; i++) {
+            for (int i = 0; i < boids.Length; i++)
+            {
                 IBoid neighbor = boids[i];
                 float d = (ahead - neighbor.Position).magnitude;
-                if (neighbor != host && d <= MAX_QUEUE_RADIUS) {
+                if (neighbor != host && d <= MAX_QUEUE_RADIUS)
+                {
                     ret = neighbor;
                     break;
                 }
@@ -369,6 +319,66 @@ namespace Modules.SteeringBehaviors
             return ret;
         }
 
+        #endregion
+
+        #region Helper
+        private void SetAngle(ref Vector3 vector, float value)
+        {
+            float len = vector.magnitude;
+            vector.x = Mathf.Cos(value) * len;
+            vector.y = Mathf.Sin(value) * len;
+        }
+
+
+
+        public Obstacle[] GetNearestObstacles(float radius)
+        {
+            Collider[] results = new Collider[10];
+            Physics.OverlapSphereNonAlloc(host.Position, radius, results, GameLayerName.GameUnit.GetLayerMask());
+            List<Obstacle> obstacles = new();
+            for (int i = 0; i < results.Length; i++)
+            {
+                var result = results[i];
+                if (result == null || result.transform == host.transform)
+                {
+                    continue;
+                }
+
+                result.TryGetComponent<Boid>(out var boid);
+                obstacles.Add(new Obstacle(boid));
+            }
+
+            return obstacles.ToArray();
+        }
+
+
+        /// <summary>
+        /// 获取离该Boid最近的Boids,按距离从近到远排序
+        /// </summary>
+        public List<IBoid> GetRecentlyBoids(List<IBoid> otherBoids, int num)
+        {
+            num = Mathf.Min(otherBoids.Count, num);
+            return otherBoids.OrderBy(o => (o.Position - host.Position).magnitude).Skip(0).Take(num).ToList();
+        }
+
+        public struct Obstacle
+        {
+            public Transform transform;
+            public float radius;
+            public Vector3 center => transform.position;
+
+            public Obstacle(Transform transform, float radius)
+            {
+                this.transform = transform;
+                this.radius = radius;
+            }
+
+            public Obstacle(IBoid boid)
+            {
+                transform = boid.transform;
+                radius = boid.Radius;
+            }
+        }
         #endregion
     }
 }
