@@ -10,7 +10,6 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
         float MaxSpeed { get; }
         float MaxForce { get; }
         float Radius { get; }
-        float AvoidanceRadius { get; }
 
         /// <summary>
         /// 整个转向行为对当前速度影响的权重

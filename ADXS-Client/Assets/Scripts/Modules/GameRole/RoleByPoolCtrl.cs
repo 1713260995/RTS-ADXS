@@ -5,7 +5,7 @@ namespace Assets.Scripts.Modules
     /// <summary>
     /// 需要使用对象池的角色
     /// </summary>
-    public class RoleByPoolCtrl : GameRoleCtrl, ISpwanPool
+    public class RoleByPoolCtrl : GameRoleCtrl, ISpawnPool
     {
         public virtual void GetFromPool()
         {

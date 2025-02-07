@@ -23,20 +23,24 @@ public class UnitTest_Boid : UnitTest_Base
         TeamAgent agent1 = new TeamAgent(1, color, AgentControlWay.Keyboard);
         BattleSystem.Instance.AddAgent(agent1);
         BattleSystem.Instance.StartGame();
-        for (int i = 0; i < unitNum; i++) {
+        for (int i = 0; i < unitNum; i++)
+        {
             Vector2 birthLocation = Random.insideUnitCircle * unitCreateRadius;
-            BattleSystem.Instance.CreateUnit<GameUnitCtrl>(unitName, birthLocation.XZToXYZ(), agent1.id);
+            var unit = BattleSystem.Instance.CreateUnit<GameUnitCtrl>(unitName, birthLocation.XZToXYZ(), agent1.id);
+            unit.name = unitName.ToString() + i;
         }
     }
 
 
     protected override void CheckRequireModule()
     {
-        if (SpawnSystem.Instance == null) {
+        if (SpawnSystem.Instance == null)
+        {
             throw new ArgumentNullException();
         }
 
-        if (BattleSystem.Instance == null) {
+        if (BattleSystem.Instance == null)
+        {
             throw new ArgumentNullException();
         }
     }

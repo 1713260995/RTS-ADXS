@@ -34,7 +34,8 @@ namespace Assets.Scripts.Modules
         public void ReplaceMember(GameRoleCtrl _newUnits)
         {
             roleCtrlList.Clear();
-            if (_newUnits != null) {
+            if (_newUnits != null)
+            {
                 roleCtrlList.Add(_newUnits);
             }
         }
@@ -42,10 +43,12 @@ namespace Assets.Scripts.Modules
 
         public void ReplaceMembers(List<GameRoleCtrl> _newUnits)
         {
-            if (_newUnits == null) {
+            if (_newUnits == null)
+            {
                 roleCtrlList.Clear();
             }
-            else {
+            else
+            {
                 roleCtrlList = _newUnits;
             }
         }
@@ -70,10 +73,10 @@ namespace Assets.Scripts.Modules
         public void Move(Vector3 point)
         {
             var list = roleCtrlList.OrderBy(o => (o.transform.position - point).magnitude).ToList();
-            IBoid leader = list.First().GetComponent<IBoid>();
-            List<Boid> followers = list.Skip(1).Select(o => o.GetComponent<Boid>()).ToList();
-            Boid.SetGroup((Boid)leader, followers.Cast<IBoid>().ToList(), 4);
-            var info = new MoveInfoByBoid(leader, followers.Cast<IBoid>().ToList(), point, 4, 2, 1.8f);
+            IBoid leader = list.First().boid;
+            List<IBoid> followers = list.Skip(1).Select(o => o.boid).ToList();
+            //  Boid.SetGroup((Boid)leader, followers.Cast<IBoid>().ToList(), 4);
+            var info = new MoveInfoByBoid(leader, followers, point, 4, 2, 1.8f);
             roleCtrlList.ForEach(o => { o.OnMove(info); });
         }
 

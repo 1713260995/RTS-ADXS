@@ -5,11 +5,11 @@ using UnityEngine;
 namespace Assets.Scripts.Modules.Spawn
 {
 
-    public class SpwanUnit : IFactory<GameUnitCtrl>
+    public class SpawnUnit : IFactory<GameUnitCtrl>
     {
         private GameUnitCtrl prefab;
 
-        public SpwanUnit(GameUnitCtrl prefab)
+        public SpawnUnit(GameUnitCtrl prefab)
         {
             this.prefab = prefab;
         }
@@ -19,7 +19,7 @@ namespace Assets.Scripts.Modules.Spawn
             return UnityEngine.Object.Instantiate(prefab).GetComponent<GameUnitCtrl>();
         }
 
-        public virtual void Destory(GameUnitCtrl ctrl)
+        public virtual void Destroy(GameUnitCtrl ctrl)
         {
             UnityEngine.Object.Destroy(ctrl.gameObject);
         }

@@ -3,13 +3,13 @@ using UnityEngine.Pool;
 
 namespace Assets.Scripts.Modules.Spawn
 {
-    public class SpwanUnitByPool : SpwanUnit
+    public class SpawnUnitByPool : SpawnUnit
     {
         private IObjectPool<GameUnitCtrl> m_Pool;
 
-        private ISpwanPool spwan;
+        private ISpawnPool spawn;
 
-        public SpwanUnitByPool(GameUnitCtrl prefab) : base(prefab)
+        public SpawnUnitByPool(GameUnitCtrl prefab) : base(prefab)
         {
             m_Pool = new ObjectPool<GameUnitCtrl>(CreatePooledItem, OnGetFromPool, OnReturnedToPool, OnDestroyPoolObject, maxSize: 10);
         }
@@ -19,7 +19,7 @@ namespace Assets.Scripts.Modules.Spawn
             return m_Pool.Get();
         }
 
-        public override void Destory(GameUnitCtrl ctrl)
+        public override void Destroy(GameUnitCtrl ctrl)
         {
             m_Pool.Release(ctrl);
         }
@@ -28,27 +28,27 @@ namespace Assets.Scripts.Modules.Spawn
         protected virtual GameUnitCtrl CreatePooledItem()
         {
             GameUnitCtrl item = base.Create();
-            spwan = item as ISpwanPool;
-            if (spwan == null)
+            spawn = item as ISpawnPool;
+            if (spawn == null)
             {
-                throw new Exception("ISpwanPool Unrealized");
+                throw new Exception("ISpawnPool Unrealized");
             }
             return item;
         }
 
         protected virtual void OnGetFromPool(GameUnitCtrl item)
         {
-            spwan.GetFromPool();
+            spawn.GetFromPool();
         }
 
         protected virtual void OnReturnedToPool(GameUnitCtrl item)
         {
-            spwan.ReturnedToPool();
+            spawn.ReturnedToPool();
         }
 
         protected virtual void OnDestroyPoolObject(GameUnitCtrl item)
         {
-            base.Destory(item);
+            base.Destroy(item);
         }
     }
 }

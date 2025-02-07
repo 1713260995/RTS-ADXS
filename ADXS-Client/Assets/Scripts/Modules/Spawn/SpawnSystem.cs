@@ -14,7 +14,7 @@ namespace Assets.Scripts.Modules.Spawn
         [SerializeField]
         private List<AssetReference> assetReferenceList;
 
-        private Dictionary<GameUnitName, SpwanUnit> spawnDic { get; set; }
+        private Dictionary<GameUnitName, SpawnUnit> spawnDic { get; set; }
 
         protected override void Awake()
         {
@@ -24,14 +24,14 @@ namespace Assets.Scripts.Modules.Spawn
             {
                 GameUnitCtrl ctrl = ResSystem.LoadAsset<GameObject>(item).GetComponent<GameUnitCtrl>();
 
-                ISpwanPool spwanPool = ctrl as ISpwanPool;
+                ISpawnPool spwanPool = ctrl as ISpawnPool;
                 if (spwanPool != null)
                 {
-                    spawnDic.Add(ctrl.unitName, new SpwanUnitByPool(ctrl));
+                    spawnDic.Add(ctrl.unitName, new SpawnUnitByPool(ctrl));
                 }
                 else
                 {
-                    spawnDic.Add(ctrl.unitName, new SpwanUnit(ctrl));
+                    spawnDic.Add(ctrl.unitName, new SpawnUnit(ctrl));
                 }
             }
         }
@@ -45,7 +45,7 @@ namespace Assets.Scripts.Modules.Spawn
 
         public void DestroyCtrl(GameUnitCtrl ctrl)
         {
-            spawnDic[ctrl.unitName].Destory(ctrl);
+            spawnDic[ctrl.unitName].Destroy(ctrl);
         }
 
         #region test

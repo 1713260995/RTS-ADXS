@@ -17,13 +17,14 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
             this.host = host;
         }
 
-        public void Update(Vector3 steering)
+        public Vector3 Update(Vector3 steering)
         {
             steering = Vector3.ClampMagnitude(steering, host.MaxForce);
             steering /= host.Mass;
             host.Velocity = Vector3.ClampMagnitude(host.Velocity + steering, host.MaxSpeed);
-            var v = host.Velocity * Time.deltaTime;
+            //var v = host.Velocity * Time.deltaTime;
             // host.transform.position += new Vector3(v.x, v.y, v.z);
+            return host.Velocity;
         }
 
         #region Steering 一般的转向行为
@@ -57,10 +58,12 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
         {
             Vector3 desired_velocity = targetPos - host.Position;
             var distance = desired_velocity.magnitude;
-            if (distance < slowingRadius) {
+            if (distance < slowingRadius)
+            {
                 desired_velocity = desired_velocity.normalized * (host.MaxSpeed * (distance / slowingRadius));
             }
-            else {
+            else
+            {
                 desired_velocity = desired_velocity.normalized * host.MaxSpeed;
             }
 
@@ -122,7 +125,8 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
             Vector3 ahead2 = host.Position + host.Velocity.normalized * (dynamic_length * 0.5f);
             Obstacle mostThreatening = FindMostThreateningObstacle(ahead, ahead2);
             Vector3 avoidance = Vector3.zero;
-            if (mostThreatening.transform != null) {
+            if (mostThreatening.transform != null)
+            {
                 avoidance = ahead - mostThreatening.center;
                 avoidance.Normalize();
                 avoidance *= maxAvoidForce;
@@ -134,14 +138,16 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
         /// <summary>
         /// 查找最近的障碍物,且将会碰撞到的障碍物
         /// </summary>
-        private Obstacle FindMostThreateningObstacle(Vector3 ahead, Vector3 ahead2)
+        private Obstacle FindMostThreateningObstacle(Vector3 ahead, Vector3 ahead2, float avoidanceRadius = 5)
         {
-            Obstacle[] obstacles = GetNearestObstacles(host.AvoidanceRadius);
+            Obstacle[] obstacles = GetNearestObstacles(avoidanceRadius);
             Obstacle mostThreatening = new Obstacle();
-            for (int i = 0; i < obstacles.Length; i++) {
+            for (int i = 0; i < obstacles.Length; i++)
+            {
                 Obstacle obstacle = obstacles[i];
                 bool isCollision = (obstacle.center - ahead).magnitude <= obstacle.radius || (obstacle.center - ahead2).magnitude <= obstacle.radius;
-                if (isCollision && (mostThreatening.transform == null || (host.Position - obstacle.center).magnitude < (host.Position - mostThreatening.center).magnitude)) {
+                if (isCollision && (mostThreatening.transform == null || (host.Position - obstacle.center).magnitude < (host.Position - mostThreatening.center).magnitude))
+                {
                     mostThreatening = obstacle;
                 }
             }
@@ -158,15 +164,18 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
             var boids = GetRecentlyBoids(otherBoids, num);
             Vector3 force = Vector3.zero;
             int neighborCount = 0;
-            for (int i = 0; i < boids.Count; i++) {
+            for (int i = 0; i < boids.Count; i++)
+            {
                 var b = boids[i];
-                if ((b.Position - host.Position).magnitude <= separateDistance) {
+                if ((b.Position - host.Position).magnitude <= separateDistance)
+                {
                     force += b.Position - host.Position;
                     neighborCount++;
                 }
             }
 
-            if (neighborCount == 0) {
+            if (neighborCount == 0)
+            {
                 return Vector3.zero;
             }
 
@@ -176,9 +185,51 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
         }
 
 
-        public Vector3 BoidBehavior(Boid leader, List<IBoid> boids, int groupNum = 4, float arriveDistance = 2, float SeparateDistance = 1.8f)
+
+        #endregion
+
+        #region BoidBehavior 鸟群行为
+
+        public Vector3 BoidBehavior(IBoid leader, List<IBoid> boids, int groupNum = 4, float arriveDistance = 2, float SeparateDistance = 1.8f)
         {
-           return ((Boid)host).BoidBehavior(leader,boids,groupNum,arriveDistance,SeparateDistance);
+            Vector3 force = Vector3.zero;
+            int lastIndex = (boids.IndexOf(host) / groupNum) - 1;
+            List<IBoid> lastGroup = null;
+            if (lastIndex == -1)
+            {
+                lastGroup = new List<IBoid> { leader };
+            }
+            else
+            {
+                lastGroup = boids.Skip(lastIndex * groupNum).Take(groupNum).ToList();
+            }
+            List<IBoid> otherBoids = boids.Where(o => o.transform != host.transform).ToList();
+            force += host.SteeringBehavior.Separation(otherBoids, 5, SeparateDistance);
+            force += Follow(lastGroup, 2, arriveDistance);
+            Vector3 steering = force - host.Velocity;
+            return steering;
+        }
+
+        /// <summary>
+        /// 跟随——使该Boid靠近上一梯队的鸟群
+        /// </summary>
+        private Vector3 Follow(List<IBoid> lastBoids, int num = 3, float arriveDistance = 3)
+        {
+            num = Mathf.Min(lastBoids.Count, num);
+            List<IBoid> nearbyBoids = host.SteeringBehavior.GetRecentlyBoids(lastBoids, num);
+            Vector3 force = Vector3.zero;
+            foreach (var boid in nearbyBoids)
+            {
+                force = boid.Position - host.Position;
+            }
+
+            force /= num;
+            if (force.magnitude < arriveDistance)
+            {
+                force = Vector3.zero;
+            }
+
+            return force;
         }
 
         #endregion
@@ -198,11 +249,13 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
             Vector3 v = host.Velocity;
             Vector3 brake = Vector3.zero;
             IBoid neighbor = getNeighborAhead();
-            if (neighbor != null) {
+            if (neighbor != null)
+            {
                 brake = -finalSteering * 0.8f;
                 v *= -1;
                 brake = brake + v + Separation(boids, 5, 1);
-                if ((host.Position - neighbor.Position).magnitude <= MAX_QUEUE_RADIUS) {
+                if ((host.Position - neighbor.Position).magnitude <= MAX_QUEUE_RADIUS)
+                {
                     host.Velocity *= 0.3f;
                 }
             }
@@ -221,10 +274,12 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
             qa *= MAX_QUEUE_AHEAD;
             Vector3 ahead = host.Position + qa;
 
-            for (int i = 0; i < boids.Length; i++) {
+            for (int i = 0; i < boids.Length; i++)
+            {
                 IBoid neighbor = boids[i];
                 float d = (ahead - neighbor.Position).magnitude;
-                if (neighbor != host && d <= MAX_QUEUE_RADIUS) {
+                if (neighbor != host && d <= MAX_QUEUE_RADIUS)
+                {
                     ret = neighbor;
                     break;
                 }
@@ -250,14 +305,18 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
             Collider[] results = new Collider[10];
             Physics.OverlapSphereNonAlloc(host.Position, radius, results, GameLayerName.GameUnit.GetLayerMask());
             List<Obstacle> obstacles = new();
-            for (int i = 0; i < results.Length; i++) {
+            for (int i = 0; i < results.Length; i++)
+            {
                 var result = results[i];
-                if (result == null || result.transform == host.transform) {
+                if (result == null || result.transform == host.transform)
+                {
                     continue;
                 }
 
-                result.TryGetComponent<Boid>(out var boid);
-                obstacles.Add(new Obstacle(boid));
+                if (result.TryGetComponent<GameRoleCtrl>(out var role))
+                {
+                    obstacles.Add(new Obstacle(role.boid));
+                };
             }
 
             return obstacles.ToArray();

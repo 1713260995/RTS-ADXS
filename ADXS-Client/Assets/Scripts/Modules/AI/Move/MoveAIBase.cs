@@ -1,5 +1,6 @@
 using System.Collections;
 using Assets.GameClientLib.Scripts.Utils;
+using Assets.Scripts.Modules.SteeringBehaviors;
 using UnityEngine;
 
 namespace Assets.Scripts.Modules.AI
@@ -9,17 +10,24 @@ namespace Assets.Scripts.Modules.AI
         public override bool IsAlive => moveTask != null;
         protected Coroutine moveTask { get; set; }
         protected IMoveInfo moveInfo { get; set; }
+        public IBoid Host { get; }
+        protected Rigidbody rb;
 
         public MoveAIBase(GameRoleCtrl role) : base(role)
-        { }
+        {
+            Host = new Boid(role.transform, role.MoveSpeed);
+            rb = role.GetComponent<Rigidbody>();
+        }
 
         public virtual void OnMove(IMoveInfo _moveInfo)
         {
             moveInfo = _moveInfo;
-            if (!IsAlive) {
+            if (!IsAlive)
+            {
                 //如果处于移动状态就只需要更新目标点
                 //如果不是移动状态就需要切换到移动状态
-                if (role.currentState != StateName.Move) {
+                if (role.currentState != StateName.Move)
+                {
                     role.stateMachine.TryTrigger(StateName.Move);
                 }
 
@@ -35,10 +43,12 @@ namespace Assets.Scripts.Modules.AI
                 yield return null;
             }
 
-            if (moveInfo.OnArrive == null) {
+            if (moveInfo.OnArrive == null)
+            {
                 role.OnIdle();
             }
-            else {
+            else
+            {
                 moveInfo.OnArrive();
             }
             Debug.Log($"{role.name}结束移动");
@@ -59,7 +69,8 @@ namespace Assets.Scripts.Modules.AI
 
         public override void AbortAI()
         {
-            if (IsAlive) {
+            if (IsAlive)
+            {
                 role.StopCoroutine(moveTask);
                 moveTask = null;
             }
