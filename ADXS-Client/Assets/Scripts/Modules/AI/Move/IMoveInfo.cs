@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Assets.Scripts.Modules.SteeringBehaviors;
 using UnityEngine;
 
 namespace Assets.Scripts.Modules.AI
@@ -9,10 +11,12 @@ namespace Assets.Scripts.Modules.AI
         /// 终点
         /// </summary>
         Vector3 Destination { get; }
+
         /// <summary>
         /// 到达终点回调
         /// </summary>
         Action OnArrive { get; }
+
         /// <summary>
         /// 是否已经到达终点
         /// </summary>
@@ -21,42 +25,59 @@ namespace Assets.Scripts.Modules.AI
 
     public struct MoveInfoByPoint : IMoveInfo
     {
-        private Vector3 endPoint;
-        private Action onArrive;
-        private Func<bool> isArrive;
-        public Vector3 Destination => endPoint;
-        public Action OnArrive => onArrive;
-        public Func<bool> IsArrive => isArrive;
+        public Vector3 Destination { get; }
+
+        public Action OnArrive { get; }
+
+        public Func<bool> IsArrive { get; }
 
 
         public MoveInfoByPoint(Vector3 endPoint, Func<bool> isArrive, Action onArrive)
         {
-            this.endPoint = endPoint;
-            this.onArrive = onArrive;
-            this.isArrive = isArrive;
+            this.Destination = endPoint;
+            this.OnArrive = onArrive;
+            this.IsArrive = isArrive;
         }
-
     }
 
     public struct MoveInfoByObj : IMoveInfo
     {
-        private GameObject obj;
-        private Action onArrive;
-        private Func<bool> isArrive;
-        public Vector3 Destination => obj.transform.position;
-
-        public Action OnArrive => onArrive;
-
-        public Func<bool> IsArrive => isArrive;
+        private GameObject target;
+        public Vector3 Destination => target.transform.position;
+        public Action OnArrive { get; }
+        public Func<bool> IsArrive { get; }
 
 
-        public MoveInfoByObj(GameObject obj, Func<bool> isArrive, Action onArrive)
+        public MoveInfoByObj(GameObject target, Func<bool> isArrive, Action onArrive)
         {
-            this.obj = obj;
-            this.onArrive = onArrive;
-            this.isArrive = isArrive;
+            this.target = target;
+            this.OnArrive = onArrive;
+            this.IsArrive = isArrive;
+        }
+    }
+
+    public class MoveInfoByBoid : IMoveInfo
+    {
+        public IBoid leader;
+        public List<IBoid> boids;
+        public int groupNum;
+        public float arriveDistance;
+        public float separateDistance;
+        public Vector3 Destination { get; }
+        public Action OnArrive { get; }
+        public Func<bool> IsArrive { get; set; }
+
+        public MoveInfoByBoid(IBoid leader, List<IBoid> boids, Vector3 destination, int groupNum, float arriveDistance, float SeparateDistance) 
+        {
+            this.leader = leader;
+            this.boids = boids;
+            this.Destination = destination;
+            IsArrive = null;
+            OnArrive = null;
+            this.groupNum = groupNum;
+            this.arriveDistance = arriveDistance;
+            this.separateDistance = SeparateDistance;
         }
 
     }
-
 }

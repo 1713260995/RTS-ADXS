@@ -22,14 +22,7 @@ namespace Assets.Scripts.Test.UnitTest
         public GameUnitName buildingName = GameUnitName.Barracks;
 
         private FarmerCtrl peasant;
-
-
-        protected override void Start()
-        {
-            base.Start();
-
-        }
-
+        
         [ShowButton]
         public void CreateFarmer()
         {

@@ -1,14 +1,17 @@
+using System;
 using Assets.Scripts.Modules;
 using Assets.Scripts.Modules.Battle;
+using Assets.Scripts.Test.UnitTest;
 using UnityEngine;
 
 namespace Test
 {
-    public class UnitTest_Attack : MonoBehaviour
+    public class UnitTest_Attack : UnitTest_Base
     {
         public GameColor color = GameColor.Red;
         public GameUnitName unitName = GameUnitName.Peasant;
         public Vector3 birthLocation = Vector3.zero;
+        
 
         /// <summary>
         /// 测试，

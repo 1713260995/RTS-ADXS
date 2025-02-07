@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class BuildAI : AIBase, IBuildAI
 {
-
     public override bool IsAlive => isAlive;
-
     public GameBuildingCtrl CurrentBuilding => currentBuilding;
     protected bool isAlive;
     protected IMoveAI moveAI;

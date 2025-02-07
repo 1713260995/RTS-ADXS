@@ -10,33 +10,42 @@ namespace Assets.Scripts.Modules.AI
         protected Coroutine moveTask { get; set; }
         protected IMoveInfo moveInfo { get; set; }
 
-        public MoveAIBase(GameRoleCtrl role) : base(role) { }
+        public MoveAIBase(GameRoleCtrl role) : base(role)
+        { }
 
         public virtual void OnMove(IMoveInfo _moveInfo)
         {
             moveInfo = _moveInfo;
-            if (!IsAlive)
-            {
-                if (role.currentState != StateName.Move)
-                {
+            if (!IsAlive) {
+                //如果处于移动状态就只需要更新目标点
+                //如果不是移动状态就需要切换到移动状态
+                if (role.currentState != StateName.Move) {
                     role.stateMachine.TryTrigger(StateName.Move);
                 }
+
                 moveTask = role.StartCoroutine(Move());
             }
         }
 
         protected IEnumerator Move()
         {
-            while (!moveInfo.IsArrive())//如果未到达就继续移动
+            while (!moveInfo.IsArrive()) //如果未到达就继续移动
             {
                 UpdatePosAndDir();
                 yield return null;
             }
 
-            moveInfo.OnArrive?.Invoke();
+            if (moveInfo.OnArrive == null) {
+                role.OnIdle();
+            }
+            else {
+                moveInfo.OnArrive();
+            }
+            Debug.Log($"{role.name}结束移动");
+
             moveTask = null;
-            // Debug.Log("到达终点");
         }
+
         /// <summary>
         /// 更新移动时位置和方向
         /// </summary>
@@ -50,8 +59,7 @@ namespace Assets.Scripts.Modules.AI
 
         public override void AbortAI()
         {
-            if (IsAlive)
-            {
+            if (IsAlive) {
                 role.StopCoroutine(moveTask);
                 moveTask = null;
             }

@@ -27,17 +27,15 @@ namespace Assets.Scripts.Modules
             return IsArriveByDistance(origin.transform.position, target.transform.position, origin.attackDistance);
         }
 
-        public static bool IsArriveByRaycast(GameUnitCtrl origin, GameUnitCtrl target, float dis)
+        /// <summary>
+        /// 是否到达终点。
+        /// 解决两者距离过近但是中间有障碍物的问题。
+        /// </summary>
+        public static bool IsArriveByRaycast(GameUnitCtrl origin, GameUnitCtrl target, float distance)
         {
             Transform t = origin.transform;
-            if (Physics.Raycast(t.position, t.forward, out RaycastHit hitInfo, dis, GameLayerName.GameUnit.GetLayerMask()))
-            {
-                if (hitInfo.collider.gameObject.GetInstanceID() == target.gameObject.GetInstanceID())
-                {
-                    return true;
-                }
-            }
-            return false;
+            Physics.Raycast(t.position, t.forward, out RaycastHit hitInfo, distance, GameLayerName.GameUnit.GetLayerMask());
+            return hitInfo.collider.gameObject.GetInstanceID() == target.gameObject.GetInstanceID();
         }
     }
 }

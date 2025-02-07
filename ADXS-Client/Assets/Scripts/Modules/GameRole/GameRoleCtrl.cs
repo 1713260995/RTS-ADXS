@@ -6,6 +6,7 @@ using Assets.Scripts.Modules.Buff;
 using Assets.Scripts.Modules.FSM;
 using Assets.Scripts.Modules.FSM.Role;
 using System.Collections.Generic;
+using Modules.AI.Move;
 using UnityEngine;
 
 public class GameRoleCtrl : GameUnitCtrl
@@ -76,30 +77,28 @@ public class GameRoleCtrl : GameUnitCtrl
     {
         base.InitAI();
         idleAI = new IdleAI(this);
-        moveAI = new MoveAIBase(this);
+        // moveAI = new MoveAIBase(this);
+        moveAI = new MoveAIByBoid(this);
         attackAI = new AttackAI(this, moveAI);
     }
 
     public void OnIdle()
     {
-        if (SwitchCurrentAI(idleAI))
-        {
+        if (SwitchCurrentAI(idleAI)) {
             idleAI.OnIdle();
         }
     }
 
     public void OnMove(IMoveInfo moveInfo)
     {
-        if (SwitchCurrentAI(moveAI))
-        {
+        if (SwitchCurrentAI(moveAI)) {
             moveAI.OnMove(moveInfo);
         }
     }
 
     public void OnAttack(GameUnitCtrl target)
     {
-        if (SwitchCurrentAI(attackAI))
-        {
+        if (SwitchCurrentAI(attackAI)) {
             attackAI.OnAttack(target);
         }
     }
@@ -110,14 +109,14 @@ public class GameRoleCtrl : GameUnitCtrl
     /// <param name="ai"></param>
     private bool SwitchCurrentAI(IAIBase ai)
     {
-        if (isAttacking)
-        {
+        if (isAttacking) {
             return false;
         }
-        if (ai != currentAI && currentAI != null)
-        {
+
+        if (ai != currentAI && currentAI != null) {
             currentAI.AbortAI();
         }
+
         currentAI = ai;
         return true;
     }

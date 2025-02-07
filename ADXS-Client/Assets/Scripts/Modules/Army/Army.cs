@@ -3,6 +3,7 @@ using Assets.Scripts.Modules.AI;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using Assets.Scripts.Modules.SteeringBehaviors;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -33,8 +34,7 @@ namespace Assets.Scripts.Modules
         public void ReplaceMember(GameRoleCtrl _newUnits)
         {
             roleCtrlList.Clear();
-            if (_newUnits != null)
-            {
+            if (_newUnits != null) {
                 roleCtrlList.Add(_newUnits);
             }
         }
@@ -42,12 +42,10 @@ namespace Assets.Scripts.Modules
 
         public void ReplaceMembers(List<GameRoleCtrl> _newUnits)
         {
-            if (_newUnits == null)
-            {
+            if (_newUnits == null) {
                 roleCtrlList.Clear();
             }
-            else
-            {
+            else {
                 roleCtrlList = _newUnits;
             }
         }
@@ -57,7 +55,6 @@ namespace Assets.Scripts.Modules
         /// 即需要删除的成员id和需要添加的成员id
         /// 供帧同步使用
         /// </summary>
-        /// <param name="_roles"></param>
         public void GetMembersByDelta(List<GameRoleCtrl> _newRoles, out List<int> deleteIds, out List<int> addIds)
         {
             //任何在旧集合存在但不在新集合中存在的角色都需要删除
@@ -72,33 +69,25 @@ namespace Assets.Scripts.Modules
 
         public void Move(Vector3 point)
         {
-            roleCtrlList.ForEach(o =>
-            {
-                Vector3 endPoint = (o.transform.position - roleCtrlList[0].transform.position) + point;
-                o.OnMove(new MoveInfoByPoint(endPoint, () => ArriveWay.IsArriveByDistance(o, point), o.OnIdle));
-            });
+            var list = roleCtrlList.OrderBy(o => (o.transform.position - point).magnitude).ToList();
+            IBoid leader = list.First().GetComponent<IBoid>();
+            List<Boid> followers = list.Skip(1).Select(o => o.GetComponent<Boid>()).ToList();
+            Boid.SetGroup((Boid)leader, followers.Cast<IBoid>().ToList(), 4);
+            var info = new MoveInfoByBoid(leader, followers.Cast<IBoid>().ToList(), point, 4, 2, 1.8f);
+            roleCtrlList.ForEach(o => { o.OnMove(info); });
         }
-
 
 
         public void Attack(GameUnitCtrl target)
         {
-            roleCtrlList.ForEach(o =>
-            {
-                o.OnAttack(target);
-            });
+            roleCtrlList.ForEach(o => { o.OnAttack(target); });
         }
 
 
         public void Idle()
         {
-            roleCtrlList.ForEach(o =>
-            {
-                o.OnIdle();
-            });
+            roleCtrlList.ForEach(o => { o.OnIdle(); });
         }
-
-
 
         #endregion
     }
