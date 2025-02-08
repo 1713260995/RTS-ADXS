@@ -1,14 +1,14 @@
 using Assets.Scripts.Modules;
 using Assets.Scripts.Modules.Battle;
+using Assets.Scripts.Test.UnitTest;
 using UnityEngine;
 
 namespace Test
 {
     /// <summary>
     /// 测试接入ORCA后避障效果
-    /// 
     /// </summary>
-    public class UnitTest_ORCA : MonoBehaviour
+    public class UnitTest_ORCA : UnitTest_Base
     {
         public float interval = 1.5f;
         public GameUnitName unitName = GameUnitName.Peasant;

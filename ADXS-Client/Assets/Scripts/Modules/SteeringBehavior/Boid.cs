@@ -29,8 +29,8 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
         public float radius = 2;
 
         public Transform transform { get; }
-        public Vector3 Position => transform.position;
-        public Vector3 Velocity { get; set; }
+        public Vector2 Position => transform.position.GetXZ();
+        public Vector2 Velocity { get; set; }
         public float Mass => mass;
         public float MaxSpeed => maxSpeed;
         public float MaxForce => maxForce;

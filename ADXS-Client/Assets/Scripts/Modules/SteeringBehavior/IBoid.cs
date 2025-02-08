@@ -5,8 +5,8 @@ namespace Assets.Scripts.Modules.SteeringBehaviors
     public interface IBoid
     {
         Transform transform { get; }
-        Vector3 Position { get; }
-        Vector3 Velocity { get; set; }
+        Vector2 Position { get; }
+        Vector2 Velocity { get; set; }
         float MaxSpeed { get; }
         float MaxForce { get; }
         float Radius { get; }

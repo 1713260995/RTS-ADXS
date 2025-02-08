@@ -78,7 +78,6 @@ public class GameRoleCtrl : GameUnitCtrl
     {
         base.InitAI();
         idleAI = new IdleAI(this);
-        // moveAI = new MoveAIBase(this);
         moveAI = new MoveAIByBoid(this);
         attackAI = new AttackAI(this, moveAI);
     }

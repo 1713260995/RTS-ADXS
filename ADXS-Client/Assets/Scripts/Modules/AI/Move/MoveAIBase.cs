@@ -35,7 +35,7 @@ namespace Assets.Scripts.Modules.AI
             }
         }
 
-        protected IEnumerator Move()
+        protected virtual IEnumerator Move()
         {
             while (!moveInfo.IsArrive()) //如果未到达就继续移动
             {
@@ -51,7 +51,7 @@ namespace Assets.Scripts.Modules.AI
             {
                 moveInfo.OnArrive();
             }
-            Debug.Log($"{role.name}结束移动");
+           // Debug.Log($"{role.name}结束移动");
 
             moveTask = null;
         }

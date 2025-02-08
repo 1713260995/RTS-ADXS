@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.GameClientLib.Scripts.Utils;
 using Assets.Scripts.Modules.SteeringBehaviors;
 using UnityEngine;
 
@@ -56,28 +57,40 @@ namespace Assets.Scripts.Modules.AI
         }
     }
 
-    public class MoveInfoByBoid : IMoveInfo
+    public struct MoveInfoByBoid : IMoveInfo
     {
-        public IBoid leader;
-        public List<IBoid> boids;
-        public int groupNum;
-        public float arriveDistance;
-        public float separateDistance;
+        public SteeringBehavior.BoidBehaviorInfo info;
         public Vector3 Destination { get; }
         public Action OnArrive { get; }
         public Func<bool> IsArrive { get; set; }
 
-        public MoveInfoByBoid(IBoid leader, List<IBoid> boids, Vector3 destination, int groupNum, float arriveDistance, float SeparateDistance) 
+        public MoveInfoByBoid(List<IBoid> boids, Vector3 destination, int groupNum, float followDistance, float SeparateDistance) : this()
         {
-            this.leader = leader;
-            this.boids = boids;
+            info = new SteeringBehavior.BoidBehaviorInfo(boids, destination.GetXZ()) {
+                groupNum = groupNum,
+                separateDistance = SeparateDistance
+            };
             this.Destination = destination;
-            IsArrive = null;
-            OnArrive = null;
-            this.groupNum = groupNum;
-            this.arriveDistance = arriveDistance;
-            this.separateDistance = SeparateDistance;
+            this.OnArrive = null;
+            this.IsArrive = IsArriveFunc;
         }
 
+        private bool IsArriveFunc()
+        {
+            bool result = true;
+            foreach (var item in info.boids) {
+                if (item.Velocity.magnitude > 0.01f) {
+                    result = false;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        public void CreateGroup()
+        {
+            info.CreateGroup();
+        }
     }
 }
