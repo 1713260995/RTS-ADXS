@@ -6,6 +6,7 @@ using System.Net;
 using Assets.Scripts.Modules.SteeringBehaviors;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using System.Data;
 
 namespace Assets.Scripts.Modules
 {
@@ -34,7 +35,8 @@ namespace Assets.Scripts.Modules
         public void ReplaceMember(GameRoleCtrl _newUnits)
         {
             roleCtrlList.Clear();
-            if (_newUnits != null) {
+            if (_newUnits != null)
+            {
                 roleCtrlList.Add(_newUnits);
             }
         }
@@ -42,10 +44,12 @@ namespace Assets.Scripts.Modules
 
         public void ReplaceMembers(List<GameRoleCtrl> _newUnits)
         {
-            if (_newUnits == null) {
+            if (_newUnits == null)
+            {
                 roleCtrlList.Clear();
             }
-            else {
+            else
+            {
                 roleCtrlList = _newUnits;
             }
         }
@@ -69,10 +73,18 @@ namespace Assets.Scripts.Modules
 
         public void Move(Vector3 point)
         {
-            List<IBoid> boids = roleCtrlList.OrderBy(o => (o.transform.position - point).magnitude).Select(o => o.boid).ToList();
-            MoveInfoByBoid moveInfo = new MoveInfoByBoid(boids, point, 4, 2, 1.8f);
-            moveInfo.CreateGroup();
-            roleCtrlList.ForEach(o => { o.OnMove(moveInfo); });
+            //List<IBoid> boids = roleCtrlList.OrderBy(o => (o.transform.position - point).magnitude).Select(o => o.boid).ToList();
+            //MoveInfoByBoid moveInfo = new MoveInfoByBoid(boids, point, 4, 2, 1.8f);
+            //moveInfo.CreateGroup();
+            //roleCtrlList.ForEach(o => { o.OnMove(moveInfo); });
+
+
+
+            roleCtrlList.ForEach(o =>
+            {
+                IMoveInfo moveInfo = new MoveInfoByPoint(point, () => ArriveWay.IsArriveByDistance(o.transform.position, point, 0.5f), () => { o.OnIdle(); });
+                o.OnMove(moveInfo);
+            });
         }
 
 

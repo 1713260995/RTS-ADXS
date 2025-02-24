@@ -35,7 +35,7 @@ namespace Assets.Scripts.Modules.Role
 
         [SerializeField] private Color normalGridColor = new Color(18 / 255f, 52 / 255f, 191 / 255f, 1f); //预览建筑，正常的网格颜色
         [SerializeField] private Color faileGridColor = new Color(191 / 255f, 19 / 255f, 18 / 255f, 1f);//预览建筑，处于碰撞的网格颜色
-        [SerializeField] private Color previewBuildingColor = new Color(0f, 66 / 255f, 299 / 255f, 194 / 255f);//预览建筑的颜色
+        [SerializeField] private Color previewBuildingColor = new Color(0f, 42 / 255f, 191 / 255f, 180 / 255f);//预览建筑的颜色
         [SerializeField] private float colorIntensity = 4.7f;//网格颜色的强度。因为网格颜色的类型时HDR
         [SerializeField] private float maxHeightDifference = 0.55f; // 建造时允许最大的地形高度差
         [SerializeField] private GameObject previewGridPrefab; //预览的网格预制体
@@ -80,7 +80,7 @@ namespace Assets.Scripts.Modules.Role
                     yield break;
                 }
 
-                Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100, 1 << terrain.gameObject.layer);
+                Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100, GameLayerName.Ground.GetLayerMask());
                 previewBuilding.transform.position = hit.point;
                 Vector3 buildingSize = previewBuilding.GetBuildingSize();
                 bool canBuild = IsTerrainFlat(hit.point, buildingSize.x, buildingSize.z) && !IsCollideWithUnits(previewBuilding);
@@ -112,7 +112,7 @@ namespace Assets.Scripts.Modules.Role
                     {
                         Destroy(previewGrid.gameObject);
                         buildMat.SetColor(shaderId_PreviewBuildingColor, new Color(0, 0, 0, 0));
-                        StartBuild(previewBuilding, buildMat, farmer);
+                        StartBuild(previewBuilding, farmer);
                         yield break;
                     }
                 }
@@ -126,7 +126,7 @@ namespace Assets.Scripts.Modules.Role
 
 
 
-        private void StartBuild(GameBuildingCtrl previewBuilding, Material buildMat, FarmerCtrl farmer)
+        private void StartBuild(GameBuildingCtrl previewBuilding, FarmerCtrl farmer)
         {
             BuildInfo buildInfo = new BuildInfo(previewBuilding, (onComplete) => StartCoroutine(ExecuteBuild(previewBuilding, onComplete)));
             farmer.OnBuild(buildInfo);

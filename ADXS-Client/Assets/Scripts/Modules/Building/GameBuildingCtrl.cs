@@ -1,11 +1,8 @@
 ﻿using Assets.GameClientLib.Resource;
-using Assets.GameClientLib.Scripts.Utils;
-using Assets.Scripts.Common.Enum;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Modules.Role
 {
@@ -75,7 +72,6 @@ namespace Assets.Scripts.Modules.Role
             {
                 buildProgressBar = ResSystem.Instantiate<GameObject>(buildProgressBarPrefab).GetComponent<BuildProgressBar>();
                 buildProgressBar.transform.SetParent(transform);
-
             }
             buildProgressBar.SetBuildProgress(progress);
             buildProgressBar.transform.localPosition = new Vector3(0, GetBuildingSize().y + buildProgressBarPosY, 0);

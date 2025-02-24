@@ -15,11 +15,11 @@ namespace Assets.Scripts.Common.Enum
         /// <summary>
         /// 预览正常
         /// </summary>
-        NormalPreview,
+        PreviewNormal,
         /// <summary>
         /// 预览失败
         /// </summary>
-        FailedPreview,
+        PreviewFail,
         /// <summary>
         /// 正在建造
         /// </summary>

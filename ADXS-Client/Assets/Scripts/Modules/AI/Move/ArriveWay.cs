@@ -34,8 +34,11 @@ namespace Assets.Scripts.Modules
         public static bool IsArriveByRaycast(GameUnitCtrl origin, GameUnitCtrl target, float distance)
         {
             Transform t = origin.transform;
-            Physics.Raycast(t.position, t.forward, out RaycastHit hitInfo, distance, GameLayerName.GameUnit.GetLayerMask());
-            return hitInfo.collider.gameObject.GetInstanceID() == target.gameObject.GetInstanceID();
+            if (Physics.Raycast(t.position, t.forward, out RaycastHit hitInfo, distance, GameLayerName.GameUnit.GetLayerMask()))
+            {
+                return hitInfo.collider.gameObject.GetInstanceID() == target.gameObject.GetInstanceID();
+            }
+            return false;
         }
     }
 }
